@@ -1,0 +1,16 @@
+@use '../styles/global' as *;
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #131313;
+  .content {
+	  position: relative;
+	  overflow: hidden;
+	  width: calc(100% - 100px);
+	  min-height: 100%;
+	  border: 4px solid white;
+	  padding-top: 60px;
+  }
+}
