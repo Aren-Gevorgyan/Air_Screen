@@ -17,7 +17,7 @@ const tabs: Tab[] =  [
 const Header = () => {
   return (
     <header className={styles.container}>
-      <h3>Air Screen</h3>
+      <Link href='/'>AirScreen</Link>
       <nav>
         <ul>
           {

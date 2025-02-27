@@ -1,51 +1,73 @@
 @use '../../styles/global' as *;
 
 .container {
-    width: 100%;
-    height: 60px;
-    border: 1px solid;
-	position: fixed;
-	z-index: 5;
-    top: 0;
-    left: 0;
+	width: 100%;
 	padding: 10px 0;
 	background-color: transparent;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 10px;
-	h3 {
-		font-size: 16px;
+	position: relative;
+	z-index: 1;
+	& > a {
 		font-weight: 700;
-		line-height: 19.2px;
 		text-align: left;
-		color: white;
+		font-size: 36px;
+		font-weight: bold;
+	    background: linear-gradient(to left, #1c5a13, #0ae30d);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-decoration: none;
+		transition: all 8s;
+		&:hover {
+		    background: linear-gradient(to left, #0ae30d, #1c5a13);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
 	}
 	ul {
-        display: flex;
-        align-items: center;
-        gap: 6px;
+		display: flex;
+		align-items: center;
+		gap: 12px;
 		li {
-            list-style-type: none;
+			list-style-type: none;
 			a {
-				font-size: 16px;
-				font-weight: 700;
-				line-height: 19.2px;
-				text-align: left;
-                color: white;
-				background-color: transparent;
-				border: none;
-                padding: 4px;
-                text-decoration: none;
-				&:hover {
-					text-decoration: underline;
-				}
+					font-size: 18px;
+					font-weight: bold;
+					text-transform: uppercase;
+					text-decoration: none;
+					color: white;
+					transition: all 0.4s ease-in-out;
+					position: relative;
+					&:hover {
+					  transform: scale(1.1);
+					}
+					&::after {
+					  content: "";
+					  position: absolute;
+					  left: 50%;
+					  bottom: -4px;
+					  width: 0;
+					  height: 2px;
+					  background: #0ae30d; 
+					  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+					}
+				
+					&:hover::after {
+					  width: 100%;
+					  left: 0;
+					}
 			}
 		}
-    }
-    img {
-        border: 1px solid $deep_blue;
-        border-radius: 50%;
-        padding: 4px;
-    }
+	}
+	img {
+		border: 1px solid $deep_blue;
+		border-radius: 50%;
+		padding: 4px;
+		background-color: $deep_blue;
+		&:hover {
+			background:#0e142b;
+		}
+	}
 }
