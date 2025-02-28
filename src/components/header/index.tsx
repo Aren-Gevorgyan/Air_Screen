@@ -2,6 +2,7 @@ import React from "react";
 import styles from './styles.module.scss';
 import Link from "next/link";
 import Image from 'next/image';
+import MenuIcon from '../../../public/svgs/menuIcon';
 
 type Tab = {
   title: string;
@@ -19,6 +20,7 @@ const Header = () => {
     <header className={styles.container}>
       <Link href='/'>AirScreen</Link>
       <nav>
+        <MenuIcon />
         <ul>
           {
             tabs.map((val: Tab) => {
