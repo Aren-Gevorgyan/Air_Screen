@@ -13,13 +13,12 @@
 	& > a {
 		font-weight: 700;
 		text-align: left;
-		font-size: 36px;
+		font-size: clamp(1rem, 5vw, 2.5rem); 
 		font-weight: bold;
 	    background: linear-gradient(to left, #1c5a13, #0ae30d);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		text-decoration: none;
-		transition: all 8s;
 		&:hover {
 		    background: linear-gradient(to left, #0ae30d, #1c5a13);
 			-webkit-background-clip: text;
