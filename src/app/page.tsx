@@ -1,20 +1,21 @@
-"use client"; // Ensures GSAP runs only on the client in Next.js App Router
-
 import Header from "@/components/header";
 import styles from './styles.module.scss';
 import Image from 'next/image';
-
-export async function fetchData() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts/1", {
-    cache: "no-store",
-  });
-
-  return res.json();
-}
+import CarouselCom from '@/components/home/carusel';
+import { BASE_URL } from "@/assets/constants";
 
 const Home = async () => {
-  const data = await fetchData();
-  console.log("TCL: Home -> data", data)
+  const apiKey = process.env.TMDB_API_KEY;
+  const url = `${BASE_URL}/popular?api_key=${apiKey}&language=en-US&page=1`;
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const data = await res.json();
+  console.log("TCL: CarouselCom -> data", data.results.length)
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -23,33 +24,39 @@ const Home = async () => {
           <div className={styles.smallCircle} />
         </div>
         <main>
-          <div className={styles.about}>
-            <h1>AirScreen եզակի բացօթյա կինոթատրոն</h1>
-            <p>
-              Մտեք մի աշխարհ, որտեղ մեծ էկրանը հանդիպում է գիշերային երկնքին  AirScreen_ում՝ եզակի բացօթյա կինոթատրոնում:
-              Հավաքեք սիրելիներիդ և վայելեք կինոյի մոգությունը, ինչպես երբեք։ Թե՛ ռոմանտիկ երեկո, թե՛ ընտանեկան հանգիստ կամ միայնակ պահեր, AirScreen_ինը անմոռաց պահեր է խոստանում աստղերի տակ։
-            </p>
-            <p>
-              Միայն ֆիլմեր մի դիտեք, զգացեք դրանք։ 🌟
-              AirScreen — որտեղ երկինքը սահման չունի։
-            </p>
+          <div className={styles.top}>
+            <div className={styles.about}>
+              <h1>AirScreen եզակի բացօթյա կինոթատրոն</h1>
+              <p>
+                Մտեք մի աշխարհ, որտեղ մեծ էկրանը հանդիպում է գիշերային երկնքին  AirScreen_ում՝ եզակի բացօթյա կինոթատրոնում:
+                Հավաքեք սիրելիներիդ և վայելեք կինոյի մոգությունը, ինչպես երբեք։ Թե՛ ռոմանտիկ երեկո, թե՛ ընտանեկան հանգիստ կամ միայնակ պահեր, AirScreen_ինը անմոռաց պահեր է խոստանում աստղերի տակ։
+              </p>
+              <p>
+                Միայն ֆիլմեր մի դիտեք, զգացեք դրանք։ 🌟
+                AirScreen — որտեղ երկինքը սահման չունի։
+              </p>
+            </div>
+            <div className={styles.images}>
+              <Image
+                src="/images/hero.png"
+                alt="AirScreen hero"
+                fill
+              />
+              <Image
+                src="/images/heroThree.png"
+                alt="AirScreen hero"
+                fill
+              />
+              <Image
+                src="/images/heroTwo.png"
+                alt="AirScreen hero"
+                fill
+              />
+            </div>
           </div>
-          <div className={styles.images}>
-            <Image
-              src="/images/hero.png"
-              alt="Description of image"
-              fill
-            />
-            <Image
-              src="/images/heroThree.png"
-              alt="Description of image"
-              fill
-            />
-            <Image
-              src="/images/heroTwo.png"
-              alt="Description of image"
-              fill
-            />
+          <div className={styles.films}>
+            <h2 className={styles.popular}>Հանրաճանաչ</h2>
+            <CarouselCom data={data.results} />
           </div>
         </main>
       </div>

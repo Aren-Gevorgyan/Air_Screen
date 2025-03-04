@@ -1,61 +1,5 @@
 @use '../styles/global' as *;
-
-@keyframes growCircle {
-	from {
-		width: 0%;
-		height: 20%;
-		opacity: 0.5;
-		bottom: 100%;
-	}
-	to {
-		width: 50%;
-		height: 70%;
-		opacity: 1;
-		bottom: 45%;
-	}
-}
-
-@keyframes slideText {
-	from {
-		transform: translateX(-100%);
-		opacity: 0;
-	}
-	to {
-		transform: translateX(0%);
-		opacity: 1;
-	}
-}
-
-@keyframes heroThree {
-	from {
-		width: 0%;
-		height: 20%;
-		opacity: 0.5;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
-@keyframes hero {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
-@keyframes heroMove {
-  from {
-    transform: translate(50vw, 100vh); // Start off-screen: right + bottom
-    opacity: 0;
-  }
-  to {
-    transform: translate(0, 0); // Move to the center
-    opacity: 1;
-  }
-}
+@use '../styles/animations.scss' as *;
 
 .container {
 	position: relative;
@@ -89,61 +33,94 @@
 		width: 90%;
 		min-height: 100%;
 		main {
-			position: relative;
-			z-index: 2;
 			display: flex;
-      justify-content: space-between;
-      @media screen and (max-width: $mid_size){
-        flex-direction: column;
-        align-items: flex-end;
-      }
-			.about {
-				flex: 1;
-				& h1 {
-					font-weight: 700;
-					text-align: left;
-          font-size: clamp(1rem, 8vw, 4rem); 
-					font-weight: bold;
-					color: white;
+			flex-direction: column;
+			gap: 30px;
+			.top {
+				border: 1px solid;
+				position: relative;
+				z-index: 2;
+				display: flex;
+				justify-content: space-between;
+				@media screen and (max-width: $mid_size) {
+					flex-direction: column;
+					align-items: flex-end;
 				}
-				& > p {
-					font-weight: 600;
-					text-align: left;
-          font-size: clamp(1rem, 5vw, 1.5rem); 
-					font-weight: bold;
-					color: white;
-					animation: slideText 3s ease-in-out forwards;
+				.about {
+					flex: 1;
+					& h1 {
+						font-weight: 700;
+						text-align: left;
+						font-size: clamp(1rem, 8vw, 4rem);
+						font-weight: bold;
+						color: white;
+					}
+					& > p {
+						font-weight: 600;
+						text-align: left;
+						font-size: clamp(1rem, 5vw, 1.5rem);
+						font-weight: bold;
+						color: white;
+						animation: slideText 3s ease-in-out forwards;
+					}
+				}
+				.images {
+					flex: 1;
+					display: flex;
+					align-items: center;
+					position: relative;
+					margin-top: 20px;
+					@media screen and (max-width: $mid_size) {
+						display: none;
+					}
+					img {
+						width: auto !important;
+						object-fit: contain;
+						&:nth-child(1) {
+							animation: heroMove 3s ease-in-out forwards;
+						}
+						&:nth-child(2) {
+							left: 30% !important;
+							top: 20% !important;
+							z-index: 1;
+							bottom: 0 !important;
+							animation: heroThree 2s ease-in-out forwards;
+						}
+						&:nth-child(3) {
+							left: 60% !important;
+							height: 80% !important;
+							animation: hero 4s ease-in-out forwards;
+						}
+					}
 				}
 			}
-			.images {
-				flex: 1;
+			.films {
 				display: flex;
-				align-items: center;
-				position: relative;
-        margin-top: 20px;
-        @media screen and (max-width: $mid_size){
-          display: none;
-        }
-				img {
-					width: auto !important;
-					object-fit: contain;
-					&:nth-child(1) {
-						animation: heroMove 3s ease-in-out forwards;
-					}
-					&:nth-child(2) {
-						left: 30% !important;
-						top: 20% !important;
-						z-index: 1;
-						bottom: 0 !important;
-						animation: heroThree 2s ease-in-out forwards;
-					}
-					&:nth-child(3) {
-						left: 60% !important;
-            height: 80% !important;
-						animation: hero 4s ease-in-out forwards;
-					}
+				flex-direction: column;
+				gap: 10px;
+				border: 1px solid;
+				.popular {
+					font-weight: 700;
+					text-align: left;
+					font-size: clamp(1rem, 8vw, 2rem);
+					font-weight: bold;
+					color: white;
+					margin: 0;
 				}
 			}
 		}
 	}
+}
+
+.error {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $red;
+	font-weight: 600;
+	text-align: left;
+	font-size: clamp(1rem, 5vw, 3rem);
+	font-weight: bold;
 }

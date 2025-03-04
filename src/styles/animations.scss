@@ -1,0 +1,57 @@
+
+@keyframes growCircle {
+	from {
+		width: 0%;
+		height: 20%;
+		opacity: 0.5;
+		bottom: 100%;
+	}
+	to {
+		width: 50%;
+		height: 70%;
+		opacity: 1;
+		bottom: 45%;
+	}
+}
+
+@keyframes slideText {
+	from {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0%);
+		opacity: 1;
+	}
+}
+
+@keyframes heroThree {
+	from {
+		width: 0%;
+		height: 20%;
+		opacity: 0.5;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes hero {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes heroMove {
+	from {
+		transform: translate(50vw, 100vh); // Start off-screen: right + bottom
+		opacity: 0;
+	}
+	to {
+		transform: translate(0, 0); // Move to the center
+		opacity: 1;
+	}
+}

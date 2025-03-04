@@ -1,0 +1,17 @@
+@use '../../../styles/global' as *;
+@use '../../../styles/animations.scss' as *;
+
+.item {
+	min-width: 200px;
+	max-width: 200px;
+	height: 400px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	border-radius: 8px;
+	overflow: hidden;
+	img {
+		object-fit: contain;
+	}
+}
