@@ -2,125 +2,125 @@
 @use '../styles/animations.scss' as *;
 
 .container {
-	position: relative;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	background-color: #131313;
-	overflow: hidden;
-	.circle {
-		width: 50%;
-		height: 500px;
-		position: absolute;
-		bottom: 45%;
-		right: -10%;
-		border-radius: 50%;
-		transform: rotate(-9deg);
-		background: linear-gradient(to left, #1c5a13, #0ae30d);
-		animation: growCircle 3s ease-in-out forwards;
-	}
-	.smallCircle {
-		width: 80%;
-		height: 80%;
-		position: absolute;
-		bottom: 25%;
-		right: 0%;
-		border-radius: 50%;
-		transform: rotate(-9deg);
-		background: #131313;
-	}
-	.content {
-		width: 90%;
-		min-height: 100%;
-		main {
-			display: flex;
-			flex-direction: column;
-			gap: 30px;
-			.top {
-				border: 1px solid;
-				position: relative;
-				z-index: 2;
-				display: flex;
-				justify-content: space-between;
-				@media screen and (max-width: $mid_size) {
-					flex-direction: column;
-					align-items: flex-end;
-				}
-				.about {
-					flex: 1;
-					& h1 {
-						font-weight: 700;
-						text-align: left;
-						font-size: clamp(1rem, 8vw, 4rem);
-						font-weight: bold;
-						color: white;
-					}
-					& > p {
-						font-weight: 600;
-						text-align: left;
-						font-size: clamp(1rem, 5vw, 1.5rem);
-						font-weight: bold;
-						color: white;
-						animation: slideText 3s ease-in-out forwards;
-					}
-				}
-				.images {
-					flex: 1;
-					display: flex;
-					align-items: center;
-					position: relative;
-					margin-top: 20px;
-					@media screen and (max-width: $mid_size) {
-						display: none;
-					}
-					img {
-						width: auto !important;
-						object-fit: contain;
-						&:nth-child(1) {
-							animation: heroMove 3s ease-in-out forwards;
-						}
-						&:nth-child(2) {
-							left: 30% !important;
-							top: 20% !important;
-							z-index: 1;
-							bottom: 0 !important;
-							animation: heroThree 2s ease-in-out forwards;
-						}
-						&:nth-child(3) {
-							left: 60% !important;
-							height: 80% !important;
-							animation: hero 4s ease-in-out forwards;
-						}
-					}
-				}
-			}
-			.films {
-				display: flex;
-				flex-direction: column;
-				gap: 10px;
-				border: 1px solid;
-				.popular {
-					font-weight: 700;
-					text-align: left;
-					font-size: clamp(1rem, 8vw, 2rem);
-					font-weight: bold;
-					color: white;
-					margin: 0;
-				}
-			}
-		}
-	}
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #131313;
+  overflow: hidden;
+  .circle {
+    width: 50%;
+    height: 500px;
+    position: absolute;
+    bottom: 45%;
+    right: -10%;
+    border-radius: 50%;
+    transform: rotate(-9deg);
+    background: linear-gradient(to left, #1c5a13, #0ae30d);
+    animation: growCircle 3s ease-in-out forwards;
+  }
+  .smallCircle {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    bottom: 25%;
+    right: 0%;
+    border-radius: 50%;
+    transform: rotate(-9deg);
+    background: #131313;
+  }
+  .content {
+    width: 90%;
+    min-height: 100%;
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      .top {
+        border: 1px solid;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        @media screen and (max-width: $mid_size) {
+          flex-direction: column;
+          align-items: flex-end;
+        }
+        .about {
+          flex: 1;
+          & h1 {
+            font-weight: 700;
+            text-align: left;
+            font-size: clamp(1rem, 8vw, 4rem);
+            font-weight: bold;
+            color: white;
+          }
+          & > p {
+            font-weight: 600;
+            text-align: left;
+            font-size: clamp(1rem, 5vw, 1.5rem);
+            font-weight: bold;
+            color: white;
+            animation: slideText 3s ease-in-out forwards;
+          }
+        }
+        .images {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          position: relative;
+          margin-top: 20px;
+          @media screen and (max-width: $mid_size) {
+            display: none;
+          }
+          img {
+            width: auto !important;
+            object-fit: contain;
+            &:nth-child(1) {
+              animation: heroMove 3s ease-in-out forwards;
+            }
+            &:nth-child(2) {
+              left: 30% !important;
+              top: 20% !important;
+              z-index: 1;
+              bottom: 0 !important;
+              animation: heroThree 2s ease-in-out forwards;
+            }
+            &:nth-child(3) {
+              left: 60% !important;
+              height: 80% !important;
+              animation: hero 4s ease-in-out forwards;
+            }
+          }
+        }
+      }
+      .films {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border: 1px solid;
+        .popular {
+          font-weight: 700;
+          text-align: left;
+          font-size: clamp(1rem, 8vw, 2rem);
+          font-weight: bold;
+          color: white;
+          margin: 0;
+        }
+      }
+    }
+  }
 }
 
 .error {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: $red;
-	font-weight: 600;
-	text-align: left;
-	font-size: clamp(1rem, 5vw, 3rem);
-	font-weight: bold;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $red;
+  font-weight: 600;
+  text-align: left;
+  font-size: clamp(1rem, 5vw, 3rem);
+  font-weight: bold;
 }

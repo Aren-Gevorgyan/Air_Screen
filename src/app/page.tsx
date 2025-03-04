@@ -1,8 +1,9 @@
-import Header from "@/components/header";
+import React from 'react';
+import Header from '@/components/header';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import CarouselCom from '@/components/home/carusel';
-import { BASE_URL } from "@/assets/constants";
+import { BASE_URL } from '@/assets/constants';
 
 const Home = async () => {
   const apiKey = process.env.TMDB_API_KEY;
@@ -10,17 +11,17 @@ const Home = async () => {
   const res = await fetch(url);
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error('Failed to fetch data');
   }
 
   const data = await res.json();
-  console.log("TCL: CarouselCom -> data", data.results.length)
+  console.log('TCL: CarouselCom -> data', data.results.length);
 
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <Header />
-        <div className={styles.circle} >
+        <div className={styles.circle}>
           <div className={styles.smallCircle} />
         </div>
         <main>
@@ -28,30 +29,21 @@ const Home = async () => {
             <div className={styles.about}>
               <h1>AirScreen եզակի բացօթյա կինոթատրոն</h1>
               <p>
-                Մտեք մի աշխարհ, որտեղ մեծ էկրանը հանդիպում է գիշերային երկնքին  AirScreen_ում՝ եզակի բացօթյա կինոթատրոնում:
-                Հավաքեք սիրելիներիդ և վայելեք կինոյի մոգությունը, ինչպես երբեք։ Թե՛ ռոմանտիկ երեկո, թե՛ ընտանեկան հանգիստ կամ միայնակ պահեր, AirScreen_ինը անմոռաց պահեր է խոստանում աստղերի տակ։
+                Մտեք մի աշխարհ, որտեղ մեծ էկրանը հանդիպում է գիշերային երկնքին
+                AirScreen_ում՝ եզակի բացօթյա կինոթատրոնում: Հավաքեք սիրելիներիդ
+                և վայելեք կինոյի մոգությունը, ինչպես երբեք։ Թե՛ ռոմանտիկ երեկո,
+                թե՛ ընտանեկան հանգիստ կամ միայնակ պահեր, AirScreen_ինը անմոռաց
+                պահեր է խոստանում աստղերի տակ։
               </p>
               <p>
-                Միայն ֆիլմեր մի դիտեք, զգացեք դրանք։ 🌟
-                AirScreen — որտեղ երկինքը սահման չունի։
+                Միայն ֆիլմեր մի դիտեք, զգացեք դրանք։ 🌟 AirScreen — որտեղ
+                երկինքը սահման չունի։
               </p>
             </div>
             <div className={styles.images}>
-              <Image
-                src="/images/hero.png"
-                alt="AirScreen hero"
-                fill
-              />
-              <Image
-                src="/images/heroThree.png"
-                alt="AirScreen hero"
-                fill
-              />
-              <Image
-                src="/images/heroTwo.png"
-                alt="AirScreen hero"
-                fill
-              />
+              <Image src="/images/hero.png" alt="AirScreen hero" fill />
+              <Image src="/images/heroThree.png" alt="AirScreen hero" fill />
+              <Image src="/images/heroTwo.png" alt="AirScreen hero" fill />
             </div>
           </div>
           <div className={styles.films}>
@@ -62,6 +54,6 @@ const Home = async () => {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

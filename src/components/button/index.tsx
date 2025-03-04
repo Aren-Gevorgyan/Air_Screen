@@ -6,7 +6,12 @@ type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: React.FC<ButtonProps> = ({ icon, children, type = 'button', ...rest }) => (
+const Button: React.FC<ButtonProps> = ({
+  icon,
+  children,
+  type = 'button',
+  ...rest
+}) => (
   <button type={type} {...rest}>
     {icon && <span>{icon}</span>}
     {children}
@@ -14,4 +19,3 @@ const Button: React.FC<ButtonProps> = ({ icon, children, type = 'button', ...res
 );
 
 export default Button;
-
