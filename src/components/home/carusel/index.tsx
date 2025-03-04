@@ -1,12 +1,11 @@
 'use client';
 
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import styles from './styles.module.scss';
 import Image from 'next/image';
 import { MovieData } from '@/assets/types';
 import { breakpoints, IMAGE_URL } from '@/assets/constants';
@@ -16,6 +15,7 @@ export interface CarouselProps {
 }
 
 const CarouselCom: FC<CarouselProps> = ({ data }) => {
+  
   return (
     <Swiper
       loop
@@ -27,7 +27,7 @@ const CarouselCom: FC<CarouselProps> = ({ data }) => {
       modules={[Navigation, Pagination, Autoplay]}
       breakpoints={breakpoints}
     >
-      {data?.map((val: any) => {
+      {data?.map((val: MovieData) => {
         return (
           <SwiperSlide key={val.id}>
             <Image
