@@ -1,2 +1,58 @@
 @use '../../../styles/global' as *;
 @use '../../../styles/animations.scss' as *;
+
+.item {
+	&:hover {
+		.opacity {
+			bottom: 0;
+			transition: bottom 1s;
+		}
+	}
+	.opacity {
+		width: 100%;
+		height: 100%;
+		--webkit-backdrop-filter: blur(2.4rem);
+		-webkit-backdrop-filter: blur(2.4rem);
+		backdrop-filter: blur(2.4rem);
+		background: #0f0f0fab;
+		border-radius: 8px;
+		-webkit-box-shadow: 0 0 2rem #000;
+		box-shadow: 0 0 2rem #000;
+		bottom: 100%;
+		left: 0;
+		opacity: .91;
+		position: absolute;
+		-webkit-transition: opacity .2s ease, background-color .2s ease;
+		transition: opacity .2s ease, background-color .2s ease;
+		z-index: 1;
+		padding-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: end;
+		gap: 10px;
+		.title {
+			text-align: left;
+			font-size: clamp(1rem, 8vw, 1.5rem);
+			font-weight: bold;
+			color: white;
+			padding: 0 10px;
+			margin: 0;
+		}
+		.overview,
+		.date {
+			font-weight: 500;
+			text-align: left;
+			font-size: clamp(0.8rem, 8vw, 1rem);
+			color: white;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 12;
+			white-space: pre-wrap;
+			-webkit-box-orient: vertical;
+			padding: 0 10px;
+		}
+		.date {
+			background-color: #18191936;
+		}
+	}
+}

@@ -7,5 +7,5 @@ export const breakpoints = {
   768: { slidesPerView: 3 }, // Tablets
   1024: { slidesPerView: 4 }, // Laptops
   1280: { slidesPerView: 5 }, // Laptops
-  1680: { slidesPerView: 7 }, // Desktops
+  1680: { slidesPerView: 6 }, // Desktops
 };
