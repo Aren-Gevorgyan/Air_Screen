@@ -1,3 +1,4 @@
+@use './global' as *;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 body {
@@ -30,6 +31,9 @@ main {
 	border-radius: 8px;
 	overflow: hidden;
 	padding: 0;
+	@media screen and (max-width: $sm) {
+		width: 100% !important;
+	}
 }
 
 .swiper-button-prev,
