@@ -6,24 +6,23 @@ import CarouselCom from '@/components/home/carusel';
 import { BASE_URL } from '@/assets/constants';
 
 const Home = async () => {
-  const apiKey = process.env.TMDB_API_KEY;
-  const url = `${BASE_URL}/popular?api_key=${apiKey}&language=en-US&page=1`;
-  const res = await fetch(url);
+  const apiKey = process.env.TM_DB_API_KEY;
+  const url = (page: number) => `${BASE_URL}/popular?api_key=${apiKey}&language=en-US&page=${page}`;
+  const [firstPage, secondPage] = await Promise.all([fetch(url(1)), fetch(url(2))]);
 
-  if (!res.ok) {
+  if (!firstPage.ok || !secondPage.ok) {
     throw new Error('Failed to fetch data');
   }
 
-  const data = await res.json();
-  console.log('TCL: CarouselCom -> data', data.results.length);
+  const firstPageData = await firstPage.json();
+  const secondPageData = await secondPage.json();
+  const data = [...firstPageData.results, ...secondPageData.results];
 
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <Header />
-        <div className={styles.circle}>
-          <div className={styles.smallCircle} />
-        </div>
+        <div className={styles.moon} />
         <main>
           <div className={styles.top}>
             <div className={styles.about}>
@@ -48,7 +47,7 @@ const Home = async () => {
           </div>
           <div className={styles.films}>
             <h2 className={styles.popular}>Հանրաճանաչ</h2>
-            <CarouselCom data={data.results} />
+            <CarouselCom data={data} />
           </div>
         </main>
       </div>

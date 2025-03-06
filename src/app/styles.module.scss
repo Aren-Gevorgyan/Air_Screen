@@ -2,125 +2,136 @@
 @use '../styles/animations.scss' as *;
 
 .container {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  background-color: #131313;
-  overflow: hidden;
-  .circle {
-    width: 50%;
-    height: 500px;
-    position: absolute;
-    bottom: 45%;
-    right: -10%;
-    border-radius: 50%;
-    transform: rotate(-9deg);
-    background: linear-gradient(to left, #1c5a13, #0ae30d);
-    animation: growCircle 3s ease-in-out forwards;
-  }
-  .smallCircle {
-    width: 80%;
-    height: 80%;
-    position: absolute;
-    bottom: 25%;
-    right: 0%;
-    border-radius: 50%;
-    transform: rotate(-9deg);
-    background: #131313;
-  }
-  .content {
-    width: 90%;
-    min-height: 100%;
-    main {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      .top {
-        border: 1px solid;
-        position: relative;
-        z-index: 2;
-        display: flex;
-        justify-content: space-between;
-        @media screen and (max-width: $mid_size) {
-          flex-direction: column;
-          align-items: flex-end;
-        }
-        .about {
-          flex: 1;
-          & h1 {
-            font-weight: 700;
-            text-align: left;
-            font-size: clamp(1rem, 8vw, 4rem);
-            font-weight: bold;
-            color: white;
-          }
-          & > p {
-            font-weight: 600;
-            text-align: left;
-            font-size: clamp(1rem, 5vw, 1.5rem);
-            font-weight: bold;
-            color: white;
-            animation: slideText 3s ease-in-out forwards;
-          }
-        }
-        .images {
-          flex: 1;
-          display: flex;
-          align-items: center;
-          position: relative;
-          margin-top: 20px;
-          @media screen and (max-width: $mid_size) {
-            display: none;
-          }
-          img {
-            width: auto !important;
-            object-fit: contain;
-            &:nth-child(1) {
-              animation: heroMove 3s ease-in-out forwards;
-            }
-            &:nth-child(2) {
-              left: 30% !important;
-              top: 20% !important;
-              z-index: 1;
-              bottom: 0 !important;
-              animation: heroThree 2s ease-in-out forwards;
-            }
-            &:nth-child(3) {
-              left: 60% !important;
-              height: 80% !important;
-              animation: hero 4s ease-in-out forwards;
-            }
-          }
-        }
-      }
-      .films {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        border: 1px solid;
-        .popular {
-          font-weight: 700;
-          text-align: left;
-          font-size: clamp(1rem, 8vw, 2rem);
-          font-weight: bold;
-          color: white;
-          margin: 0;
-        }
-      }
-    }
-  }
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 1, 1, 1)), url('../../public/images/forest.jpeg');
+	overflow: hidden;
+	@media screen and (max-width: $mid_size) {
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position-y: 20%;
+	}
+	.moon {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		background: transparent;
+		background: url('../../public/images/moon.png');
+		background-repeat: no-repeat;
+		background-size: contain;
+		animation: moon 7s ease-in-out forwards;
+		transition: 2s;
+	}
+	.content {
+		width: 90%;
+		min-height: 100%;
+		main {
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+			.top {
+				position: relative;
+				z-index: 2;
+				display: flex;
+				justify-content: space-between;
+				@media screen and (max-width: $mid_size) {
+					flex-direction: column;
+					align-items: flex-end;
+				}
+				.about {
+					flex: 1;
+					@media screen and (max-width: $mid_size) {
+						display: none;
+					}
+					& h1 {
+						text-align: left;
+						font-size: clamp(1rem, 8vw, 3.5rem);
+						font-weight: bold;
+						color: white;
+						@media screen and (max-width: 1500) {
+							font-size: clamp(1rem, 8vw, 2.5rem);
+						}
+					}
+					& > p {
+						font-weight: 600;
+						text-align: left;
+						font-size: clamp(1rem, 5vw, 1.5rem);
+						color: white;
+						animation: slideText 3s ease-in-out forwards;
+					}
+				}
+				.images {
+					flex: 1;
+					display: flex;
+					align-items: center;
+					position: relative;
+					margin-top: 20px;
+					@media screen and (max-width: $mid_size) {
+						width: 100%;
+						height: 400px;
+						flex: none;
+						background-size: cover;
+						background-position: center;
+					}
+					img {
+						width: auto !important;
+						object-fit: contain;
+						&:nth-child(1) {
+							animation: heroMove 3s ease-in-out forwards;
+							@media screen and (max-width: $mid_size) {
+								display: none;
+							}
+						}
+						&:nth-child(2) {
+							left: 22% !important;
+							top: -5% !important;
+							z-index: 1;
+							bottom: 0 !important;
+							height: 126% !important;
+							animation: heroThree 2s ease-in-out forwards;
+							@media screen and (max-width: $mid_size) {
+								left: 22% !important;
+								top: -21% !important;
+								height: 146% !important;
+							}
+						}
+						&:nth-child(3) {
+							left: 60% !important;
+							height: 80% !important;
+							animation: hero 4s ease-in-out forwards;
+							@media screen and (max-width: $mid_size) {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+			.films {
+				border-radius: 4px;
+				overflow: hidden;
+				.popular {
+					text-align: left;
+					font-size: clamp(1rem, 8vw, 2rem);
+					font-weight: bold;
+					color: white;
+					margin: 0;
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
 }
 
 .error {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $red;
-  font-weight: 600;
-  text-align: left;
-  font-size: clamp(1rem, 5vw, 3rem);
-  font-weight: bold;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $red;
+	font-weight: 600;
+	text-align: left;
+	font-size: clamp(1rem, 5vw, 3rem);
 }
