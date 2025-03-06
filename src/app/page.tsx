@@ -40,9 +40,8 @@ const Home = async () => {
               </p>
             </div>
             <div className={styles.images}>
-              <Image src="/images/hero.png" alt="AirScreen hero" fill />
+              <Image src="/images/pngegg.png" alt="AirScreen hero" fill />
               <Image src="/images/heroThree.png" alt="AirScreen hero" fill />
-              <Image src="/images/heroTwo.png" alt="AirScreen hero" fill />
             </div>
           </div>
           <div className={styles.films}>
