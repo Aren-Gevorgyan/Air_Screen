@@ -1,4 +1,6 @@
-export interface MovieData {
+import { ChangeEvent } from "react";
+
+export type MovieData = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[]; // Assuming it's an array of numbers
@@ -14,3 +16,17 @@ export interface MovieData {
   vote_average: number;
   vote_count: number;
 }
+
+export type Tab = {
+  title: string;
+  url: string;
+};
+
+export type BooleanHook = {
+  state: boolean,
+  setTrue: () => void,
+  setFalse: () => void,
+  setToggle: () => void,
+};
+
+export type InputParamter = ChangeEvent<HTMLInputElement>;

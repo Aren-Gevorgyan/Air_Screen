@@ -33,7 +33,7 @@ const CarouselCom: FC<CarouselProps> = ({ data }) => {
             <div className={styles.item}>
               <Image
                 src={`${IMAGE_URL}/${val.poster_path}`}
-                alt="AirScreen film"
+                alt={`AirScreen ${val.title} image`}
                 fill
               />
               <div className={styles.opacity}>

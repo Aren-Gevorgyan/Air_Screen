@@ -3,18 +3,9 @@ import styles from './styles.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import MenuIcon from '../../../public/svgs/menuIcon';
-
-type Tab = {
-  title: string;
-  url: string;
-};
-
-const tabs: Tab[] = [
-  { title: 'HOME', url: '/' },
-  { title: 'MOVIES', url: '/movies' },
-  { title: 'SERIALS', url: '/serials' },
-  { title: 'MY LISTS', url: '/my_lists' },
-];
+import { tabs } from '@/assets/constants';
+import { Tab } from '@/assets/types';
+import Search from '../search';
 
 const Header = () => {
   return (
@@ -32,12 +23,15 @@ const Header = () => {
           })}
         </ul>
       </nav>
-      <Image
-        src="/images/profile.png"
-        alt="Description of image"
-        width={30}
-        height={30}
-      />
+      <div className={styles.leftPart}>
+        <Search />
+        <Image
+          src="/images/profile.png"
+          alt="Description of image"
+          width={30}
+          height={30}
+        />
+      </div>
     </header >
   );
 };

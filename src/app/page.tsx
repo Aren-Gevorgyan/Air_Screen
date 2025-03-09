@@ -3,10 +3,9 @@ import Header from '@/components/header';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import CarouselCom from '@/components/home/carusel';
-import { BASE_URL } from '@/assets/constants';
+import { apiKey, BASE_URL } from '@/assets/constants';
 
 const Home = async () => {
-  const apiKey = process.env.TM_DB_API_KEY;
   const url = (page: number) => `${BASE_URL}/popular?api_key=${apiKey}&language=en-US&page=${page}`;
   const [firstPage, secondPage] = await Promise.all([fetch(url(1)), fetch(url(2))]);
 
