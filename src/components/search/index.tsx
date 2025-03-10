@@ -1,36 +1,42 @@
 'use client';
 
-import { FaSearch } from "react-icons/fa";
-import styles from './styles.module.scss'
-import { useState } from "react";
-import { InputParamter } from "@/assets/types";
-import Button from "../button";
-import useBoolean from "@/hooks/useBoolean";
-import { useQuery } from "@tanstack/react-query";
-import { fetchMovies } from "../../../request/seacrh";
+import React, { MouseEvent, useCallback, useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
+import styles from './styles.module.scss';
+import { InputParamter } from '@/assets/types';
+import Button from '../button';
+import useBoolean from '@/hooks/useBoolean';
+import useWindowSize from '@/hooks/useWindowSize';
+import { useRouter } from 'next/navigation';
+import useQueryParam from '@/hooks/useQueryParam';
 
 const Search = () => {
-  const [value, setValue] = useState<string>('');
-  const { state: isOpen, setToggle } = useBoolean(!!value);
-  const { data } = useQuery({
-    queryKey: ["movies"],
-    queryFn: fetchMovies
-  });
-
-  console.log(data, 1231);
+  const { isMd } = useWindowSize();
+  const { push } = useRouter();
+  const filter = useQueryParam('filter');
+  const [value, setValue] = useState<string>(filter);
+  const { state: isOpen, setToggle } = useBoolean(isMd || !!filter);
 
   const onChange = (event: InputParamter) => {
     setValue(event.target.value);
-  }
+    push(`?filter=${event.target.value}`);
+  };
+
+  const onSearch = useCallback((event: MouseEvent<HTMLButtonElement>): void => {
+    event.stopPropagation();
+    setToggle();
+  }, []);
 
   return (
     <div className={styles.container}>
-      {isOpen && <input value={value} onChange={onChange} placeholder="Որոնել" />}
-      <Button onClick={setToggle}>
+      {isOpen && (
+        <input value={value} onChange={onChange} placeholder="Որոնել" />
+      )}
+      <Button onClick={onSearch}>
         <FaSearch className={styles.search} />
       </Button>
     </div>
-  )
+  );
 };
 
 export default Search;

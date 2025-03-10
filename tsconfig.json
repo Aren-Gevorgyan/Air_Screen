@@ -25,7 +25,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/heroScene/index.jsx"],
-  "exclude": ["node_modules"],
-  
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/heroScene/index.jsx"
+  ],
+  "exclude": ["node_modules"]
 }

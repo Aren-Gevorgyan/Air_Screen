@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -10,12 +10,33 @@ import Image from 'next/image';
 import { MovieData } from '@/assets/types';
 import { breakpoints, IMAGE_URL } from '@/assets/constants';
 import styles from './styles.module.scss';
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
+import { SEARCH_MOVIES } from '@/assets/queryKeys';
+import { searchMovies } from '@/requests/seacrh';
+import { debounce } from 'lodash';
+import useQueryParam from '@/hooks/useQueryParam';
 
 export interface CarouselProps {
   data: MovieData[];
 }
 
 const CarouselCom: FC<CarouselProps> = ({ data }) => {
+  const filterQuery = useQueryParam('filter');
+  const [debouncedSearch, setDebouncedSearch] = useState<string>('');
+
+  useEffect(() => {
+    const handler = debounce((value: string) => setDebouncedSearch(value), 300);
+    handler(filterQuery);
+    return () => handler.cancel();
+  }, [filterQuery]);
+
+  const { data: searchData }: UseQueryResult<{ results: MovieData[] }, Error> =
+    useQuery({
+      queryKey: [SEARCH_MOVIES, debouncedSearch],
+      queryFn: () => searchMovies(filterQuery),
+    });
+
+  const moviesData = searchData?.results?.length ? searchData?.results : data;
 
   return (
     <Swiper
@@ -23,13 +44,13 @@ const CarouselCom: FC<CarouselProps> = ({ data }) => {
       spaceBetween={20}
       navigation
       pagination={{ clickable: true }}
-      autoplay={{ delay: 30000 }}
+      autoplay={{ delay: 3000 }}
       modules={[Navigation, Pagination, Autoplay]}
       breakpoints={breakpoints}
     >
-      {data?.map((val: MovieData) => {
+      {moviesData?.map((val: MovieData, index: number) => {
         return (
-          <SwiperSlide key={val.id}>
+          <SwiperSlide key={index}>
             <div className={styles.item}>
               <Image
                 src={`${IMAGE_URL}/${val.poster_path}`}

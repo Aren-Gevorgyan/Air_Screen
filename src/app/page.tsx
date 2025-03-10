@@ -6,8 +6,12 @@ import CarouselCom from '@/components/home/carusel';
 import { apiKey, BASE_URL } from '@/assets/constants';
 
 const Home = async () => {
-  const url = (page: number) => `${BASE_URL}/popular?api_key=${apiKey}&language=en-US&page=${page}`;
-  const [firstPage, secondPage] = await Promise.all([fetch(url(1)), fetch(url(2))]);
+  const url = (page: number) =>
+    `${BASE_URL}/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
+  const [firstPage, secondPage] = await Promise.all([
+    fetch(url(1)),
+    fetch(url(2)),
+  ]);
 
   if (!firstPage.ok || !secondPage.ok) {
     throw new Error('Failed to fetch data');
@@ -44,7 +48,7 @@ const Home = async () => {
             </div>
           </div>
           <div className={styles.films}>
-            <h2 className={styles.popular}>Հանրաճանաչ</h2>
+            <h2 className={styles.popular}>Popular</h2>
             <CarouselCom data={data} />
           </div>
         </main>

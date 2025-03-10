@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent } from 'react';
 
 export type MovieData = {
   adult: boolean;
@@ -15,7 +15,7 @@ export type MovieData = {
   video: boolean;
   vote_average: number;
   vote_count: number;
-}
+};
 
 export type Tab = {
   title: string;
@@ -23,10 +23,10 @@ export type Tab = {
 };
 
 export type BooleanHook = {
-  state: boolean,
-  setTrue: () => void,
-  setFalse: () => void,
-  setToggle: () => void,
+  state: boolean;
+  setTrue: () => void;
+  setFalse: () => void;
+  setToggle: () => void;
 };
 
 export type InputParamter = ChangeEvent<HTMLInputElement>;

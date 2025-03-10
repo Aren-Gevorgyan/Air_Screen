@@ -1,44 +1,44 @@
 @keyframes moon {
-	from {
-		top: 0;
-		right: 0%;
-		opacity: 0.5;
-	}
-	to {
-		top: 10%;
-		right: 10%;
-		opacity: 1;
-	}
+  from {
+    top: 0;
+    right: 0%;
+    opacity: 0.5;
+  }
+  to {
+    top: 10%;
+    right: 10%;
+    opacity: 1;
+  }
 }
 
 @keyframes slideText {
-	from {
-		transform: translateX(-100%);
-		opacity: 0;
-	}
-	to {
-		transform: translateX(0%);
-		opacity: 1;
-	}
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
 }
 
 @keyframes heroThree {
-	from {
-		transform: scale(0.5);
-		opacity: 0.5;
-	}
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
+  from {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes hero {
-	from {
-		left: 100% !important;
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+  from {
+    left: 100% !important;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
