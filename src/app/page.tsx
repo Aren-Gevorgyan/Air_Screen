@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from '@/components/header';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import CarouselCom from '@/components/home/carusel';
 import { apiKey, BASE_URL } from '@/assets/constants';
+import Moon from '@/components/moon';
 
 const Home = async () => {
   const url = (page: number) =>
@@ -24,8 +24,7 @@ const Home = async () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <Header />
-        <div className={styles.moon} />
+        <Moon />
         <main>
           <div className={styles.top}>
             <div className={styles.about}>
@@ -48,7 +47,7 @@ const Home = async () => {
             </div>
           </div>
           <div className={styles.films}>
-            <h2 className={styles.popular}>Popular</h2>
+            <h2 className={styles.popular}>Հանրաճանաչ</h2>
             <CarouselCom data={data} />
           </div>
         </main>

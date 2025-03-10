@@ -13,13 +13,13 @@ import useQueryParam from '@/hooks/useQueryParam';
 const Search = () => {
   const { isMd } = useWindowSize();
   const { push } = useRouter();
-  const filter = useQueryParam('filter');
+  const filter = useQueryParam('value');
   const [value, setValue] = useState<string>(filter);
   const { state: isOpen, setToggle } = useBoolean(isMd || !!filter);
 
   const onChange = (event: InputParamter) => {
     setValue(event.target.value);
-    push(`?filter=${event.target.value}`);
+    push(`/search?value=${event.target.value}`);
   };
 
   const onSearch = useCallback((event: MouseEvent<HTMLButtonElement>): void => {

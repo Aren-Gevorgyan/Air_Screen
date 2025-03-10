@@ -1,0 +1,25 @@
+@use '../../styles/global.scss' as *;
+
+.container {
+	width: 90%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	margin-top: 50px;
+	overflow: hidden;
+	h2 {
+		font-weight: 600;
+		text-align: left;
+		font-size: clamp(1rem, 5vw, 2rem);
+		color: white;
+		margin: 0;
+	}
+	.isEmpty {
+		font-weight: 600;
+		text-align: left;
+		font-size: clamp(1rem, 5vw, 1.5rem);
+		color: $light_gray;
+		margin: 0;
+	}
+}

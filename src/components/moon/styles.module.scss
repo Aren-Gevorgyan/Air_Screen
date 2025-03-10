@@ -1,0 +1,13 @@
+@use '../../styles/global.scss' as *;
+@use '../../styles/animations.scss' as *;
+
+.moon {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	background: transparent;
+	background: url('../../../public/images/moon.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	animation: moon 7s ease-in-out forwards;
+}
