@@ -14,6 +14,7 @@ const Header = () => {
       <nav>
         <MenuIcon />
         <ul>
+          <Search />
           {tabs.map((val: Tab) => {
             return (
               <li key={val.title}>
@@ -32,7 +33,7 @@ const Header = () => {
           height={30}
         />
       </div>
-    </header >
+    </header>
   );
 };
 
