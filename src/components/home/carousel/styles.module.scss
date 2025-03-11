@@ -2,12 +2,13 @@
 @use '../../../styles/animations.scss' as *;
 
 .item {
-	height: 100%;
+	height: 320px;
 	background: #0f0f0fab;
 	background-image: url('../../../../public/images/no-image.png');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 100px;
+	border-radius: 10px;
 	&:hover {
 		.opacity {
 			bottom: 0;

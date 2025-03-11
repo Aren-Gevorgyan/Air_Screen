@@ -6,6 +6,7 @@
 	min-height: 100vh;
 	display: flex;
 	justify-content: center;
+	padding-bottom: 40px;
 	@media screen and (max-width: $mid_size) {
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -106,16 +107,16 @@
 				}
 			}
 			.films {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
 				border-radius: 4px;
-				overflow: hidden;
-				padding-bottom: 20px;
 				.popular {
 					text-align: left;
 					font-size: clamp(1rem, 8vw, 2rem);
 					font-weight: bold;
 					color: white;
 					margin: 0;
-					margin-bottom: 20px;
 					@media screen and (max-width: $mobile_size) {
 						font-size: 20px;
 					}

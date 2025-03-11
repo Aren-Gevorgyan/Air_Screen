@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
-import CarouselCom from '@/components/home/carusel';
 import { apiKey, BASE_URL } from '@/assets/constants';
 import Moon from '@/components/moon';
+import MyCarousel from '@/components/home/carousel';
 
 const Home = async () => {
   const url = (page: number) =>
@@ -48,7 +48,7 @@ const Home = async () => {
           </div>
           <div className={styles.films}>
             <h2 className={styles.popular}>Հանրաճանաչ</h2>
-            <CarouselCom data={data} />
+            <MyCarousel data={data} />
           </div>
         </main>
       </div>

@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import CarouselCom from '@/components/home/carusel';
 import { debounce } from 'lodash';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { MovieData } from '@/assets/types';
@@ -10,6 +9,7 @@ import { SEARCH_MOVIES } from '@/assets/queryKeys';
 import { searchMovies } from '@/requests/seacrh';
 import useQueryParam from '@/hooks/useQueryParam';
 import Moon from '@/components/moon';
+import MyCarousel from '@/components/home/carousel';
 
 const Filter = () => {
     const searchValue: string = useQueryParam('value');
@@ -37,7 +37,7 @@ const Filter = () => {
                 <span className={styles.isEmpty}>Loading ...</span>
                 :
                 searchData?.results?.length ?
-                    <CarouselCom data={searchData?.results || []} />
+                    <MyCarousel data={searchData?.results || []} />
                     :
                     <span className={styles.isEmpty}>Մենք չկարողացանք գտնել որոնված ֆիլմը</span>
             }

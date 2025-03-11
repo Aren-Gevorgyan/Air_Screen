@@ -4,8 +4,8 @@
 body {
 	margin: 0;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, .5)), url('../../public/images/forest.jpeg');
-	overflow: hidden;
 	background-position-y: 10%;
+	overflow-x: hidden;
 	&::-webkit-scrollbar {
 		width: 10px; /* Scrollbar width */
 	}
@@ -43,19 +43,26 @@ main {
 	box-sizing: border-box;
 }
 
-.swiper-slide {
-	position: relative;
-	width: 250px !important;
-	height: 350px !important;
-	border-radius: 8px;
-	overflow: hidden;
-	padding: 0;
-	@media screen and (max-width: $sm) {
-		width: 100% !important;
-	}
+.react-multi-carousel-track {
+	gap: 20px;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-	display: none !important;
+.react-multi-carousel-item {
+	width: 260px !important;
+	overflow: hidden;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.react-multi-carousel-dot button {
+	border-radius: 5%;
+	background-color: black; // Light dots
+	border: 1px solid white;
+	transition: all 0.3s ease-in-out;
+	border-color: #0b2308 !important;
+}
+
+.react-multi-carousel-dot--active button {
+	background-color: white !important; // Highlight active dot
+	transform: scale(1.2); // Slightly enlarge the active dot
 }
