@@ -8,6 +8,7 @@ import MyCarousel from '@/components/home/carousel';
 const Home = async () => {
   const url = (page: number) =>
     `${BASE_URL}/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
+
   const [firstPage, secondPage] = await Promise.all([
     fetch(url(1)),
     fetch(url(2)),

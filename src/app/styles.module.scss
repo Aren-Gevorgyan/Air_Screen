@@ -7,11 +7,6 @@
 	display: flex;
 	justify-content: center;
 	padding-bottom: 40px;
-	@media screen and (max-width: $mid_size) {
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position-y: 20%;
-	}
 	.content {
 		width: 90%;
 		min-height: 100%;
@@ -48,7 +43,6 @@
 						}
 					}
 					& > p {
-						font-weight: 600;
 						text-align: left;
 						font-size: clamp(1rem, 5vw, 1.5rem);
 						color: white;

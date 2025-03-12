@@ -9,6 +9,7 @@
 	background-repeat: no-repeat;
 	background-size: 100px;
 	border-radius: 10px;
+	text-decoration: none;
 	&:hover {
 		.opacity {
 			bottom: 0;
@@ -59,7 +60,7 @@
 			color: white;
 			overflow: hidden;
 			display: -webkit-box;
-			-webkit-line-clamp: 4;
+			-webkit-line-clamp: 6;
 			white-space: pre-wrap;
 			-webkit-box-orient: vertical;
 		}

@@ -1,6 +1,9 @@
 @use './global' as *;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
+html {
+	overflow-x: hidden;
+}
 body {
 	margin: 0;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, .5)), url('../../public/images/forest.jpeg');
@@ -45,10 +48,15 @@ main {
 
 .react-multi-carousel-track {
 	gap: 20px;
+	@media screen and (max-width: $mobile_size) {
+		gap: 10px;
+	}
+	@media screen and (max-width: $sm) {
+		gap: 0px;
+	}
 }
 
 .react-multi-carousel-item {
-	width: 260px !important;
 	overflow: hidden;
 	border-radius: 6px;
 	cursor: pointer;
@@ -65,4 +73,22 @@ main {
 .react-multi-carousel-dot--active button {
 	background-color: white !important; // Highlight active dot
 	transform: scale(1.2); // Slightly enlarge the active dot
+}
+
+.yellow {
+	color: orange;
+	font-size: 24px;
+}
+
+.gray {
+	color: $gray;
+	font-size: 24px;
+}
+
+.black {
+	color: $dark;
+}
+
+.white {
+	color: white;
 }

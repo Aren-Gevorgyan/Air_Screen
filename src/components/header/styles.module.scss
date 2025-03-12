@@ -14,7 +14,7 @@
 	margin: auto;
 	& > a {
 		text-align: left;
-		font-size: clamp(1rem, 5vw, 2.5rem);
+		font-size: clamp(1.8rem, 5vw, 2.5rem);
 		font-weight: bold;
 		background: linear-gradient(to left, $green2, $green);
 		-webkit-background-clip: text;
