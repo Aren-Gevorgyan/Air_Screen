@@ -16,17 +16,19 @@
 			flex-wrap: wrap;
 			gap: 4px;
 		}
-		span {
+		span,
+		h4 {
 			text-align: left;
 			font-size: clamp(0.4rem, 4vw, 1.2rem);
 			color: white;
-			&:first-child {
-				min-width: 400px;
-			}
-			&:last-child {
-				max-width: auto;
-				color: #c4c4c4;
-			}
+			margin: 0;
+		}
+		h4 {
+			min-width: 400px;
+		}
+		span {
+			max-width: auto;
+			color: #c4c4c4;
 		}
 	}
 }

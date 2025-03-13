@@ -33,6 +33,11 @@
 					height: 300px;
 					border-radius: 6px;
 					overflow: hidden;
+					background: black;
+					background-image: url('../../../public/images/no-image.png');
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: 100px;
 					@media screen and (max-width: $sm) {
 						width: 100%;
 						height: 300px;
