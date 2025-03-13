@@ -1,0 +1,59 @@
+@use '../../../styles/global' as *;
+@use "sass:math";
+
+@mixin random-color {
+	@if math.random(5) == 1 {
+		background-color: $red;
+	} @else if math.random(5) == 2 {
+		background-color: $green2;
+	} @else if math.random(5) == 3 {
+		background-color: $dark_yellow;
+	} @else if math.random(5) == 4 {
+		background-color: $cerulean_blue;
+	} @else {
+		background-color: $violet;
+	}
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	span {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 8px 16px;
+		border-radius: 20px;
+		font-size: 14px;
+		color: white;
+		@media screen and (max-width: $mobile_size) {
+			padding: 6px 12px;
+		}
+		&:nth-child(1) {
+			@include random-color;
+		}
+		&:nth-child(2) {
+			@include random-color;
+		}
+		&:nth-child(3) {
+			@include random-color;
+		}
+		&:nth-child(4) {
+			@include random-color;
+		}
+		&:nth-child(5) {
+			@include random-color;
+		}
+		&:nth-child(6) {
+			@include random-color;
+		}
+		&:nth-child(7) {
+			@include random-color;
+		}
+		&:nth-child(8) {
+			@include random-color;
+		}
+	}
+}

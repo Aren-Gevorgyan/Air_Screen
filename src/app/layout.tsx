@@ -30,8 +30,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        <QueryProvider>{children}</QueryProvider>
+        <div id="__next">
+          <Header />
+          <QueryProvider>{children}</QueryProvider>
+        </div>
       </body>
     </html>
   );

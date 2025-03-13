@@ -9,7 +9,7 @@ import { SEARCH_MOVIES } from '@/assets/queryKeys';
 import { searchMovies } from '@/requests/seacrh';
 import useQueryParam from '@/hooks/useQueryParam';
 import Moon from '@/components/moon';
-import MyCarousel from '@/components/home/carousel';
+import MyCarousel from '@/components/carousel';
 
 const Filter = () => {
     const searchValue: string = useQueryParam('value');

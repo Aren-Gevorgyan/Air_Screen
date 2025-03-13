@@ -9,3 +9,13 @@ export const searchMovies = async (search: string, include: boolean = true) => {
   }
   return response.json();
 };
+
+export const getPerson = async (id: number) => {
+  const response = await fetch(
+    `${BASE_URL}/person/${id}?api_key=${apiKey}`
+  );
+  if (!response.ok) {
+    throw new Error('Failed to fetch movies');
+  }
+  return response.json();
+};

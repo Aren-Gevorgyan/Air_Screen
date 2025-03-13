@@ -8,7 +8,7 @@ body {
 	margin: 0;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, .5)), url('../../public/images/forest.jpeg');
 	background-position-y: 10%;
-	overflow-x: hidden;
+	overflow: hidden;
 	&::-webkit-scrollbar {
 		width: 10px; /* Scrollbar width */
 	}

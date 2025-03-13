@@ -1,12 +1,12 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, FC } from 'react';
 
-type ButtonProps = {
+type Props = {
   icon?: React.ReactNode;
   children: React.ReactNode;
   type?: 'button' | 'submit' | 'reset';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: React.FC<ButtonProps> = ({
+const Button: FC<Props> = ({
   icon,
   children,
   type = 'button',

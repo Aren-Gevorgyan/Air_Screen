@@ -1,0 +1,32 @@
+@use '../../../styles/global' as *;
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	.item {
+		max-width: 80%;
+		display: flex;
+		align-items: flex-start;
+		gap: 20px;
+		@media screen and (max-width: $mid_size) {
+			max-width: 100%;
+		}
+		@media screen and (max-width: $mobile_size) {
+			flex-wrap: wrap;
+			gap: 4px;
+		}
+		span {
+			text-align: left;
+			font-size: clamp(0.4rem, 4vw, 1.2rem);
+			color: white;
+			&:first-child {
+				min-width: 400px;
+			}
+			&:last-child {
+				max-width: auto;
+				color: #c4c4c4;
+			}
+		}
+	}
+}

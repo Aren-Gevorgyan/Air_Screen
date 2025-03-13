@@ -1,22 +1,18 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import { apiKey, BASE_URL, IMAGE_URL } from '@/assets/constants';
+import { IMAGE_URL } from '@/assets/constants';
 import Image from 'next/image';
 import Moon from '@/components/moon';
 import StarRating from '@/components/starRating';
 import Button from '@/components/button';
 import SaveButton from '@/components/saveButton';
+import Description from '@/pages/movie/description';
+import { getActors, getMovie } from '@/requests/ssr';
+import Genres from '@/pages/movie/genres';
+import Actors from '@/pages/movie/actors';
 
 const Movie = async ({ params }: { params: { id: string } }) => {
-    const url = `${BASE_URL}/movie/${params.id}?api_key=${apiKey}`;
-    const response = await fetch(url);
-
-    if (!response.ok) {
-        throw new Error('Failed to fetch data');
-    }
-
-    const movie = await response.json();
-    console.log("TCL: Movie -> movie", movie)
+    const [movie, actors] = await Promise.all([getMovie(params.id), getActors(params.id)])
 
     return (
         <div className={styles.container}>
@@ -32,24 +28,18 @@ const Movie = async ({ params }: { params: { id: string } }) => {
                                 <span className={styles.title}>{movie.title || ''}</span>
                                 <StarRating rating={movie.vote_average} />
                             </div>
+                            <Actors actors={actors.cast} />
                             <div className={styles.buttons}>
                                 <Button className={styles.pick}>
                                     Գրանցել
                                 </Button>
                                 <SaveButton className={styles.save} />
                             </div>
+                            {movie?.genres?.length && <Genres genres={movie.genres} />}
+
                         </div>
                     </div>
-                    <div className={styles.description}>
-                        <div className={styles.item}>
-                            <span>Թողարկման ամսաթիվ</span>
-                            <span>{movie.release_date || ''}</span>
-                        </div>
-                        <div className={styles.item}>
-                            <span>Նկարագրություն</span>
-                            <span>{movie.overview || ''}</span>
-                        </div>
-                    </div>
+                    <Description movie={movie} />
                 </div>
             </div>
         </div>

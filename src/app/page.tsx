@@ -1,26 +1,12 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
-import { apiKey, BASE_URL } from '@/assets/constants';
 import Moon from '@/components/moon';
-import MyCarousel from '@/components/home/carousel';
+import MyCarousel from '@/components/carousel';
+import { getPopularMovies } from '@/requests/ssr';
 
 const Home = async () => {
-  const url = (page: number) =>
-    `${BASE_URL}/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
-
-  const [firstPage, secondPage] = await Promise.all([
-    fetch(url(1)),
-    fetch(url(2)),
-  ]);
-
-  if (!firstPage.ok || !secondPage.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  const firstPageData = await firstPage.json();
-  const secondPageData = await secondPage.json();
-  const data = [...firstPageData.results, ...secondPageData.results];
+  const data = await getPopularMovies();
 
   return (
     <div className={styles.container}>
@@ -43,7 +29,7 @@ const Home = async () => {
               </p>
             </div>
             <div className={styles.images}>
-              <Image src="/images/pngegg.png" alt="AirScreen hero" fill />
+              <Image priority src="/images/pngegg.png" alt="AirScreen hero" fill />
               <Image src="/images/heroThree.png" alt="AirScreen hero" fill />
             </div>
           </div>

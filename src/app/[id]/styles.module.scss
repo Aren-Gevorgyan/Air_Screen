@@ -68,6 +68,10 @@
 							&:hover {
 								background: linear-gradient(to left, rgb(79, 1, 1), $red);
 							}
+							@media screen and (max-width: $sm) {
+								width: auto;
+								flex: 1;
+							}
 						}
 						.save {
 							width: 100px;
@@ -75,39 +79,6 @@
 							&:hover {
 								background: linear-gradient(to left, $green, $green2);
 							}
-						}
-					}
-				}
-			}
-			.description {
-				display: flex;
-				flex-direction: column;
-				gap: 10px;
-				.item {
-					max-width: 60%;
-					display: flex;
-					align-items: flex-start;
-					gap: 20px;
-					@media screen and (max-width: $desktops_size) {
-						max-width: 80%;
-					}
-					@media screen and (max-width: $mid_size) {
-						max-width: 100%;
-					}
-					@media screen and (max-width: $mobile_size) {
-						flex-direction: column;
-						gap: 10px;
-					}
-					span {
-						text-align: left;
-						font-size: clamp(0.4rem, 4vw, 1.2rem);
-						color: white;
-						&:first-child {
-							min-width: 400px;
-						}
-						&:last-child {
-							max-width: auto;
-							color: #c4c4c4;
 						}
 					}
 				}
