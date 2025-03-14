@@ -1,7 +1,6 @@
 @use '../../../styles/global' as *;
 
 .container {
-	border: 1px solid white;
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
@@ -10,6 +9,7 @@
 		min-width: 400px;
 		font-size: clamp(0.4rem, 4vw, 1.2rem);
 		color: white;
+		margin: 0;
 	}
 	.item {
 		border-radius: 20px;

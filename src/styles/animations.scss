@@ -1,12 +1,12 @@
 @keyframes moon {
 	from {
-		bottom: 100%;
+		top: -100px;
 		left: 100%;
 		opacity: 0.5;
 	}
 	to {
-		bottom: 86%;
-		left: 86%;
+		top: 50px;
+		left: 90%;
 		opacity: 1;
 	}
 }

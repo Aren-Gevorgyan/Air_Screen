@@ -7,8 +7,13 @@ html {
 body {
 	margin: 0;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, .5)), url('../../public/images/forest.jpeg');
-	background-position-y: 10%;
+	background-repeat: repeat-x;
 	overflow: hidden;
+	background-color: black;
+	@media screen and (max-width: $mobile_size) {
+		font-size: 14px;
+		background-repeat: no-repeat;
+	}
 	&::-webkit-scrollbar {
 		width: 10px; /* Scrollbar width */
 	}
@@ -56,10 +61,16 @@ main {
 	}
 }
 
+.react-multi-carousel-list {
+	width: 100%;
+	height: 100%;
+}
+
 .react-multi-carousel-item {
 	overflow: hidden;
 	border-radius: 6px;
 	cursor: pointer;
+	height: 350px;
 }
 
 .react-multi-carousel-dot button {

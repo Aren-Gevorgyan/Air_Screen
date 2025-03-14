@@ -3,10 +3,11 @@ import styles from './styles.module.scss';
 import Image from 'next/image';
 import Moon from '@/components/moon';
 import MyCarousel from '@/components/carousel';
-import { getPopularMovies } from '@/requests/ssr';
+import { getMainPageData } from '@/requests/ssr';
+import Genre from '@/pages/main/genre';
 
 const Home = async () => {
-  const data = await getPopularMovies();
+  const data = await getMainPageData();
 
   return (
     <div className={styles.container}>
@@ -35,8 +36,9 @@ const Home = async () => {
           </div>
           <div className={styles.films}>
             <h2 className={styles.popular}>Հանրաճանաչ</h2>
-            <MyCarousel data={data} />
+            <MyCarousel data={data.popular} />
           </div>
+          <Genre genres={data.genres} />
         </main>
       </div>
     </div>

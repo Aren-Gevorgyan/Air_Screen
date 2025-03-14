@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { IMAGE_URL } from '@/assets/constants';
 import Loadable from '@/components/loadable';
 import { PERSON } from '@/assets/queryKeys';
-import { getPerson } from '@/requests/seacrh';
+import { getPerson } from '@/requests/csr';
 import { isEmpty } from 'lodash';
 
 const Modal = Loadable(lazy(() => import('@/components/modal')));

@@ -6,7 +6,7 @@ import { debounce } from 'lodash';
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { MovieData } from '@/assets/types';
 import { SEARCH_MOVIES } from '@/assets/queryKeys';
-import { searchMovies } from '@/requests/seacrh';
+import { searchMovies } from '@/requests/csr';
 import useQueryParam from '@/hooks/useQueryParam';
 import Moon from '@/components/moon';
 import MyCarousel from '@/components/carousel';
