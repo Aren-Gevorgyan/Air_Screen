@@ -1,22 +1,27 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { FC, useState } from "react";
+import Image, { ImageProps } from "next/image";
 import styles from './styles.module.scss';
 import clsx from 'clsx';
 
-const LazyImage = ({ src, alt }: { src: string; alt: string }) => {
+type Props = {
+    src: string;
+    alt: string;
+} & Omit<ImageProps, "src" | "alt">;
+
+const LazyImage: FC<Props> = ({ src, alt, ...rest }) => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     return (
-        <div className={styles.container}>
+        <div className={clsx(styles.container, isLoaded ? styles.loaded : '')}>
             {!isLoaded && <div className={styles.placeholder} />}
             <Image
                 src={src}
                 alt={alt}
                 fill
-                className={clsx(styles.lazy_image, isLoaded ? styles.loaded : '')}
                 onLoadingComplete={() => setIsLoaded(true)}
+                {...rest}
             />
         </div>
     );

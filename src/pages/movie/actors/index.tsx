@@ -30,11 +30,11 @@ const Actors: FC<Props> = ({ actors }) => {
         <div className={styles.container}>
             {data.map((val) => (
                 <Button key={val.id} onClick={onClick(val)} className={styles.item}>
-                    <Image
+                    {val.profile_path && <Image
                         src={`${IMAGE_URL}/${val.profile_path}`}
                         alt={`AirScreen ${val.name} image`}
                         fill
-                    />
+                    />}
                 </Button>
             ))}
             {state && <ActorsModal state={state} setFalse={setFalse} actor={actor} />}

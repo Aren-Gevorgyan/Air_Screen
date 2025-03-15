@@ -10,6 +10,7 @@ import Description from '@/pages/movie/description';
 import { getActors, getMovie } from '@/requests/ssr';
 import Genres from '@/pages/movie/genres';
 import Actors from '@/pages/movie/actors';
+import clsx from 'clsx';
 
 const Movie = async ({ params }: { params: { id: string } }) => {
     const [movie, actors] = await Promise.all([getMovie(params.id), getActors(params.id)])
@@ -20,8 +21,8 @@ const Movie = async ({ params }: { params: { id: string } }) => {
                 <Moon />
                 <div className={styles.info}>
                     <div className={styles.imageContainer}>
-                        <div className={styles.image}>
-                            <Image src={`${IMAGE_URL}/${movie.backdrop_path}`} alt={`AirScreen ${movie.title}`} fill />
+                        <div className={clsx(styles.image, movie.backdrop_path ? '' : styles.noImage)}>
+                            {!!movie.backdrop_path && <Image src={`${IMAGE_URL}/${movie.backdrop_path}`} alt={`AirScreen ${movie.title}`} fill />}
                         </div>
                         <div className={styles.impotentInfo}>
                             <div>

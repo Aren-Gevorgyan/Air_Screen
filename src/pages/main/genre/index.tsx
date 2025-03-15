@@ -51,7 +51,7 @@ const Genre: FC<Props> = ({ genres }) => {
                             {data.map((val: MovieData) => (
                                 <Link href={`/${val.id}`} className={styles.content} key={val.id}>
                                     <div className={styles.item}>
-                                        <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />
+                                        {val.poster_path && <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />}
                                     </div>
                                     <div className={styles.description}>
                                         <h5>{val.title}</h5>

@@ -3,13 +3,13 @@
 
 .item {
 	height: 320px;
-	background: black;
-	background-image: url('../../../public/images/no-image.png');
+	border-radius: 10px;
+	text-decoration: none;
+	background: gray;
+	background-image: url('../../../public/gif/cloud_loading.gif');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 100px;
-	border-radius: 10px;
-	text-decoration: none;
 	&:hover {
 		.opacity {
 			bottom: 0;
@@ -69,4 +69,7 @@
 			padding: 6px 0px;
 		}
 	}
+}
+.noImage {
+	background-image: url('/images/no-image.png');
 }

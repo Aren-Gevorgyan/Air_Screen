@@ -1,6 +1,6 @@
 'use client';
 
-import React, { MouseEvent, useCallback, useState } from 'react';
+import React, { MouseEvent, useCallback, useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import styles from './styles.module.scss';
 import { InputParamter } from '@/assets/types';
@@ -15,7 +15,15 @@ const Search = () => {
   const { push } = useRouter();
   const filter = useQueryParam('value');
   const [value, setValue] = useState<string>(filter);
-  const { state: isOpen, setToggle } = useBoolean(isMd || !!filter);
+  const { state: isOpen, setTrue, setFalse, setToggle } = useBoolean(isMd || !!filter);
+
+  useEffect(() => {
+    if (isMd) {
+      setTrue()
+    } else {
+      setFalse
+    }
+  }, [isMd]);
 
   const onChange = (event: InputParamter) => {
     setValue(event.target.value);

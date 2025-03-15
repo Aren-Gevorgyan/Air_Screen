@@ -5,17 +5,15 @@
 	position: relative;
 	width: 100%;
 	height: 100%;
+	transition: opacity 0.5s ease-in-out;
+	opacity: 0;
 	.placeholder {
 		position: absolute;
 		inset: 0;
 		// background-color: #d1d5db;
 		// animation: pulse 1.5s infinite ease-in-out;
 	}
-	.lazy_image {
-		transition: opacity 0.5s ease-in-out;
-		opacity: 0;
-	}
-	.loaded {
-		opacity: 1;
-	}
+}
+.loaded {
+	opacity: 1;
 }

@@ -9,7 +9,11 @@ import { SEARCH_MOVIES } from '@/assets/queryKeys';
 import { searchMovies } from '@/requests/csr';
 import useQueryParam from '@/hooks/useQueryParam';
 import Moon from '@/components/moon';
-import MyCarousel from '@/components/carousel';
+import Link from 'next/link';
+import Image from 'next/image';
+import StarRating from '@/components/starRating';
+import { IMAGE_URL } from '@/assets/constants';
+import clsx from 'clsx';
 
 const Filter = () => {
     const searchValue: string = useQueryParam('value');
@@ -37,7 +41,22 @@ const Filter = () => {
                 <span className={styles.isEmpty}>Loading ...</span>
                 :
                 searchData?.results?.length ?
-                    <MyCarousel data={searchData?.results || []} />
+                    <div className={styles.itemContainer}>
+                        {searchData.results.map((val: MovieData) => {
+                            return (
+                                <Link href={`/${val.id}`} className={clsx(styles.content, val.poster_path ? "" : styles.noImage)} key={val.id}>
+                                    <div className={styles.item}>
+                                        {!!val.poster_path && <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />}
+                                    </div>
+                                    <div className={styles.description}>
+                                        <h5>{val.title}</h5>
+                                        <span>{val.release_date}</span>
+                                        <StarRating rating={val.vote_average} />
+                                    </div>
+                                </Link>
+                            )
+                        })}
+                    </div>
                     :
                     <span className={styles.isEmpty}>Մենք չկարողացանք գտնել որոնված ֆիլմը</span>
             }

@@ -33,11 +33,11 @@ const ActorsModal: FC<Props> = ({ state, setFalse, actor }) => {
         <Modal isOpen={state} onClose={setFalse}>
             <div className={styles.container}>
                 <div className={styles.image}>
-                    <Image
+                    {data.profile_path && <Image
                         src={`${IMAGE_URL}/${data.profile_path}`}
                         alt={`AirScreen ${data.name} image`}
                         fill
-                    />
+                    />}
                 </div>
                 <div className={styles.description}>
                     <h3>{data.name || ''}</h3>
