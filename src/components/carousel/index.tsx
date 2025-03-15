@@ -35,7 +35,7 @@ const MyCarousel: FC<CarouselProps> = ({ data }) => {
                                 alt={`AirScreen ${val.title} image`}
                                 fill
                             />}
-                            <div className={styles.opacity}>
+                            <div className={styles.opacity} title='Տեսնել ավելին'>
                                 <span className={styles.title}>{val?.title || ''}</span>
                                 <span className={styles.overview}>{val?.overview || ''}</span>
                                 <span className={styles.date}>{val?.release_date || ''}</span>

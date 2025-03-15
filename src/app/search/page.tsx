@@ -48,7 +48,7 @@ const Filter = () => {
                                     <div className={styles.item}>
                                         {!!val.poster_path && <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />}
                                     </div>
-                                    <div className={styles.description}>
+                                    <div className={styles.description} title='Տեսնել ավելին'>
                                         <h5>{val.title}</h5>
                                         <span>{val.release_date}</span>
                                         <StarRating rating={val.vote_average} />
