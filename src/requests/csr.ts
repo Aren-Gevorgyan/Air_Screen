@@ -11,16 +11,16 @@ export const searchMovies = async (search: string, include: boolean = true) => {
 };
 
 export const getPerson = async (id: number) => {
-  const response = await fetch(
-    `${BASE_URL}/person/${id}?api_key=${apiKey}`
-  );
+  const response = await fetch(`${BASE_URL}/person/${id}?api_key=${apiKey}`);
   if (!response.ok) {
     throw new Error('Failed to fetch movies');
   }
   return response.json();
 };
 
-export const fetchMoviesByGenre = async (genreId: number) => {
+export const fetchMoviesByGenre = async (genreId: string | undefined) => {
+  if (!genreId) return;
+
   const response = await fetch(
     `${BASE_URL}/discover/movie?with_genres=${genreId}&api_key=${apiKey}`
   );

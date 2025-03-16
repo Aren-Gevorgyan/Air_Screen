@@ -30,3 +30,4 @@ export const tabs: Tab[] = [
 ];
 
 export const apiKey = process.env.NEXT_PUBLIC_TM_DB_API_KEY;
+export const ACTION_GENRE_ID = '28';

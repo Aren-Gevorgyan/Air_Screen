@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import Moon from '@/components/moon';
@@ -6,8 +6,12 @@ import MyCarousel from '@/components/carousel';
 import { getMainPageData } from '@/requests/ssr';
 import Genre from '@/pages/main/genre';
 
-const Home = async () => {
-  const data = await getMainPageData();
+type Props = {
+  searchParams: { [key: string]: string }
+}
+
+const Home: FC<Props> = async ({ searchParams }) => {
+  const data = await getMainPageData(searchParams.genre);
 
   return (
     <div className={styles.container}>
@@ -38,7 +42,7 @@ const Home = async () => {
             <h2 className={styles.popular}>Հանրաճանաչ</h2>
             <MyCarousel data={data.popular} />
           </div>
-          <Genre genres={data.genres} />
+          <Genre genres={data.genres} genresByIdData={data.genresByIdData} />
         </main>
       </div>
     </div>

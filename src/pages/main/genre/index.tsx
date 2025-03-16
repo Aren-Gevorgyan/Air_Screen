@@ -4,67 +4,35 @@ import React, { FC, useCallback, useState } from 'react'
 import styles from './styles.module.scss';
 import { GenresType, MovieData } from '@/assets/types';
 import Button from '@/components/button';
-import { useQuery } from '@tanstack/react-query';
-import { fetchMoviesByGenre } from '@/requests/csr';
-import { MOVIES_BY_GENRE } from '@/assets/queryKeys';
-import { IMAGE_URL, responsive } from '@/assets/constants';
-import Image from 'next/image';
-import Link from 'next/link';
-import StarRating from '@/components/starRating';
-import Carousel from 'react-multi-carousel';
+import { useRouter } from 'next/navigation';
+import useQueryParam from '@/hooks/useQueryParam';
+import GenreMovies from './GenreMovies';
 
 type Props = {
     genres: Array<GenresType>,
+    genresByIdData: Array<MovieData>,
 }
 
-const Genre: FC<Props> = ({ genres }) => {
-    const [genreId, setGenreId] = useState<number>(genres[0].id);
-    const { data, isLoading } = useQuery({
-        queryKey: [MOVIES_BY_GENRE, genreId],
-        queryFn: () => fetchMoviesByGenre(genreId)
-    },
-    );
+const Genre: FC<Props> = ({ genres, genresByIdData }) => {
+    const genre = useQueryParam('genre');
+    const { push } = useRouter();
+    const [genreId, setGenreId] = useState<string>();
 
-    const onClick = useCallback((genreId: number) => () => {
+    const onClick = useCallback((genreId: string) => () => {
         setGenreId(genreId);
+        push(`?genre=${genreId}`, { scroll: false })
     }, [])
 
     return (
         <div className={styles.container}>
             <div className={styles.genres}>
-                {genres.map((val: GenresType) =>
-                    <Button key={val.id} onClick={onClick(val.id)} className={genreId === val.id ? styles.active : ''}>{val.name}</Button>
-                )}
+                {genres.map((val: GenresType) => {
+                    const id = String(val.id);
+                    const isActive = genreId === id || genre === id;
+                    return <Button key={val.id} onClick={onClick(id)} className={isActive ? styles.active : ''}>{val.name}</Button>
+                })}
             </div>
-            <div className={styles.itemContainer}>
-                {isLoading ? <span>Loading...</span> :
-                    data.length ?
-                        <Carousel
-                            responsive={responsive}
-                            infinite
-                            autoPlay
-                            autoPlaySpeed={4000}
-                            keyBoardControl
-                            showDots
-                            arrows
-                        >
-                            {data.map((val: MovieData) => (
-                                <Link href={`/${val.id}`} className={styles.content} key={val.id}>
-                                    <div className={styles.item}>
-                                        {val.poster_path && <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />}
-                                    </div>
-                                    <div className={styles.description}>
-                                        <h5>{val.title}</h5>
-                                        <span>{val.release_date}</span>
-                                        <StarRating rating={val.vote_average} />
-                                    </div>
-                                </Link>
-                            ))}
-                        </Carousel>
-                        :
-                        <span>Տվյալները չեն գտնվել</span>
-                }
-            </div>
+            <GenreMovies genreId={genreId} genresByIdData={genresByIdData} />
         </div>
     )
 }

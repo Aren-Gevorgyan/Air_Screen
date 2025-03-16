@@ -1,8 +1,9 @@
 import { useSearchParams } from 'next/navigation';
 
-const useQueryParam = (queryName: string): string => {
+const useQueryParam = (queryName: string): string | null => {
   const searchParams = useSearchParams();
-  const queryValue = searchParams.get(queryName) || '';
+  const queryValue = searchParams ? searchParams.get(queryName) : '';
+
   return queryValue;
 };
 
