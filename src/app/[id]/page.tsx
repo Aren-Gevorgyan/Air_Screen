@@ -19,7 +19,8 @@ type Props = {
 
 const Movie: FC<Props> = async ({ params }) => {
     const id = (await params).id;
-    const [movie, actors] = await Promise.all([getMovie(id), getActors(id)])
+    const [movie, actors] = await Promise.all([getMovie(id), getActors(id)]);
+    const image = movie.poster_path || movie.backdrop_path;
 
     return (
         <div className={styles.container}>
@@ -27,8 +28,8 @@ const Movie: FC<Props> = async ({ params }) => {
                 <Moon />
                 <div className={styles.info}>
                     <div className={styles.imageContainer}>
-                        <div className={clsx(styles.image, movie.backdrop_path ? '' : styles.noImage)}>
-                            {!!movie.backdrop_path && <Image src={`${IMAGE_URL}/${movie.backdrop_path}`} alt={`AirScreen ${movie.title}`} fill />}
+                        <div className={clsx(styles.image, image ? '' : styles.noImage)}>
+                            {!!image && < Image src={`${IMAGE_URL}/${image}`} alt={`AirScreen ${movie.title}`} fill />}
                         </div>
                         <div className={styles.impotentInfo}>
                             <span className={styles.title}>{movie.title || ''}</span>
@@ -40,9 +41,9 @@ const Movie: FC<Props> = async ({ params }) => {
                                 <SaveButton className={styles.save} />
                             </div>
                             {movie?.genres?.length && <Genres genres={movie.genres} />}
+                            <Description movie={movie} />
                         </div>
                     </div>
-                    <Description movie={movie} />
                     <StarRating rating={movie.vote_average} />
                     <MovieTrailer movieId={id} />
                 </div>
