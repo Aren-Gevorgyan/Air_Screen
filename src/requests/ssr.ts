@@ -1,8 +1,8 @@
-import { apiKey, BASE_URL } from '@/assets/constants';
+import { API_KEY, BASE_URL } from '@/assets/constants';
 import { ActorsType, GenresType, MovieData } from '@/assets/types';
 
 export const getMovie = async (id: string): Promise<MovieData> => {
-  const url = `${BASE_URL}/movie/${id}?api_key=${apiKey}`;
+  const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
   const response = await fetch(url, { cache: 'force-cache' });
 
   if (!response.ok) {
@@ -13,7 +13,7 @@ export const getMovie = async (id: string): Promise<MovieData> => {
 };
 
 export const getActors = async (id: string): Promise<{ cast: ActorsType }> => {
-  const url = `${BASE_URL}/movie/${id}/credits?api_key=${apiKey}`;
+  const url = `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`;
   const response = await fetch(url, { cache: 'force-cache' });
 
   if (!response.ok) {
@@ -31,10 +31,10 @@ export const getMainPageData = async (
   genresByIdData: Array<MovieData>;
 }> => {
   const url = (page: number) =>
-    `${BASE_URL}/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
+    `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
 
-  const urlGenres = `${BASE_URL}/genre/movie/list?api_key=${apiKey}`;
-  const urlGenreById = `${BASE_URL}/discover/movie?with_genres=${genreId}&api_key=${apiKey}`;
+  const urlGenres = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
+  const urlGenreById = `${BASE_URL}/discover/movie?with_genres=${genreId}&api_key=${API_KEY}`;
 
   const [firstPage, secondPage, genresName, genresById]: [
     Response,

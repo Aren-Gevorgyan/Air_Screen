@@ -11,11 +11,13 @@ const Companies: FC<Props> = ({ companies }) => {
     return (
         <div className={styles.container}>
             <h4>{title}</h4>
-            {companies.map((val) => (
-                <span key={val.id} className={styles.item}>
-                    {val.name} {val.origin_country}
-                </span>
-            ))}
+            <div>
+                {companies.map((val) => (
+                    <span key={val.id} className={styles.item}>
+                        {val.name} {val.origin_country}
+                    </span>
+                ))}
+            </div>
         </div>
     )
 }

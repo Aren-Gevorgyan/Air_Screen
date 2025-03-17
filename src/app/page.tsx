@@ -11,7 +11,8 @@ type Props = {
 }
 
 const Home: FC<Props> = async ({ searchParams }) => {
-  const data = await getMainPageData(searchParams.genre);
+  const genre = (await searchParams).genre;
+  const data = await getMainPageData(genre);
 
   return (
     <div className={styles.container}>

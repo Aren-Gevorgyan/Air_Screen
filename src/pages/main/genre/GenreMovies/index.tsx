@@ -11,6 +11,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import StarRating from '@/components/starRating';
 import Carousel from 'react-multi-carousel';
+import Loading from '@/components/loading';
+import clsx from 'clsx';
 
 type Props = {
     genreId: string | undefined,
@@ -28,7 +30,7 @@ const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
 
     return (
         <div className={styles.container}>
-            {isLoading ? <span>Loading...</span> :
+            {isLoading ? <Loading /> :
                 genresData.length ?
                     <Carousel
                         responsive={responsive}
@@ -41,7 +43,7 @@ const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
                     >
                         {genresData.map((val: MovieData) => (
                             <Link href={`/${val.id}`} className={styles.content} key={val.id}>
-                                <div className={styles.item}>
+                                <div className={clsx(styles.item, val.poster_path ? '' : styles.noImage)}>
                                     {val.poster_path && <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />}
                                 </div>
                                 <div className={styles.description}>

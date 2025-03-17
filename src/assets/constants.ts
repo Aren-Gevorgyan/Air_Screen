@@ -2,6 +2,8 @@ import { Tab } from './types';
 
 export const IMAGE_URL: string = 'https://image.tmdb.org/t/p/original';
 export const BASE_URL: string = 'https://api.themoviedb.org/3';
+export const API_KEY = process.env.NEXT_PUBLIC_TM_DB_API_KEY;
+export const ACTION_GENRE_ID = '28';
 
 export const responsive = {
   superLargeDesktop: {
@@ -28,6 +30,3 @@ export const tabs: Tab[] = [
   { title: 'SERIALS', url: '/serials' },
   { title: 'MY LISTS', url: '/my_lists' },
 ];
-
-export const apiKey = process.env.NEXT_PUBLIC_TM_DB_API_KEY;
-export const ACTION_GENRE_ID = '28';

@@ -3,19 +3,26 @@
 .container {
 	display: flex;
 	align-items: center;
-	flex-wrap: wrap;
 	gap: 10px;
+	@media screen and (max-width: $mid_size) {
+		flex-wrap: wrap;
+	}
 	h4 {
 		min-width: 400px;
 		font-size: clamp(0.4rem, 4vw, 1.2rem);
 		color: white;
 		margin: 0;
 	}
-	.item {
-		border-radius: 20px;
-		padding: 8px 16px;
-		font-size: clamp(0.4rem, 4vw, 1rem);
-		color: #c4c4c4;
-		background-color: $dark;
+	& > div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		.item {
+			border-radius: 20px;
+			padding: 8px 16px;
+			font-size: clamp(0.4rem, 4vw, 1rem);
+			color: #c4c4c4;
+			background-color: $dark;
+		}
 	}
 }

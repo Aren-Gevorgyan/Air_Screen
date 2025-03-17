@@ -1,8 +1,10 @@
-import { apiKey, BASE_URL } from '@/assets/constants';
+import { API_KEY, BASE_URL } from '@/assets/constants';
 
-export const searchMovies = async (search: string, include: boolean = true) => {
+export const searchMovies = async (search: string | null, include: boolean = true) => {
+  if (!search) return;
+  
   const response = await fetch(
-    `${BASE_URL}/search/movie?api_key=${apiKey}&query=${search}&include_adult=${include}&language=en-US&page=1`
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${search}&include_adult=${include}&language=en-US&page=1`
   );
   if (!response.ok) {
     throw new Error('Failed to fetch movies');
@@ -11,7 +13,7 @@ export const searchMovies = async (search: string, include: boolean = true) => {
 };
 
 export const getPerson = async (id: number) => {
-  const response = await fetch(`${BASE_URL}/person/${id}?api_key=${apiKey}`);
+  const response = await fetch(`${BASE_URL}/person/${id}?api_key=${API_KEY}`);
   if (!response.ok) {
     throw new Error('Failed to fetch movies');
   }
@@ -22,7 +24,7 @@ export const fetchMoviesByGenre = async (genreId: string | undefined) => {
   if (!genreId) return;
 
   const response = await fetch(
-    `${BASE_URL}/discover/movie?with_genres=${genreId}&api_key=${apiKey}`
+    `${BASE_URL}/discover/movie?with_genres=${genreId}&api_key=${API_KEY}`
   );
 
   if (!response.ok) {
@@ -31,4 +33,21 @@ export const fetchMoviesByGenre = async (genreId: string | undefined) => {
 
   const data = await response.json();
   return data.results;
+};
+
+export const fetchMovieTrailer = async (movieId: string): Promise<string> => {
+  const res = await fetch(
+    `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
+  );
+
+  if (!res.ok) throw new Error("Failed to fetch movie trailer");
+
+  const data = await res.json();
+
+  // Find the first YouTube trailer
+  const trailer = data.results.find(
+    (video: any) => video.type === "Trailer" && video.site === "YouTube"
+  );
+  
+  return trailer ? `https://www.youtube.com/embed/${trailer.key}` : 'https://www.youtube.com/embed/RmgMd-eeCe0';
 };

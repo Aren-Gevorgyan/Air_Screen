@@ -14,13 +14,14 @@ import Image from 'next/image';
 import StarRating from '@/components/starRating';
 import { IMAGE_URL } from '@/assets/constants';
 import clsx from 'clsx';
+import Loading from '@/components/loading';
 
 const Filter = () => {
-    const searchValue: string = useQueryParam('value');
-    const [debouncedSearch, setDebouncedSearch] = useState<string>('');
+    const searchValue: string | null = useQueryParam('value');
+    const [debouncedSearch, setDebouncedSearch] = useState<string | null>('');
 
     useEffect(() => {
-        const handler = debounce((value: string) => setDebouncedSearch(value), 300);
+        const handler = debounce((value: string | null) => setDebouncedSearch(value), 300);
         handler(searchValue);
         return () => handler.cancel();
     }, [searchValue]);
@@ -38,7 +39,7 @@ const Filter = () => {
             <Moon />
             <h2 className={styles.popular}>{title}</h2>
             {isLoading ?
-                <span className={styles.isEmpty}>Loading ...</span>
+                <Loading />
                 :
                 searchData?.results?.length ?
                     <div className={styles.itemContainer}>

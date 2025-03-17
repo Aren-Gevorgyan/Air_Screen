@@ -20,7 +20,7 @@ const LazyImage: FC<Props> = ({ src, alt, ...rest }) => {
                 src={src}
                 alt={alt}
                 fill
-                onLoadingComplete={() => setIsLoaded(true)}
+                onLoad={() => setIsLoaded(true)}
                 {...rest}
             />
         </div>
