@@ -1,7 +1,9 @@
-import React, { FC } from 'react'
+import React, { FC, lazy } from 'react'
 import styles from './styles.module.scss';
 import { MovieData } from '@/assets/types';
-import Companies from '../companies';
+import Loadable from '@/hoc/loadable';
+
+const Companies = Loadable(lazy(() => import('../companies')));
 
 type Props = {
     movie: MovieData,
@@ -21,13 +23,13 @@ const Description: FC<Props> = ({ movie }) => {
             </div>}
             {!!movie.runtime && <div className={styles.item}>
                 <h4>Ժամանակը</h4>
-                <span>{`${movie.runtime}ր.` || ''}</span>
+                <span>{movie.runtime ? `${movie.runtime}ր.` : ''}</span>
             </div>}
             {!!movie.release_date && <div className={styles.item}>
                 <h4>Թողարկման ամսաթիվ</h4>
                 <span>{movie.release_date || ''}</span>
             </div>}
-            <Companies companies={movie.production_companies} />
+            {movie?.production_companies?.length && <Companies companies={movie.production_companies} />}
             {!!movie.overview && <div className={styles.item}>
                 <h4>Նկարագրություն</h4>
                 <span>{movie.overview || ''}</span>

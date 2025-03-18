@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 import { ActorsType } from '@/assets/types';
 import Image from 'next/image';
 import { IMAGE_URL } from '@/assets/constants';
-import Loadable from '@/components/loadable';
+import Loadable from '@/hoc/loadable';
 import { PERSON } from '@/assets/queryKeys';
 import { getPerson } from '@/requests/csr';
 import { isEmpty } from 'lodash';

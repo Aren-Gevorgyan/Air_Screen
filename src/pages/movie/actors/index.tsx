@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { IMAGE_URL } from '@/assets/constants';
 import Button from '@/components/button';
 import useBoolean from '@/hooks/useBoolean';
-import Loadable from '@/components/loadable';
+import Loadable from '@/hoc/loadable';
 
 const ActorsModal = Loadable(lazy(() => import('./actorsModal')));
 
