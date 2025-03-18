@@ -1,0 +1,27 @@
+@use '../../styles/global' as *;
+
+.container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.seeMore {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		border: none;
+		border: 4px solid $dark;
+		background-color: rgba(41, 40, 40, 0.719);
+		&:hover {
+			background-color: rgba(16, 16, 16, 0.849);
+		}
+		svg {
+			path {
+				stroke-width: 4px;
+			}
+		}
+	}
+}

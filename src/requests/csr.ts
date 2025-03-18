@@ -1,10 +1,10 @@
 import { API_KEY, BASE_URL } from '@/assets/constants';
 
-export const searchMovies = async (search: string | null, include: boolean = true) => {
+export const searchMovies = async (search: string | null, page: number = 1, include: boolean = true) => {
   if (!search) return;
   
   const response = await fetch(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${search}&include_adult=${include}&language=en-US&page=1`
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${search}&include_adult=${include}&language=en-US&page=${page}`
   );
   if (!response.ok) {
     throw new Error('Failed to fetch movies');

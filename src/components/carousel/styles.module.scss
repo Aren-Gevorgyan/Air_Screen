@@ -2,9 +2,6 @@
 @use '../../styles/animations.scss' as *;
 
 .item {
-	height: 320px;
-	border-radius: 10px;
-	text-decoration: none;
 	background: gray;
 	background-image: url('/gif/cloud_loading.gif');
 	background-position: center;

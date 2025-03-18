@@ -14,8 +14,12 @@ const Search = () => {
   const { isMd } = useWindowSize();
   const { push } = useRouter();
   const filter = useQueryParam('value');
-  const [value, setValue] = useState<string>(filter);
+  const [value, setValue] = useState<string>('');
   const { state: isOpen, setTrue, setFalse, setToggle } = useBoolean(isMd || !!filter);
+
+  useEffect(() => {
+    if (filter && "null" !== filter) setValue(filter)
+  }, [filter]);
 
   useEffect(() => {
     if (isMd) {
@@ -33,7 +37,8 @@ const Search = () => {
   const onSearch = useCallback((event: MouseEvent<HTMLButtonElement>): void => {
     event.stopPropagation();
     setToggle();
-  }, []);
+    if (filter && "null" !== filter) push(`/search?value=${filter}`);
+  }, [filter]);
 
   return (
     <div className={styles.container}>

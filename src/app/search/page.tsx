@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { debounce } from 'lodash';
-import { useQuery, UseQueryResult } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { MovieData } from '@/assets/types';
 import { SEARCH_MOVIES } from '@/assets/queryKeys';
 import { searchMovies } from '@/requests/csr';
@@ -15,6 +15,9 @@ import StarRating from '@/components/starRating';
 import { IMAGE_URL } from '@/assets/constants';
 import clsx from 'clsx';
 import Loading from '@/components/loading';
+import SeeMore from '@/components/seeMore';
+
+type NextPageParam = { page: number, total_pages: number, results: Array<MovieData> }
 
 const Filter = () => {
     const searchValue: string | null = useQueryParam('value');
@@ -26,13 +29,27 @@ const Filter = () => {
         return () => handler.cancel();
     }, [searchValue]);
 
-    const { data: searchData, isLoading }: UseQueryResult<{ results: MovieData[] }, Error> =
-        useQuery({
-            queryKey: [SEARCH_MOVIES, debouncedSearch],
-            queryFn: () => searchMovies(searchValue),
-        });
+    const {
+        data: searchData,
+        fetchNextPage,
+        isFetchingNextPage,
+        isLoading,
+        hasNextPage,
+    } = useInfiniteQuery({
+        queryKey: [SEARCH_MOVIES, debouncedSearch],
+        queryFn: async ({ pageParam }: { pageParam: any }) => {
+            return await searchMovies(searchValue, pageParam);
+        },
+        getNextPageParam: (lastPage: NextPageParam) => {
+            if (!lastPage?.page) return 1;
+            const nextPageNumber = lastPage.page + 1;
+            if (nextPageNumber > lastPage.total_pages) return;
+            return nextPageNumber;
+        },
+        initialPageParam: 1,
+    });
 
-    const title = searchData && searchData?.results?.length > 1 ? 'Որոնման արդյունքներ' : 'Որոնման արդյունքը';
+    const title = searchData && searchData?.pages?.[0].results?.length > 1 ? 'Որոնման արդյունքներ' : 'Որոնման արդյունքը';
 
     return (
         <div className={styles.container}>
@@ -41,22 +58,26 @@ const Filter = () => {
             {isLoading ?
                 <Loading />
                 :
-                searchData?.results?.length ?
+                searchData?.pages?.length ?
                     <div className={styles.itemContainer}>
-                        {searchData.results.map((val: MovieData) => {
-                            return (
-                                <Link href={`/${val.id}`} className={clsx(styles.content, val.poster_path ? "" : styles.noImage)} key={val.id}>
-                                    <div className={styles.item}>
-                                        {!!val.poster_path && <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />}
-                                    </div>
-                                    <div className={styles.description} title='Տեսնել ավելին'>
-                                        <h5>{val.title}</h5>
-                                        <span>{val.release_date}</span>
-                                        <StarRating rating={val.vote_average} />
-                                    </div>
-                                </Link>
-                            )
+                        {searchData?.pages.map((val: any) => {
+                            return val.results.map((val: MovieData) => {
+                                return (
+                                    <Link href={`/${val.id}`} className={clsx(styles.content, val.poster_path ? "" : styles.noImage)} key={val.id}>
+                                        <div className={styles.item}>
+                                            {!!val.poster_path && <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />}
+                                        </div>
+                                        <div className={styles.description} title='Տեսնել ավելին'>
+                                            <h5>{val.title}</h5>
+                                            <span>{val.release_date}</span>
+                                            <StarRating rating={val.vote_average} />
+                                        </div>
+                                    </Link>
+                                )
+                            })
                         })}
+                        {isFetchingNextPage && <Loading />}
+                        {hasNextPage && <SeeMore fetchNextPage={fetchNextPage} />}
                     </div>
                     :
                     <span className={styles.isEmpty}>Մենք չկարողացանք գտնել որոնված ֆիլմը</span>
