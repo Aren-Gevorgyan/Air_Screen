@@ -29,7 +29,7 @@ const Description: FC<Props> = ({ movie }) => {
                 <h4>Թողարկման ամսաթիվ</h4>
                 <span>{movie.release_date || ''}</span>
             </div>}
-            {movie?.production_companies?.length && <Companies companies={movie.production_companies} />}
+            {!!movie?.production_companies?.length && <Companies companies={movie.production_companies} />}
             {!!movie.overview && <div className={styles.item}>
                 <h4>Նկարագրություն</h4>
                 <span>{movie.overview || ''}</span>
