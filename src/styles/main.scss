@@ -73,6 +73,9 @@ main {
 	cursor: pointer;
 	height: 350px;
 	background: gray;
+	@media screen and (max-width: $laptops_size) {
+		height: 380px;
+	}
 }
 
 .react-multi-carousel-dot button {

@@ -27,7 +27,10 @@
 		}
 	}
 	nav {
-		svg {
+		.menuIcon {
+			border: none;
+			background-color: transparent;
+			padding: 0;
 			display: none;
 		}
 		ul {
@@ -47,8 +50,6 @@
 						display: flex;
 					}
 				}
-			}
-			@media screen and (max-width: $mobile_size) {
 				width: calc(100vw - 70px);
 				position: absolute;
 				z-index: 3;
@@ -120,16 +121,8 @@
 		@media screen and (max-width: $mobile_size) {
 			order: -1;
 			position: relative;
-			svg {
+			.menuIcon {
 				display: block;
-			}
-			&:hover {
-				svg path {
-					stroke: $green;
-				}
-				ul {
-					display: flex;
-				}
 			}
 		}
 	}
@@ -154,5 +147,8 @@
 				}
 			}
 		}
+	}
+	.isOpen {
+		display: flex;
 	}
 }

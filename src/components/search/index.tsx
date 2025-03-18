@@ -18,7 +18,8 @@ const Search = () => {
   const { state: isOpen, setTrue, setFalse, setToggle } = useBoolean(isMd || !!filter);
 
   useEffect(() => {
-    if (filter && "null" !== filter) setValue(filter)
+    if (filter && "null" !== filter) return setValue(filter);
+    setValue('');
   }, [filter]);
 
   useEffect(() => {
