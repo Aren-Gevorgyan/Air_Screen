@@ -40,7 +40,7 @@ const Home: FC<Props> = async ({ searchParams }) => {
             </div>
           </div>
           <div className={styles.films}>
-            <h2 className={styles.popular}>Հանրաճանաչ</h2>
+            <h2 className={styles.popular}>Popular</h2>
             <MyCarousel data={data.popular} />
           </div>
           <Genre genres={data.genres} genresByIdData={data.genresByIdData} />

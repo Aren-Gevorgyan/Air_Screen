@@ -44,7 +44,7 @@ const Search = () => {
   return (
     <div className={styles.container}>
       {isOpen && (
-        <input value={value} onChange={onChange} placeholder="Որոնել" />
+        <input value={value} onChange={onChange} placeholder="Search" />
       )}
       <Button onClick={onSearch}>
         <FaSearch className={styles.search} />

@@ -55,7 +55,7 @@ const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
                         ))}
                     </Carousel>
                     :
-                    <span className={styles.isEmpty}>Տվյալները չեն գտնվել</span>
+                    <span className={styles.isEmpty}>Data not found</span>
             }
         </div>
     )

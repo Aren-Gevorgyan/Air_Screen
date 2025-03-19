@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import '../styles/main.scss';
 import QueryProvider from '@/components/queryProvider';
 import Header from '@/components/header';
+import Footer from '@/components/footer';
+import styles from './styles.module.scss'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,7 +34,10 @@ export default function RootLayout({
       >
         <div id="__next">
           <Header />
-          <QueryProvider>{children}</QueryProvider>
+          <div className={styles.main}>
+            <QueryProvider>{children}</QueryProvider>
+          </div>
+          <Footer />
         </div>
       </body>
     </html>

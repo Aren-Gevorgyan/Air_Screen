@@ -49,7 +49,7 @@ const Filter = () => {
         initialPageParam: 1,
     });
 
-    const title = searchData && searchData?.pages?.[0].results?.length > 1 ? 'Որոնման արդյունքներ' : 'Որոնման արդյունքը';
+    const title = searchData && searchData?.pages?.[0].results?.length > 1 ? 'Search results' : 'Search result';
 
     return (
         <div className={styles.container}>
@@ -80,7 +80,7 @@ const Filter = () => {
                         {hasNextPage && <SeeMore fetchNextPage={fetchNextPage} />}
                     </div>
                     :
-                    <span className={styles.isEmpty}>Մենք չկարողացանք գտնել որոնված ֆիլմը</span>
+                    <span className={styles.isEmpty}>Data not found</span>
             }
         </div>
     );
