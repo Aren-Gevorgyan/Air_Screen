@@ -42,7 +42,7 @@ const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
                         arrows
                     >
                         {genresData.map((val: MovieData) => (
-                            <Link href={`/${val.id}`} className={styles.content} key={val.id}>
+                            <Link title='See more' href={`/${val.id}`} className={styles.content} key={val.id}>
                                 <div className={clsx(styles.item, val.poster_path ? '' : styles.noImage)}>
                                     {val.poster_path && <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />}
                                 </div>

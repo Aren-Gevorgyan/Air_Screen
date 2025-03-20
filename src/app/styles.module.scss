@@ -46,7 +46,7 @@
 						text-align: left;
 						font-size: clamp(1rem, 5vw, 1.5rem);
 						color: white;
-						animation: slideText 3s ease-in-out forwards;
+						// animation: slideText 3s ease-in-out forwards;
 						@media screen and (max-width: $mid_size) {
 							font-size: clamp(1rem, 5vw, 1.2rem);
 						}

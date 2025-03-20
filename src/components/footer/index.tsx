@@ -9,6 +9,7 @@ const Footer = () => {
             <div className={styles.logo}>
                 <Link href="/">AirScreen</Link>
                 <p>Միայն ֆիլմեր մի դիտեք, զգացեք դրանք։ 🌟</p>
+                <p>AirScreen — որտեղ երկինքը սահման չունի</p>
             </div>
             <div className={styles.contact}>
                 <Link href="/" className={styles.networks}>
@@ -27,6 +28,9 @@ const Footer = () => {
                     <h6><FaEnvelope size={16} color="white" />Email</h6>
                     <span>airScreen@gamil.com</span>
                 </Link>
+            </div>
+            <div className={styles.moreInfo}>
+                <Link className={styles.link} href='/privacy-policy'>Privacy policy</Link>
                 <div className={styles.phone}>
                     <h6><FaPhone size={16} color="white" />Phone</h6>
                     <div>
@@ -34,9 +38,6 @@ const Footer = () => {
                         <span>094033456</span>
                     </div>
                 </div>
-            </div>
-            <div className={styles.moreInfo}>
-                <Link className={styles.link} href='/privacy-policy'>Privacy policy</Link>
             </div>
         </footer >
     )

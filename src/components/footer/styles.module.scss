@@ -32,6 +32,7 @@
 			color: white;
 			font-size: 16px;
 			font-weight: 500;
+			margin: 0;
 		}
 	}
 	.contact {
@@ -46,7 +47,7 @@
 			cursor: pointer;
 			gap: 20px;
 			&:hover {
-				transform: scale(1.2);
+				transform: scale(1.1);
 			}
 			h6 {
 				min-width: 100px;
@@ -63,12 +64,27 @@
 				font-size: 14px;
 			}
 		}
+	}
+	.moreInfo {
+		margin-top: 10px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		.link {
+			font-size: 14px;
+			font-weight: 500;
+			color: white;
+			cursor: pointer;
+			text-decoration: none;
+			&:hover {
+				color: rgb(83, 155, 242);
+			}
+		}
 		.phone {
 			display: flex;
 			align-items: flex-start;
 			gap: 20px;
 			h6 {
-				min-width: 100px;
 				font-weight: 500;
 				color: white;
 				font-size: 14px;
@@ -85,21 +101,6 @@
 					color: $gray3;
 					font-size: 14px;
 				}
-			}
-		}
-	}
-	.moreInfo {
-		margin-top: 10px;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		.link {
-			font-size: 14px;
-			font-weight: 500;
-			color: white;
-			cursor: pointer;
-			&:hover {
-				color: rgb(83, 155, 242);
 			}
 		}
 	}
