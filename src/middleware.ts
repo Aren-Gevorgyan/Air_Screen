@@ -9,7 +9,7 @@ export const middleware = (request: NextRequest) => {
   const locale = url.pathname.split('/')[1]; // Get the first path segment as locale
 
   if (!locale || !['en', 'hy'].includes(locale)) { // Add supported locales here
-    url.pathname = `/en${url.pathname.substring(3)}`; // Redirect to '/en' if no valid locale
+    url.pathname = `/en/${url.pathname.substring(3)}`; // Redirect to '/en' if no valid locale
     return NextResponse.redirect(url);
   }
 

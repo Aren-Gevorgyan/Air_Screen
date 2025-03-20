@@ -22,7 +22,7 @@ const Description: FC<Props> = ({ movie }) => {
                 )}
             </div>}
             {!!movie.runtime && <div className={styles.item}>
-                <h4>Ժամանակը</h4>
+                <h4>Տևողություն</h4>
                 <span>{movie.runtime ? `${movie.runtime}ր.` : ''}</span>
             </div>}
             {!!movie.release_date && <div className={styles.item}>

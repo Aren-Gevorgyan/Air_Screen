@@ -26,7 +26,7 @@ const Footer = () => {
                 </Link>
                 <Link href="/" className={styles.networks}>
                     <h6><FaEnvelope size={16} color="white" />Email</h6>
-                    <span>airScreen@gamil.com</span>
+                    <span>airScreen@gmail.com</span>
                 </Link>
             </div>
             <div className={styles.moreInfo}>
