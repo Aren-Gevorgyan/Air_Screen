@@ -13,7 +13,6 @@ type Props = {
 const Home: FC<Props> = async ({ searchParams }) => {
   const genre = (await searchParams).genre;
   const data = await getMainPageData(genre);
-  console.log("TCL: data", data)
 
   return (
     <div className={styles.container}>

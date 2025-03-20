@@ -20,7 +20,7 @@ export const middleware = (request: NextRequest) => {
     }
   }
 
-  if (url.pathname === `/search/${locale}`) {
+  if (url.pathname === `/${locale}/search`) {
     if (!filterValue) {
       url.pathname = '/';
       url.href = `${request.nextUrl.origin}${url.pathname}`;

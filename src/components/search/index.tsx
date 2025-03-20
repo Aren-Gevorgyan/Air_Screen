@@ -9,8 +9,10 @@ import useBoolean from '@/hooks/useBoolean';
 import useWindowSize from '@/hooks/useWindowSize';
 import { useRouter } from 'next/navigation';
 import useQueryParam from '@/hooks/useQueryParam';
+import { useParams } from 'next/dist/client/components/navigation';
 
 const Search = () => {
+  const params = useParams();
   const { isMd } = useWindowSize();
   const { push } = useRouter();
   const filter = useQueryParam('value');
@@ -32,13 +34,13 @@ const Search = () => {
 
   const onChange = (event: InputParamter) => {
     setValue(event.target.value);
-    push(`/search?value=${event.target.value}`);
+    push(`/${params?.locale}/search?value=${event.target.value}`);
   };
 
   const onSearch = useCallback((event: MouseEvent<HTMLButtonElement>): void => {
     event.stopPropagation();
     setToggle();
-    if (filter && "null" !== filter) push(`/search?value=${filter}`);
+    if (filter && "null" !== filter) push(`/${params?.locale}/search?value=${filter}`);
   }, [filter]);
 
   return (
