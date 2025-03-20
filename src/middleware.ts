@@ -6,15 +6,21 @@ export const middleware = (request: NextRequest) => {
   const url = request.nextUrl.clone();
   const genre = url.searchParams.get('genre');
   const filterValue = url.searchParams.get('value');
+  const locale = url.pathname.split('/')[1]; // Get the first path segment as locale
 
-  if (url.pathname === '/') {
+  if (!locale || !['en', 'hy'].includes(locale)) { // Add supported locales here
+    url.pathname = `/en${url.pathname.substring(3)}`; // Redirect to '/en' if no valid locale
+    return NextResponse.redirect(url);
+  }
+
+  if (url.pathname === `/${locale}`) {
     if (!genre) {
       url.searchParams.set('genre', ACTION_GENRE_ID);
       return NextResponse.redirect(url);
     }
   }
 
-  if (url.pathname === '/search') {
+  if (url.pathname === `/search/${locale}`) {
     if (!filterValue) {
       url.pathname = '/';
       url.href = `${request.nextUrl.origin}${url.pathname}`;
@@ -26,5 +32,5 @@ export const middleware = (request: NextRequest) => {
 };
 
 export const config = {
-  matcher: ['/', '/search'],
+  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
 };

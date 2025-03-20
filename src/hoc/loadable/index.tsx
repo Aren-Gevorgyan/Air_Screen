@@ -1,11 +1,17 @@
+import Loading from '@/components/loading';
 import React, { Suspense, ComponentType, FC } from 'react';
 
 const Loadable = <P extends object>(Component: ComponentType<P>): FC<P> => {
-  return (props: P) => (
-    <Suspense fallback={<div>Loading...</div>}>
+  const WrappedComponent: FC<P> = (props: P) => (
+    <Suspense fallback={<Loading />}>
       <Component {...props} />
     </Suspense>
   );
+
+  // Setting the displayName of the wrapped component
+  WrappedComponent.displayName = `Loadable(${Component.displayName || Component.name})`;
+
+  return WrappedComponent;
 };
 
 export default Loadable;

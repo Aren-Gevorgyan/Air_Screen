@@ -24,9 +24,9 @@ const Search = () => {
 
   useEffect(() => {
     if (isMd) {
-      setTrue()
+      setTrue();
     } else {
-      setFalse
+      setFalse();
     }
   }, [isMd]);
 

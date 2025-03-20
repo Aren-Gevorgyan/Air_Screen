@@ -1,7 +1,7 @@
 'use client'
 
+import React, { FC, memo, useCallback } from "react";
 import { FaRegBookmark, FaBookmark } from "react-icons/fa";
-import { FC, memo, useCallback } from "react";
 import Button from "../button";
 import useBoolean from "@/hooks/useBoolean";
 

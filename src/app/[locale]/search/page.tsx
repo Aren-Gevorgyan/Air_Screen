@@ -37,7 +37,7 @@ const Filter = () => {
         hasNextPage,
     } = useInfiniteQuery({
         queryKey: [SEARCH_MOVIES, debouncedSearch],
-        queryFn: async ({ pageParam }: { pageParam: any }) => {
+        queryFn: async ({ pageParam }: { pageParam: number }) => {
             return await searchMovies(searchValue, pageParam);
         },
         getNextPageParam: (lastPage: NextPageParam) => {
@@ -60,7 +60,7 @@ const Filter = () => {
                 :
                 searchData?.pages?.length ?
                     <div className={styles.itemContainer}>
-                        {searchData?.pages.map((val: any) => {
+                        {searchData?.pages.map((val: { results: Array<MovieData> }) => {
                             return val.results.map((val: MovieData) => {
                                 return (
                                     <Link href={`/${val.id}`} className={clsx(styles.content, val.poster_path ? "" : styles.noImage)} key={val.id}>

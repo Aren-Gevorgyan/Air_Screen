@@ -7,12 +7,13 @@ import { getMainPageData } from '@/requests/ssr';
 import Genre from '@/pages/main/genre';
 
 type Props = {
-  searchParams: { [key: string]: string }
+  searchParams: Promise<{ genre: string }>
 }
 
 const Home: FC<Props> = async ({ searchParams }) => {
   const genre = (await searchParams).genre;
   const data = await getMainPageData(genre);
+  console.log("TCL: data", data)
 
   return (
     <div className={styles.container}>

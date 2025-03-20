@@ -1,20 +1,23 @@
 "use client";
 
+import React, { FC } from "react";
 import { IMAGE_URL, responsive } from "@/assets/constants";
 import { MovieData } from "@/assets/types";
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import styles from './styles.module.scss';
-import { FC } from "react";
 import Link from "next/link";
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 
 type CarouselProps = {
     data: MovieData[];
 }
 
 const MyCarousel: FC<CarouselProps> = ({ data }) => {
+    const t = useTranslations('HomePage');
+
     return (
         <Carousel
             responsive={responsive}
@@ -35,7 +38,7 @@ const MyCarousel: FC<CarouselProps> = ({ data }) => {
                                 alt={`AirScreen ${val.title} image`}
                                 fill
                             />}
-                            <div className={styles.opacity} title='See more'>
+                            <div className={styles.opacity} title={t('seeMore')}>
                                 <span className={styles.title}>{val?.title || ''}</span>
                                 <span className={styles.overview}>{val?.overview || ''}</span>
                                 <span className={styles.date}>{val?.release_date || ''}</span>
