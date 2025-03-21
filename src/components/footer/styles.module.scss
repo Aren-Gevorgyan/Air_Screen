@@ -1,107 +1,107 @@
 @use '../../styles/global' as *;
 
 .container {
-	width: 90%;
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: 10px;
-	margin: auto;
-	border-top: 1px solid $gray3;
-	padding: 20px;
-	padding-bottom: 40px;
-	border-radius: 6px;
-	.logo {
-		& > a {
-			flex: none;
-			text-align: left;
-			font-size: clamp(1.2rem, 4vw, 2rem);
-			font-weight: bold;
-			background: linear-gradient(to left, $green2, $green);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			text-decoration: none;
-			&:hover {
-				background: linear-gradient(to left, $green, $green2);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-			}
-		}
-		p {
-			color: white;
-			font-size: 16px;
-			font-weight: 500;
-			margin: 0;
-		}
-	}
-	.contact {
-		margin-top: 10px;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		.networks {
-			display: flex;
-			align-items: flex-start;
-			text-decoration: none;
-			cursor: pointer;
-			gap: 20px;
-			&:hover {
-				transform: scale(1.1);
-			}
-			h6 {
-				min-width: 100px;
-				font-weight: 500;
-				color: white;
-				font-size: 14px;
-				margin: 0;
-				display: flex;
-				align-items: center;
-				gap: 6px;
-			}
-			span {
-				color: $gray3;
-				font-size: 14px;
-			}
-		}
-	}
-	.moreInfo {
-		margin-top: 10px;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		.link {
-			font-size: 14px;
-			font-weight: 500;
-			color: white;
-			cursor: pointer;
-			text-decoration: none;
-			&:hover {
-				color: rgb(83, 155, 242);
-			}
-		}
-		.phone {
-			display: flex;
-			align-items: flex-start;
-			gap: 20px;
-			h6 {
-				font-weight: 500;
-				color: white;
-				font-size: 14px;
-				margin: 0;
-				display: flex;
-				align-items: center;
-				gap: 6px;
-			}
-			div {
-				display: flex;
-				flex-direction: column;
-				gap: 6px;
-				span {
-					color: $gray3;
-					font-size: 14px;
-				}
-			}
-		}
-	}
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: auto;
+  border-top: 1px solid $gray3;
+  padding: 20px;
+  padding-bottom: 40px;
+  border-radius: 6px;
+  .logo {
+    & > a {
+      flex: none;
+      text-align: left;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      font-weight: bold;
+      background: linear-gradient(to left, $green2, $green);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      &:hover {
+        background: linear-gradient(to left, $green, $green2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    p {
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+  .contact {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .networks {
+      display: flex;
+      align-items: flex-start;
+      text-decoration: none;
+      cursor: pointer;
+      gap: 20px;
+      &:hover {
+        transform: scale(1.1);
+      }
+      h6 {
+        min-width: 100px;
+        font-weight: 500;
+        color: white;
+        font-size: 14px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      span {
+        color: $gray3;
+        font-size: 14px;
+      }
+    }
+  }
+  .moreInfo {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .link {
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+      &:hover {
+        color: rgb(83, 155, 242);
+      }
+    }
+    .phone {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      h6 {
+        font-weight: 500;
+        color: white;
+        font-size: 14px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        span {
+          color: $gray3;
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }

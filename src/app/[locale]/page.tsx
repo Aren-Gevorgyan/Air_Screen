@@ -6,8 +6,8 @@ import Genre from '@/pages/main/genre';
 import Popular from '@/pages/main/poplare';
 
 type Props = {
-  searchParams: Promise<{ genre: string }>
-}
+  searchParams: Promise<{ genre: string }>;
+};
 
 const Home: FC<Props> = async ({ searchParams }) => {
   const genre = (await searchParams).genre;

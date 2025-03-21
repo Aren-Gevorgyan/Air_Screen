@@ -2,85 +2,85 @@
 @use '../../styles/animations.scss' as *;
 
 .container {
-	position: relative;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	padding-bottom: 40px;
-	.content {
-		width: 90%;
-		min-height: 100%;
-		main {
-			display: flex;
-			flex-direction: column;
-			gap: 30px;
-			&:-webkit-scrollbar {
-				display: none; /* Chrome, Safari */
-			}
-			@media screen and (max-width: $mobile_size) {
-				gap: 20px;
-			}
-		}
-	}
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+  .content {
+    width: 90%;
+    min-height: 100%;
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      &:-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+      }
+      @media screen and (max-width: $mobile_size) {
+        gap: 20px;
+      }
+    }
+  }
 }
 //Error page style
 .error {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: $red;
-	font-weight: 600;
-	font-size: 18px;
-	padding: 20px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $red;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 20px;
 }
 //Not Found page style
 .notFound {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 20px;
-	& > div {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		gap: 20px;
-		font-weight: 600;
-		text-align: left;
-		font-size: clamp(1rem, 5vw, 2rem);
-		color: white;
-		a {
-			color: $red;
-			height: 40px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 10px;
-			padding: 6px 16px;
-			background-color: $red;
-			border-radius: 50px;
-			color: white;
-			font-size: 16px;
-			text-decoration: none;
-			svg {
-				width: 20px;
-				height: 18px;
-				path {
-					stroke: white;
-					stroke-width: 3px;
-				}
-			}
-			&:hover {
-				background-color: $red-color;
-			}
-		}
-	}
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  & > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    font-weight: 600;
+    text-align: left;
+    font-size: clamp(1rem, 5vw, 2rem);
+    color: white;
+    a {
+      color: $red;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 6px 16px;
+      background-color: $red;
+      border-radius: 50px;
+      color: white;
+      font-size: 16px;
+      text-decoration: none;
+      svg {
+        width: 20px;
+        height: 18px;
+        path {
+          stroke: white;
+          stroke-width: 3px;
+        }
+      }
+      &:hover {
+        background-color: $red-color;
+      }
+    }
+  }
 }
 //Layout page style
 .main {
-	min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 200px);
 }

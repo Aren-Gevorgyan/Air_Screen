@@ -14,42 +14,46 @@ import clsx from 'clsx';
 import MovieTrailer from '@/components/trailer';
 
 type Props = {
-    params: { id: string }
-}
+  params: Promise<{ id: string }>;
+};
 
 const Movie: FC<Props> = async ({ params }) => {
-    const id = (await params).id;
-    const [movie, actors] = await Promise.all([getMovie(id), getActors(id)]);
-    const image = movie.poster_path || movie.backdrop_path;
+  const id = (await params).id;
+  const [movie, actors] = await Promise.all([getMovie(id), getActors(id)]);
+  const image = movie.poster_path || movie.backdrop_path;
 
-    return (
-        <div className={styles.container}>
-            <div className={styles.content}>
-                <Moon />
-                <div className={styles.info}>
-                    <div className={styles.imageContainer}>
-                        <div className={clsx(styles.image, image ? '' : styles.noImage)}>
-                            {!!image && < Image src={`${IMAGE_URL}/${image}`} alt={`AirScreen ${movie.title}`} fill />}
-                        </div>
-                        <div className={styles.impotentInfo}>
-                            <span className={styles.title}>{movie.title || ''}</span>
-                            <Actors actors={actors.cast} />
-                            <div className={styles.buttons}>
-                                <Button className={styles.pick}>
-                                    Գրանցել
-                                </Button>
-                                <SaveButton className={styles.save} />
-                            </div>
-                            {movie?.genres?.length && <Genres genres={movie.genres} />}
-                            <Description movie={movie} />
-                        </div>
-                    </div>
-                    <StarRating rating={movie.vote_average} />
-                    <MovieTrailer movieId={id} />
-                </div>
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <Moon />
+        <div className={styles.info}>
+          <div className={styles.imageContainer}>
+            <div className={clsx(styles.image, image ? '' : styles.noImage)}>
+              {!!image && (
+                <Image
+                  src={`${IMAGE_URL}/${image}`}
+                  alt={`AirScreen ${movie.title}`}
+                  fill
+                />
+              )}
             </div>
+            <div className={styles.impotentInfo}>
+              <span className={styles.title}>{movie.title || ''}</span>
+              <Actors actors={actors.cast} />
+              <div className={styles.buttons}>
+                <Button className={styles.pick}>Գրանցել</Button>
+                <SaveButton className={styles.save} />
+              </div>
+              {movie?.genres?.length && <Genres genres={movie.genres} />}
+              <Description movie={movie} />
+            </div>
+          </div>
+          <StarRating rating={movie.vote_average} />
+          <MovieTrailer movieId={id} />
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Movie;

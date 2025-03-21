@@ -6,12 +6,7 @@ type Props = {
   type?: 'button' | 'submit' | 'reset';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: FC<Props> = ({
-  icon,
-  children,
-  type = 'button',
-  ...rest
-}) => (
+const Button: FC<Props> = ({ icon, children, type = 'button', ...rest }) => (
   <button type={type} {...rest}>
     {icon && <span>{icon}</span>}
     {children}

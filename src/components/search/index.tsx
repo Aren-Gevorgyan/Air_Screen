@@ -13,16 +13,21 @@ import { useParams } from 'next/dist/client/components/navigation';
 import { useTranslations } from 'next-intl';
 
 const Search = () => {
-  const t = useTranslations("Words");
+  const t = useTranslations('Words');
   const params = useParams();
   const { isMd } = useWindowSize();
   const { push } = useRouter();
   const filter = useQueryParam('value');
   const [value, setValue] = useState<string>('');
-  const { state: isOpen, setTrue, setFalse, setToggle } = useBoolean(isMd || !!filter);
+  const {
+    state: isOpen,
+    setTrue,
+    setFalse,
+    setToggle,
+  } = useBoolean(isMd || !!filter);
 
   useEffect(() => {
-    if (filter && "null" !== filter) return setValue(filter);
+    if (filter && 'null' !== filter) return setValue(filter);
     setValue('');
   }, [filter]);
 
@@ -39,11 +44,15 @@ const Search = () => {
     push(`/${params?.locale}/search?value=${event.target.value}`);
   };
 
-  const onSearch = useCallback((event: MouseEvent<HTMLButtonElement>): void => {
-    event.stopPropagation();
-    setToggle();
-    if (filter && "null" !== filter) push(`/${params?.locale}/search?value=${filter}`);
-  }, [filter]);
+  const onSearch = useCallback(
+    (event: MouseEvent<HTMLButtonElement>): void => {
+      event.stopPropagation();
+      setToggle();
+      if (filter && 'null' !== filter)
+        push(`/${params?.locale}/search?value=${filter}`);
+    },
+    [filter]
+  );
 
   return (
     <div className={styles.container}>

@@ -13,12 +13,12 @@ import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '../languageSwitcher';
 
 const Header = () => {
-  const t = useTranslations("Words");
+  const t = useTranslations('Words');
   const { state, setFalse, setToggle } = useBoolean();
 
   const onMouseLeave = () => {
     if (state) setFalse();
-  }
+  };
   const tab = [{ title: t('main'), url: '/' }];
 
   return (

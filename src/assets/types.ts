@@ -22,11 +22,11 @@ export type MovieData = {
 };
 
 export type ProductionCompaniesType = {
-  id: number,
-  name: string,
-  logo_path: string,
-  origin_country: string,
-}
+  id: number;
+  name: string;
+  logo_path: string;
+  origin_country: string;
+};
 
 export type Tab = {
   title: string;
@@ -34,11 +34,11 @@ export type Tab = {
 };
 
 export type Languages = {
-  country: string,
-  flag: string,
+  country: string;
+  flag: string;
 };
 
-export type GenresType = { id: number, name: string }
+export type GenresType = { id: number; name: string };
 
 export type BooleanHook = {
   state: boolean;
@@ -65,4 +65,4 @@ export type ActorsType = {
   birthday?: string;
   place_of_birth?: string;
   biography?: string;
-}
+};

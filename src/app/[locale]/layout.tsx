@@ -5,7 +5,7 @@ import '../../styles/main.scss';
 import QueryProvider from '@/components/queryProvider';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
@@ -28,13 +28,10 @@ export const metadata: Metadata = {
 
 type Props = {
   children: React.ReactNode;
-  params: Promise<{ locale: 'en-US' | 'hy' }>
-}
+  params: Promise<{ locale: 'en-US' | 'hy' }>;
+};
 
-const RootLayout = async ({
-  children,
-  params,
-}: Readonly<Props>) => {
+const RootLayout = async ({ children, params }: Readonly<Props>) => {
   const lang = (await params).locale;
   if (!hasLocale(routing.locales, lang)) {
     notFound();
@@ -50,16 +47,14 @@ const RootLayout = async ({
           <NextIntlClientProvider messages={messages}>
             <div id="__next">
               <Header />
-              <div className={styles.main}>
-                {children}
-              </div>
+              <div className={styles.main}>{children}</div>
               <Footer />
             </div>
           </NextIntlClientProvider>
         </QueryProvider>
       </body>
-    </html >
+    </html>
   );
-}
+};
 
 export default RootLayout;

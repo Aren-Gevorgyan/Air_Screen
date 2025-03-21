@@ -8,38 +8,42 @@ import { Languages } from '@/assets/types';
 import useBoolean from '@/hooks/useBoolean';
 
 const LanguageSwitcher = () => {
-    const { push } = useRouter();
-    const { state, setToggle } = useBoolean();
-    const params = useParams();
-    const pathname = usePathname();
-    const selectedItem = languages.find((val: Languages) => val.flag);
+  const { push } = useRouter();
+  const { state, setToggle } = useBoolean();
+  const params = useParams();
+  const pathname = usePathname();
+  const selectedItem = languages.find(
+    (val: Languages) => val.country === params?.locale
+  );
 
-    const changeLanguage = (newLocale: string) => {
-        pathname && push(`/${newLocale}${pathname.substring(3)}`);
-    };
+  const changeLanguage = (newLocale: string) => {
+    push(`/${newLocale}${pathname?.substring(3)}`);
+  };
 
-    const onClick = useCallback((lng: string) => () => changeLanguage(lng), []);
+  const onClick = useCallback((lng: string) => () => changeLanguage(lng), []);
+  const selectedLng = (lng: Languages) => lng.country === params?.locale;
 
-    return (
-        <div className={styles.container}>
-            <Button onClick={setToggle}>
-                {selectedItem?.flag}
+  return (
+    <div className={styles.container}>
+      <Button className={styles.flag} onClick={setToggle}>
+        {selectedItem?.flag}
+      </Button>
+      {state && (
+        <div className={styles.languages}>
+          {languages.map((lng: Languages) => (
+            <Button
+              key={lng.country}
+              onClick={onClick(lng.country)}
+              className={selectedLng(lng) ? styles.active : styles.options}
+              disabled={selectedLng(lng)}
+            >
+              {lng.country.toUpperCase()} {lng.flag}
             </Button>
-            {state &&
-                <div className={styles.languages}>
-                    {languages.map((lng: Languages) => (
-                        <Button
-                            key={lng.country}
-                            onClick={onClick(lng.country)}
-                            disabled={lng.country === params?.locale}
-                        >
-                            {lng.country.toUpperCase()}  {lng.flag}
-                        </Button>
-                    ))}
-                </div>
-            }
+          ))}
         </div>
-    );
-}
+      )}
+    </div>
+  );
+};
 
 export default LanguageSwitcher;

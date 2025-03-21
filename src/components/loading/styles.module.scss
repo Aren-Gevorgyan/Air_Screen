@@ -2,13 +2,13 @@
 @use '../../styles/animations.scss' as *;
 
 .container {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	& > div {
-		width: 100px;
-		height: 100px;
-		position: relative;
-	}
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & > div {
+    width: 100px;
+    height: 100px;
+    position: relative;
+  }
 }

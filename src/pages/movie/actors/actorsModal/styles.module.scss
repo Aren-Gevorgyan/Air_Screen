@@ -1,55 +1,55 @@
 @use '../../../../styles/global' as *;
 
 .container {
-	max-width: 60%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: min-content;
-	gap: 20px;
-	padding: 20px;
-	background-color: $dark;
-	border-radius: 6px;
-	@media screen and (max-width: $mid_size) {
-		max-width: 100%;
-	}
-	@media screen and (max-width: $mobile_size) {
-		padding: 10px;
-		flex-wrap: wrap;
-	}
-	.image {
-		flex: none;
-		width: 200px;
-		height: 200px;
-		position: relative;
-		border-radius: 50%;
-		border: 2px solid $dark;
-		overflow: hidden;
-		background-color: black;
-		img {
-			object-fit: contain;
-		}
-	}
-	.description {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-		h3,
-		p,
-		span {
-			text-align: left;
-			font-size: 16px;
-			color: white;
-			margin: 0;
-			@media screen and (max-width: $mobile_size) {
-				font-size: 14px;
-			}
-		}
-		h3 {
-			font-size: 28px;
-			@media screen and (max-width: $mobile_size) {
-				font-size: 22px;
-			}
-		}
-	}
+  max-width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: min-content;
+  gap: 20px;
+  padding: 20px;
+  background-color: $dark;
+  border-radius: 6px;
+  @media screen and (max-width: $mid_size) {
+    max-width: 100%;
+  }
+  @media screen and (max-width: $mobile_size) {
+    padding: 10px;
+    flex-wrap: wrap;
+  }
+  .image {
+    flex: none;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid $dark;
+    overflow: hidden;
+    background-color: black;
+    img {
+      object-fit: contain;
+    }
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    h3,
+    p,
+    span {
+      text-align: left;
+      font-size: 16px;
+      color: white;
+      margin: 0;
+      @media screen and (max-width: $mobile_size) {
+        font-size: 14px;
+      }
+    }
+    h3 {
+      font-size: 28px;
+      @media screen and (max-width: $mobile_size) {
+        font-size: 22px;
+      }
+    }
+  }
 }

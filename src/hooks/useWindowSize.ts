@@ -1,18 +1,18 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from 'react';
 
 const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState<number | null>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const updateWindowDimensions = () => {
         setWindowSize(window.innerWidth);
       };
 
       setWindowSize(window.innerWidth); // Set initial size
-      window.addEventListener("resize", updateWindowDimensions);
+      window.addEventListener('resize', updateWindowDimensions);
 
-      return () => window.removeEventListener("resize", updateWindowDimensions);
+      return () => window.removeEventListener('resize', updateWindowDimensions);
     }
   }, []);
 

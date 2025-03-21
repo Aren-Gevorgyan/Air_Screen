@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import React, { FC, memo, useCallback } from "react";
-import { FaRegBookmark, FaBookmark } from "react-icons/fa";
-import Button from "../button";
-import useBoolean from "@/hooks/useBoolean";
+import React, { FC, memo, useCallback } from 'react';
+import { FaRegBookmark, FaBookmark } from 'react-icons/fa';
+import Button from '../button';
+import useBoolean from '@/hooks/useBoolean';
 
 type Props = {
   className: string;
-}
+};
 
 const SaveButton: FC<Props> = ({ className }) => {
   const { state: isSaved, setToggle } = useBoolean(false);
@@ -18,9 +18,13 @@ const SaveButton: FC<Props> = ({ className }) => {
 
   return (
     <Button className={className} onClick={onClick}>
-      {isSaved ? <FaBookmark className="white" size={30} /> : <FaRegBookmark className="black" size={30} />}
+      {isSaved ? (
+        <FaBookmark className="white" size={30} />
+      ) : (
+        <FaRegBookmark className="black" size={30} />
+      )}
     </Button>
   );
-}
+};
 
-export default memo(SaveButton); 
+export default memo(SaveButton);

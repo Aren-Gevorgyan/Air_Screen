@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 import styles from './styles.module.scss';
 import { MovieData } from '@/assets/types';
 import { useQuery } from '@tanstack/react-query';
@@ -16,51 +16,68 @@ import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 
 type Props = {
-    genreId: string | undefined,
-    genresByIdData: Array<MovieData>,
-}
+  genreId: string | undefined;
+  genresByIdData: Array<MovieData>;
+};
 
 const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
-    const t = useTranslations("Words");
-    const { data, isLoading } = useQuery({
-        queryKey: [MOVIES_BY_GENRE, genreId],
-        queryFn: () => fetchMoviesByGenre(genreId),
-        enabled: !!genreId,
-    });
+  const t = useTranslations('Words');
+  const { data, isLoading } = useQuery({
+    queryKey: [MOVIES_BY_GENRE, genreId],
+    queryFn: () => fetchMoviesByGenre(genreId),
+    enabled: !!genreId,
+  });
 
-    const genresData: Array<MovieData> = data ? data : genresByIdData;
+  const genresData: Array<MovieData> = data ? data : genresByIdData;
 
-    return (
-        <div className={styles.container}>
-            {isLoading ? <Loading /> :
-                genresData.length ?
-                    <Carousel
-                        responsive={responsive}
-                        infinite
-                        autoPlay
-                        autoPlaySpeed={4000}
-                        keyBoardControl
-                        showDots
-                        arrows
-                    >
-                        {genresData.map((val: MovieData) => (
-                            <Link title='See more' href={`/${val.id}`} className={styles.content} key={val.id}>
-                                <div className={clsx(styles.item, val.poster_path ? '' : styles.noImage)}>
-                                    {val.poster_path && <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />}
-                                </div>
-                                <div className={styles.description}>
-                                    <h5>{val.title}</h5>
-                                    <span>{val.release_date}</span>
-                                    <StarRating rating={val.vote_average} />
-                                </div>
-                            </Link>
-                        ))}
-                    </Carousel>
-                    :
-                    <span className={styles.isEmpty}>{t("data_not_found")}</span>
-            }
-        </div>
-    )
-}
+  return (
+    <div className={styles.container}>
+      {isLoading ? (
+        <Loading />
+      ) : genresData.length ? (
+        <Carousel
+          responsive={responsive}
+          infinite
+          autoPlay
+          autoPlaySpeed={4000}
+          keyBoardControl
+          showDots
+          arrows
+        >
+          {genresData.map((val: MovieData) => (
+            <Link
+              title="See more"
+              href={`/${val.id}`}
+              className={styles.content}
+              key={val.id}
+            >
+              <div
+                className={clsx(
+                  styles.item,
+                  val.poster_path ? '' : styles.noImage
+                )}
+              >
+                {val.poster_path && (
+                  <Image
+                    src={`${IMAGE_URL}${val.poster_path}`}
+                    alt={`AirScreen ${val.title}`}
+                    fill
+                  />
+                )}
+              </div>
+              <div className={styles.description}>
+                <h5>{val.title}</h5>
+                <span>{val.release_date}</span>
+                <StarRating rating={val.vote_average} />
+              </div>
+            </Link>
+          ))}
+        </Carousel>
+      ) : (
+        <span className={styles.isEmpty}>{t('data_not_found')}</span>
+      )}
+    </div>
+  );
+};
 
-export default GenreMovies
+export default GenreMovies;

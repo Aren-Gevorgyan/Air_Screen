@@ -1,17 +1,17 @@
 @use '../../styles/global' as *;
 
 .container {
-	.trailer {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-		h4 {
-			color: $gray3;
-			font-size: 16px;
-			margin: 0;
-		}
-		iframe {
-			border-radius: 6px;
-		}
-	}
+  .trailer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    h4 {
+      color: $gray3;
+      font-size: 16px;
+      margin: 0;
+    }
+    iframe {
+      border-radius: 6px;
+    }
+  }
 }

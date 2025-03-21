@@ -25,16 +25,16 @@ const customMiddleware = (request: NextRequest) => {
   }
 
   return null;
-}
+};
 
 export const middleware = (request: NextRequest) => {
   const customResponse = customMiddleware(request);
   if (customResponse) {
     return customResponse;
   }
-  
+
   return createMiddleware(routing)(request);
-}
+};
 
 // Configure the matcher to run middleware for the appropriate paths.
 export const config = {

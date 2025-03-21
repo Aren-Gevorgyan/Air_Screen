@@ -1,8 +1,8 @@
 @use '../../styles/global' as *;
 
 .container {
-  border-radius: 25px;
-  padding: 6px;
+  border-radius: 15px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   background: #80808030;
@@ -11,7 +11,7 @@
   @media screen and (max-width: $mobile_size) {
     width: 100%;
   }
-  button {
+  & > button {
     height: 100%;
     background: none;
     border: none;

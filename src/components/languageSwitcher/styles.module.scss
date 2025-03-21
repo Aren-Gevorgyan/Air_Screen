@@ -1,31 +1,57 @@
 @use '../../styles/global' as *;
 
 .container {
-	width: 40px;
-	height: auto;
-	display: flex;
-	flex-direction: column;
-	padding: 4px;
-	border-radius: 6px;
-	border: 1px solid $gray;
-	background-color: $dark;
-	position: relative;
-	button {
-		height: auto;
-		border: none;
-		background-color: transparent;
-		color: white;
-		font-size: 14px;
-	}
-	.languages {
-		position: absolute;
-		top: 100%;
-		left: 0;
-		button {
-			display: flex;
-			align-items: center;
-			gap: 4px;
-			border: 1px solid;
-		}
-	}
+  width: 40px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid $gray;
+  background-color: $dark;
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(2, 2, 2);
+  }
+  .flag {
+    height: auto;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .languages {
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    border: 1px solid $gray;
+    border-radius: 4px;
+    overflow: hidden;
+    & > .options,
+    .active {
+      width: 60px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      border: 1px solid $gray;
+      color: white;
+      font-size: 12px;
+      padding: 2px;
+      background-color: $dark;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(2, 2, 2);
+        border: 1px solid $green2;
+      }
+    }
+    .active {
+      background-color: rgb(2, 2, 2);
+      border: 1px solid $green2;
+      cursor: none;
+    }
+  }
 }

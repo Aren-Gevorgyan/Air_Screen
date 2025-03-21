@@ -1,14 +1,14 @@
 @keyframes moon {
-	from {
-		top: -100px;
-		left: 100%;
-		opacity: 0.5;
-	}
-	to {
-		top: 50px;
-		left: 90%;
-		opacity: 1;
-	}
+  from {
+    top: -100px;
+    left: 100%;
+    opacity: 0.5;
+  }
+  to {
+    top: 50px;
+    left: 90%;
+    opacity: 1;
+  }
 }
 
 // @keyframes slideText {
@@ -23,34 +23,34 @@
 // }
 
 @keyframes heroThree {
-	from {
-		transform: scale(0.5);
-		opacity: 0.5;
-	}
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
+  from {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes hero {
-	from {
-		left: 100% !important;
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
+  from {
+    left: 100% !important;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes pulse {
-	0% {
-		background-color: #d1d5db;
-	}
-	50% {
-		background-color: #e5e7eb;
-	}
-	100% {
-		background-color: #d1d5db;
-	}
+  0% {
+    background-color: #d1d5db;
+  }
+  50% {
+    background-color: #e5e7eb;
+  }
+  100% {
+    background-color: #d1d5db;
+  }
 }

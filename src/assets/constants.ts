@@ -1,11 +1,11 @@
-import { Languages } from "./types";
+import { Languages } from './types';
 
 export const IMAGE_URL: string = 'https://image.tmdb.org/t/p/original';
 export const BASE_URL: string = 'https://api.themoviedb.org/3';
 export const API_KEY = process.env.NEXT_PUBLIC_TM_DB_API_KEY;
 export const ACTION_GENRE_ID = '28';
 export const LOCALES = ['en', 'hy', 'ru'];
-export const DEFAULT_LOCALE = 'en';
+export const DEFAULT_LOCALE = 'hy';
 
 export const responsive = {
   superLargeDesktop: {
@@ -26,16 +26,17 @@ export const responsive = {
   },
 };
 
-export const languages: Array<Languages> = [{
-  country: 'en',
-  flag: '🇬🇧'
-},
-{
-  country: 'ru',
-  flag: '🇷🇺'
-},
-{
-  country: 'hy',
-  flag: '🇦🇲'
-}
+export const languages: Array<Languages> = [
+  {
+    country: 'en',
+    flag: '🇬🇧',
+  },
+  {
+    country: 'ru',
+    flag: '🇷🇺',
+  },
+  {
+    country: 'hy',
+    flag: '🇦🇲',
+  },
 ];

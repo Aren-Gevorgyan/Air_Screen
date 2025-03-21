@@ -2,9 +2,9 @@
 @use '../../styles/animations.scss' as *;
 
 .moon {
-	width: 100px;
-	height: 100px;
-	position: absolute;
-	background: transparent;
-	animation: moon 7s ease-in-out forwards;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background: transparent;
+  animation: moon 7s ease-in-out forwards;
 }
