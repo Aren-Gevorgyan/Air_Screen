@@ -1,0 +1,114 @@
+@use '../../../styles/global.scss' as *;
+@use '../../../styles/animations.scss' as *;
+
+.container {
+	.top {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		justify-content: space-between;
+		.about {
+			flex: 1;
+			@media screen and (max-width: $laptops_size) {
+				flex: 2;
+			}
+			& h1 {
+				text-align: left;
+				font-size: clamp(1rem, 8vw, 3.5rem);
+				font-weight: 600;
+				color: white;
+				span {
+					font-size: clamp(1rem, 8vw, 3rem);
+				}
+				@media screen and (max-width: $desktops_size) {
+					font-size: clamp(1rem, 8vw, 2.5rem);
+					span {
+						font-size: clamp(1rem, 8vw, 2rem);
+					}
+				}
+				@media screen and (max-width: $mid_size) {
+					font-size: clamp(1rem, 5vw, 2rem);
+					span {
+						font-size: clamp(1rem, 5vw, 2rem);
+					}
+				}
+			}
+			& > p {
+				text-align: left;
+				font-size: clamp(1rem, 5vw, 1.5rem);
+				color: white;
+				// animation: slideText 3s ease-in-out forwards;
+				@media screen and (max-width: $mid_size) {
+					font-size: clamp(1rem, 5vw, 1.2rem);
+				}
+				@media screen and (max-width: $mobile_size) {
+					font-size: 16px;
+				}
+			}
+		}
+		.images {
+			flex: 1;
+			display: flex;
+			align-items: center;
+			position: relative;
+			margin-top: 20px;
+			@media screen and (max-width: $mobile_size) {
+				display: none;
+			}
+			img {
+				width: auto !important;
+				object-fit: contain;
+				&:hover {
+					transform: scale(1.1);
+				}
+				&:nth-child(1) {
+					top: 100% !important;
+					left: 80% !important;
+					z-index: 0 !important;
+					animation: hero 2s ease-in-out forwards;
+					@media screen and (max-width: $mid_size) {
+						display: none;
+					}
+				}
+				&:nth-child(2) {
+					left: 12% !important;
+					top: -5% !important;
+					z-index: 1;
+					bottom: 0 !important;
+					height: 126% !important;
+					animation: heroThree 2s ease-in-out forwards;
+					@media screen and (max-width: $desktops_size) {
+						left: 6% !important;
+						top: 6% !important;
+						height: 106% !important;
+					}
+					@media screen and (max-width: $laptops_size) {
+						left: -14% !important;
+						top: 18% !important;
+						height: 106% !important;
+					}
+				}
+			}
+		}
+	}
+	.films {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		border-radius: 4px;
+		min-height: 350px;
+		.popular {
+			text-align: left;
+			font-size: clamp(1rem, 8vw, 2rem);
+			font-weight: bold;
+			color: white;
+			margin: 0;
+			@media screen and (max-width: $mobile_size) {
+				font-size: 20px;
+			}
+		}
+	}
+	.airScreen {
+		font-weight: 600;
+	}
+}

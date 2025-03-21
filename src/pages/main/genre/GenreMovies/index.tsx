@@ -13,6 +13,7 @@ import StarRating from '@/components/starRating';
 import Carousel from 'react-multi-carousel';
 import Loading from '@/components/loading';
 import clsx from 'clsx';
+import { useTranslations } from 'next-intl';
 
 type Props = {
     genreId: string | undefined,
@@ -20,6 +21,7 @@ type Props = {
 }
 
 const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
+    const t = useTranslations("Words");
     const { data, isLoading } = useQuery({
         queryKey: [MOVIES_BY_GENRE, genreId],
         queryFn: () => fetchMoviesByGenre(genreId),
@@ -55,7 +57,7 @@ const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
                         ))}
                     </Carousel>
                     :
-                    <span className={styles.isEmpty}>Data not found</span>
+                    <span className={styles.isEmpty}>{t("data_not_found")}</span>
             }
         </div>
     )

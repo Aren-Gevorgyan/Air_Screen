@@ -9,6 +9,7 @@ import styles from './styles.module.scss'
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
+import { getMessages } from 'next-intl/server';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -38,21 +39,26 @@ const RootLayout = async ({
   if (!hasLocale(routing.locales, lang)) {
     notFound();
   }
+  const messages = await getMessages();
 
   return (
     <html lang={lang}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div id="__next">
-          <Header />
-          <div className={styles.main}>
-            <QueryProvider><NextIntlClientProvider>{children}</NextIntlClientProvider></QueryProvider>
-          </div>
-          <Footer />
-        </div>
+        <QueryProvider>
+          <NextIntlClientProvider messages={messages}>
+            <div id="__next">
+              <Header />
+              <div className={styles.main}>
+                {children}
+              </div>
+              <Footer />
+            </div>
+          </NextIntlClientProvider>
+        </QueryProvider>
       </body>
-    </html>
+    </html >
   );
 }
 

@@ -6,7 +6,7 @@ import { GenresType, MovieData } from '@/assets/types';
 import Button from '@/components/button';
 import { useRouter } from 'next/navigation';
 import useQueryParam from '@/hooks/useQueryParam';
-import GenreMovies from './GenreMovies';
+import GenreMovies from './genreMovies';
 
 type Props = {
     genres: Array<GenresType>,

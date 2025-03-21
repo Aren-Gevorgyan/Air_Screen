@@ -1,7 +1,25 @@
 {
-  "HomePage": {
+  "Words": {
     "popular": "Popular",
     "seeMore": "See more",
-    "data_not_found": "Data not found"
+    "data_not_found": "Data not found",
+    "description": "Imagine a world where the big screen meets the night sky at AirScreen—a unique open-air cinema. Gather your loved ones and enjoy the magic of cinema like never before. Whether it’s a romantic evening, a family outing, or some solitary moments, AirScreen promises unforgettable memories under the stars.",
+    "descTwo": "Don't just watch a movie - feel it.",
+    "descThree": "where the sky is the limit!",
+    "title": "a unique open-air cinema",
+    "privacy_policy": "Privacy Policy",
+    "main": "Main",
+    "phone": "Phone",
+    "search": "Search",
+    "country": "Country",
+    "countries": "Countries",
+    "time": "Duration",
+    "date": "Release Date",
+    "desc": "Description",
+    "company": "Company",
+    "companies": "Companies",
+    "thriller": "Thriller",
+    "searchResults": "Search Results",
+    "searchResult": "Search Result"
   }
 }

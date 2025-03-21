@@ -68,7 +68,6 @@
 				a {
 					font-size: 18px;
 					font-weight: bold;
-					text-transform: uppercase;
 					text-decoration: none;
 					color: white;
 					transition: all 0.4s ease-in-out;
@@ -138,6 +137,7 @@
 	}
 	.leftPart {
 		display: flex;
+		align-items: center;
 		gap: 20px;
 		@media screen and (max-width: $mobile_size) {
 			gap: 10px;
@@ -146,6 +146,11 @@
 					display: none;
 				}
 			}
+		}
+		button {
+			border: none;
+			background-color: transparent;
+			padding: 0;
 		}
 	}
 	.isOpen {

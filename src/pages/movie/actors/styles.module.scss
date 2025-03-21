@@ -13,6 +13,7 @@
 		border: 2px solid $dark;
 		overflow: hidden;
 		background: black;
+		cursor: pointer;
 		&:hover {
 			transform: scale(1.1);
 		}

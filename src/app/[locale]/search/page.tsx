@@ -16,10 +16,12 @@ import { IMAGE_URL } from '@/assets/constants';
 import clsx from 'clsx';
 import Loading from '@/components/loading';
 import SeeMore from '@/components/seeMore';
+import { useTranslations } from 'next-intl';
 
 type NextPageParam = { page: number, total_pages: number, results: Array<MovieData> }
 
 const Filter = () => {
+    const t = useTranslations("Words");
     const searchValue: string | null = useQueryParam('value');
     const [debouncedSearch, setDebouncedSearch] = useState<string | null>('');
 
@@ -49,7 +51,7 @@ const Filter = () => {
         initialPageParam: 1,
     });
 
-    const title = searchData && searchData?.pages?.[0].results?.length > 1 ? 'Search results' : 'Search result';
+    const title = searchData && searchData?.pages?.[0].results?.length > 1 ? t('searchResults') : t('searchResult');
 
     return (
         <div className={styles.container}>
@@ -67,7 +69,7 @@ const Filter = () => {
                                         <div className={styles.item}>
                                             {!!val.poster_path && <Image src={`${IMAGE_URL}${val.poster_path}`} alt={`AirScreen ${val.title}`} fill />}
                                         </div>
-                                        <div className={styles.description} title='Տեսնել ավելին'>
+                                        <div className={styles.description} title={t('seeMore')}>
                                             <h5>{val.title}</h5>
                                             <span>{val.release_date}</span>
                                             <StarRating rating={val.vote_average} />
@@ -80,7 +82,7 @@ const Filter = () => {
                         {hasNextPage && <SeeMore fetchNextPage={fetchNextPage} />}
                     </div>
                     :
-                    <span className={styles.isEmpty}>Data not found</span>
+                    <span className={styles.isEmpty}>{t("data_not_found")}</span>
             }
         </div>
     );

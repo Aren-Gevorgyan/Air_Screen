@@ -33,6 +33,11 @@ export type Tab = {
   url: string;
 };
 
+export type Languages = {
+  country: string,
+  flag: string,
+};
+
 export type GenresType = { id: number, name: string }
 
 export type BooleanHook = {

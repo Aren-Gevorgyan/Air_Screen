@@ -10,8 +10,10 @@ import useWindowSize from '@/hooks/useWindowSize';
 import { useRouter } from 'next/navigation';
 import useQueryParam from '@/hooks/useQueryParam';
 import { useParams } from 'next/dist/client/components/navigation';
+import { useTranslations } from 'next-intl';
 
 const Search = () => {
+  const t = useTranslations("Words");
   const params = useParams();
   const { isMd } = useWindowSize();
   const { push } = useRouter();
@@ -46,7 +48,7 @@ const Search = () => {
   return (
     <div className={styles.container}>
       {isOpen && (
-        <input value={value} onChange={onChange} placeholder="Search" />
+        <input value={value} onChange={onChange} placeholder={t('search')} />
       )}
       <Button onClick={onSearch}>
         <FaSearch className={styles.search} />
