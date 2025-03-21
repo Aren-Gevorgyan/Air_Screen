@@ -16,7 +16,7 @@ type CarouselProps = {
 }
 
 const MyCarousel: FC<CarouselProps> = ({ data }) => {
-    const t = useTranslations('HomePage');
+    const t = useTranslations('Words');
 
     return (
         <Carousel
