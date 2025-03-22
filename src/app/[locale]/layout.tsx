@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Metadata } from 'next';
+// import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '../../styles/main.scss';
 import QueryProvider from '@/components/queryProvider';
@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -21,10 +21,36 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'AirScreen',
-  description: 'Միայն ֆիլմեր մի դիտեք, զգացեք դրանք։',
-};
+type PropsMeta = {
+  params: Promise<{ locale: string }>
+}
+
+export const generateMetadata = async ({ params }: PropsMeta) => {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Words' });
+
+  return {
+    title: 'AirScreen1',
+    description: t('descTwo'),
+    keywords: ["next.js", "react", "SEO", "web development"],
+    authors: [{ name: "Aren Gevorgyan2", url: "https://air-scrren.com" }],
+    applicationName: "AirScreen",
+    generator: "Next.js",
+    themeColor: "#ffffff",
+    viewport: "width=device-width, initial-scale=1",
+    creator: "Aren Gevorgyan",
+    publisher: "AirScreen1",
+    icons: "/favicon.ico",
+    alternates: {
+      canonical: "https://air-screen1.com",
+      languages: {
+        en: "https://air-screen.com/en",
+        ru: "https://air-screen.com/ru",
+        hy: "https://air-screen.com/hy",
+      },
+    },
+  };
+}
 
 type Props = {
   children: React.ReactNode;
