@@ -2,18 +2,14 @@ import React, { FC } from 'react';
 import styles from './styles.module.scss';
 import Image from 'next/image';
 import MyCarousel from '@/components/carousel';
-import { GenresType, MovieData } from '@/assets/types';
+import { MovieData } from '@/assets/types';
 import { useTranslations } from 'next-intl';
 
 type Props = {
-  data: {
-    popular: Array<MovieData>;
-    genres: Array<GenresType>;
-    genresByIdData: Array<MovieData>;
-  };
+  popular: Array<MovieData>;
 };
 
-const Popular: FC<Props> = ({ data }) => {
+const Popular: FC<Props> = ({ popular }) => {
   const t = useTranslations('Words');
 
   return (
@@ -37,7 +33,7 @@ const Popular: FC<Props> = ({ data }) => {
       </div>
       <div className={styles.films}>
         <h2 className={styles.popular}>{t('popular')}</h2>
-        <MyCarousel data={data.popular} />
+        <MyCarousel popular={popular} />
       </div>
     </div>
   );

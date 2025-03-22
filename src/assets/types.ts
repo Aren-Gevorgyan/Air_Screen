@@ -40,6 +40,10 @@ export type Languages = {
 
 export type GenresType = { id: number; name: string };
 
+export type PropsMeta = {
+  params: Promise<{ locale: string }>
+}
+
 export type BooleanHook = {
   state: boolean;
   setTrue: () => void;

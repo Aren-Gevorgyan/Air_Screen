@@ -12,10 +12,10 @@ import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 
 type CarouselProps = {
-  data: MovieData[];
+  popular: Array<MovieData>;
 };
 
-const MyCarousel: FC<CarouselProps> = ({ data }) => {
+const MyCarousel: FC<CarouselProps> = ({ popular }) => {
   const t = useTranslations('Words');
 
   return (
@@ -28,7 +28,7 @@ const MyCarousel: FC<CarouselProps> = ({ data }) => {
       showDots
       arrows
     >
-      {data?.map((val: MovieData) => {
+      {popular?.map((val: MovieData) => {
         const img = val.poster_path
           ? `${IMAGE_URL}${val.poster_path}`
           : '/images/no-image.png';

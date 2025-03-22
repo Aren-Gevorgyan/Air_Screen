@@ -1,5 +1,4 @@
 import React from 'react';
-// import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '../../styles/main.scss';
 import QueryProvider from '@/components/queryProvider';
@@ -10,6 +9,8 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
 import { getMessages, getTranslations } from 'next-intl/server';
+import { PropsMeta } from '@/assets/types';
+import { Viewport } from 'next';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -21,33 +22,46 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-type PropsMeta = {
-  params: Promise<{ locale: string }>
-}
+export const viewport: Viewport = {
+  themeColor: '#000000',
+};
 
 export const generateMetadata = async ({ params }: PropsMeta) => {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Words' });
 
   return {
-    title: 'AirScreen1',
-    description: t('descTwo'),
-    keywords: ["next.js", "react", "SEO", "web development"],
-    authors: [{ name: "Aren Gevorgyan2", url: "https://air-scrren.com" }],
+    title: 'AirScreen',
+    description: t('description'),
+    authors: [{ name: "Aren Gevorgyan", url: "https://air-scrren.com" }],
     applicationName: "AirScreen",
     generator: "Next.js",
-    themeColor: "#ffffff",
-    viewport: "width=device-width, initial-scale=1",
     creator: "Aren Gevorgyan",
-    publisher: "AirScreen1",
+    publisher: "AirScreen",
     icons: "/favicon.ico",
     alternates: {
-      canonical: "https://air-screen1.com",
+      canonical: "https://air-screen.com",
       languages: {
         en: "https://air-screen.com/en",
         ru: "https://air-screen.com/ru",
         hy: "https://air-screen.com/hy",
       },
+    },
+    openGraph: {
+      title: `${t('descTwo')} 🌟`,
+      description: t('description'),
+      url: "https://screen.com",
+      siteName: "AirScreen",
+      images: [
+        {
+          url: 'https://i.pinimg.com/736x/20/61/3c/20613cc19a86ab791f2eab48ffe2ad0c.jpg',
+          width: 1200,
+          height: 630,
+          alt: "AirScreen Popular image",
+        },
+      ],
+      locale,
+      type: "website",
     },
   };
 }

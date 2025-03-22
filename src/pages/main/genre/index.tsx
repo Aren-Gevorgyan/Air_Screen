@@ -16,7 +16,7 @@ type Props = {
 const Genre: FC<Props> = ({ genres, genresByIdData }) => {
   const genre = useQueryParam('genre');
   const { push } = useRouter();
-  const [genreId, setGenreId] = useState<string>();
+  const [genreId, setGenreId] = useState<string>(genre || '');
 
   const onClick = useCallback(
     (genreId: string) => () => {
