@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 const SignInCom = () => {
     return (
-        <div className={clsx(styles.container, isSignedIn ? styles.deleteAnim : '')}>
+        <div className={styles.container}>
             sign in
         </div>
     )
