@@ -48,7 +48,7 @@ export const getMainPageData = async (
     fetch(urlGenreById, { cache: 'force-cache' }),
   ]);
 
-  if (!firstPage.ok || !secondPage.ok) {
+  if (!firstPage.ok || !secondPage.ok || !genresName.ok || !genresById.ok) {
     throw new Error('Failed to fetch data');
   }
 
