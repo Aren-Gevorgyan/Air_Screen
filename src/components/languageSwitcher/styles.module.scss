@@ -5,14 +5,14 @@
 	height: auto;
 	display: flex;
 	flex-direction: column;
-	padding: 6px;
+	padding: 6px 4px;
 	border-radius: 6px;
 	border: 1px solid $gray;
 	background-color: $dark;
 	position: relative;
 	cursor: pointer;
 	&:hover {
-		background-color: rgb(2, 2, 2);
+		border: 1px solid $green2;
 	}
 	.flag {
 		height: auto;
@@ -25,7 +25,7 @@
 	.languages {
 		position: absolute;
 		top: 100%;
-		left: -10px;
+		left: -12px;
 		border: 1px solid $gray;
 		border-radius: 4px;
 		overflow: hidden;
@@ -41,6 +41,7 @@
 			font-size: 12px;
 			padding: 2px;
 			background-color: $dark;
+			border: 1px solid $gray;
 			cursor: pointer;
 			&:hover {
 				background-color: rgb(2, 2, 2);

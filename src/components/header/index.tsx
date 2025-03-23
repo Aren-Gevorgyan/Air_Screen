@@ -3,7 +3,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import Link from 'next/link';
-import Image from 'next/image';
 import MenuIcon from '../../../public/svgs/menuIcon';
 import { Tab } from '@/assets/types';
 import Search from '../search';
@@ -11,15 +10,18 @@ import Button from '../button';
 import useBoolean from '@/hooks/useBoolean';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '../languageSwitcher';
+import SignInCom from '../../components/signInCom';
+import useWindowSize from '@/hooks/useWindowSize';
 
 const Header = () => {
   const t = useTranslations('Words');
+  const { isMd } = useWindowSize();
   const { state, setFalse, setToggle } = useBoolean();
 
   const onMouseLeave = () => {
     if (state) setFalse();
   };
-  const tab = [{ title: t('main'), url: '/' }];
+  const tab: Array<Tab> = [{ title: t('main'), url: '/' }, { title: t('my_lists'), url: '/my_lists' }];
 
   return (
     <header className={styles.container}>
@@ -29,7 +31,8 @@ const Header = () => {
           <MenuIcon color={state ? '#0ae30d' : 'white'} />
         </Button>
         <ul className={state ? styles.isOpen : ''}>
-          <Search />
+          {isMd && <SignInCom />}
+          {isMd && <Search />}
           {tab.map((val: Tab) => {
             return (
               <li key={val.title}>
@@ -40,16 +43,9 @@ const Header = () => {
         </ul>
       </nav>
       <div className={styles.leftPart}>
-        <Search />
+        {!isMd && <Search />}
         <LanguageSwitcher />
-        <Button>
-          <Image
-            src="/images/profile.png"
-            alt="Description of image"
-            width={30}
-            height={30}
-          />
-        </Button>
+        {!isMd && <SignInCom />}
       </div>
     </header>
   );

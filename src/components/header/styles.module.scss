@@ -125,32 +125,12 @@
 			}
 		}
 	}
-	img {
-		border: 1px solid $deep_blue;
-		border-radius: 50%;
-		padding: 4px;
-		background-color: #101519;
-		cursor: pointer;
-		&:hover {
-			background: #0e142b;
-		}
-	}
 	.leftPart {
 		display: flex;
 		align-items: center;
 		gap: 20px;
 		@media screen and (max-width: $mobile_size) {
 			gap: 10px;
-			& > div {
-				&:first-child {
-					display: none;
-				}
-			}
-		}
-		button {
-			border: none;
-			background-color: transparent;
-			padding: 0;
 		}
 	}
 	.isOpen {

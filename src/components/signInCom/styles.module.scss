@@ -1,0 +1,51 @@
+@use '../../styles/global' as *;
+@use '../../styles/animations.scss' as *;
+
+.container {
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	@media screen and (max-width: $mobile_size) {
+		width: 100%;
+	}
+	button {
+		flex: 1;
+		min-width: 75px;
+		height: 40px;
+		color: white;
+		font-size: 14px;
+		padding: 4px 10px;
+		border-radius: 4px;
+		border: 1px solid $gray;
+		background-color: $dark;
+		&:hover {
+			border: 1px solid $green2;
+		}
+		&:first-child {
+			animation: moveButton 2s infinite;
+			@media screen and (max-width: $mobile_size) {
+				animation: none;
+			}
+		}
+		&:last-child {
+			background-color: $green2;
+			&:hover {
+				border: 1px solid $dark;
+			}
+		}
+	}
+}
+.deleteAnim {
+	button {
+		min-width: auto;
+		padding: 0;
+		border: none;
+		background-color: transparent !important;
+		animation: none !important;
+		&:hover {
+			border: none !important;
+		}
+	}
+}
