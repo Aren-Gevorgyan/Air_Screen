@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './styles.module.scss';
+import { useTranslations } from 'next-intl';
 
 const PrivacyPolicy = () => {
+  const t = useTranslations("PrivacyPolicy");
+
   return (
     <div className={styles.container}>
-      <h1>Գաղտնիության քաղաքականություն</h1>
+      <h1>{t('title')}</h1>
       <div className={styles.content}>
         <p>
           Բարի գալուստ AirScreen։ Ձեր գաղտնիությունը մեզ համար շատ կարևոր է։ Այս

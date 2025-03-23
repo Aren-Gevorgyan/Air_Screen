@@ -69,7 +69,7 @@ export const generateMetadata = async ({ params }: PropsMeta) => {
 
 type Props = {
   children: React.ReactNode;
-  params: Promise<{ locale: 'en-US' | 'hy' }>;
+  params: Promise<{ locale: 'en' | 'hy' | 'ru' }>;
 };
 
 const RootLayout = async ({ children, params }: Readonly<Props>) => {

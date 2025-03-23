@@ -21,6 +21,9 @@
     "thriller": "Триллер",
     "searchResults": "Результаты поиска",
     "searchResult": "Результат поиска",
-     "my_lists": "Списки"
+    "my_lists": "Мои списки"
+  },
+  "PrivacyPolicy": {
+    "title": "Политика конфиденциальности"
   }
 }

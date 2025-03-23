@@ -21,6 +21,9 @@
     "thriller": "Thriller",
     "searchResults": "Search Results",
     "searchResult": "Search Result",
-    "my_lists": "Lists"
+    "my_lists": "My lists"
+  },
+  "PrivacyPolicy": {
+    "title": "Privacy Policy"
   }
 }
