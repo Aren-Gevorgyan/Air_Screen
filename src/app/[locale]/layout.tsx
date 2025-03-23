@@ -80,7 +80,7 @@ const RootLayout = async ({ children, params }: Readonly<Props>) => {
   const messages = await getMessages();
 
   return (
-    <ClerkProvider>
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
       <html lang={lang}>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
