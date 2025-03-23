@@ -54,6 +54,9 @@ const Footer = () => {
         <Link className={styles.link} href="/privacy-policy">
           {t('privacy_policy')}
         </Link>
+        <Link className={styles.link} href="/about">
+          {t('about')}
+        </Link>
         <div className={styles.phone}>
           <h6>
             <FaPhone size={16} color="white" />

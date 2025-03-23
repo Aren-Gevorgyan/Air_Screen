@@ -21,7 +21,7 @@ const Header = () => {
   const onMouseLeave = () => {
     if (state) setFalse();
   };
-  const tab: Array<Tab> = [{ title: t('main'), url: '/' }, { title: t('my_lists'), url: '/my_lists' }];
+  const tab: Array<Tab> = [{ title: t('main'), url: '/' }, { title: t('my_lists'), url: '/my_lists' }, { title: t('about'), url: '/about' }];
 
   return (
     <header className={styles.container}>

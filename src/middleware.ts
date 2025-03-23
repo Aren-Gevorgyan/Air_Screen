@@ -9,8 +9,7 @@ const customMiddleware = (request: NextRequest) => {
   const filterValue = url.searchParams.get('value');
   const locale = url.pathname.split('/')[1];
 
-  if (url.pathname === `/`) {
-    
+  if (url.pathname === `/${locale}`) {
     if (!genre) {
       url.searchParams.set('genre', ACTION_GENRE_ID);
       return NextResponse.redirect(url);

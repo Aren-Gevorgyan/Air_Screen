@@ -1,5 +1,6 @@
 {
   "Words": {
+    "about": "About Us",
     "popular": "Popular",
     "seeMore": "See more",
     "data_not_found": "Data not found",
@@ -24,6 +25,56 @@
     "my_lists": "My lists"
   },
   "PrivacyPolicy": {
-    "title": "Privacy Policy"
+    "title": "Privacy Policy",
+    "description": "Welcome to AirScreen. Your privacy is very important to us. This privacy policy explains how we collect, use and protect your personal information.",
+    "text1": "What data we collect",
+    "text2": "We may collect the following data",
+    "text3": "Personal data: name, email address, phone number, and other information you provide",
+    "text4": "Usage data: information about how you use our website and services",
+    "text5": "How we use your data",
+    "text6": "We use the collected data",
+    "text7": "To provide, maintain, and improve our services",
+    "text8": "To respond to inquiries and support requests",
+    "text9": "To ensure security and protect against fraud",
+    "text10": "To send updates, promotional materials, and service-related notifications (if you agree)",
+    "text11": "Data sharing and security",
+    "text12": "We do not sell or share your personal data with third parties without your consent, except as required by law",
+    "text13": "We apply reliable security measures to protect your data",
+    "text14": "Your rights and choices",
+    "text15": "You may request access to, update, or delete your personal data",
+    "text16": "You may opt out of marketing communications at any time",
+    "text17": "Request a copy of the personal data we hold about you",
+    "text18": "You may request that your personal data be deleted when it is no longer needed in our systems",
+    "text19": "Contact us",
+    "text20": "If you have questions about this privacy policy, please contact us at airscreen@gmail.com or call 041033456, 094033456",
+    "text21": "By using our services, you agree to this privacy policy. It may be updated from time to time, so please check for changes",
+    "text22": "Thank you for choosing AirScreen"
+  },
+  "About": {
+    "title": "About Us",
+    "description": "AirScreen — where cinema steps off the screen and lives in a real atmosphere.",
+    "text1": "We are an innovative outdoor cinema that brings together the charm of nature, comfort, and modern technology to create a unique viewing experience.",
+    "text2": "Watch films not just on a screen, but under the open sky.",
+    "text3": "Extraordinary Locations",
+    "text4": "In deep forests — with fresh air and sounds of nature",
+    "text5": "On urban rooftops — with breathtaking views",
+    "text6": "Or enjoy films right from your car — in drive-in format",
+    "text7": "What you can watch with us",
+    "text8": "Favorite movies and blockbusters",
+    "text9": "Live football matches",
+    "text10": "UFC fights — with high quality and immersive atmosphere",
+    "text11": "Drive-in comfort",
+    "text12": "Watch movies without leaving your car. Audio is transmitted via a special frequency to your car's sound system.",
+    "text13": "We also offer:",
+    "text14": "Cozy seating and blankets",
+    "text15": "Fresh sweets and beverages",
+    "text16": "Harmony between people and nature",
+    "text17": "AirScreen is more than just a cinema.",
+    "text18": "It’s an experience that stays in memory — with real emotions, a special atmosphere, and unforgettable moments.",
+    "text19": "Join us — where cinema meets the sky."
+  },
+  "Seo": {
+    "title": "AirScreen — Outdoor Cinema Under the Stars",
+    "description": "Watch movies, football, and UFC outdoors — in the forest, on rooftops, or from your car. AirScreen offers a unique cinematic experience blending nature, comfort, and emotion."
   }
 }

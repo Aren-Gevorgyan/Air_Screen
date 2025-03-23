@@ -28,7 +28,7 @@ export const viewport: Viewport = {
 
 export const generateMetadata = async ({ params }: PropsMeta) => {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Words' });
+  const t = await getTranslations({ locale, namespace: 'Seo' });
 
   return {
     title: 'AirScreen',
@@ -48,7 +48,7 @@ export const generateMetadata = async ({ params }: PropsMeta) => {
       },
     },
     openGraph: {
-      title: `${t('descTwo')} 🌟`,
+      title: `${t('title')} 🌟`,
       description: t('description'),
       url: "https://screen.com",
       siteName: "AirScreen",
