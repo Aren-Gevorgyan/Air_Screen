@@ -6,10 +6,10 @@ import Moon from '@/components/moon';
 import StarRating from '@/components/starRating';
 import Button from '@/components/button';
 import SaveButton from '@/components/saveButton';
-import Description from '@/pages/movie/description';
+import Description from '@/pagesComponents/movie/description';
 import { getActors, getMovie } from '@/requests/ssr';
-import Genres from '@/pages/movie/genres';
-import Actors from '@/pages/movie/actors';
+import Genres from '@/pagesComponents/movie/genres';
+import Actors from '@/pagesComponents/movie/actors';
 import clsx from 'clsx';
 import MovieTrailer from '@/components/trailer';
 
