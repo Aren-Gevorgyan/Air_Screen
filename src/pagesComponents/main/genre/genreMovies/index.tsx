@@ -14,6 +14,7 @@ import Carousel from 'react-multi-carousel';
 import Loading from '@/components/loading';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 
 type Props = {
   genreId: string | undefined;
@@ -21,6 +22,7 @@ type Props = {
 };
 
 const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
+  const params = useParams();
   const t = useTranslations('Words');
   const { data, isLoading } = useQuery({
     queryKey: [MOVIES_BY_GENRE, genreId],
@@ -47,7 +49,7 @@ const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
           {genresData.map((val: MovieData) => (
             <Link
               title="See more"
-              href={`/${val.id}`}
+              href={`/${params.locale}/${val.id}`}
               className={styles.content}
               key={val.id}
             >

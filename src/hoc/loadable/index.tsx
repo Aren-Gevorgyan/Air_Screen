@@ -1,9 +1,8 @@
-import Loading from '@/components/loading';
 import React, { Suspense, ComponentType, FC } from 'react';
 
 const Loadable = <P extends object>(Component: ComponentType<P>): FC<P> => {
   const WrappedComponent: FC<P> = (props: P) => (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<></>}>
       <Component {...props} />
     </Suspense>
   );

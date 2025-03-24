@@ -10,12 +10,14 @@ import styles from './styles.module.scss';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 
 type CarouselProps = {
   popular: Array<MovieData>;
 };
 
 const MyCarousel: FC<CarouselProps> = ({ popular }) => {
+  const params = useParams();
   const t = useTranslations('Words');
 
   return (
@@ -37,7 +39,7 @@ const MyCarousel: FC<CarouselProps> = ({ popular }) => {
             key={val.id}
             className={clsx(styles.item, val.poster_path ? '' : styles.noImage)}
           >
-            <Link href={`/${val.id}`}>
+            <Link href={`/${params.locale}/${val.id}`}>
               {!!val.poster_path && (
                 <Image src={img} alt={`AirScreen ${val.title} image`} fill />
               )}

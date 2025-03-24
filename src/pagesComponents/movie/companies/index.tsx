@@ -1,13 +1,15 @@
 import React, { FC } from 'react';
 import styles from './styles.module.scss';
 import { ProductionCompaniesType } from '@/assets/types';
+import { useTranslations } from 'next-intl';
 
 type Props = {
   companies: Array<ProductionCompaniesType>;
 };
 
 const Companies: FC<Props> = ({ companies }) => {
-  const title = companies?.length > 1 ? 'Ընկերություններ' : 'Ընկերություն';
+  const t = useTranslations("Words");
+  const title = companies?.length > 1 ? t('companies') : t('company');
   return (
     <div className={styles.container}>
       <h4>{title}</h4>

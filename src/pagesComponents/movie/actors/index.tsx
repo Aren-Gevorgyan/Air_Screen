@@ -33,22 +33,24 @@ const Actors: FC<Props> = ({ actors }) => {
 
   return (
     <div className={styles.container}>
-      {data.map((val) => (
-        <Button
-          title={t('seeMore')}
-          key={val.id}
-          onClick={onClick(val)}
-          className={styles.item}
-        >
-          {val.profile_path && (
-            <Image
-              src={`${IMAGE_URL}/${val.profile_path}`}
-              alt={`AirScreen ${val.name} image`}
-              fill
-            />
-          )}
-        </Button>
-      ))}
+      {data.map((val) => {
+        return (
+          <Button
+            title={t('seeMore')}
+            key={val.id}
+            onClick={onClick(val)}
+            className={styles.item}
+          >
+            {val.profile_path && (
+              <Image
+                src={`${IMAGE_URL}/${val.profile_path}`}
+                alt={`AirScreen ${val.name} image`}
+                fill
+              />
+            )}
+          </Button>
+        )
+      })}
       {state && <ActorsModal state={state} setFalse={setFalse} actor={actor} />}
     </div>
   );

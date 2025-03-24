@@ -41,7 +41,12 @@ const PrivacyPolicy = () => {
           <li>{t('text18')}:</li>
         </ul>
 
-        <h2>5. {t('text19')}</h2>
+        <h2>5. {t('text23')}</h2>
+        <ul>
+          <li>{t('text24')}</li>
+        </ul>
+
+        <h2>6. {t('text19')}</h2>
         <ul>
           <li>{t('text20')}:</li>
           <li>{t('text21')}:</li>

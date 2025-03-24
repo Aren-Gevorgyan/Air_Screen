@@ -22,7 +22,8 @@
     "thriller": "Thriller",
     "searchResults": "Search Results",
     "searchResult": "Search Result",
-    "my_lists": "My lists"
+    "my_lists": "My lists",
+    "minute": "minute"
   },
   "PrivacyPolicy": {
     "title": "Privacy Policy",
@@ -48,7 +49,9 @@
     "text19": "Contact us",
     "text20": "If you have questions about this privacy policy, please contact us at airscreen@gmail.com or call 041033456, 094033456",
     "text21": "By using our services, you agree to this privacy policy. It may be updated from time to time, so please check for changes",
-    "text22": "Thank you for choosing AirScreen"
+    "text22": "Thank you for choosing AirScreen",
+    "text23": "Prohibited Items",
+    "text24": "Outside Food and Beverages: Bringing outside food or beverages into the cinema premises is not allowed. This includes, but is not limited to, alcoholic drinks, carbonated beverages, snacks, etc."
   },
   "About": {
     "title": "About Us",

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './styles.module.scss';
 import Link from 'next/link';
 import MenuIcon from '../../../public/svgs/menuIcon';
@@ -13,7 +13,11 @@ import LanguageSwitcher from '../languageSwitcher';
 import SignInCom from '../../components/signInCom';
 import useWindowSize from '@/hooks/useWindowSize';
 
-const Header = () => {
+type Props = {
+  locale: "en" | "ru" | "hy"
+}
+
+const Header: FC<Props> = ({ locale }) => {
   const t = useTranslations('Words');
   const { isMd } = useWindowSize();
   const { state, setFalse, setToggle } = useBoolean();
@@ -21,11 +25,14 @@ const Header = () => {
   const onMouseLeave = () => {
     if (state) setFalse();
   };
-  const tab: Array<Tab> = [{ title: t('main'), url: '/' }, { title: t('my_lists'), url: '/my_lists' }, { title: t('about'), url: '/about' }];
+
+  const tab: Array<Tab> = [{ title: t('main'), url: `/${locale}` }, { title: t('my_lists'), url: `/${locale}/my_lists` }, {
+    title: t('about'), url: `/${locale}/about`
+  }];
 
   return (
     <header className={styles.container}>
-      <Link href="/">AirScreen</Link>
+      <Link href={`/${locale}/`}>AirScreen</Link>
       <nav onMouseLeave={onMouseLeave}>
         <Button className={styles.menuIcon} onClick={setToggle}>
           <MenuIcon color={state ? '#0ae30d' : 'white'} />

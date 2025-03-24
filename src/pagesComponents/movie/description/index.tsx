@@ -31,7 +31,7 @@ const Description: FC<Props> = ({ movie }) => {
       {!!movie.runtime && (
         <div className={styles.item}>
           <h4>{t('time')}</h4>
-          <span>{movie.runtime ? `${movie.runtime}ր.` : ''}</span>
+          <span>{movie.runtime ? `${movie.runtime} ${t('minute')}` : ''}</span>
         </div>
       )}
       {!!movie.release_date && (

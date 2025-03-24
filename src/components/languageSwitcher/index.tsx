@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useCallback } from 'react';
 import { languages } from '@/assets/constants';
 import { useRouter } from 'next/navigation';
