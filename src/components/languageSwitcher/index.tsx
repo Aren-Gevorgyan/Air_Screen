@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 import { useParams, usePathname } from 'next/dist/client/components/navigation';
 import { Languages } from '@/assets/types';
 import useBoolean from '@/hooks/useBoolean';
+// import { useRouter } from 'next/router';
 import { useRouter } from '@/i18n/navigation';
 
 const LanguageSwitcher = () => {

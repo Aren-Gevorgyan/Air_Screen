@@ -11,6 +11,7 @@ import { routing } from '@/i18n/routing';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { PropsMeta } from '@/assets/types';
 import { Viewport } from 'next';
+import { ClerkProvider } from '@clerk/nextjs'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -79,21 +80,23 @@ const RootLayout = async ({ children, params }: Readonly<Props>) => {
   const messages = await getMessages();
 
   return (
-    <html lang={lang}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <QueryProvider>
-          <NextIntlClientProvider messages={messages}>
-            <div id="__next">
-              <Header />
-              <div className={styles.main}>{children}</div>
-              <Footer />
-            </div>
-          </NextIntlClientProvider>
-        </QueryProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang={lang}>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <QueryProvider>
+            <NextIntlClientProvider messages={messages}>
+              <div id="__next">
+                <Header />
+                <div className={styles.main}>{children}</div>
+                <Footer />
+              </div>
+            </NextIntlClientProvider>
+          </QueryProvider>
+        </body>
+      </html>
+    </ClerkProvider >
   );
 };
 

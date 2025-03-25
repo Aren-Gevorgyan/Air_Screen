@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
 import MenuIcon from '../../../public/svgs/menuIcon';
 import { Tab } from '@/assets/types';
@@ -9,7 +9,7 @@ import Button from '../button';
 import useBoolean from '@/hooks/useBoolean';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '../languageSwitcher';
-import SignInCom from '../../components/signInCom';
+import SignInCom from '@/components/signInCom';
 import useWindowSize from '@/hooks/useWindowSize';
 import { Link } from '@/i18n/navigation';
 
