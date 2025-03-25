@@ -28,7 +28,6 @@ const customMiddleware = (request: NextRequest) => {
 };
 
 export const middleware = async (request: NextRequest) => {
-
   const customResponse = customMiddleware(request);
   if (customResponse) {
     return customResponse;

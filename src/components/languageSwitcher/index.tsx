@@ -20,11 +20,10 @@ const LanguageSwitcher = () => {
   );
 
   const changeLanguage = (newLocale: string) => {
-    // push(`/${pathname?.substring(3)}`, loc);
     replace(`/${pathname?.substring(3)}`, { locale: newLocale });
   };
 
-  const onClick = useCallback((lng: string) => () => changeLanguage(lng), []);
+  const onClick = useCallback((lng: string) => () => changeLanguage(lng), [pathname]);
   const selectedLng = (lng: Languages) => lng.country === params?.locale;
 
   return (

@@ -78,7 +78,6 @@ const RootLayout = async ({ children, params }: Readonly<Props>) => {
     notFound();
   }
   const messages = await getMessages();
-
   return (
     <ClerkProvider>
       <html lang={lang}>

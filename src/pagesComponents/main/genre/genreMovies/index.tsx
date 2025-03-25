@@ -48,7 +48,7 @@ const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
         >
           {genresData.map((val: MovieData) => (
             <Link
-              title="See more"
+              title={t('seeMore')}
               href={`/${params.locale}/${val.id}`}
               className={styles.content}
               key={val.id}
