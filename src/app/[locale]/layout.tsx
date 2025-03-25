@@ -86,9 +86,9 @@ const RootLayout = async ({ children, params }: Readonly<Props>) => {
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
             <div id="__next">
-              <Header locale={lang} />
+              <Header />
               <div className={styles.main}>{children}</div>
-              <Footer locale={lang} />
+              <Footer />
             </div>
           </NextIntlClientProvider>
         </QueryProvider>

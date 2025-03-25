@@ -2,7 +2,6 @@
 
 import React, { FC } from 'react';
 import styles from './styles.module.scss';
-import Link from 'next/link';
 import MenuIcon from '../../../public/svgs/menuIcon';
 import { Tab } from '@/assets/types';
 import Search from '../search';
@@ -12,12 +11,9 @@ import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '../languageSwitcher';
 import SignInCom from '../../components/signInCom';
 import useWindowSize from '@/hooks/useWindowSize';
+import { Link } from '@/i18n/navigation';
 
-type Props = {
-  locale: "en" | "ru" | "hy"
-}
-
-const Header: FC<Props> = ({ locale }) => {
+const Header = () => {
   const t = useTranslations('Words');
   const { isMd } = useWindowSize();
   const { state, setFalse, setToggle } = useBoolean();
@@ -26,13 +22,13 @@ const Header: FC<Props> = ({ locale }) => {
     if (state) setFalse();
   };
 
-  const tab: Array<Tab> = [{ title: t('main'), url: `/${locale}` }, { title: t('my_lists'), url: `/${locale}/my_lists` }, {
-    title: t('about'), url: `/${locale}/about`
+  const tab: Array<Tab> = [{ title: t('main'), url: `/` }, { title: t('my_lists'), url: `/my_lists` }, {
+    title: t('about'), url: `/about`
   }];
 
   return (
     <header className={styles.container}>
-      <Link href={`/${locale}/`}>AirScreen</Link>
+      <Link href={`/`}>AirScreen</Link>
       <nav onMouseLeave={onMouseLeave}>
         <Button className={styles.menuIcon} onClick={setToggle}>
           <MenuIcon color={state ? '#0ae30d' : 'white'} />

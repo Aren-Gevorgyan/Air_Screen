@@ -27,7 +27,7 @@ const Popular: FC<Props> = ({ popular }) => {
           </p>
         </div>
         <div className={styles.images}>
-          <Image priority src="/images/pngegg.png" alt="AirScreen hero" fill />
+          <Image priority src="/images/hero.png" alt="AirScreen hero" fill />
           <Image src="/images/heroThree.png" alt="AirScreen hero" fill />
         </div>
       </div>

@@ -1,6 +1,5 @@
-import React, { FC } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
-import Link from 'next/link';
 import {
   FaPhone,
   FaInstagram,
@@ -9,18 +8,15 @@ import {
   FaEnvelope,
 } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
-type Props = {
-  locale: "en" | "ru" | "hy"
-}
-
-const Footer: FC<Props> = ({ locale }) => {
+const Footer = () => {
   const t = useTranslations('Words');
 
   return (
     <footer className={styles.container}>
       <div className={styles.logo}>
-        <Link href={`/${locale}/`}>AirScreen</Link>
+        <Link href={`/`}>AirScreen</Link>
         <p>{t('descTwo')} 🌟</p>
         <p>AirScreen — {t('descThree')}</p>
       </div>
@@ -55,10 +51,10 @@ const Footer: FC<Props> = ({ locale }) => {
         </Link>
       </div>
       <div className={styles.moreInfo}>
-        <Link className={styles.link} href={`/${locale}/privacy-policy`}>
+        <Link className={styles.link} href={`/privacy-policy`}>
           {t('privacy_policy')}
         </Link>
-        <Link className={styles.link} href={`/${locale}/about`}>
+        <Link className={styles.link} href={`/about`}>
           {t('about')}
         </Link>
         <div className={styles.phone}>

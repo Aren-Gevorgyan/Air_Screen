@@ -2,15 +2,15 @@
 
 import React, { useCallback } from 'react';
 import { languages } from '@/assets/constants';
-import { useRouter } from 'next/navigation';
 import Button from '../button';
 import styles from './styles.module.scss';
 import { useParams, usePathname } from 'next/dist/client/components/navigation';
 import { Languages } from '@/assets/types';
 import useBoolean from '@/hooks/useBoolean';
+import { useRouter } from '@/i18n/navigation';
 
 const LanguageSwitcher = () => {
-  const { push } = useRouter();
+  const { replace } = useRouter();
   const { state, setToggle } = useBoolean();
   const params = useParams();
   const pathname = usePathname();
@@ -19,7 +19,8 @@ const LanguageSwitcher = () => {
   );
 
   const changeLanguage = (newLocale: string) => {
-    push(`/${newLocale}${pathname?.substring(3)}`);
+    // push(`/${pathname?.substring(3)}`, loc);
+    replace(`/${pathname?.substring(3)}`, { locale: newLocale });
   };
 
   const onClick = useCallback((lng: string) => () => changeLanguage(lng), []);
