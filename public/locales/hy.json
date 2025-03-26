@@ -23,7 +23,9 @@
     "searchResults": "Որոնման արդյունքներ",
     "searchResult": "Որոնման արդյունք",
     "my_lists": "Իմ ցուցակները",
-    "minute": "ր."
+    "minute": "ր.",
+    "get_movie_id": "Ստացեք ֆիլմի ID-ն",
+    "copied": "Պատճենվել է"
   },
   "PrivacyPolicy": {
     "title": "Գաղտնիության քաղաքականություն",

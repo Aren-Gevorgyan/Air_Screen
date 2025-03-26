@@ -4,14 +4,10 @@ import { IMAGE_URL } from '@/assets/constants';
 import Image from 'next/image';
 import Moon from '@/components/moon';
 import StarRating from '@/components/starRating';
-import Button from '@/components/button';
-import SaveButton from '@/components/saveButton';
-import Description from '@/pagesComponents/movie/description';
 import { getActors, getMovie } from '@/requests/ssr';
-import Genres from '@/pagesComponents/movie/genres';
-import Actors from '@/pagesComponents/movie/actors';
 import clsx from 'clsx';
 import MovieTrailer from '@/components/trailer';
+import Info from '@/pagesComponents/movie/info';
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -37,16 +33,7 @@ const Movie: FC<Props> = async ({ params }) => {
                 />
               )}
             </div>
-            <div className={styles.impotentInfo}>
-              <span className={styles.title}>{movie.title || ''}</span>
-              <Actors actors={actors.cast} />
-              <div className={styles.buttons}>
-                <Button className={styles.pick}>Գրանցել</Button>
-                <SaveButton className={styles.save} />
-              </div>
-              {movie?.genres?.length && <Genres genres={movie.genres} />}
-              <Description movie={movie} />
-            </div>
+            <Info movie={movie} actors={actors} />
           </div>
           <StarRating rating={movie.vote_average} />
           <MovieTrailer movieId={id} />

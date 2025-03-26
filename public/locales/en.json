@@ -23,7 +23,9 @@
     "searchResults": "Search Results",
     "searchResult": "Search Result",
     "my_lists": "My lists",
-    "minute": "minute"
+    "minute": "minute",
+    "get_movie_id": "Get movie ID",
+    "copied": "Copied"
   },
   "PrivacyPolicy": {
     "title": "Privacy Policy",
