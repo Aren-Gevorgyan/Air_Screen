@@ -1,10 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
 import ArrowLeft from '../../../public/svgs/arrowLeft';
 import { Link } from '@/i18n/navigation';
 
-const NotFound: FC<any> = async () => {
-
+const NotFound = () => {
   return (
     <div className={styles.notFound}>
       <div>
