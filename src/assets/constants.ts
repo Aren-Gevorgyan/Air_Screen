@@ -29,14 +29,14 @@ export const responsive = {
 export const languages: Array<Languages> = [
   {
     country: 'en',
-    flag: '🇬🇧',
+    flag: 'us',
   },
   {
     country: 'ru',
-    flag: '🇷🇺',
+    flag: 'ru',
   },
   {
     country: 'hy',
-    flag: '🇦🇲',
+    flag: 'am',
   },
 ];

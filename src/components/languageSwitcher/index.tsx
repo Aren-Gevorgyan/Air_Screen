@@ -7,8 +7,8 @@ import styles from './styles.module.scss';
 import { useParams, usePathname } from 'next/dist/client/components/navigation';
 import { Languages } from '@/assets/types';
 import useBoolean from '@/hooks/useBoolean';
-// import { useRouter } from 'next/router';
 import { useRouter } from '@/i18n/navigation';
+import Flag from 'react-world-flags';
 
 const LanguageSwitcher = () => {
   const { replace } = useRouter();
@@ -29,7 +29,7 @@ const LanguageSwitcher = () => {
   return (
     <div className={styles.container}>
       <Button className={styles.flag} onClick={setToggle}>
-        {selectedItem?.flag}
+        <Flag code={selectedItem?.flag} style={{ width: 20, height: 10 }} />
       </Button>
       {state && (
         <div className={styles.languages}>
@@ -40,7 +40,8 @@ const LanguageSwitcher = () => {
               className={selectedLng(lng) ? styles.active : styles.options}
               disabled={selectedLng(lng)}
             >
-              {lng.country.toUpperCase()} {lng.flag}
+              {lng.country.toUpperCase()}
+              <Flag code={lng?.flag} style={{ width: 20, height: 10 }} />
             </Button>
           ))}
         </div>
