@@ -12,6 +12,7 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import { PropsMeta } from '@/assets/types';
 import { Viewport } from 'next';
 import { ClerkProvider } from '@clerk/nextjs'
+import GoUp from '@/components/goUp';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -88,7 +89,10 @@ const RootLayout = async ({ children, params }: Readonly<Props>) => {
             <NextIntlClientProvider messages={messages}>
               <div id="__next">
                 <Header />
-                <div className={styles.main}>{children}</div>
+                <div className={styles.main}>
+                  {children}
+                  <GoUp/>
+                </div>
                 <Footer />
               </div>
             </NextIntlClientProvider>
