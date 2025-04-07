@@ -1,0 +1,22 @@
+@use '../../../styles/global.scss' as *;
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 40px 0;
+
+    .registr {
+        width: 200px;
+        padding: 16px 12px;
+        font-size: 14px;
+        background-color: $green2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: green;
+        }
+    }
+}

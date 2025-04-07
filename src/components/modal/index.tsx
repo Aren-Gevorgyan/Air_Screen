@@ -3,16 +3,18 @@
 import React, { FC, useEffect } from 'react';
 import ReactModal from 'react-modal';
 import customStyles from './style';
-import Button from '../button';
+
 import styles from './styles.module.scss';
+import { clsx } from 'clsx';
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  className?: string
 };
 
-const Modal: FC<Props> = ({ isOpen, onClose, children }) => {
+const Modal: FC<Props> = ({ isOpen, onClose, className, children }) => {
   useEffect(() => {
     ReactModal.setAppElement('#__next');
   }, []);
@@ -26,9 +28,9 @@ const Modal: FC<Props> = ({ isOpen, onClose, children }) => {
       overlayClassName="modalOverlay"
       ariaHideApp={false} // Necessary for Next.js to prevent errors
     >
-      <Button onClick={onClose} className={styles.container}>
+      <div className={clsx(styles.container, className)}>
         {children}
-      </Button>
+      </div>
     </ReactModal>
   );
 };

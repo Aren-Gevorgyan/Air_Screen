@@ -1,19 +1,19 @@
-import React, { FC, lazy } from 'react';
-import { auth } from "@clerk/nextjs/server";
-import Loadable from '@/hoc/loadable';
-
-const LoginModal = Loadable(lazy(() => import('@/components/loginModal')));
+import React, { FC } from 'react';
+import WithAuth from '@/hoc/withAuth';
+import styles from './styles.module.scss';
+import AddVisitModal from '@/pagesComponents/myLista/addVisitmodal/page';
 
 type Props = {
   searchParams?: Promise<{ auth: boolean }>;
 };
 
-const MyLists: FC<Props> = async () => {
-  const { userId } = await auth();
+const MyLists: FC<Props> = () => {
 
-  return <div>
-    {!userId ? <LoginModal/> : <> </>}
-  </div>;
+  return (
+    <div className={styles.container}>
+      <AddVisitModal />
+    </div>
+  )
 };
 
-export default MyLists;
+export default WithAuth(MyLists);

@@ -1,4 +1,6 @@
 import { API_KEY, BASE_URL } from '@/assets/constants';
+import { db } from '@/assets/firebaseConfig';
+import { ref, push, get } from 'firebase/database';
 
 export const searchMovies = async (
   search: string | null,
@@ -57,4 +59,30 @@ export const fetchMovieTrailer = async (movieId: string): Promise<string> => {
   return trailer
     ? `https://www.youtube.com/embed/${trailer.key}`
     : 'https://www.youtube.com/embed/RmgMd-eeCe0';
+};
+
+export const addMovie = async (data: any) => {
+  try {
+    const userRef = ref(db, 'movies');
+    return await push(userRef, data);;
+  } catch (error: any) {
+    console.log(error, 1112222);
+  }
+};
+
+export const fetchUsers = async () => {
+  try {
+    const usersRef = ref(db, 'movies');
+    const snapshot = await get(usersRef);
+
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const formattedUsers = Object.values(data);
+      return formattedUsers
+    } else {
+      console.log('No data available');
+    }
+  } catch (error) {
+    console.error('Error getting users:', error);
+  }
 };

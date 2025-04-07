@@ -25,7 +25,13 @@
     "my_lists": "My lists",
     "minute": "minute",
     "get_movie_id": "Get movie ID",
-    "copied": "Copied"
+    "copied": "Copied",
+    "registr": "Record Visit",
+    "film_id": "Film ID",
+    "date_watch": "Date",
+    "cancel": "Cancel",
+    "create": "Create",
+    "film_name": "Film name"
   },
   "PrivacyPolicy": {
     "title": "Privacy Policy",

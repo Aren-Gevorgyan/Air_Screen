@@ -31,6 +31,7 @@ export type ProductionCompaniesType = {
 export type Tab = {
   title: string;
   url: string;
+  active: boolean
 };
 
 export type Languages = {
