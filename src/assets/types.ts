@@ -34,6 +34,13 @@ export type Tab = {
   active: boolean
 };
 
+export type Movies = {
+  id: string;
+  date: string;
+  name: string;
+  hour: string;
+};
+
 export type Languages = {
   country: string;
   flag: string;

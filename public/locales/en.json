@@ -31,7 +31,10 @@
     "date_watch": "Date",
     "cancel": "Cancel",
     "create": "Create",
-    "film_name": "Film name"
+    "film_name": "Film name",
+    "save_movie_error": "We couldn't save your order",
+    "hour": "Hour",
+    "error_empty": "You didn't complete necessary data"
   },
   "PrivacyPolicy": {
     "title": "Privacy Policy",
