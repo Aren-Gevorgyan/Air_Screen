@@ -2,7 +2,7 @@
 
 import { memo, useEffect, useState } from "react";
 import { Movies } from "@/assets/types";
-import { fetchUsers } from "@/requests/csr";
+import { fetchMovies } from "@/requests/csr";
 import styles from './styles.module.scss';
 import Loading from "@/components/loading";
 import { useTranslations } from "next-intl";
@@ -14,7 +14,7 @@ const Items = () => {
     const [isLoading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        fetchUsers().then((res: Array<Movies> | undefined) => {
+        fetchMovies().then((res: Array<Movies | any> | undefined) => {
             if (res) setMovies(res);
         }).finally(() => {
             setLoading(false);
@@ -49,7 +49,7 @@ const Items = () => {
                                         <span>{val.phone}</span>
                                     </div>
                                 </div>
-                                <Actions id={val.id} />
+                                <Actions id={val.id} setMovies={setMovies} setLoading={setLoading} />
                             </div>
                         )
                     })

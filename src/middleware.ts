@@ -20,7 +20,8 @@ const customMiddleware = async (request: NextRequest, auth: ClerkMiddlewareAuth)
   if (isCoincide && !userId) {
     if (!isAuth) {
       url.searchParams.set('auth', 'false');
-      return NextResponse.redirect(url);
+      const redirect = url.href.includes('order') ? new URL('/', request.url) : url;
+      return NextResponse.redirect(redirect);
     }
   }
 

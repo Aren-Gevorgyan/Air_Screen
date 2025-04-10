@@ -6,11 +6,9 @@ import { addMovie } from "@/requests/csr";
 import { useTranslations } from "next-intl";
 import { FormEvent, useCallback, useEffect, useState } from "react";
 import styles from './styles.module.scss';
-import { Link, redirect, useRouter } from "@/i18n/navigation";
-import { useAuth } from "@clerk/clerk-react";
+import { Link, useRouter } from "@/i18n/navigation";
 
 const Order = () => {
-    const { userId } = useAuth();
     const t = useTranslations("Words");
     const { push } = useRouter();
     const [filmId, setFilmId] = useState<string>('');
@@ -54,13 +52,6 @@ const Order = () => {
             setPhone('')
         }
     }, []);
-
-    useEffect(() => {
-        if (!userId) redirect({
-            href: '/my_lists',
-            locale: 'en'
-        });
-    }, [userId])
 
     return (
         <form className={styles.container} onSubmit={onSubmit}>

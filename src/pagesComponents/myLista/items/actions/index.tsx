@@ -4,13 +4,16 @@ import Button from '@/components/button';
 import { memo } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import styles from './styles.module.scss';
-import { deleteItem } from '@/requests/csr';
+import { deleteItem, fetchMovies } from '@/requests/csr';
+import { Movies } from '@/assets/types';
 
 type Props = {
-    id?: string
+    id?: string,
+    setLoading: (val: boolean) => void,
+    setMovies: (val: Array<Movies>) => void
 };
 
-const Actions = ({ id }: Props) => {
+const Actions = ({ id, setMovies, setLoading }: Props) => {
 
     const handleEdit = () => {
         console.log('Editing item:', id);
@@ -19,6 +22,11 @@ const Actions = ({ id }: Props) => {
     const handleDelete = async () => {
         try {
             id && await deleteItem(id);
+            fetchMovies().then((res:  Array<Movies | any> | undefined) => {
+                if (res) setMovies(res);
+            }).finally(() => {
+                setLoading(false);
+            });
         } catch (err) {
             console.error('Delete failed:', err);
         }

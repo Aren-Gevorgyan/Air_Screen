@@ -67,23 +67,29 @@ export const addMovie = async (data: Movies) => {
   return await push(userRef, data);;
 };
 
-export const fetchUsers = async () => {
+export const fetchMovies = async ()  => {
   try {
-    const usersRef = ref(db, 'movies');
-    const snapshot = await get(usersRef);
+    const snapshot = await get(ref(db, 'movies'));
 
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const formattedUsers: Array<Movies> = Object.values(data);
-      return formattedUsers
-    } else {
-      console.log('No data available');
+    if (!snapshot.exists()) {
+      return [];
     }
+
+    const data = snapshot.val();
+
+    return Object.entries(data).map(([id, value]) => {
+      if (typeof value === 'object' && value !== null) {
+        return {
+          id,
+          ...value,
+        } as Movies; 
+      }
+    });
   } catch (error) {
     console.error('Error getting users:', error);
   }
 };
 
 export const deleteItem = (movieId: string) => {
-    return remove(ref(db, 'movies/' + movieId));
+  return remove(ref(db, `/movies/${movieId}`));
 };
