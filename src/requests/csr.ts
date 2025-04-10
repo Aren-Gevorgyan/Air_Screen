@@ -1,7 +1,7 @@
 import { API_KEY, BASE_URL } from '@/assets/constants';
 import { db } from '@/assets/firebaseConfig';
 import { Movies } from '@/assets/types';
-import { ref, push, get } from 'firebase/database';
+import { ref, push, get, remove } from 'firebase/database';
 
 export const searchMovies = async (
   search: string | null,
@@ -82,4 +82,8 @@ export const fetchUsers = async () => {
   } catch (error) {
     console.error('Error getting users:', error);
   }
+};
+
+export const deleteItem = (movieId: string) => {
+    return remove(ref(db, 'movies/' + movieId));
 };

@@ -27,11 +27,11 @@
     "get_movie_id": "Get movie ID",
     "copied": "Copied",
     "registr": "Record Visit",
-    "film_id": "Film ID",
+    "film_id": "ID",
     "date_watch": "Date",
     "cancel": "Cancel",
     "create": "Create",
-    "film_name": "Film name",
+    "film_name": "Name",
     "save_movie_error": "We couldn't save your order",
     "hour": "Hour",
     "error_empty": "You didn't complete necessary data"

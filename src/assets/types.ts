@@ -35,10 +35,12 @@ export type Tab = {
 };
 
 export type Movies = {
-  id: string;
+  id?: string;
+  filmId: string;
   date: string;
   name: string;
   hour: string;
+  phone: string;
 };
 
 export type Languages = {

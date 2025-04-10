@@ -6,6 +6,7 @@ import { fetchUsers } from "@/requests/csr";
 import styles from './styles.module.scss';
 import Loading from "@/components/loading";
 import { useTranslations } from "next-intl";
+import Actions from "./actions";
 
 const Items = () => {
     const t = useTranslations("Words");
@@ -28,10 +29,27 @@ const Items = () => {
                 movies?.length ?
                     movies?.map((val: Movies) => {
                         return (
-                            <div key={val.name} className={styles.item}>
-                                <span>{val.id}</span>
-                                <span>{val.name}</span>
-                                <span>{val.date} {val.hour}</span>
+                            <div key={val.name} className={styles.itemContainer}>
+                                <div className={styles.backgorund} />
+                                <div className={styles.items}>
+                                    <div className={styles.item}>
+                                        <span>{t('film_id')} :</span>
+                                        <span>{val.filmId || "_"}</span>
+                                    </div>
+                                    <div className={styles.item}>
+                                        <span>{t('film_name')} :</span>
+                                        <span>{val.name}</span>
+                                    </div>
+                                    <div className={styles.item}>
+                                        <span>{t('date_watch')} :</span>
+                                        <span>{val.date} {val.hour}</span>
+                                    </div>
+                                    <div className={styles.item}>
+                                        <span>{t('phone')} :</span>
+                                        <span>{val.phone}</span>
+                                    </div>
+                                </div>
+                                <Actions id={val.id} />
                             </div>
                         )
                     })

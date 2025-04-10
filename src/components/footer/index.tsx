@@ -19,6 +19,7 @@ const Footer = () => {
         <Link href={`/`}>AirScreen</Link>
         <p>{t('descTwo')} 🌟</p>
         <p>AirScreen — {t('descThree')}</p>
+        <span>© 2025 AirScreen</span>
       </div>
       <div className={styles.contact}>
         <Link href="/" className={styles.networks}>

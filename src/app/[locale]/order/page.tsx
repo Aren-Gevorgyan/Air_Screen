@@ -6,15 +6,18 @@ import { addMovie } from "@/requests/csr";
 import { useTranslations } from "next-intl";
 import { FormEvent, useCallback, useEffect, useState } from "react";
 import styles from './styles.module.scss';
-import { Link, useRouter } from "@/i18n/navigation";
+import { Link, redirect, useRouter } from "@/i18n/navigation";
+import { useAuth } from "@clerk/clerk-react";
 
 const Order = () => {
+    const { userId } = useAuth();
     const t = useTranslations("Words");
     const { push } = useRouter();
     const [filmId, setFilmId] = useState<string>('');
     const [filmName, setFilmName] = useState<string>('');
     const [date, setDate] = useState<string>('');
     const [hour, setHour] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
     const [errorMessage, setError] = useState<string>('');
     const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -28,10 +31,11 @@ const Order = () => {
         try {
             setLoading(true);
             await addMovie({
-                id: filmId,
+                filmId,
                 name: filmName,
                 date,
-                hour
+                hour,
+                phone,
             });
             push('my_lists');
             setLoading(false);
@@ -46,9 +50,17 @@ const Order = () => {
             setFilmId('');
             setFilmName('');
             setHour('');
-            setError('')
+            setError('');
+            setPhone('')
         }
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        if (!userId) redirect({
+            href: '/my_lists',
+            locale: 'en'
+        });
+    }, [userId])
 
     return (
         <form className={styles.container} onSubmit={onSubmit}>
@@ -68,6 +80,10 @@ const Order = () => {
                 <label>
                     {t('date')} *
                     <input type='date' name='date' required value={date} onChange={onChange(setDate)} />
+                </label>
+                <label>
+                    {t('phone')} *
+                    <input type='string' name='phone' placeholder={t('phone')} required value={phone} onChange={onChange(setPhone)} />
                 </label>
                 {errorMessage && <span className={styles.error}>{errorMessage}</span>}
             </div>

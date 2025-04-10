@@ -1,0 +1,53 @@
+@use '../../../../styles/global.scss' as *;
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.732);
+  padding: 20px;
+  &>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  button {
+    background-color: $dark;
+    border-radius: 4px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $gray;
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 15px;
+
+      path {
+        fill: white;
+      }
+    }
+  }
+
+  .edit {
+    background-color: $green2;
+    &:hover {
+      background-color: #18710c;
+    }
+  }
+
+  .delete {
+    background-color: $red;
+    &:hover {
+      background-color: #9d120d;
+    }
+  }
+}
