@@ -13,6 +13,7 @@ import { PropsMeta } from '@/assets/types';
 import { Viewport } from 'next';
 import { ClerkProvider } from '@clerk/nextjs'
 import GoUp from '@/components/goUp';
+import { Toast } from '@/components/toast';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -95,6 +96,7 @@ const RootLayout = async ({ children, params }: Readonly<Props>) => {
                 </div>
                 <Footer />
               </div>
+              <Toast/>
             </NextIntlClientProvider>
           </QueryProvider>
         </body>

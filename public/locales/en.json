@@ -34,7 +34,9 @@
     "film_name": "Name",
     "save_movie_error": "We couldn't save your order",
     "hour": "Hour",
-    "error_empty": "You didn't complete necessary data"
+    "error_empty": "You didn't complete necessary data",
+    "error_order_delete": "We were unable to delete your order.",
+    "success_order_delete": "The order was successfully deleted."
   },
   "PrivacyPolicy": {
     "title": "Privacy Policy",
