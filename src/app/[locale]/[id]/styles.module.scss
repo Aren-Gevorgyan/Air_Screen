@@ -25,7 +25,7 @@
 				display: flex;
 				align-items: flex-start;
 				gap: 20px;
-				@media screen and (max-width: $laptops_size) {
+				@media screen and (max-width: 880px) {
 					flex-wrap: wrap;
 				}
 				.image {

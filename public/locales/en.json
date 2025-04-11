@@ -22,7 +22,7 @@
     "thriller": "Thriller",
     "searchResults": "Search Results",
     "searchResult": "Search Result",
-    "my_lists": "My lists",
+    "my_orders": "My orders",
     "minute": "minute",
     "get_movie_id": "Get movie ID",
     "copied": "Copied",
@@ -36,7 +36,11 @@
     "hour": "Hour",
     "error_empty": "You didn't complete necessary data",
     "error_order_delete": "We were unable to delete your order.",
-    "success_order_delete": "The order was successfully deleted."
+    "success_order_delete": "The order was successfully deleted.",
+    "get_movie_title": "Get movie title",
+    "edit": "Edit",
+    "edit_error": "We couldn't change the data",
+    "get_movie_error": "We couldn't get movies"
   },
   "PrivacyPolicy": {
     "title": "Privacy Policy",

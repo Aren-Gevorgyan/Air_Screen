@@ -6,10 +6,11 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import styles from './styles.module.scss';
 import { deleteItem, fetchMovies } from '@/requests/csr';
 import { Movies } from '@/assets/types';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { showToast } from '@/components/toast';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
+
 type Props = {
     id?: string,
     setLoading: (val: boolean) => void,
@@ -19,31 +20,27 @@ type Props = {
 const Actions = ({ id, setMovies, setLoading }: Props) => {
     const t = useTranslations("Words");
 
-    const handleEdit = () => {
-        console.log('Editing item:', id);
-    };
-
     const handleDelete = async () => {
         try {
             id && await deleteItem(id);
             showToast(t('success_order_delete'), 'success');
-            fetchMovies().then((res:  Array<Movies | any> | undefined) => {
-                if (res) setMovies(res);
-            }).finally(() => {
-                setLoading(false);
-            });
+            const res: Array<Movies | any> | undefined = await fetchMovies();
+            if (res) setMovies(res);
+
         } catch (err) {
             showToast(t('error_order_delete'), 'error');
             console.error('Delete failed:', err);
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div className={styles.container}>
             <div>
-                <Button onClick={handleEdit} className={styles.edit}>
+                <Link href={`/order?id=${id}`} className={styles.edit}>
                     <FaEdit />
-                </Button>
+                </Link>
                 <Button onClick={handleDelete} className={styles.delete}>
                     <FaTrash />
                 </Button>

@@ -13,14 +13,15 @@ const customMiddleware = async (request: NextRequest, auth: ClerkMiddlewareAuth)
   const filterValue = url.searchParams.get('value');
   const locale = url.pathname.split('/')[1];
 
-  const protectedRoutes = [`/${locale}/my_lists`, `/${locale}/order`];
+  const protectedRoutes = [`/${locale}/my_orders`, `/${locale}/order`];
   const isCoincide = protectedRoutes.some((route) => url.pathname.startsWith(route));
+  url.searchParams.set('userId', userId || '');
 
   // Redirect if user is not authenticated on protected routes
   if (isCoincide && !userId) {
     if (!isAuth) {
       url.searchParams.set('auth', 'false');
-      const redirect = url.href.includes('order') ? new URL('/', request.url) : url;
+      const redirect = url.href.includes('my_orders') ? url : new URL('/', request.url);
       return NextResponse.redirect(redirect);
     }
   }

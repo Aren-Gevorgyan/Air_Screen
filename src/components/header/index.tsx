@@ -27,7 +27,7 @@ const Header = () => {
 
   const tab: Array<Tab> = [
     { title: t('main'), url: `/`, active: lastSegment === "hy" || lastSegment === "ru" || lastSegment === "en" },
-    { title: t('my_lists'), url: `/my_lists`, active: lastSegment === "my_lists" },
+    { title: t('my_orders'), url: `/my_orders`, active: lastSegment === "my_orders" },
     { title: t('about'), url: `/about`, active: lastSegment === "about" }
   ];
 

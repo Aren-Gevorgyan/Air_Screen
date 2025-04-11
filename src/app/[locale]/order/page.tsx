@@ -1,16 +1,21 @@
 'use client'
 
-import { InputParamter } from "@/assets/types";
+import { InputParamter, Movies } from "@/assets/types";
 import Button from "@/components/button";
-import { addMovie } from "@/requests/csr";
+import { addMovie, editItem, fetchMovieById } from "@/requests/csr";
 import { useTranslations } from "next-intl";
 import { FormEvent, useCallback, useEffect, useState } from "react";
 import styles from './styles.module.scss';
 import { Link, useRouter } from "@/i18n/navigation";
+import useQueryParam from "@/hooks/useQueryParam";
+import { showToast } from "@/components/toast";
+import { useAuth } from "@clerk/clerk-react";
 
 const Order = () => {
+    const auth = useAuth();
     const t = useTranslations("Words");
     const { push } = useRouter();
+    const movieId = useQueryParam('id');
     const [filmId, setFilmId] = useState<string>('');
     const [filmName, setFilmName] = useState<string>('');
     const [date, setDate] = useState<string>('');
@@ -18,6 +23,19 @@ const Order = () => {
     const [phone, setPhone] = useState<string>('');
     const [errorMessage, setError] = useState<string>('');
     const [isLoading, setLoading] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (movieId) {
+            fetchMovieById(movieId).then((res: Movies | null) => {
+                if (!res) return;
+                setDate(res.date);
+                setFilmId(res.filmId);
+                setFilmName(res.name);
+                setHour(res.hour);
+                setPhone(res.phone);
+            }).catch(() => showToast(t('edit_error'), 'error'))
+        }
+    }, [movieId]);
 
     const onChange = useCallback((callback: (val: string) => void) => (event: InputParamter) => {
         callback(event.target.value);
@@ -28,17 +46,31 @@ const Order = () => {
         if (!filmName || !date || !hour) return setError(t('error_empty'));
         try {
             setLoading(true);
-            await addMovie({
-                filmId,
-                name: filmName,
-                date,
-                hour,
-                phone,
-            });
-            push('my_lists');
+            if (movieId) {
+                await editItem(movieId, {
+                    filmId,
+                    name: filmName,
+                    date,
+                    hour,
+                    phone,
+                });
+                push('/my_orders')
+            } else {
+                await addMovie({
+                    filmId,
+                    userId: auth.userId,
+                    name: filmName,
+                    date,
+                    hour,
+                    phone,
+                });
+                push('my_orders');
+            }
+
             setLoading(false);
         } catch (error) {
             setError(t('save_movie_error'));
+            if (movieId) showToast(t('edit_error'), 'error')
         }
     }
 
@@ -79,8 +111,8 @@ const Order = () => {
                 {errorMessage && <span className={styles.error}>{errorMessage}</span>}
             </div>
             <div className={styles.buttons}>
-                <Link href='/my_lists'>{t('cancel')}</Link>
-                <Button disabled={isLoading} type="submit">{t('create')}</Button>
+                <Link href='/my_orders'>{t('cancel')}</Link>
+                <Button disabled={isLoading} type="submit">{movieId ? t('edit') : t('create')}</Button>
             </div>
         </form>
     )

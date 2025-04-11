@@ -9,12 +9,18 @@ type Props = {
 
 const Companies: FC<Props> = ({ companies }) => {
   const t = useTranslations("Words");
-  const title = companies?.length > 1 ? t('companies') : t('company');
+  let data: Array<ProductionCompaniesType> = [];
+  let title = t('company');
+  if (companies.length > 1) {
+    title = t('companies');
+    data = companies.slice(0, 3)
+  }
+
   return (
     <div className={styles.container}>
       <h4>{title}</h4>
       <div>
-        {companies?.map((val) => (
+        {data?.map((val) => (
           <span key={val.id} className={styles.item}>
             {val.name} {val.origin_country}
           </span>

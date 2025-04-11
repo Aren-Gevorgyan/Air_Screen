@@ -13,6 +13,9 @@
   padding-bottom: 40px;
   border-radius: 6px;
   .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     & > a {
       flex: none;
       text-align: left;

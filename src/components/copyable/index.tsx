@@ -14,7 +14,7 @@ type Props = {
   buttonText: string,
 }
 
-const Copyable: FC<Props> = ({ textToCopy, buttonTitle, buttonText, className }) => {
+const Copyable: FC<Props> = ({ textToCopy = '', buttonTitle = '', buttonText, className }) => {
   const t = useTranslations('Words');
   const [copied, setCopied] = useState<boolean>(false);
 
@@ -31,7 +31,7 @@ const Copyable: FC<Props> = ({ textToCopy, buttonTitle, buttonText, className })
   return (
     <div className={styles.container}>
       <Button title={t(buttonTitle)} onClick={handleCopy} className={className}>
-        {!!buttonText && <span>{buttonText}</span>} <FaCopy /> {copied && <FaCheck color="#0ae30d" />}
+        {!!buttonText && <span>{buttonText}</span>} {copied ? <FaCheck color="#0ae30d" /> : <FaCopy />}
       </Button>
     </div>
   );

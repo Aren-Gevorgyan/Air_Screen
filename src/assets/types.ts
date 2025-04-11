@@ -1,5 +1,12 @@
 import { ChangeEvent } from 'react';
 
+export type ProductionCompaniesType = {
+  id: number;
+  name: string;
+  logo_path: string;
+  origin_country: string;
+};
+
 export type MovieData = {
   adult: boolean;
   backdrop_path: string;
@@ -21,13 +28,6 @@ export type MovieData = {
   origin_country: Array<string>;
 };
 
-export type ProductionCompaniesType = {
-  id: number;
-  name: string;
-  logo_path: string;
-  origin_country: string;
-};
-
 export type Tab = {
   title: string;
   url: string;
@@ -36,6 +36,7 @@ export type Tab = {
 
 export type Movies = {
   id?: string;
+  userId?: string | null;
   filmId: string;
   date: string;
   name: string;

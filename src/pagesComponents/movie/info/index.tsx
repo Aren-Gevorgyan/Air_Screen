@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, memo } from 'react'
 import styles from './styles.module.scss';
 import Actors from '../actors';
 import SaveButton from '@/components/saveButton';
@@ -15,7 +15,7 @@ type Props = {
 const Info: FC<Props> = ({ movie, actors }) => {
     return (
         <div className={styles.container}>
-            <span className={styles.title}>{movie.title || ''}</span>
+            <Copyable textToCopy={String(movie.title)} buttonText={movie.title} className={styles.name} buttonTitle="get_movie_title"/>
             <Actors actors={actors.cast} />
             <div className={styles.buttons}>
                 <Copyable textToCopy={String(movie.id)} buttonText="ID" className={styles.pick} buttonTitle="get_movie_id"/>
@@ -27,4 +27,4 @@ const Info: FC<Props> = ({ movie, actors }) => {
     )
 }
 
-export default Info
+export default memo(Info);

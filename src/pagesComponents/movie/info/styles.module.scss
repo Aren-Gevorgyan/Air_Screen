@@ -5,45 +5,74 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+
+	.name {
+		background-color: transparent;
+		border: none;
+		padding: 0;
+		font-size: 16px;
+		color: white;
+		text-align: left;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		span {
+			font-size: clamp(1.5rem, 4vw, 2rem);
+			color: white;
+			text-align: left;
+		}
+	}
+
 	.buttons {
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
 		gap: 20px;
+
 		@media screen and (max-width: $mobile_size) {
 			gap: 10px;
 		}
+
 		.pick,
 		.save {
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			width: 200px;
 			height: 50px;
 			border-radius: 4px;
 			font-size: clamp(0.6rem, 4vw, 1.1rem);
 			color: white;
 			border: none;
-            background: linear-gradient(to left, $red, rgb(79, 1, 1));
-            cursor: pointer;
+			background: linear-gradient(to left, $red, rgb(79, 1, 1));
+			cursor: pointer;
+
 			&:hover {
 				background: linear-gradient(to left, rgb(79, 1, 1), $red);
 			}
+
 			@media screen and (max-width: $sm) {
 				width: auto;
 				flex: 1;
 			}
 		}
+
 		.save {
 			width: 100px;
 			background: linear-gradient(to left, $green2, $green);
+
 			&:hover {
 				background: linear-gradient(to left, $green, $green2);
 			}
 		}
-		.pick{
+
+		.pick {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			gap: 10px;
-			& > span {
+
+			&>span {
 				color: white;
 				font-size: 14px;
 			}
