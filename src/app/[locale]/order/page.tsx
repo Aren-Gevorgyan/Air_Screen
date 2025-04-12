@@ -1,10 +1,10 @@
 'use client'
 
+import React, { FormEvent, useCallback, useEffect, useState } from "react";
 import { InputParamter, Movies } from "@/assets/types";
 import Button from "@/components/button";
 import { addMovie, editItem, fetchMovieById } from "@/requests/csr";
 import { useTranslations } from "next-intl";
-import { FormEvent, useCallback, useEffect, useState } from "react";
 import styles from './styles.module.scss';
 import { Link, useRouter } from "@/i18n/navigation";
 import useQueryParam from "@/hooks/useQueryParam";
@@ -69,6 +69,7 @@ const Order = () => {
 
             setLoading(false);
         } catch (error) {
+            console.log("🚀 ~ onSubmit ~ error:", error)
             setError(t('save_movie_error'));
             if (movieId) showToast(t('edit_error'), 'error')
         }

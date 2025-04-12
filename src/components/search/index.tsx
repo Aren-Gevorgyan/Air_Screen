@@ -39,9 +39,9 @@ const Search = () => {
     if (isMd) {
       setTrue();
     } else {
-      !filter && setFalse();
+      if(!filter) setFalse();
     }
-  }, [isMd]);
+  }, [isMd, filter]);
 
   const onChange = (event: InputParamter) => {
     setValue(event.target.value);
@@ -55,7 +55,7 @@ const Search = () => {
       if (filter && 'null' !== filter)
         push(`/${params?.locale}/search?value=${filter}`);
     },
-    [filter]
+    [filter, params]
   );
 
   return (

@@ -16,8 +16,9 @@
 	&>a {
 		display: flex;
 		align-items: center;
+		gap: 10px;
 		text-align: left;
-		font-size: clamp(1.4rem, 5vw, 2.5rem);
+		font-size: 40px;
 		font-weight: bold;
 		background: linear-gradient(to left, $green2, $green);
 		-webkit-background-clip: text;
@@ -28,28 +29,25 @@
 			background: linear-gradient(to left, $green, $green2);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
+
+			svg {
+				path {
+					fill: $green;
+				}
+			}
 		}
 
 		@media screen and (max-width: $laptops_size) {
-			font-size: clamp(1.8rem, 4vw, 2.5rem);
+			font-size: 28px;
+
+			svg {
+				width: 30px;
+			}
 		}
 
-		svg {
-			margin-top: 10px;
-			margin-left: -25px;
-
-			@media screen and (max-width: $laptops_size) {
-				width: 75px;
-				height: 75px;
-			}
-
-			@media screen and (max-width: $mobile_size) {
-				margin: 0
-			}
-
-			@media screen and (max-width: $sm) {
-				width: 55px;
-				height: 55pxs;
+		@media screen and (max-width: $sm) {
+			span {
+				display: none;
 			}
 		}
 	}
@@ -191,21 +189,24 @@
 		display: flex;
 		align-items: center;
 		gap: 20px;
-		
+
 		@media screen and (max-width: $mobile_size) {
 			gap: 10px;
 		}
+
 		.searchContainer {
 			position: relative;
 			width: 60px;
 			height: 40px;
-			& > div {
+
+			&>div {
 				position: absolute;
 				z-index: 1;
 				right: 0;
 				background-color: $dark;
+
 				input {
-				width: 300px;
+					width: 300px;
 				}
 			}
 		}

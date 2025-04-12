@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, memo, useEffect, useState } from "react";
+import React, { FC, memo, useEffect, useState } from "react";
 import { Movies } from "@/assets/types";
 import { fetchMoviesByUserId } from "@/requests/csr";
 import styles from './styles.module.scss';
@@ -16,11 +16,11 @@ type Props = {
 
 const Items: FC<Props> = ({ userId }) => {
     const t = useTranslations("Words");
-    const [movies, setMovies] = useState<Array<Movies>>();
+    const [movies, setMovies] = useState<Array<Movies | undefined>>();
     const [isLoading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        fetchMoviesByUserId(userId).then((res: Array<Movies | any> | undefined) => {
+        fetchMoviesByUserId(userId).then((res: Array<Movies | undefined> | undefined) => {
             if (res) setMovies(res);
         }).catch(() => {
             showToast(t('get_movie_error'), 'error')
@@ -37,29 +37,29 @@ const Items: FC<Props> = ({ userId }) => {
                     <Loading />
                     :
                     movies?.length ?
-                        movies?.map((val: Movies) => {
+                        movies?.map((val: Movies | undefined) => {
                             return (
-                                <div key={val.name} className={styles.itemContainer}>
+                                <div key={val?.name} className={styles.itemContainer}>
                                     <div className={styles.backgorund} />
                                     <div className={styles.items}>
                                         <div className={styles.item}>
                                             <span>{t('film_id')} :</span>
-                                            <span>{val.filmId || "_"}</span>
+                                            <span>{val?.filmId || "_"}</span>
                                         </div>
                                         <div className={styles.item}>
                                             <span>{t('film_name')} :</span>
-                                            <span>{val.name}</span>
+                                            <span>{val?.name}</span>
                                         </div>
                                         <div className={styles.item}>
                                             <span>{t('date_watch')} :</span>
-                                            <span>{val.date} {val.hour}</span>
+                                            <span>{val?.date} {val?.hour}</span>
                                         </div>
                                         <div className={styles.item}>
                                             <span>{t('phone')} :</span>
-                                            <span>{val.phone}</span>
+                                            <span>{val?.phone}</span>
                                         </div>
                                     </div>
-                                    <Actions id={val.id} setMovies={setMovies} setLoading={setLoading} />
+                                    <Actions id={val?.id} setMovies={setMovies} setLoading={setLoading} />
                                 </div>
                             )
                         })

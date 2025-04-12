@@ -34,7 +34,7 @@ const Header = () => {
 
   return (
     <header className={styles.container}>
-      <Link href={`/`}><Logo /> AirScreen</Link>
+      <Link href={`/`}><Logo /> <span>AirScreen</span></Link>
       <nav onMouseLeave={onMouseLeave}>
         <Button className={styles.menuIcon} onClick={setToggle}>
           <MenuIcon color={state ? '#0ae30d' : 'white'} />

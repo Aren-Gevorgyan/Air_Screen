@@ -19,9 +19,9 @@ const SaveButton: FC<Props> = ({ className }) => {
   return (
     <Button className={className} onClick={onClick}>
       {isSaved ? (
-        <FaBookmark className="white" size={30} />
+        <FaBookmark className="white" size={25} />
       ) : (
-        <FaRegBookmark className="black" size={30} />
+        <FaRegBookmark className="black" size={25} />
       )}
     </Button>
   );

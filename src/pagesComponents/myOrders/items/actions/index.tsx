@@ -1,7 +1,7 @@
 'use client';
 
+import React, { memo } from 'react';
 import Button from '@/components/button';
-import { memo } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import styles from './styles.module.scss';
 import { deleteItem, fetchMovies } from '@/requests/csr';
@@ -14,7 +14,7 @@ import { Link } from '@/i18n/navigation';
 type Props = {
     id?: string,
     setLoading: (val: boolean) => void,
-    setMovies: (val: Array<Movies>) => void
+    setMovies: (val: Array<Movies | undefined>) => void
 };
 
 const Actions = ({ id, setMovies, setLoading }: Props) => {
@@ -22,9 +22,9 @@ const Actions = ({ id, setMovies, setLoading }: Props) => {
 
     const handleDelete = async () => {
         try {
-            id && await deleteItem(id);
+            if(id) await deleteItem(id);
             showToast(t('success_order_delete'), 'success');
-            const res: Array<Movies | any> | undefined = await fetchMovies();
+            const res: Array<Movies | undefined> | undefined = await fetchMovies();
             if (res) setMovies(res);
 
         } catch (err) {

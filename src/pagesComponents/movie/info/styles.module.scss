@@ -16,6 +16,7 @@
 		display: flex;
 		align-items: center;
 		gap: 10px;
+
 		span {
 			font-size: clamp(1.5rem, 4vw, 2rem);
 			color: white;
@@ -28,9 +29,17 @@
 		align-items: center;
 		flex-wrap: wrap;
 		gap: 20px;
+		height: 50px;
 
 		@media screen and (max-width: $mobile_size) {
 			gap: 10px;
+		}
+
+		&>div {
+			height: 100%;
+			@media screen and (max-width: $sm) {
+				flex: 1;
+			}
 		}
 
 		.pick,
@@ -39,7 +48,7 @@
 			align-items: center;
 			justify-content: center;
 			width: 200px;
-			height: 50px;
+			height: 100%;
 			border-radius: 4px;
 			font-size: clamp(0.6rem, 4vw, 1.1rem);
 			color: white;
@@ -52,7 +61,7 @@
 			}
 
 			@media screen and (max-width: $sm) {
-				width: auto;
+				width: 100%;
 				flex: 1;
 			}
 		}

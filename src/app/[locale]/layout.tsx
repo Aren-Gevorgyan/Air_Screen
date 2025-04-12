@@ -14,7 +14,7 @@ import { Viewport } from 'next';
 import { ClerkProvider } from '@clerk/nextjs'
 import GoUp from '@/components/goUp';
 import { Toast } from '@/components/toast';
-import aa from '../../../public/svgs/menuIcon'
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -29,8 +29,6 @@ export const viewport: Viewport = {
   themeColor: '#000000',
 };
 
-import Logo from '../../../public/svgs/logo';
-
 export const generateMetadata = async ({ params }: PropsMeta) => {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Seo' });
@@ -43,12 +41,6 @@ export const generateMetadata = async ({ params }: PropsMeta) => {
     generator: "Next.js",
     creator: "Aren Gevorgyan",
     publisher: "AirScreen",
-    // icons: "/favicon.ico",
-    icons: {
-      icon: '../../../public/svgs/logo',       // 🔄 updated favicon here
-      shortcut: '../../../public/svgs/logo',   // optional
-      apple: '../../../public/svgs/logo',      // for iOS bookmarks
-    },
     alternates: {
       canonical: "https://air-screen.com",
       languages: {

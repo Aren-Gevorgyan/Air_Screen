@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import { debounce, result } from 'lodash';
+import { debounce } from 'lodash';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { MovieData } from '@/assets/types';
 import { SEARCH_MOVIES } from '@/assets/queryKeys';
