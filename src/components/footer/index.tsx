@@ -9,6 +9,7 @@ import {
 } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import Logo from '../../../public/svgs/logo';
 
 const Footer = () => {
   const t = useTranslations('Words');
@@ -16,7 +17,7 @@ const Footer = () => {
   return (
     <footer className={styles.container}>
       <div className={styles.logo}>
-        <Link href={`/`}>AirScreen</Link>
+        <Link href={`/`}><div><Logo /></div> AirScreen</Link>
         <p>{t('descTwo')} 🌟</p>
         <p>AirScreen — {t('descThree')}</p>
         <span>© 2025 AirScreen</span>

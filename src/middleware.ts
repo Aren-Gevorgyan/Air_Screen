@@ -15,7 +15,6 @@ const customMiddleware = async (request: NextRequest, auth: ClerkMiddlewareAuth)
 
   const protectedRoutes = [`/${locale}/my_orders`, `/${locale}/order`];
   const isCoincide = protectedRoutes.some((route) => url.pathname.startsWith(route));
-  url.searchParams.set('userId', userId || '');
 
   // Redirect if user is not authenticated on protected routes
   if (isCoincide && !userId) {

@@ -32,10 +32,14 @@ const Search = () => {
   }, [filter]);
 
   useEffect(() => {
+    if (!filter) setFalse();
+  }, [filter]);
+
+  useEffect(() => {
     if (isMd) {
       setTrue();
     } else {
-      setFalse();
+      !filter && setFalse();
     }
   }, [isMd]);
 

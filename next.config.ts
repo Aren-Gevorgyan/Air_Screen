@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
-
+/** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
         hostname: 'image.tmdb.org',
       },
     ],
-  },
+  }
 };
 
 const withNextIntl = createNextIntlPlugin();

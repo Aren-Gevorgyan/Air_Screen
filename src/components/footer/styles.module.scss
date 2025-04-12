@@ -12,11 +12,15 @@
   padding: 20px;
   padding-bottom: 40px;
   border-radius: 6px;
+
   .logo {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    & > a {
+
+    &>a {
+      display: flex;
+      align-items: center;
       flex: none;
       text-align: left;
       font-size: clamp(1.2rem, 4vw, 2rem);
@@ -25,37 +29,56 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-decoration: none;
+
       &:hover {
         background: linear-gradient(to left, $green, $green2);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+      & > div {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        svg {
+          position: absolute;
+          z-index: 1;
+          width: 60px;
+          height: 60px;
+          left: -14px
+        }
+      }
     }
+
     p {
       color: white;
       font-size: 16px;
       font-weight: 500;
       margin: 0;
     }
+
     span {
       font-size: 14px;
       color: $gray3;
     }
   }
+
   .contact {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     .networks {
       display: flex;
       align-items: flex-start;
       text-decoration: none;
       cursor: pointer;
       gap: 20px;
+
       &:hover {
         transform: scale(1.1);
       }
+
       h6 {
         min-width: 100px;
         font-weight: 500;
@@ -66,31 +89,37 @@
         align-items: center;
         gap: 6px;
       }
+
       span {
         color: $gray3;
         font-size: 14px;
       }
     }
   }
+
   .moreInfo {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     .link {
       font-size: 14px;
       font-weight: 500;
       color: white;
       cursor: pointer;
       text-decoration: none;
+
       &:hover {
         color: rgb(83, 155, 242);
       }
     }
+
     .phone {
       display: flex;
       align-items: flex-start;
       gap: 20px;
+
       h6 {
         font-weight: 500;
         color: white;
@@ -100,10 +129,12 @@
         align-items: center;
         gap: 6px;
       }
+
       div {
         display: flex;
         flex-direction: column;
         gap: 6px;
+
         span {
           color: $gray3;
           font-size: 14px;

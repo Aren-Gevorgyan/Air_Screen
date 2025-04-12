@@ -14,7 +14,7 @@ import { Viewport } from 'next';
 import { ClerkProvider } from '@clerk/nextjs'
 import GoUp from '@/components/goUp';
 import { Toast } from '@/components/toast';
-
+import aa from '../../../public/svgs/menuIcon'
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -29,6 +29,8 @@ export const viewport: Viewport = {
   themeColor: '#000000',
 };
 
+import Logo from '../../../public/svgs/logo';
+
 export const generateMetadata = async ({ params }: PropsMeta) => {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Seo' });
@@ -41,7 +43,12 @@ export const generateMetadata = async ({ params }: PropsMeta) => {
     generator: "Next.js",
     creator: "Aren Gevorgyan",
     publisher: "AirScreen",
-    icons: "/favicon.ico",
+    // icons: "/favicon.ico",
+    icons: {
+      icon: '../../../public/svgs/logo',       // 🔄 updated favicon here
+      shortcut: '../../../public/svgs/logo',   // optional
+      apple: '../../../public/svgs/logo',      // for iOS bookmarks
+    },
     alternates: {
       canonical: "https://air-screen.com",
       languages: {
@@ -83,6 +90,21 @@ const RootLayout = async ({ children, params }: Readonly<Props>) => {
   return (
     <ClerkProvider>
       <html lang={lang}>
+        <head>
+          <link rel="icon" href="/icon.jpg" sizes="any" />
+          <link
+            rel="icon"
+            href="/icon?<generated>"
+            type="image/<generated>"
+            sizes="<generated>"
+          />
+          <link
+            rel="apple-touch-icon"
+            href="/apple-icon?<generated>"
+            type="image/<generated>"
+            sizes="<generated>"
+          />
+        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
@@ -92,11 +114,11 @@ const RootLayout = async ({ children, params }: Readonly<Props>) => {
                 <Header />
                 <div className={styles.main}>
                   {children}
-                  <GoUp/>
+                  <GoUp />
                 </div>
                 <Footer />
               </div>
-              <Toast/>
+              <Toast />
             </NextIntlClientProvider>
           </QueryProvider>
         </body>

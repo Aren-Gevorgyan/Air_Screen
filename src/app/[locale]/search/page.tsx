@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import { debounce } from 'lodash';
+import { debounce, result } from 'lodash';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { MovieData } from '@/assets/types';
 import { SEARCH_MOVIES } from '@/assets/queryKeys';
@@ -71,9 +71,10 @@ const Filter = () => {
       <h2 className={styles.popular}>{title}</h2>
       {isLoading ? (
         <Loading />
-      ) : searchData?.pages?.length ? (
+      ) : (
         <div className={styles.itemContainer}>
-          {searchData?.pages.map((val: { results: Array<MovieData> }) => {
+          {searchData?.pages.map((val: { results: Array<MovieData> }, i: number) => {
+            if (!val.results.length) return <span key={i} className={styles.isEmpty}>{t('data_not_found')}</span>
             return val.results.map((val: MovieData) => {
               return (
                 <Link
@@ -105,8 +106,6 @@ const Filter = () => {
           {isFetchingNextPage && <Loading />}
           {hasNextPage && <SeeMore fetchNextPage={fetchNextPage} />}
         </div>
-      ) : (
-        <span className={styles.isEmpty}>{t('data_not_found')}</span>
       )}
     </div>
   );

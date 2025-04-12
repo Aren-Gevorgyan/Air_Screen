@@ -13,6 +13,7 @@ import SignInCom from '@/components/signInCom';
 import useWindowSize from '@/hooks/useWindowSize';
 import { Link } from '@/i18n/navigation';
 import { usePathname } from 'next/navigation';
+import Logo from '../../../public/svgs/logo';
 
 const Header = () => {
   const pathname = usePathname();
@@ -33,7 +34,7 @@ const Header = () => {
 
   return (
     <header className={styles.container}>
-      <Link href={`/`}>AirScreen</Link>
+      <Link href={`/`}><Logo /> AirScreen</Link>
       <nav onMouseLeave={onMouseLeave}>
         <Button className={styles.menuIcon} onClick={setToggle}>
           <MenuIcon color={state ? '#0ae30d' : 'white'} />
@@ -50,8 +51,8 @@ const Header = () => {
           })}
         </ul>
       </nav>
-      <div className={styles.leftPart}>
-        {!isMd && <Search />}
+      <div className={styles.rightPart}>
+        {!isMd && <div className={styles.searchContainer}><Search /></div>}
         <LanguageSwitcher />
         {!isMd && <SignInCom />}
       </div>
