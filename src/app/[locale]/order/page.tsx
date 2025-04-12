@@ -3,7 +3,7 @@
 import React, { FormEvent, useCallback, useEffect, useState } from "react";
 import { InputParamter, Movies } from "@/assets/types";
 import Button from "@/components/button";
-import { addMovie, editItem, fetchMovieById } from "@/requests/csr";
+import { addMovie, editItem, fetchMovieById } from "@/requests/firebase";
 import { useTranslations } from "next-intl";
 import styles from './styles.module.scss';
 import { Link, useRouter } from "@/i18n/navigation";

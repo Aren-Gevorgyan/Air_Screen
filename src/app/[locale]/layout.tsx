@@ -83,7 +83,7 @@ const RootLayout = async ({ children, params }: Readonly<Props>) => {
     <ClerkProvider>
       <html lang={lang}>
         <head>
-          <link rel="icon" href="/icon.jpg" sizes="any" />
+          <link rel="icon" href="/icon.png" sizes="any" />
           <link
             rel="icon"
             href="/icon?<generated>"

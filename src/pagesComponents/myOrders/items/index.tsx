@@ -2,7 +2,7 @@
 
 import React, { FC, memo, useEffect, useState } from "react";
 import { Movies } from "@/assets/types";
-import { fetchMoviesByUserId } from "@/requests/csr";
+import { fetchMoviesByUserId } from "@/requests/firebase";
 import styles from './styles.module.scss';
 import Loading from "@/components/loading";
 import { useTranslations } from "next-intl";

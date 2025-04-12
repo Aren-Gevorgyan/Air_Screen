@@ -37,6 +37,10 @@
 			}
 		}
 
+		@media screen and (max-width: 1600px) {
+			font-size: 34px;
+		}
+
 		@media screen and (max-width: $laptops_size) {
 			font-size: 28px;
 

@@ -42,6 +42,10 @@
     "edit_error": "We couldn't change the data",
     "get_movie_error": "We couldn't get movies"
   },
+  "MyOrders": {
+    "saved": "Saved",
+    "saved_error": "We couldn't save the movie"
+  },
   "PrivacyPolicy": {
     "title": "Privacy Policy",
     "description": "Welcome to AirScreen. Your privacy is very important to us. This privacy policy explains how we collect, use and protect your personal information.",

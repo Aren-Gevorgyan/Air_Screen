@@ -49,6 +49,11 @@ export type Languages = {
   flag: string;
 };
 
+export type SaveMovie = {
+  moviesId: Array<number>;
+  userId?: string | null
+}
+
 export type GenresType = { id: number; name: string };
 
 export type PropsMeta = {

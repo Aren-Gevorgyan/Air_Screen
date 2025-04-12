@@ -4,7 +4,7 @@ import React, { memo } from 'react';
 import Button from '@/components/button';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import styles from './styles.module.scss';
-import { deleteItem, fetchMovies } from '@/requests/csr';
+import { deleteItem, fetchMovies } from '@/requests/firebase';
 import { Movies } from '@/assets/types';
 import 'react-toastify/dist/ReactToastify.css';
 import { showToast } from '@/components/toast';

@@ -19,7 +19,7 @@ const Info: FC<Props> = ({ movie, actors }) => {
             <Actors actors={actors.cast} />
             <div className={styles.buttons}>
                 <Copyable textToCopy={String(movie.id)} buttonText="ID" className={styles.pick} buttonTitle="get_movie_id"/>
-                <SaveButton className={styles.save} />
+                <SaveButton movieId={movie.id} className={styles.save} />
             </div>
             {movie?.genres?.length && <Genres genres={movie.genres} />}
             <Description movie={movie} />
