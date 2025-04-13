@@ -42,7 +42,8 @@ const SaveButton: FC<Props> = ({ movieId, className }) => {
         }
         setTrue();
       }
-    } catch () {
+    } catch (error) {
+      console.log("🚀 ~ onClick ~ error:", error)
       setFalse();
       showToast(t('saved_error'), 'error');
     }
