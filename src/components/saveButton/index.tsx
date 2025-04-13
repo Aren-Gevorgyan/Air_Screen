@@ -42,7 +42,7 @@ const SaveButton: FC<Props> = ({ movieId, className }) => {
         }
         setTrue();
       }
-    } catch (error) {
+    } catch () {
       setFalse();
       showToast(t('saved_error'), 'error');
     }
