@@ -4,13 +4,19 @@ import {
     SignUpButton,
 } from '@clerk/nextjs';
 import styles from './styles.module.scss';
+import { useTranslations } from "next-intl";
 
 const LoginModal = () => {
+    const t = useTranslations("Words");
+
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <SignInButton mode="modal"/>
-                <SignUpButton mode="modal"/>
+                <p>{t('login_worning')}</p>
+                <div>
+                    <SignInButton mode="modal" />
+                    <SignUpButton mode="modal" />
+                </div>
             </div>
         </div>
     )

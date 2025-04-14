@@ -17,7 +17,6 @@ import clsx from 'clsx';
 import Loading from '@/components/loading';
 import SeeMore from '@/components/seeMore';
 import { useTranslations } from 'next-intl';
-import { useParams } from 'next/navigation';
 
 type NextPageParam = {
   page: number;
@@ -26,7 +25,6 @@ type NextPageParam = {
 };
 
 const Filter = () => {
-  const params = useParams();
   const t = useTranslations('Words');
   const searchValue: string | null = useQueryParam('value');
   const [debouncedSearch, setDebouncedSearch] = useState<string | null>('');
@@ -78,7 +76,7 @@ const Filter = () => {
             return val.results.map((val: MovieData) => {
               return (
                 <Link
-                  href={`/${params.locale}/${val.id}`}
+                  href={`/${val.id}`}
                   className={clsx(
                     styles.content,
                     val.poster_path ? '' : styles.noImage

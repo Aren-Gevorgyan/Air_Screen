@@ -40,7 +40,10 @@
     "get_movie_title": "Get movie title",
     "edit": "Edit",
     "edit_error": "We couldn't change the data",
-    "get_movie_error": "We couldn't get movies"
+    "get_movie_error": "We couldn't get movies",
+    "saved": "Saved",
+    "saved_movies": "Saved movies",
+    "login_worning": "Please log in to the project to see this page"
   },
   "MyOrders": {
     "saved": "Saved",

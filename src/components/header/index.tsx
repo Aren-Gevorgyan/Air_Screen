@@ -14,8 +14,10 @@ import useWindowSize from '@/hooks/useWindowSize';
 import { Link } from '@/i18n/navigation';
 import { usePathname } from 'next/navigation';
 import Logo from '../../../public/svgs/logo';
+import { useAuth } from '@clerk/clerk-react';
 
 const Header = () => {
+  const auth = useAuth();
   const pathname = usePathname();
   const lastSegment = pathname.split('/').pop();
   const t = useTranslations('Words');
@@ -29,6 +31,7 @@ const Header = () => {
   const tab: Array<Tab> = [
     { title: t('main'), url: `/`, active: lastSegment === "hy" || lastSegment === "ru" || lastSegment === "en" },
     { title: t('my_orders'), url: `/my_orders`, active: lastSegment === "my_orders" },
+    { title: t('saved'), url: `/saved/${auth.userId}`, active: lastSegment === `/saved/${auth.userId}` },
     { title: t('about'), url: `/about`, active: lastSegment === "about" }
   ];
 

@@ -1,0 +1,11 @@
+@use '../../../../styles/global.scss' as *;
+
+.container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 50px;
+  padding-bottom: 40px;
+}
