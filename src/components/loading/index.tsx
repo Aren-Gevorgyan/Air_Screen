@@ -7,7 +7,12 @@ const Loading = () => {
   return (
     <div className={styles.container}>
       <div>
-        <Image src="/gif/loading.gif" alt="AirScreen loading" unoptimized={true} fill />
+        <Image
+          src="/gif/loading.gif"
+          alt="AirScreen loading"
+          unoptimized={true}
+          fill
+        />
       </div>
     </div>
   );

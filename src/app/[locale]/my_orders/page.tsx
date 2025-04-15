@@ -9,9 +9,9 @@ const MyOrders = async () => {
 
   return (
     <div className={styles.container}>
-      <Items userId={userId}/>
+      <Items userId={userId} />
     </div>
-  )
+  );
 };
 
 export default WithAuth(MyOrders);

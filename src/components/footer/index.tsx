@@ -17,7 +17,10 @@ const Footer = () => {
   return (
     <footer className={styles.container}>
       <div className={styles.logo}>
-        <Link href={`/`}><Logo />AirScreen</Link>
+        <Link href={`/`}>
+          <Logo />
+          AirScreen
+        </Link>
         <p>{t('descTwo')} 🌟</p>
         <p>AirScreen — {t('descThree')}</p>
         <span>© 2025 AirScreen</span>

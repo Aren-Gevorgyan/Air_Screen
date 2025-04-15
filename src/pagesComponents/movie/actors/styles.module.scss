@@ -1,26 +1,26 @@
 @use '../../../styles/global' as *;
 
 .container {
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 10px;
-	.item {
-		width: 40px;
-		height: 40px;
-		position: relative;
-		border-radius: 50%;
-		border: 2px solid $dark;
-		overflow: hidden;
-		background-image: url('../../../../public/images/profile.png');
-		background-position: center;
-		background-size: contain;
-		cursor: pointer;
-		&:hover {
-			transform: scale(1.1);
-		}
-		img {
-			object-fit: cover;
-		}
-	}
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  .item {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid $dark;
+    overflow: hidden;
+    background-image: url('../../../../public/images/profile.png');
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
+    img {
+      object-fit: cover;
+    }
+  }
 }

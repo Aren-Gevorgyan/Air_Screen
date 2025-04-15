@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+
+  & > button {
+    cursor: pointer;
+    &:first-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: 2;
+      opacity: 0;
+    }
+
+    &:last-child {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}

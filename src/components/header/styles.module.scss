@@ -1,222 +1,238 @@
 @use '../../styles/global' as *;
 
 .container {
-	width: 90%;
-	height: 70px;
-	padding: 10px 0;
-	background-color: transparent;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 10px;
-	position: relative;
-	z-index: 4;
-	margin: auto;
+  width: 90%;
+  height: 80px;
+  padding: 10px 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  position: relative;
+  z-index: 4;
+  margin: auto;
 
-	&>a {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		text-align: left;
-		font-size: 40px;
-		font-weight: bold;
-		background: linear-gradient(to left, $green2, $green);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		text-decoration: none;
+  & > a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    font-size: 40px;
+    font-weight: bold;
+    background: linear-gradient(to left, $green2, $green);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
 
-		&:hover {
-			background: linear-gradient(to left, $green, $green2);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
+    &:hover {
+      background: linear-gradient(to left, $green, $green2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
 
-			svg {
-				path {
-					fill: $green;
-				}
-			}
-		}
+      svg {
+        path {
+          fill: $green;
+        }
+      }
+    }
 
-		@media screen and (max-width: 1600px) {
-			font-size: 34px;
-		}
+    @media screen and (max-width: 1600px) {
+      font-size: 34px;
+    }
 
-		@media screen and (max-width: $laptops_size) {
-			font-size: 28px;
+    @media screen and (max-width: $mid_size) {
+      span {
+        display: none;
+      }
+    }
 
-			svg {
-				width: 30px;
-			}
-		}
+    @media screen and (max-width: $laptops_size) {
+      font-size: 28px;
 
-		@media screen and (max-width: $sm) {
-			span {
-				display: none;
-			}
-		}
-	}
+      svg {
+        width: 30px;
+      }
+    }
 
-	nav {
-		.menuIcon {
-			border: none;
-			background-color: transparent;
-			padding: 0;
-			display: none;
-		}
+    @media screen and (max-width: $mobile_size) {
+      span {
+        display: block;
+      }
+    }
 
-		ul {
-			display: flex;
-			align-items: center;
-			gap: 20px;
-			padding: 0;
-			margin: 0;
+    @media screen and (max-width: $sm) {
+      span {
+        display: none;
+      }
+    }
+  }
 
-			&>div {
-				&:first-child {
-					display: none;
-				}
-			}
+  nav {
+    .menuIcon {
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      display: none;
+    }
 
-			@media screen and (max-width: $mobile_size) {
-				&>div {
-					&:first-child {
-						display: flex;
-					}
-				}
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
 
-				width: calc(100vw - 70px);
-				position: absolute;
-				z-index: 3;
-				background-color: #050606fa;
-				flex-direction: column;
-				display: none;
-				padding: 10px;
-				gap: 10px;
-				border-radius: 10px;
-			}
+      & > div {
+        &:first-child {
+          display: none;
+        }
+      }
 
-			@media screen and (max-width: $sm) {
-				width: calc(100vw - 35px);
-			}
+      @media screen and (max-width: $mobile_size) {
+        & > div {
+          &:first-child {
+            display: flex;
+          }
+        }
 
-			li {
-				list-style-type: none;
+        width: calc(100vw - 70px);
+        position: absolute;
+        z-index: 3;
+        background-color: #050606fa;
+        flex-direction: column;
+        display: none;
+        padding: 10px;
+        gap: 10px;
+        border-radius: 10px;
+      }
 
-				a {
-					font-size: 18px;
-					font-weight: bold;
-					text-decoration: none;
-					color: white;
-					transition: all 0.4s ease-in-out;
-					position: relative;
+      @media screen and (max-width: $sm) {
+        width: calc(100vw - 35px);
+      }
 
-					&:hover {
-						transform: scale(1.1);
-					}
+      li {
+        list-style-type: none;
 
-					&::after {
-						content: '';
-						position: absolute;
-						left: 50%;
-						bottom: -4px;
-						width: 0;
-						height: 2px;
-						background: $green;
-						transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-					}
+        a {
+          font-size: 18px;
+          font-weight: bold;
+          text-decoration: none;
+          color: white;
+          transition: all 0.4s ease-in-out;
+          position: relative;
 
-					&:hover::after {
-						width: 100%;
-						left: 0;
-					}
+          &:hover {
+            transform: scale(1.1);
+          }
 
-					@media screen and (max-width: $laptops_size) {
-						display: block;
-						font-size: 14px;
-						font-weight: 600;
+          &::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: $green;
+            transition:
+              width 0.3s ease-in-out,
+              left 0.3s ease-in-out;
+          }
 
-						&::after {
-							content: '';
-							background: transparent;
-						}
+          &:hover::after {
+            width: 100%;
+            left: 0;
+          }
 
-						&:hover {
-							transform: scale(1);
-						}
-					}
+          @media screen and (max-width: $laptops_size) {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
 
-					@media screen and (max-width: $mobile_size) {
-						font-size: 12px;
-						padding: 10px 16px;
-					}
-				}
+            &::after {
+              content: '';
+              background: transparent;
+            }
 
-				@media screen and (max-width: $mobile_size) {
-					width: 100%;
-					background-color: #1d2b3787;
-					border-radius: 10px;
-					overflow: hidden;
+            &:hover {
+              transform: scale(1);
+            }
+          }
 
-					&:hover {
-						background-color: $deep_blue;
-					}
-				}
-			}
+          @media screen and (max-width: $mobile_size) {
+            font-size: 12px;
+            padding: 10px 16px;
+          }
+        }
 
-			.active {
-				position: relative;
+        @media screen and (max-width: $mobile_size) {
+          width: 100%;
+          background-color: #1d2b3787;
+          border-radius: 10px;
+          overflow: hidden;
 
-				&::after {
-					content: '';
-					position: absolute;
-					left: 0%;
-					bottom: -4px;
-					width: 100%;
-					height: 2px;
-					background: $green;
-					transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-				}
-			}
-		}
+          &:hover {
+            background-color: $deep_blue;
+          }
+        }
+      }
 
-		@media screen and (max-width: $mobile_size) {
-			order: -1;
-			position: relative;
+      .active {
+        position: relative;
 
-			.menuIcon {
-				display: block;
-			}
-		}
-	}
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0%;
+          bottom: -4px;
+          width: 100%;
+          height: 2px;
+          background: $green;
+          transition:
+            width 0.3s ease-in-out,
+            left 0.3s ease-in-out;
+        }
+      }
+    }
 
-	.rightPart {
-		display: flex;
-		align-items: center;
-		gap: 20px;
+    @media screen and (max-width: $mobile_size) {
+      order: -1;
+      position: relative;
 
-		@media screen and (max-width: $mobile_size) {
-			gap: 10px;
-		}
+      .menuIcon {
+        display: block;
+      }
+    }
+  }
 
-		.searchContainer {
-			position: relative;
-			width: 60px;
-			height: 40px;
+  .rightPart {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 
-			&>div {
-				position: absolute;
-				z-index: 1;
-				right: 0;
-				background-color: $dark;
+    @media screen and (max-width: $mobile_size) {
+      gap: 10px;
+    }
 
-				input {
-					width: 300px;
-				}
-			}
-		}
-	}
+    .searchContainer {
+      position: relative;
+      width: 60px;
+      height: 40px;
 
-	.isOpen {
-		display: flex;
-	}
+      & > div {
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        background-color: $dark;
+
+        input {
+          width: 300px;
+        }
+      }
+    }
+  }
+
+  .isOpen {
+    display: flex;
+  }
 }

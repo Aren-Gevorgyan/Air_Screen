@@ -11,7 +11,7 @@ type Props = {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
-  className?: string
+  className?: string;
 };
 
 const Modal: FC<Props> = ({ isOpen, onClose, className, children }) => {
@@ -28,9 +28,7 @@ const Modal: FC<Props> = ({ isOpen, onClose, className, children }) => {
       overlayClassName="modalOverlay"
       ariaHideApp={false} // Necessary for Next.js to prevent errors
     >
-      <div className={clsx(styles.container, className)}>
-        {children}
-      </div>
+      <div className={clsx(styles.container, className)}>{children}</div>
     </ReactModal>
   );
 };

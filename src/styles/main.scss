@@ -2,35 +2,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 html {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 body {
-	min-height: 100vh;
-	margin: 0;
-	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/forest.jpeg');
-	background-repeat: repeat-x;
-	overflow: hidden;
-	background-color: black;
-	@media screen and (max-width: $mobile_size) {
-		font-size: 14px;
-		background-repeat: no-repeat;
-	}
-	&::-webkit-scrollbar {
-		width: 10px; /* Scrollbar width */
-	}
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/images/forest.jpeg');
+  background-repeat: repeat-x;
+  overflow: hidden;
+  background-color: black;
+  @media screen and (max-width: $mobile_size) {
+    font-size: 14px;
+    background-repeat: no-repeat;
+  }
+  &::-webkit-scrollbar {
+    width: 10px; /* Scrollbar width */
+  }
 
-	&::-webkit-scrollbar-track {
-		background: #040404; /* Track color */
-	}
+  &::-webkit-scrollbar-track {
+    background: #040404; /* Track color */
+  }
 
-	&::-webkit-scrollbar-thumb {
-		background: $deep_blue; /* Scrollbar thumb color */
-		border: 1px inset $green2; /* Space around the thumb */
-	}
+  &::-webkit-scrollbar-thumb {
+    background: $deep_blue; /* Scrollbar thumb color */
+    border: 1px inset $green2; /* Space around the thumb */
+  }
 
-	&::-webkit-scrollbar-thumb:hover {
-		background: #040404; /* Darker color on hover */
-	}
+  &::-webkit-scrollbar-thumb:hover {
+    background: #040404; /* Darker color on hover */
+  }
 }
 
 h1,
@@ -52,69 +54,69 @@ button,
 label,
 form,
 main {
-	font-family: 'Montserrat', sans-serif;
-	box-sizing: border-box;
-	line-height: 140%;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  line-height: 140%;
 }
 
 .react-multi-carousel-track {
-	gap: 20px;
-	@media screen and (max-width: $mobile_size) {
-		gap: 10px;
-	}
-	@media screen and (max-width: $sm) {
-		gap: 0px;
-	}
+  gap: 20px;
+  @media screen and (max-width: $mobile_size) {
+    gap: 10px;
+  }
+  @media screen and (max-width: $sm) {
+    gap: 0px;
+  }
 }
 
 .react-multi-carousel-list {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .react-multi-carousel-item {
-	overflow: hidden;
-	border-radius: 6px;
-	cursor: pointer;
-	height: 350px;
-	background: gray;
-	@media screen and (max-width: $laptops_size) {
-		height: 380px;
-	}
+  overflow: hidden;
+  border-radius: 6px;
+  cursor: pointer;
+  height: 350px;
+  background: gray;
+  @media screen and (max-width: $laptops_size) {
+    height: 380px;
+  }
 }
 
 .react-multi-carousel-dot button {
-	border-radius: 5%;
-	background-color: black; // Light dots
-	border: 1px solid white;
-	transition: all 0.3s ease-in-out;
-	border-color: #0b2308 !important;
+  border-radius: 5%;
+  background-color: black; // Light dots
+  border: 1px solid white;
+  transition: all 0.3s ease-in-out;
+  border-color: #0b2308 !important;
 }
 
 .react-multi-carousel-dot--active button {
-	background-color: white !important; // Highlight active dot
-	transform: scale(1.2); // Slightly enlarge the active dot
+  background-color: white !important; // Highlight active dot
+  transform: scale(1.2); // Slightly enlarge the active dot
 }
 
 .yellow {
-	color: orange;
-	font-size: 24px;
+  color: orange;
+  font-size: 24px;
 }
 
 .gray {
-	color: $gray;
-	font-size: 24px;
+  color: $gray;
+  font-size: 24px;
 }
 
 .black {
-	color: $dark;
+  color: $dark;
 }
 
 .white {
-	color: white;
+  color: white;
 }
 
 .cl-internal-1j7ahlv {
-	width: 2.3rem;
-	height: 2.3rem;
+  width: 2.3rem;
+  height: 2.3rem;
 }

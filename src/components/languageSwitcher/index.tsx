@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useCallback } from 'react';
 import { languages } from '@/assets/constants';
@@ -23,7 +23,10 @@ const LanguageSwitcher = () => {
     replace(`/${pathname?.substring(3)}`, { locale: newLocale });
   };
 
-  const onClick = useCallback((lng: string) => () => changeLanguage(lng), [pathname]);
+  const onClick = useCallback(
+    (lng: string) => () => changeLanguage(lng),
+    [pathname]
+  );
   const selectedLng = (lng: Languages) => lng.country === params?.locale;
 
   return (

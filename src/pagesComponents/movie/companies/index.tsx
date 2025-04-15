@@ -8,12 +8,12 @@ type Props = {
 };
 
 const Companies: FC<Props> = ({ companies }) => {
-  const t = useTranslations("Words");
+  const t = useTranslations('Words');
   let data: Array<ProductionCompaniesType> = [];
   let title = t('company');
   if (companies.length > 1) {
     title = t('companies');
-    data = companies.slice(0, 3)
+    data = companies.slice(0, 3);
   }
 
   return (

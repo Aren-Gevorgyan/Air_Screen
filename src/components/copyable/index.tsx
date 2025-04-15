@@ -1,20 +1,25 @@
-'use client'
+'use client';
 
-import React, { FC, memo, useState } from 'react';
-import styles from './styles.module.scss';
+import React, { FC, useState } from 'react';
 import Button from '../button';
 import { FaCopy } from 'react-icons/fa';
 import { FaCheck } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
+import SignInWrapper from '@/hoc/signInWrapper';
 
 type Props = {
-  textToCopy: string,
-  className: string,
-  buttonTitle: string,
-  buttonText: string,
-}
+  textToCopy: string;
+  className: string;
+  buttonTitle: string;
+  buttonText: string;
+};
 
-const Copyable: FC<Props> = ({ textToCopy = '', buttonTitle = '', buttonText, className }) => {
+const Copyable: FC<Props> = ({
+  textToCopy = '',
+  buttonTitle = '',
+  buttonText,
+  className,
+}) => {
   const t = useTranslations('Words');
   const [copied, setCopied] = useState<boolean>(false);
 
@@ -29,12 +34,11 @@ const Copyable: FC<Props> = ({ textToCopy = '', buttonTitle = '', buttonText, cl
   };
 
   return (
-    <div className={styles.container}>
-      <Button title={t(buttonTitle)} onClick={handleCopy} className={className}>
-        {!!buttonText && <span>{buttonText}</span>} {copied ? <FaCheck color="#0ae30d" /> : <FaCopy />}
-      </Button>
-    </div>
+    <Button title={t(buttonTitle)} onClick={handleCopy} className={className}>
+      {!!buttonText && <span>{buttonText}</span>}{' '}
+      {copied ? <FaCheck color="#0ae30d" /> : <FaCopy />}
+    </Button>
   );
 };
 
-export default memo(Copyable);
+export default SignInWrapper(Copyable);

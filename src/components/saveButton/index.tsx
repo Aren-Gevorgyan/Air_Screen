@@ -1,14 +1,15 @@
 'use client';
 
-import React, { FC, memo, useCallback, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import { FaRegBookmark, FaBookmark } from 'react-icons/fa';
 import Button from '../button';
 import useBoolean from '@/hooks/useBoolean';
 import { fetchSavedMovies, saveMovie, unsave } from '@/requests/firebase';
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from '@clerk/clerk-react';
 import { showToast } from '../toast';
 import { useTranslations } from 'next-intl';
 import { SaveMovie } from '@/assets/types';
+import SignInWrapper from '@/hoc/signInWrapper';
 
 type Props = {
   movieId: number;
@@ -18,15 +19,15 @@ type Props = {
 const SaveButton: FC<Props> = ({ movieId, className }) => {
   const auth = useAuth();
   const t = useTranslations('MyOrders');
-  const [data, setData] = useState<SaveMovie>()
+  const [data, setData] = useState<SaveMovie>();
   const { state: isSaved, setFalse, setTrue } = useBoolean(false);
 
   useEffect(() => {
-    fetchSavedMovies(auth.userId).then(res => {
+    fetchSavedMovies(auth.userId).then((res) => {
       const isSaved = res?.moviesId?.some((val: number) => val === movieId);
       if (isSaved) setTrue();
       setData(res);
-    })
+    });
   }, [auth.userId, movieId, isSaved]);
 
   const onClick = useCallback(async () => {
@@ -43,7 +44,7 @@ const SaveButton: FC<Props> = ({ movieId, className }) => {
         setTrue();
       }
     } catch (error) {
-      console.log("🚀 ~ onClick ~ error:", error)
+      console.log('🚀 ~ onClick ~ error:', error);
       setFalse();
       showToast(t('saved_error'), 'error');
     }
@@ -60,4 +61,4 @@ const SaveButton: FC<Props> = ({ movieId, className }) => {
   );
 };
 
-export default memo(SaveButton);
+export default SignInWrapper(SaveButton);

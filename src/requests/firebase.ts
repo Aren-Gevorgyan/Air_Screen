@@ -1,22 +1,31 @@
 import { db } from '@/assets/firebaseConfig';
 import { Movies } from '@/assets/types';
-import { ref, push, get, remove, update, query, orderByChild, equalTo, set } from 'firebase/database';
+import {
+  ref,
+  push,
+  get,
+  remove,
+  update,
+  query,
+  orderByChild,
+  equalTo,
+  set,
+} from 'firebase/database';
 
 export const addMovie = async (data: Movies) => {
   const userRef = ref(db, 'movies');
-  return await push(userRef, data);;
+  return await push(userRef, data);
 };
 
-export const saveMovie = async (moviesId: number[], userId?: string | null,) => {
+export const saveMovie = async (moviesId: number[], userId?: string | null) => {
   const data = {
     userId,
-    moviesId
+    moviesId,
   };
 
   const userMoviesRef = ref(db, `saved/${userId}`);
   await set(userMoviesRef, data);
 };
-
 
 export const fetchMovies = async () => {
   try {
@@ -48,7 +57,7 @@ export const deleteItem = (movieId: string) => {
 export const unsave = async (
   currentMovies: Array<number>,
   movieIdToRemove: number,
-  userId?: string | null,
+  userId?: string | null
 ) => {
   const updatedArray = currentMovies.filter((id) => id !== movieIdToRemove);
 
@@ -57,11 +66,14 @@ export const unsave = async (
       moviesId: updatedArray,
     });
   } catch (error) {
-    console.error("Error updating moviesId:", error);
+    console.error('Error updating moviesId:', error);
   }
 };
 
-export const editItem = async (movieId: string, updatedData: Partial<Movies>) => {
+export const editItem = async (
+  movieId: string,
+  updatedData: Partial<Movies>
+) => {
   try {
     const movieRef = ref(db, `/movies/${movieId}`);
     await update(movieRef, updatedData);
@@ -70,7 +82,9 @@ export const editItem = async (movieId: string, updatedData: Partial<Movies>) =>
   }
 };
 
-export const fetchMovieById = async (movieId: string): Promise<Movies | null> => {
+export const fetchMovieById = async (
+  movieId: string
+): Promise<Movies | null> => {
   try {
     const movieRef = ref(db, `/movies/${movieId}`);
     const snapshot = await get(movieRef);
@@ -90,10 +104,14 @@ export const fetchMovieById = async (movieId: string): Promise<Movies | null> =>
 };
 
 export const fetchMoviesByUserId = async (userId?: string | null) => {
-  if (!userId) return
+  if (!userId) return;
   try {
     const moviesRef = ref(db, 'movies');
-    const userMoviesQuery = query(moviesRef, orderByChild('userId'), equalTo(userId));
+    const userMoviesQuery = query(
+      moviesRef,
+      orderByChild('userId'),
+      equalTo(userId)
+    );
     const snapshot = await get(userMoviesQuery);
 
     if (!snapshot.exists()) {
@@ -112,7 +130,6 @@ export const fetchMoviesByUserId = async (userId?: string | null) => {
   }
 };
 
-
 export const fetchSavedMovies = async (userId?: string | null) => {
   if (!userId) return;
   try {
@@ -120,14 +137,14 @@ export const fetchSavedMovies = async (userId?: string | null) => {
     const snapshot = await get(userRef);
 
     if (!snapshot.exists()) {
-      console.log("No data available for this user.");
+      console.log('No data available for this user.');
       return null;
     }
 
     const data = snapshot.val();
     return data; // Contains userId and moviesId
   } catch (error) {
-    console.error("Error fetching user movies:", error);
+    console.error('Error fetching user movies:', error);
     return null;
   }
 };

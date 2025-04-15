@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import StarRating from '@/components/starRating';
 import Loading from '@/components/loading';
-import { Link } from "@/i18n/navigation";
+import { Link } from '@/i18n/navigation';
 
 import styles from './styles.module.scss';
 import { MovieData } from '@/assets/types';
@@ -11,9 +11,9 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 type Props = {
-  data: Array<MovieData>,
-  isLoading: boolean
-}
+  data: Array<MovieData>;
+  isLoading: boolean;
+};
 
 const Movies: FC<Props> = ({ data, isLoading }) => {
   const t = useTranslations('Words');
@@ -25,7 +25,7 @@ const Movies: FC<Props> = ({ data, isLoading }) => {
         <Loading />
       ) : (
         <div className={styles.itemContainer}>
-          {data?.length ?
+          {data?.length ? (
             data.map((val: MovieData) => {
               return (
                 <Link
@@ -53,13 +53,13 @@ const Movies: FC<Props> = ({ data, isLoading }) => {
                 </Link>
               );
             })
-            :
+          ) : (
             <span className={styles.isEmpty}>{t('data_not_found')}</span>
-          }
+          )}
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
 export default Movies;

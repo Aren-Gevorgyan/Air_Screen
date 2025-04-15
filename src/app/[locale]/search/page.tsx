@@ -71,36 +71,43 @@ const Filter = () => {
         <Loading />
       ) : (
         <div className={styles.itemContainer}>
-          {searchData?.pages.map((val: { results: Array<MovieData> }, i: number) => {
-            if (!val.results.length) return <span key={i} className={styles.isEmpty}>{t('data_not_found')}</span>
-            return val.results.map((val: MovieData) => {
-              return (
-                <Link
-                  href={`/${val.id}`}
-                  className={clsx(
-                    styles.content,
-                    val.poster_path ? '' : styles.noImage
-                  )}
-                  key={val.id}
-                >
-                  <div className={styles.item}>
-                    {!!val.poster_path && (
-                      <Image
-                        src={`${IMAGE_URL}${val.poster_path}`}
-                        alt={`AirScreen ${val.title}`}
-                        fill
-                      />
+          {searchData?.pages.map(
+            (val: { results: Array<MovieData> }, i: number) => {
+              if (!val.results.length)
+                return (
+                  <span key={i} className={styles.isEmpty}>
+                    {t('data_not_found')}
+                  </span>
+                );
+              return val.results.map((val: MovieData) => {
+                return (
+                  <Link
+                    href={`/${val.id}`}
+                    className={clsx(
+                      styles.content,
+                      val.poster_path ? '' : styles.noImage
                     )}
-                  </div>
-                  <div className={styles.description} title={t('seeMore')}>
-                    <h5>{val.title}</h5>
-                    <span>{val.release_date}</span>
-                    <StarRating rating={val.vote_average} />
-                  </div>
-                </Link>
-              );
-            });
-          })}
+                    key={val.id}
+                  >
+                    <div className={styles.item}>
+                      {!!val.poster_path && (
+                        <Image
+                          src={`${IMAGE_URL}${val.poster_path}`}
+                          alt={`AirScreen ${val.title}`}
+                          fill
+                        />
+                      )}
+                    </div>
+                    <div className={styles.description} title={t('seeMore')}>
+                      <h5>{val.title}</h5>
+                      <span>{val.release_date}</span>
+                      <StarRating rating={val.vote_average} />
+                    </div>
+                  </Link>
+                );
+              });
+            }
+          )}
           {isFetchingNextPage && <Loading />}
           {hasNextPage && <SeeMore fetchNextPage={fetchNextPage} />}
         </div>

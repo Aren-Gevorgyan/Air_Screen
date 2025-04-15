@@ -31,7 +31,7 @@ export type MovieData = {
 export type Tab = {
   title: string;
   url: string;
-  active: boolean
+  active: boolean;
 };
 
 export type Movies = {
@@ -51,14 +51,14 @@ export type Languages = {
 
 export type SaveMovie = {
   moviesId: Array<number>;
-  userId?: string | null
-}
+  userId?: string | null;
+};
 
 export type GenresType = { id: number; name: string };
 
 export type PropsMeta = {
-  params: Promise<{ locale: string }>
-}
+  params: Promise<{ locale: string }>;
+};
 
 export type BooleanHook = {
   state: boolean;

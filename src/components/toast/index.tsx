@@ -2,7 +2,10 @@ import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export const showToast = (message: string, type: 'success' | 'error' | 'info') => {
+export const showToast = (
+  message: string,
+  type: 'success' | 'error' | 'info'
+) => {
   switch (type) {
     case 'success':
       toast.success(message, { position: 'bottom-center' });

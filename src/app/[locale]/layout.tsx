@@ -11,7 +11,7 @@ import { routing } from '@/i18n/routing';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { PropsMeta } from '@/assets/types';
 import { Viewport } from 'next';
-import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs';
 import GoUp from '@/components/goUp';
 import { Toast } from '@/components/toast';
 
@@ -36,37 +36,37 @@ export const generateMetadata = async ({ params }: PropsMeta) => {
   return {
     title: 'AirScreen',
     description: t('description'),
-    authors: [{ name: "Aren Gevorgyan", url: "https://air-scrren.com" }],
-    applicationName: "AirScreen",
-    generator: "Next.js",
-    creator: "Aren Gevorgyan",
-    publisher: "AirScreen",
+    authors: [{ name: 'Aren Gevorgyan', url: 'https://air-scrren.com' }],
+    applicationName: 'AirScreen',
+    generator: 'Next.js',
+    creator: 'Aren Gevorgyan',
+    publisher: 'AirScreen',
     alternates: {
-      canonical: "https://air-screen.com",
+      canonical: 'https://air-screen.com',
       languages: {
-        en: "https://air-screen.com/en",
-        ru: "https://air-screen.com/ru",
-        hy: "https://air-screen.com/hy",
+        en: 'https://air-screen.com/en',
+        ru: 'https://air-screen.com/ru',
+        hy: 'https://air-screen.com/hy',
       },
     },
     openGraph: {
       title: `${t('title')} 🌟`,
       description: t('description'),
-      url: "https://screen.com",
-      siteName: "AirScreen",
+      url: 'https://screen.com',
+      siteName: 'AirScreen',
       images: [
         {
           url: 'https://i.pinimg.com/736x/20/61/3c/20613cc19a86ab791f2eab48ffe2ad0c.jpg',
           width: 1200,
           height: 630,
-          alt: "AirScreen Popular image",
+          alt: 'AirScreen Popular image',
         },
       ],
       locale,
-      type: "website",
+      type: 'website',
     },
   };
-}
+};
 
 type Props = {
   children: React.ReactNode;
@@ -115,7 +115,7 @@ const RootLayout = async ({ children, params }: Readonly<Props>) => {
           </QueryProvider>
         </body>
       </html>
-    </ClerkProvider >
+    </ClerkProvider>
   );
 };
 

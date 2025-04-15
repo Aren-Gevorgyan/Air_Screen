@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 import { useTranslations } from 'next-intl';
 
 const PrivacyPolicy = () => {
-  const t = useTranslations("PrivacyPolicy");
+  const t = useTranslations('PrivacyPolicy');
 
   return (
     <div className={styles.container}>

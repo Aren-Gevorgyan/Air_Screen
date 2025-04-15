@@ -1,12 +1,1 @@
 @use '../../styles/global' as *;
-
-.container {
-  display: flex;
-  align-items: start;
-  justify-content: start;
-  flex-direction: column;
-  gap: 10px;
-  button {
-    cursor: pointer;
-  }
-}

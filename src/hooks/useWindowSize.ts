@@ -23,7 +23,7 @@ const useWindowSize = () => {
       isMd: windowSize !== null && windowSize <= 768,
       isLg: windowSize !== null && windowSize >= 868,
       isLt: windowSize !== null && windowSize >= 1001,
-      isXl: windowSize !== null && windowSize <= 1280,
+      isXl: windowSize !== null && windowSize >= 1280,
     }),
     [windowSize]
   );

@@ -20,9 +20,9 @@ const Saved = async () => {
   return (
     <div className={styles.container}>
       <Moon />
-      <Movies data={data} isLoading={isLoading}/>
+      <Movies data={data} isLoading={isLoading} />
     </div>
-  )
-}
+  );
+};
 
-export default WithAuth(Saved)
+export default WithAuth(Saved);

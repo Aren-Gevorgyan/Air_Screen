@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 import { useTranslations } from 'next-intl';
 
 const About = () => {
-  const t = useTranslations("About");
+  const t = useTranslations('About');
 
   return (
     <div className={styles.container}>

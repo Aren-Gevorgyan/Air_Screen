@@ -39,7 +39,7 @@ const Search = () => {
     if (isMd) {
       setTrue();
     } else {
-      if(!filter) setFalse();
+      if (!filter) setFalse();
     }
   }, [isMd, filter]);
 

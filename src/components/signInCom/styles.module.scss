@@ -2,51 +2,60 @@
 @use '../../styles/animations.scss' as *;
 
 .container {
-	height: 40px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
-	@media screen and (max-width: $mobile_size) {
-		width: 100%;
-	}
-	button {
-		flex: 1;
-		min-width: 78px;
-		height: 40px;
-		color: white;
-		font-size: 14px;
-		padding: 4px 10px;
-		border-radius: 4px;
-		border: 1px solid $gray;
-		background-color: $dark;
-		cursor: pointer;
-		&:hover {
-			border: 1px solid $green2;
-		}
-		&:first-child {
-			animation: moveButton 2s infinite;
-			@media screen and (max-width: $mobile_size) {
-				animation: none;
-			}
-		}
-		&:last-child {
-			background-color: $green2;
-			&:hover {
-				border: 1px solid $dark;
-			}
-		}
-	}
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  @media screen and (max-width: $mobile_size) {
+    width: 100%;
+  }
+  button {
+    flex: 1;
+    min-width: 78px;
+    height: 40px;
+    color: white;
+    font-size: 14px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid $gray;
+    background-color: $dark;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid $green2;
+    }
+    &:first-child {
+      animation: moveButton 2s infinite;
+      @media screen and (max-width: $mobile_size) {
+        animation: none;
+      }
+    }
+    &:last-child {
+      background-color: $green2;
+      &:hover {
+        border: 1px solid $dark;
+      }
+      @media screen and (max-width: $mid_size) {
+        display: none;
+      }
+      @media screen and (max-width: $mobile_size) {
+        display: block;
+      }
+    }
+  }
 }
 .deleteAnim {
-	button {
-		min-width: auto;
-		padding: 0;
-		border: none;
-		background-color: transparent !important;
-		animation: none !important;
-		&:hover {
-			border: none !important;
-		}
-	}
+  button {
+    min-width: auto;
+    padding: 0;
+    border: none;
+    background-color: transparent !important;
+    animation: none !important;
+    &:hover {
+      border: none !important;
+    }
+    @media screen and (max-width: $mid_size) {
+      display: block !important;
+    }
+  }
 }

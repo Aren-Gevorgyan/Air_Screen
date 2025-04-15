@@ -49,7 +49,7 @@ const Actors: FC<Props> = ({ actors }) => {
               />
             )}
           </Button>
-        )
+        );
       })}
       {state && <ActorsModal state={state} setFalse={setFalse} actor={actor} />}
     </div>

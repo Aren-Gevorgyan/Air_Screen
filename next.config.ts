@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
         hostname: 'image.tmdb.org',
       },
     ],
-  }
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

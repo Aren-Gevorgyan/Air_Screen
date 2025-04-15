@@ -14,10 +14,8 @@ import useWindowSize from '@/hooks/useWindowSize';
 import { Link } from '@/i18n/navigation';
 import { usePathname } from 'next/navigation';
 import Logo from '../../../public/svgs/logo';
-import { useAuth } from '@clerk/clerk-react';
 
 const Header = () => {
-  const auth = useAuth();
   const pathname = usePathname();
   const lastSegment = pathname.split('/').pop();
   const t = useTranslations('Words');
@@ -29,15 +27,26 @@ const Header = () => {
   };
 
   const tab: Array<Tab> = [
-    { title: t('main'), url: `/`, active: lastSegment === "hy" || lastSegment === "ru" || lastSegment === "en" },
-    { title: t('my_orders'), url: `/my_orders`, active: lastSegment === "my_orders" },
-    { title: t('saved'), url: `/saved/${auth.userId}`, active: lastSegment === `/saved/${auth.userId}` },
-    { title: t('about'), url: `/about`, active: lastSegment === "about" }
+    {
+      title: t('main'),
+      url: `/`,
+      active:
+        lastSegment === 'hy' || lastSegment === 'ru' || lastSegment === 'en',
+    },
+    {
+      title: t('my_orders'),
+      url: `/my_orders`,
+      active: lastSegment === 'my_orders',
+    },
+    { title: t('saved'), url: `/saved`, active: lastSegment === 'saved' },
+    { title: t('about'), url: `/about`, active: lastSegment === 'about' },
   ];
 
   return (
     <header className={styles.container}>
-      <Link href={`/`}><Logo /> <span>AirScreen</span></Link>
+      <Link href={`/`}>
+        <Logo /> <span>AirScreen</span>
+      </Link>
       <nav onMouseLeave={onMouseLeave}>
         <Button className={styles.menuIcon} onClick={setToggle}>
           <MenuIcon color={state ? '#0ae30d' : 'white'} />
@@ -47,7 +56,7 @@ const Header = () => {
           {isMd && <Search />}
           {tab.map((val: Tab) => {
             return (
-              <li key={val.title} className={val.active ? styles.active : ""}>
+              <li key={val.title} className={val.active ? styles.active : ''}>
                 <Link href={val.url}>{val.title}</Link>
               </li>
             );
@@ -55,7 +64,11 @@ const Header = () => {
         </ul>
       </nav>
       <div className={styles.rightPart}>
-        {!isMd && <div className={styles.searchContainer}><Search /></div>}
+        {!isMd && (
+          <div className={styles.searchContainer}>
+            <Search />
+          </div>
+        )}
         <LanguageSwitcher />
         {!isMd && <SignInCom />}
       </div>
