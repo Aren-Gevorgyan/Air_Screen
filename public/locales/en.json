@@ -42,8 +42,15 @@
     "edit_error": "We couldn't change the data",
     "get_movie_error": "We couldn't get movies",
     "saved": "Saved",
+    "type": "Type",
+    "movie": "Movie",
+    "name": "Name",
+    "names_com": "Names of competitors",
+    "football": "Football",
+    "oponents": "Oponents",
     "saved_movies": "Saved movies",
-    "login_worning": "Please log in to the project to see this page"
+    "login_worning": "Please log in to the project to see this page",
+    "order_info": "You can place orders for movies, football events, and UFC matches"
   },
   "MyOrders": {
     "saved": "Saved",

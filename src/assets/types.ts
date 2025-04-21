@@ -39,9 +39,12 @@ export type Movies = {
   userId?: string | null;
   filmId: string;
   date: string;
-  name: string;
+  name?: string;
   hour: string;
   phone: string;
+  type: string;
+  firstOponent?: string;
+  secondOponent?: string;
 };
 
 export type Languages = {

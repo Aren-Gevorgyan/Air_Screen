@@ -1,12 +1,12 @@
 import { API_KEY, BASE_URL } from '@/assets/constants';
 import { ActorsType, GenresType, MovieData } from '@/assets/types';
 
-export const getMovie = async (id: number): Promise<MovieData> => {
+export const getMovie = async (id: string): Promise<MovieData> => {
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
   const response = await fetch(url, { cache: 'force-cache' });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch data');
+    throw new Error('Failed to fetch data 2');
   }
 
   return await response.json();

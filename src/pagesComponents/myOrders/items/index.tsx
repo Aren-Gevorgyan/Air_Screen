@@ -9,6 +9,7 @@ import { useTranslations } from 'next-intl';
 import Actions from './actions';
 import { Link } from '@/i18n/navigation';
 import { showToast } from '@/components/toast';
+import Item from './item';
 
 type Props = {
   userId: string | undefined | null;
@@ -46,24 +47,17 @@ const Items: FC<Props> = ({ userId }) => {
               <div key={val?.name} className={styles.itemContainer}>
                 <div className={styles.backgorund} />
                 <div className={styles.items}>
-                  <div className={styles.item}>
-                    <span>{t('film_id')} :</span>
-                    <span>{val?.filmId || '_'}</span>
-                  </div>
-                  <div className={styles.item}>
-                    <span>{t('film_name')} :</span>
-                    <span>{val?.name}</span>
-                  </div>
-                  <div className={styles.item}>
-                    <span>{t('date_watch')} :</span>
-                    <span>
-                      {val?.date} {val?.hour}
-                    </span>
-                  </div>
-                  <div className={styles.item}>
-                    <span>{t('phone')} :</span>
-                    <span>{val?.phone}</span>
-                  </div>
+                  <Item val={val?.type} name='type' />
+                  {val?.type === t('movie') ?
+                    <>
+                      <Item val={val?.filmId} name='film_id' />
+                      <Item val={val?.name} name='film_name' />
+                    </>
+                    :
+                    <Item val={`${val?.firstOponent || '_'} vs ${val?.secondOponent || '_'}`} name='oponents' />
+                  }
+                  <Item val={`${val?.name} ${val?.hour}`} name='date_watch' />
+                  <Item val={val?.phone} name='phone' />
                 </div>
                 <Actions
                   id={val?.id}

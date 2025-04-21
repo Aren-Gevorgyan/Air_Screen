@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FormEvent, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react';
 import { InputParamter, Movies } from '@/assets/types';
 import Button from '@/components/button';
 import { addMovie, editItem, fetchMovieById } from '@/requests/firebase';
@@ -22,6 +22,9 @@ const Order = () => {
   const [hour, setHour] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [errorMessage, setError] = useState<string>('');
+  const [type, setType] = useState<string>(t('movie'));
+  const [firstOponent, setFirstOponent] = useState<string>('');
+  const [secondOponent, setSecondOponent] = useState<string>('');
   const [isLoading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -30,10 +33,13 @@ const Order = () => {
         .then((res: Movies | null) => {
           if (!res) return;
           setDate(res.date);
+          setType(res.type)
           setFilmId(res.filmId);
-          setFilmName(res.name);
           setHour(res.hour);
           setPhone(res.phone);
+          if(res.name) setFilmName(res.name);
+          if(res.firstOponent) setFirstOponent(res.firstOponent);
+          if(res.secondOponent) setSecondOponent(res.secondOponent)
         })
         .catch(() => showToast(t('edit_error'), 'error'));
     }
@@ -48,7 +54,8 @@ const Order = () => {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!filmName || !date || !hour) return setError(t('error_empty'));
+    const errorName = type === t('movie') ? !filmName : !(firstOponent && secondOponent)
+    if (errorName || !date || !hour) return setError(t('error_empty'));
     try {
       setLoading(true);
       if (movieId) {
@@ -58,6 +65,9 @@ const Order = () => {
           date,
           hour,
           phone,
+          type,
+          firstOponent,
+          secondOponent
         });
         push('/my_orders');
       } else {
@@ -67,7 +77,10 @@ const Order = () => {
           name: filmName,
           date,
           hour,
+          type,
           phone,
+          firstOponent,
+          secondOponent
         });
         push('my_orders');
       }
@@ -88,74 +101,119 @@ const Order = () => {
       setHour('');
       setError('');
       setPhone('');
+      setType(t('movie'));
+      setFirstOponent('');
+      setSecondOponent('')
     };
   }, []);
 
+  const onSelectorChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setType(e.target.value);
+  };
+
   return (
-    <form className={styles.container} onSubmit={onSubmit}>
-      <div>
-        <label>
-          {t('film_id')}
-          <input
-            type="string"
-            name="filmID"
-            value={filmId}
-            onChange={onChange(setFilmId)}
-            placeholder={t('film_id')}
-          />
-        </label>
-        <label>
-          {t('film_name')} *
-          <input
-            type="string"
-            name="filmName"
-            required
-            value={filmName}
-            onChange={onChange(setFilmName)}
-            placeholder={t('film_name')}
-          />
-        </label>
-        <label>
-          {t('hour')} *
-          <input
-            type="string"
-            name="hour"
-            required
-            value={hour}
-            onChange={onChange(setHour)}
-            placeholder={'hh:mm'}
-          />
-        </label>
-        <label>
-          {t('date')} *
-          <input
-            type="date"
-            name="date"
-            required
-            value={date}
-            onChange={onChange(setDate)}
-          />
-        </label>
-        <label>
-          {t('phone')} *
-          <input
-            type="string"
-            name="phone"
-            placeholder={t('phone')}
-            required
-            value={phone}
-            onChange={onChange(setPhone)}
-          />
-        </label>
-        {errorMessage && <span className={styles.error}>{errorMessage}</span>}
-      </div>
-      <div className={styles.buttons}>
-        <Link href="/my_orders">{t('cancel')}</Link>
-        <Button disabled={isLoading} type="submit">
-          {movieId ? t('edit') : t('create')}
-        </Button>
-      </div>
-    </form>
+    <div className={styles.container}>
+      <p className={styles.info}>{t('order_info')}</p>
+      <form className={styles.content} onSubmit={onSubmit}>
+        <div>
+          <label>
+            {t('type')}
+            <select value={type} onChange={onSelectorChange}>
+              <option value={t('movie')}>{t('movie')}</option>
+              <option value={t('football')}>{t('football')}</option>
+              <option value="UFC">UFC</option>
+            </select>
+          </label>
+          {type === t('movie') || !type ?
+            <>
+              <label>
+                {t('film_id')}
+                <input
+                  type="string"
+                  name="filmID"
+                  value={filmId}
+                  onChange={onChange(setFilmId)}
+                  placeholder={t('film_id')}
+                />
+              </label>
+              <label>
+                {t('film_name')} *
+                <input
+                  type="string"
+                  name="filmName"
+                  required
+                  value={filmName}
+                  onChange={onChange(setFilmName)}
+                  placeholder={t('film_name')}
+                />
+              </label>
+            </>
+            :
+            <label className={styles.item}>
+              {t('names_com')} *
+              <div>
+                <input
+                  type="string"
+                  name="firstItem"
+                  required
+                  value={firstOponent}
+                  onChange={onChange(setFirstOponent)}
+                  placeholder={t('name')}
+                />
+                <span>vs</span>
+                <input
+                  type="string"
+                  name="secondItem"
+                  required
+                  value={secondOponent}
+                  onChange={onChange(setSecondOponent)}
+                  placeholder={t('name')}
+                />
+              </div>
+            </label>
+          }
+          <label>
+            {t('hour')} *
+            <input
+              type="string"
+              name="hour"
+              required
+              value={hour}
+              onChange={onChange(setHour)}
+              placeholder={'hh:mm'}
+            />
+          </label>
+          <label>
+            {t('date')} *
+            <input
+              type="date"
+              name="date"
+              required
+              value={date}
+              onChange={onChange(setDate)}
+            />
+          </label>
+          <label>
+            {t('phone')} *
+            <input
+              type="string"
+              name="phone"
+              placeholder={t('phone')}
+              required
+              value={phone}
+              onChange={onChange(setPhone)}
+            />
+          </label>
+          {errorMessage && <span className={styles.error}>{errorMessage}</span>}
+        </div>
+        <div className={styles.buttons}>
+          <Link href="/my_orders">{t('cancel')}</Link>
+          <Button disabled={isLoading} type="submit">
+            {movieId ? t('edit') : t('create')}
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 };
 

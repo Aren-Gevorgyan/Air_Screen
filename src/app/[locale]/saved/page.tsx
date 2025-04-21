@@ -13,7 +13,7 @@ const Saved = async () => {
   const { userId } = await auth();
   let isLoading = true;
   const svaedMovies = await fetchSavedMovies(userId);
-  const requests = svaedMovies?.moviesId?.map((val: number) => getMovie(val));
+  const requests = svaedMovies?.moviesId?.map((val: string) => getMovie(val));
   const data = await Promise.all(requests);
   isLoading = false;
 

@@ -6,13 +6,13 @@ html {
 }
 body {
   min-height: 100vh;
-  margin: 0;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('/images/forest.jpeg');
-  background-repeat: repeat-x;
-  overflow: hidden;
-  background-color: black;
+    margin: 0;
+    background: linear-gradient(#0000006e, #0000004f), url(/images/back.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    overflow: hidden;
+    background-color: #000;
+    background-position-y: 15%;
   @media screen and (max-width: $mobile_size) {
     font-size: 14px;
     background-repeat: no-repeat;
