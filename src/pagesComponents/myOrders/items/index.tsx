@@ -43,9 +43,13 @@ const Items: FC<Props> = ({ userId }) => {
           <Loading />
         ) : movies?.length ? (
           movies?.map((val: Movies | undefined) => {
+            let bacImage = 'movie.jpg';
+            if (val?.type === t('football')) bacImage = 'football.jpg';
+            if (val?.type === "UFC") bacImage = 'ufc.jpg';
+
             return (
-              <div key={val?.name} className={styles.itemContainer}>
-                <div className={styles.backgorund} />
+              <div key={val?.id} className={styles.itemContainer}>
+                <div className={styles.backgorund} style={{ backgroundImage: `url('/images/${bacImage}')` }} />
                 <div className={styles.items}>
                   <Item val={val?.type} name='type' />
                   {val?.type === t('movie') ?
