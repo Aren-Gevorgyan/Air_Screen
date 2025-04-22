@@ -41,7 +41,7 @@
       border-radius: 6px;
       overflow: hidden;
       background-color: $dark;
-      border: 1px solid wheat;
+      border: 1px solid gray;
 
       @media screen and (max-width: $mobile_size) {
         max-width: 100%;
@@ -53,9 +53,8 @@
         height: 100%;
         left: 0;
         top: 0;
-        background-image: url('/images/screen.jpg');
-        background-size: cover;
-        background-position: center;
+        background-size: contain;
+        background-position: left;
         background-repeat: no-repeat;
       }
 

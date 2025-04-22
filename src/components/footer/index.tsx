@@ -27,32 +27,16 @@ const Footer = () => {
       </div>
       <div className={styles.contact}>
         <Link href="/" className={styles.networks}>
-          <h6>
-            <FaInstagram size={16} color="white" />
-            Instagram
-          </h6>
-          <span>AirScreen</span>
+            <FaInstagram size={20} color="white" />
         </Link>
         <Link href="/" className={styles.networks}>
-          <h6>
-            <FaFacebook size={16} color="white" />
-            Facebook
-          </h6>
-          <span>AirScreen</span>
+            <FaFacebook size={20} color="white" />
         </Link>
         <Link href="/" className={styles.networks}>
-          <h6>
-            <FaTelegram size={16} color="white" />
-            Telegram
-          </h6>
-          <span>AirScreen</span>
+            <FaTelegram size={20} color="white" />
         </Link>
         <Link href="/" className={styles.networks}>
-          <h6>
-            <FaEnvelope size={16} color="white" />
-            Email
-          </h6>
-          <span>airScreen@gmail.com</span>
+            <FaEnvelope size={20} color="white" />
         </Link>
       </div>
       <div className={styles.moreInfo}>
