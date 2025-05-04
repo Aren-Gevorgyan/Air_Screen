@@ -4,34 +4,42 @@
 html {
   overflow-x: hidden;
 }
+
 body {
   min-height: 100vh;
-    margin: 0;
-    background: linear-gradient(#0000006e, #0000004f), url(/images/back.jpg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    overflow: hidden;
-    background-color: #000;
-    background-position-y: 15%;
+  margin: 0;
+  background: linear-gradient(#0000006e, #0000004f), url(/images/back.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+  background-color: #000;
+
+  // background-position-y: 15%;
   @media screen and (max-width: $mobile_size) {
     font-size: 14px;
     background-repeat: no-repeat;
   }
+
   &::-webkit-scrollbar {
-    width: 10px; /* Scrollbar width */
+    width: 10px;
+    /* Scrollbar width */
   }
 
   &::-webkit-scrollbar-track {
-    background: #040404; /* Track color */
+    background: #040404;
+    /* Track color */
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $deep_blue; /* Scrollbar thumb color */
-    border: 1px inset $green2; /* Space around the thumb */
+    background: $deep_blue;
+    /* Scrollbar thumb color */
+    border: 1px inset $green2;
+    /* Space around the thumb */
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #040404; /* Darker color on hover */
+    background: #040404;
+    /* Darker color on hover */
   }
 }
 
@@ -61,9 +69,11 @@ main {
 
 .react-multi-carousel-track {
   gap: 20px;
+
   @media screen and (max-width: $mobile_size) {
     gap: 10px;
   }
+
   @media screen and (max-width: $sm) {
     gap: 0px;
   }
@@ -80,6 +90,7 @@ main {
   cursor: pointer;
   height: 350px;
   background: gray;
+
   @media screen and (max-width: $laptops_size) {
     height: 380px;
   }

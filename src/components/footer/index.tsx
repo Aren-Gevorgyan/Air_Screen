@@ -25,20 +25,6 @@ const Footer = () => {
         <p>AirScreen — {t('descThree')}</p>
         <span>© 2025 AirScreen</span>
       </div>
-      <div className={styles.contact}>
-        <Link href="/" className={styles.networks}>
-            <FaInstagram size={20} color="white" />
-        </Link>
-        <Link href="/" className={styles.networks}>
-            <FaFacebook size={20} color="white" />
-        </Link>
-        <Link href="/" className={styles.networks}>
-            <FaTelegram size={20} color="white" />
-        </Link>
-        <Link href="/" className={styles.networks}>
-            <FaEnvelope size={20} color="white" />
-        </Link>
-      </div>
       <div className={styles.moreInfo}>
         <Link className={styles.link} href={`/privacy-policy`}>
           {t('privacy_policy')}
@@ -46,6 +32,20 @@ const Footer = () => {
         <Link className={styles.link} href={`/about`}>
           {t('about')}
         </Link>
+        <div className={styles.contact}>
+          <Link href="/" className={styles.networks}>
+            <FaInstagram size={20} color="white" />
+          </Link>
+          <Link href="/" className={styles.networks}>
+            <FaFacebook size={20} color="white" />
+          </Link>
+          <Link href="/" className={styles.networks}>
+            <FaTelegram size={20} color="white" />
+          </Link>
+          <Link href="/" className={styles.networks}>
+            <FaEnvelope size={20} color="white" />
+          </Link>
+        </div>
         <div className={styles.phone}>
           <h6>
             <FaPhone size={16} color="white" />
