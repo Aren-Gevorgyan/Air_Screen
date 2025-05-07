@@ -24,6 +24,7 @@ const Saved = async () => {
       </div>
     );
   } catch (error) {
+     console.log("🚀 ~ Saved ~ error:", error)
      return <span className={styles.isEmpty}>There is not data</span>
   }
 };
