@@ -54,7 +54,7 @@ const Items: FC<Props> = ({ userId }) => {
                   <Item val={val?.type} name='type' />
                   {val?.type === t('movie') ?
                     <>
-                      <Item val={val?.filmId} name='film_id' />
+                      {/* <Item val={val?.filmId} name='film_id' /> */}
                       <Item val={val?.name} name='film_name' />
                     </>
                     :
