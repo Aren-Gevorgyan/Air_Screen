@@ -16,7 +16,7 @@ const Order = () => {
   const t = useTranslations('Words');
   const { push } = useRouter();
   const movieId = useQueryParam('id');
-  const [filmId, setFilmId] = useState<string>('');
+  // const [filmId, setFilmId] = useState<string>('');
   const [filmName, setFilmName] = useState<string>('');
   const [date, setDate] = useState<string>('');
   const [hour, setHour] = useState<string>('');
@@ -34,7 +34,7 @@ const Order = () => {
           if (!res) return;
           setDate(res.date);
           setType(res.type)
-          setFilmId(res.filmId);
+          // setFilmId(res.filmId);
           setHour(res.hour);
           setPhone(res.phone);
           if(res.name) setFilmName(res.name);
@@ -60,7 +60,7 @@ const Order = () => {
       setLoading(true);
       if (movieId) {
         await editItem(movieId, {
-          filmId,
+          // filmId,
           name: filmName,
           date,
           hour,
@@ -72,7 +72,7 @@ const Order = () => {
         push('/my_orders');
       } else {
         await addMovie({
-          filmId,
+          // filmId,
           userId: auth.userId,
           name: filmName,
           date,
@@ -96,7 +96,7 @@ const Order = () => {
   useEffect(() => {
     return () => {
       setDate('');
-      setFilmId('');
+      // setFilmId('');
       setFilmName('');
       setHour('');
       setError('');
@@ -126,7 +126,7 @@ const Order = () => {
           </label>
           {type === t('movie') || !type ?
             <>
-              <label>
+              {/* <label>
                 {t('film_id')}
                 <input
                   type="string"
@@ -135,7 +135,7 @@ const Order = () => {
                   onChange={onChange(setFilmId)}
                   placeholder={t('film_id')}
                 />
-              </label>
+              </label> */}
               <label>
                 {t('film_name')} *
                 <input

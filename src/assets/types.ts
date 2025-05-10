@@ -37,7 +37,7 @@ export type Tab = {
 export type Movies = {
   id?: string;
   userId?: string | null;
-  filmId: string;
+  // filmId: string;
   date: string;
   name?: string;
   hour: string;

@@ -94,6 +94,9 @@ main {
   @media screen and (max-width: $laptops_size) {
     height: 380px;
   }
+  @media screen and (max-width: $sm) {
+    height: 440px;
+  }
 }
 
 .react-multi-carousel-dot button {
