@@ -10,21 +10,18 @@ const customMiddleware = async (
   auth: ClerkMiddlewareAuth
 ) => {
   try {
-console.log(1111);
     const { userId } = await auth(); // Wait for Clerk authentication
     const url = request.nextUrl.clone();
     const genre = url.searchParams.get('genre');
     // const isAuth = url.searchParams.get('auth');
     const filterValue = url.searchParams.get('value');
     const locale = url.pathname.split('/')[1];
-console.log(22222);
 
     // const protectedRoutes = [`/${locale}/my_orders`, `/${locale}/saved`, `/${locale}/order`];
     const protectedRoutes = [`/${locale}/order`];
     const isCoincide = protectedRoutes.some((route) =>
       url.pathname.startsWith(route)
     );
-    console.log(3333);
 
     // Redirect if user is not authenticated on protected routes
     if (isCoincide && !userId) {
@@ -34,14 +31,12 @@ console.log(22222);
       return NextResponse.redirect(new URL('/', request.url));
       // }
     }
-    console.log(4444);
 
     // Ensure default genre is set
     if (url.pathname === `/${locale}` && !genre) {
       url.searchParams.set('genre', ACTION_GENRE_ID);
       return NextResponse.redirect(url);
     }
-    console.log(5555);
 
     // Redirect to home if no filter value in search
     if (url.pathname === `/${locale}/search` && !filterValue) {
@@ -49,7 +44,6 @@ console.log(22222);
       url.href = `${request.nextUrl.origin}${url.pathname}`;
       return NextResponse.redirect(url);
     }
-    console.log(6666);
 
     // Return null to let further middleware proceed if no redirects are required
     return null;
