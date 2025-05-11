@@ -53,6 +53,11 @@
       font-size: 16px;
       color: white;
       margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 14;
+      white-space: pre-wrap;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
 
       @media screen and (max-width: $mobile_size) {
         font-size: 14px;

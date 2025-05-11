@@ -5,15 +5,15 @@ const customStyles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    top: '80px',
+    top: '0%',
     left: '0%',
     zIndex: '10',
     right: 'auto',
     padding: '0',
     bottom: 'auto',
-    background: 'transparent',
     border: 'none',
     borderRadius: '0px',
+    background: '#0f0f0f'
   },
 };
 
