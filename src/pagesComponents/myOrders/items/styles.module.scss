@@ -8,6 +8,10 @@
   flex-direction: column;
   gap: 40px;
 
+  @media screen and (max-width: $mobile_size) {
+    padding: 20px 0;
+  }
+
   .registr {
     width: 200px;
     padding: 16px 12px;

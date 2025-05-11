@@ -29,6 +29,11 @@
     background-repeat: no-repeat;
     background-size: 100px;
 
+    @media screen and (max-width: $mobile_size) {
+      height: 440px;
+      max-width: 100%;
+    }
+
     &:hover {
       transform: scale(1.02);
     }
@@ -55,8 +60,8 @@
       padding: 20px;
       background: linear-gradient(#ffffff00 0%, #000000e6 50%);
 
-      & > h5,
-      & > span {
+      &>h5,
+      &>span {
         color: white;
         font-size: 16px;
         text-align: left;
@@ -67,7 +72,7 @@
         }
       }
 
-      & > h5 {
+      &>h5 {
         font-size: 18px;
         margin: 0;
 
