@@ -10,6 +10,7 @@ import { Link, useRouter } from '@/i18n/navigation';
 import useQueryParam from '@/hooks/useQueryParam';
 import { showToast } from '@/components/toast';
 import { useAuth } from '@clerk/clerk-react';
+import Moon from '@/components/moon';
 
 const Order = () => {
   const auth = useAuth();
@@ -37,9 +38,9 @@ const Order = () => {
           // setFilmId(res.filmId);
           setHour(res.hour);
           setPhone(res.phone);
-          if(res.name) setFilmName(res.name);
-          if(res.firstOponent) setFirstOponent(res.firstOponent);
-          if(res.secondOponent) setSecondOponent(res.secondOponent)
+          if (res.name) setFilmName(res.name);
+          if (res.firstOponent) setFirstOponent(res.firstOponent);
+          if (res.secondOponent) setSecondOponent(res.secondOponent)
         })
         .catch(() => showToast(t('edit_error'), 'error'));
     }

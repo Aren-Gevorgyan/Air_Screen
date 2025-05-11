@@ -56,7 +56,7 @@ const Header = () => {
           {isMd && <Search />}
           {tab.map((val: Tab) => {
             return (
-              <li key={val.title} className={val.active ? styles.active : ''}>
+              <li onClick={setFalse} key={val.title} className={val.active ? styles.active : ''}>
                 <Link href={val.url}>{val.title}</Link>
               </li>
             );
