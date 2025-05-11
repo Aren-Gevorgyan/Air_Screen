@@ -16,47 +16,49 @@ const Footer = () => {
 
   return (
     <footer className={styles.container}>
-      <div className={styles.logo}>
-        <Link href={`/`}>
-          <Logo />
-          AirScreen
-        </Link>
-        <p>{t('descTwo')} 🌟</p>
-        <p>AirScreen — {t('descThree')}</p>
-        <span>© 2025 AirScreen</span>
-      </div>
-      <div className={styles.moreInfo}>
-        <Link className={styles.link} href={`/privacy-policy`}>
-          {t('privacy_policy')}
-        </Link>
-        <Link className={styles.link} href={`/about`}>
-          {t('about')}
-        </Link>
-        <div className={styles.contact}>
-          <Link href="/" className={styles.networks}>
-            <FaInstagram size={20} color="white" />
+      <div className={styles.content}>
+        <div className={styles.logo}>
+          <Link href={`/`}>
+            <Logo />
+            AirScreen
           </Link>
-          <Link href="/" className={styles.networks}>
-            <FaFacebook size={20} color="white" />
+          <p>{t('descTwo')} 🌟</p>
+          <p>AirScreen — {t('descThree')}</p>
+        </div>
+        <div className={styles.moreInfo}>
+          <Link className={styles.link} href={`/privacy-policy`}>
+            {t('privacy_policy')}
           </Link>
-          <Link href="/" className={styles.networks}>
-            <FaTelegram size={20} color="white" />
+          <Link className={styles.link} href={`/about`}>
+            {t('about')}
           </Link>
-          <Link href="/" className={styles.networks}>
-            <FaEnvelope size={20} color="white" />
-          </Link>
-          <div className={styles.phone}>
-          <h6>
-            <FaPhone size={16} color="white" />
-            {/* {t('phone')} */}
-          </h6>
-          <div>
-            <span>041033456</span>
-            <span>094033456</span>
+          <div className={styles.contact}>
+            <Link href="/" className={styles.networks}>
+              <FaInstagram size={20} color="white" />
+            </Link>
+            <Link href="/" className={styles.networks}>
+              <FaFacebook size={20} color="white" />
+            </Link>
+            <Link href="/" className={styles.networks}>
+              <FaTelegram size={20} color="white" />
+            </Link>
+            <Link href="/" className={styles.networks}>
+              <FaEnvelope size={20} color="white" />
+            </Link>
+            <div className={styles.phone}>
+              <h6>
+                <FaPhone size={16} color="white" />
+                {/* {t('phone')} */}
+              </h6>
+              <div>
+                <span>041033456</span>
+                <span>094033456</span>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
       </div>
+      <span>© 2025 AirScreen</span>
     </footer>
   );
 };
