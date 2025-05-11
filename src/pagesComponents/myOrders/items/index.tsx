@@ -60,7 +60,7 @@ const Items: FC<Props> = ({ userId }) => {
                     :
                     <Item val={`${val?.firstOponent || '_'} vs ${val?.secondOponent || '_'}`} name='oponents' />
                   }
-                  <Item val={`${val?.name} ${val?.hour}`} name='date_watch' />
+                  <Item val={`${val?.date} ${val?.hour}`} name='date_watch' />
                   <Item val={val?.phone} name='phone' />
                 </div>
                 <Actions

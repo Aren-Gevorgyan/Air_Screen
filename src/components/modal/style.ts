@@ -5,7 +5,7 @@ const customStyles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    top: '0%',
+    top: '80px',
     left: '0%',
     zIndex: '10',
     right: 'auto',
