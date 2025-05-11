@@ -51,8 +51,8 @@ const Footer = () => {
                 {/* {t('phone')} */}
               </h6>
               <div>
-                <span>041033456</span>
-                <span>094033456</span>
+                <a href="tel:+37494033456">+374 41 033456</a>
+                <a href="tel:+37494033456">+374 94 033456</a>
               </div>
             </div>
           </div>
