@@ -10,7 +10,6 @@ import { Link, useRouter } from '@/i18n/navigation';
 import useQueryParam from '@/hooks/useQueryParam';
 import { showToast } from '@/components/toast';
 import { useAuth } from '@clerk/clerk-react';
-import Moon from '@/components/moon';
 
 const Order = () => {
   const auth = useAuth();
