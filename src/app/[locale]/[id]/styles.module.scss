@@ -6,28 +6,38 @@
   display: flex;
   justify-content: center;
   padding-bottom: 40px;
-  background-color: #000000bd;
+  background-color: #00000035;
+
   @media screen and (max-width: $mobile_size) {
-    background-color: #00000035;
+    background-color: none
   }
+
   .content {
     width: 90%;
     min-height: 100%;
     padding-top: 40px;
+
     @media screen and (max-width: $mobile_size) {
       padding-top: 20px;
+      &>div:first-child {
+        display: none;
+      }
     }
+
     .info {
       display: flex;
       flex-direction: column;
       gap: 20px;
+
       .imageContainer {
         display: flex;
         align-items: flex-start;
         gap: 20px;
+
         @media screen and (max-width: 880px) {
           flex-wrap: wrap;
         }
+
         .image {
           flex: none;
           position: relative;
@@ -40,18 +50,22 @@
           background-position: center;
           background-repeat: no-repeat;
           background-size: 100px;
+
           @media screen and (max-width: $mobile_size) {
             width: 100%;
             height: 600px;
           }
+
           @media screen and (max-width: $sm) {
             width: 100%;
             height: 400px;
           }
         }
+
         .noImage {
           background-image: url('/images/no-image.png');
         }
+
         .title {
           text-align: left;
           font-size: clamp(1rem, 5vw, 1.8rem);

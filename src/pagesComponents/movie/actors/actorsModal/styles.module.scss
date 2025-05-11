@@ -10,13 +10,17 @@
   padding: 20px;
   background-color: $dark;
   border-radius: 6px;
+
   @media screen and (max-width: $mid_size) {
     max-width: 100%;
+    gap: 4px;
+    padding: 0;
   }
+
   @media screen and (max-width: $mobile_size) {
-    padding: 10px;
     flex-wrap: wrap;
   }
+
   .image {
     flex: none;
     width: 160px;
@@ -25,17 +29,24 @@
     border-radius: 50%;
     border: 2px solid $dark;
     overflow: hidden;
-    background-image: url('../../../../../public/images/profile.png');
     background-position: center;
     background-size: cover;
+
+    @media screen and (max-width: $mid_size) {
+      width: 100px;
+      height: 100px;
+    }
+
     img {
       object-fit: contain;
     }
   }
+
   .description {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
     h3,
     p,
     span {
@@ -43,12 +54,15 @@
       font-size: 16px;
       color: white;
       margin: 0;
+
       @media screen and (max-width: $mobile_size) {
         font-size: 14px;
       }
     }
+
     h3 {
       font-size: 28px;
+
       @media screen and (max-width: $mobile_size) {
         font-size: 22px;
       }

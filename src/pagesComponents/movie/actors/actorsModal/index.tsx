@@ -32,15 +32,17 @@ const ActorsModal: FC<Props> = ({ state, setFalse, actor }) => {
     initialData: cachedData,
   });
 
+  const image = !data?.profile_path ? {} : { backgroundImage: "url('../../../../../public/images/profile.png')" }
+
   return (
     !isLoading &&
     !isEmpty(data) && (
       <Modal isOpen={state} onClose={setFalse}>
         <div className={styles.container}>
-          <div className={styles.image}>
+          <div className={styles.image} style={image}>
             {data.profile_path && (
               <Image
-                src={`${IMAGE_URL}/${data.profile_path}`}
+                src={`${IMAGE_URL}/${data?.profile_path}`}
                 alt={`AirScreen ${data.name} image`}
                 fill
               />
