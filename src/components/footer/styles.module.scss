@@ -20,6 +20,10 @@
     flex-wrap: wrap;
     gap: 10px;
 
+    @media screen and (max-width: $mobile_size) {
+      gap: 4px;
+    }
+
     .logo {
       display: flex;
       flex-direction: column;
@@ -57,7 +61,7 @@
         margin: 0;
 
         @media screen and (max-width: $mobile_size) {
-          font-size: 14px;
+          font-size: 13px;
         }
       }
     }
@@ -70,6 +74,7 @@
 
       @media screen and (max-width: $mobile_size) {
         width: 100%;
+        gap: 4px;
       }
 
       .link {
@@ -77,6 +82,10 @@
         font-weight: 500;
         color: white;
         cursor: pointer;
+
+        @media screen and (max-width: $mobile_size) {
+          font-size: 13px;
+        }
 
         &:hover {
           color: rgb(83, 155, 242);
