@@ -45,16 +45,16 @@ const Footer = () => {
           <Link href="/" className={styles.networks}>
             <FaEnvelope size={20} color="white" />
           </Link>
-        </div>
-        <div className={styles.phone}>
+          <div className={styles.phone}>
           <h6>
             <FaPhone size={16} color="white" />
-            {t('phone')}
+            {/* {t('phone')} */}
           </h6>
           <div>
             <span>041033456</span>
             <span>094033456</span>
           </div>
+        </div>
         </div>
       </div>
     </footer>
