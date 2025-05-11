@@ -33,18 +33,20 @@ const Footer = () => {
             {t('about')}
           </Link>
           <div className={styles.contact}>
-            <Link href="/" className={styles.networks}>
-              <FaInstagram size={20} color="white" />
-            </Link>
-            <Link href="/" className={styles.networks}>
-              <FaFacebook size={20} color="white" />
-            </Link>
-            <Link href="/" className={styles.networks}>
-              <FaTelegram size={20} color="white" />
-            </Link>
-            <Link href="/" className={styles.networks}>
-              <FaEnvelope size={20} color="white" />
-            </Link>
+            <div>
+              <Link href="/" className={styles.networks}>
+                <FaInstagram size={20} color="white" />
+              </Link>
+              <Link href="/" className={styles.networks}>
+                <FaFacebook size={20} color="white" />
+              </Link>
+              <Link href="/" className={styles.networks}>
+                <FaTelegram size={20} color="white" />
+              </Link>
+              <Link href="/" className={styles.networks}>
+                <FaEnvelope size={20} color="white" />
+              </Link>
+            </div>
             <div className={styles.phone}>
               <h6>
                 <FaPhone size={16} color="white" />
