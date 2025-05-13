@@ -34,16 +34,16 @@ const Footer = () => {
           </Link>
           <div className={styles.contact}>
             <div>
-              <Link href="/" className={styles.networks}>
+              <Link href="/" target="_blank" className={styles.networks}>
                 <FaInstagram size={20} color="white" />
               </Link>
-              <Link href="/" className={styles.networks}>
+              <Link href="/" target="_blank" className={styles.networks}>
                 <FaFacebook size={20} color="white" />
               </Link>
-              <Link href="/" className={styles.networks}>
+              <Link href="https://t.me/air_screen" target="_blank" className={styles.networks}>
                 <FaTelegram size={20} color="white" />
               </Link>
-              <Link href="/" className={styles.networks}>
+              <Link href="mailto:airscrn@gmail.com" target="_blank" className={styles.networks}>
                 <FaEnvelope size={20} color="white" />
               </Link>
             </div>
