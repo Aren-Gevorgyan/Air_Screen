@@ -15,14 +15,14 @@ const PrivacyPolicy = () => {
 
         <h2>1. {t('text1')}</h2>
         <ul>
-          <li>{t('text2')}՝</li>
+          {/* <li>{t('text2')}՝</li> */}
           <li>{t('text3')}:</li>
           <li>{t('text4')}:</li>
         </ul>
 
         <h2>2. {t('text5')}</h2>
         <ul>
-          <li>{t('text6')}՝</li>
+          {/* <li>{t('text6')}՝</li> */}
           <li>{t('text7')}:</li>
           <li>{t('text8')}:</li>
           <li>{t('text9')}:</li>
