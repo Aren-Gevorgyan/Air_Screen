@@ -38,6 +38,10 @@ const Items: FC<Props> = ({ userId }) => {
       <Link href={'/order'} className={styles.registr}>
         {t('registr')}
       </Link>
+      <ul className={styles.price}>
+        <li className={styles.priceItem}>{t('price')}</li>
+        <li className={styles.priceItem}>{t('priceTwo')}</li>
+      </ul>
       <div className={styles.content}>
         {isLoading ? (
           <Loading />
