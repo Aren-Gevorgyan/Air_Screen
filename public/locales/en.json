@@ -51,8 +51,8 @@
     "saved_movies": "Saved movies",
     "login_worning": "Please log in to the project to see this page",
     "order_info": "You can place orders for movies, football events, and UFC matches",
-    "price": "The price for one person is 3,500 AMD.",
-    "priceTwo": "The total price for a private booking is 30,000 AMD."
+    "price": "The price for one person is 3000 AMD.",
+    "priceTwo": "The total price for a private booking is 25,000 AMD."
   },
   "MyOrders": {
     "saved": "Saved",
