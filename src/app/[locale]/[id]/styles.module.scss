@@ -9,7 +9,7 @@
   background-color: #00000035;
 
   @media screen and (max-width: $mobile_size) {
-    background-color: none
+    background-color: none;
   }
 
   .content {
@@ -19,7 +19,7 @@
 
     @media screen and (max-width: $mobile_size) {
       padding-top: 20px;
-      &>div:first-child {
+      & > div:first-child {
         display: none;
       }
     }

@@ -49,23 +49,29 @@ const Items: FC<Props> = ({ userId }) => {
           movies?.map((val: Movies | undefined) => {
             let bacImage = 'movie.jpg';
             if (val?.type === t('football')) bacImage = 'football.jpg';
-            if (val?.type === "UFC") bacImage = 'ufc.jpg';
+            if (val?.type === 'UFC') bacImage = 'ufc.jpg';
 
             return (
               <div key={val?.id} className={styles.itemContainer}>
-                <div className={styles.backgorund} style={{ backgroundImage: `url('/images/${bacImage}')` }} />
+                <div
+                  className={styles.backgorund}
+                  style={{ backgroundImage: `url('/images/${bacImage}')` }}
+                />
                 <div className={styles.items}>
-                  <Item val={val?.type} name='type' />
-                  {val?.type === t('movie') ?
+                  <Item val={val?.type} name="type" />
+                  {val?.type === t('movie') ? (
                     <>
                       {/* <Item val={val?.filmId} name='film_id' /> */}
-                      <Item val={val?.name} name='film_name' />
+                      <Item val={val?.name} name="film_name" />
                     </>
-                    :
-                    <Item val={`${val?.firstOponent || '_'} vs ${val?.secondOponent || '_'}`} name='oponents' />
-                  }
-                  <Item val={`${val?.date} ${val?.hour}`} name='date_watch' />
-                  <Item val={val?.phone} name='phone' />
+                  ) : (
+                    <Item
+                      val={`${val?.firstOponent || '_'} vs ${val?.secondOponent || '_'}`}
+                      name="oponents"
+                    />
+                  )}
+                  <Item val={`${val?.date} ${val?.hour}`} name="date_watch" />
+                  <Item val={val?.phone} name="phone" />
                 </div>
                 <Actions
                   id={val?.id}

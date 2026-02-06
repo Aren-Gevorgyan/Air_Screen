@@ -28,7 +28,9 @@ const Modal: FC<Props> = ({ isOpen, onClose, className, children }) => {
       overlayClassName="modalOverlay"
       ariaHideApp={false} // Necessary for Next.js to prevent errors
     >
-      <div onClick={onClose} className={clsx(styles.container, className)}>{children}</div>
+      <div onClick={onClose} className={clsx(styles.container, className)}>
+        {children}
+      </div>
     </ReactModal>
   );
 };

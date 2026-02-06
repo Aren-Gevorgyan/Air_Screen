@@ -1,6 +1,12 @@
 'use client';
 
-import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { InputParamter, Movies } from '@/assets/types';
 import Button from '@/components/button';
 import { addMovie, editItem, fetchMovieById } from '@/requests/firebase';
@@ -33,13 +39,13 @@ const Order = () => {
         .then((res: Movies | null) => {
           if (!res) return;
           setDate(res.date);
-          setType(res.type)
+          setType(res.type);
           // setFilmId(res.filmId);
           setHour(res.hour);
           setPhone(res.phone);
           if (res.name) setFilmName(res.name);
           if (res.firstOponent) setFirstOponent(res.firstOponent);
-          if (res.secondOponent) setSecondOponent(res.secondOponent)
+          if (res.secondOponent) setSecondOponent(res.secondOponent);
         })
         .catch(() => showToast(t('edit_error'), 'error'));
     }
@@ -54,7 +60,8 @@ const Order = () => {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const errorName = type === t('movie') ? !filmName : !(firstOponent && secondOponent)
+    const errorName =
+      type === t('movie') ? !filmName : !(firstOponent && secondOponent);
     if (errorName || !date || !hour) return setError(t('error_empty'));
     try {
       setLoading(true);
@@ -67,7 +74,7 @@ const Order = () => {
           phone,
           type,
           firstOponent,
-          secondOponent
+          secondOponent,
         });
         push('/my_orders');
       } else {
@@ -80,7 +87,7 @@ const Order = () => {
           type,
           phone,
           firstOponent,
-          secondOponent
+          secondOponent,
         });
         push('my_orders');
       }
@@ -103,7 +110,7 @@ const Order = () => {
       setPhone('');
       setType(t('movie'));
       setFirstOponent('');
-      setSecondOponent('')
+      setSecondOponent('');
     };
   }, []);
 
@@ -124,7 +131,7 @@ const Order = () => {
               <option value="UFC">UFC</option>
             </select>
           </label>
-          {type === t('movie') || !type ?
+          {type === t('movie') || !type ? (
             <>
               {/* <label>
                 {t('film_id')}
@@ -148,7 +155,7 @@ const Order = () => {
                 />
               </label>
             </>
-            :
+          ) : (
             <label className={styles.item}>
               {t('names_com')} *
               <div>
@@ -171,7 +178,7 @@ const Order = () => {
                 />
               </div>
             </label>
-          }
+          )}
           <label>
             {t('hour')} *
             <input

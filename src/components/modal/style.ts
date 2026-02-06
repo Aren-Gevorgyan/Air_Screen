@@ -13,7 +13,7 @@ const customStyles = {
     bottom: 'auto',
     border: 'none',
     borderRadius: '0px',
-    background: '#0f0f0f'
+    background: '#0f0f0f',
   },
 };
 

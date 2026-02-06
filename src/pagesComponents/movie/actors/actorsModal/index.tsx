@@ -32,7 +32,9 @@ const ActorsModal: FC<Props> = ({ state, setFalse, actor }) => {
     initialData: cachedData,
   });
 
-  const image = !data?.profile_path ? {} : { backgroundImage: "url('../../../../../public/images/profile.png')" }
+  const image = !data?.profile_path
+    ? {}
+    : { backgroundImage: "url('../../../../../public/images/profile.png')" };
 
   return (
     !isLoading &&

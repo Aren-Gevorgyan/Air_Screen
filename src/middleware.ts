@@ -48,7 +48,7 @@ const customMiddleware = async (
     // Return null to let further middleware proceed if no redirects are required
     return null;
   } catch (error) {
-    console.log("🚀 ~ error:", error)
+    console.log('🚀 ~ error:', error);
   }
 };
 

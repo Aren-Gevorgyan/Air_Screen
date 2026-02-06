@@ -42,7 +42,7 @@
       display: flex;
       gap: 10px;
 
-      &>div {
+      & > div {
         display: flex;
         align-items: center;
         gap: 10px;
@@ -86,7 +86,7 @@
       }
     }
 
-    &>div:first-child {
+    & > div:first-child {
       width: 100%;
       display: flex;
       flex-direction: column;

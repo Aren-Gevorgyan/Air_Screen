@@ -25,7 +25,7 @@ const Saved = async () => {
     );
   } catch (error) {
     console.error('Failed to copy text: ', error);
-    return <span className={styles.isEmpty}>{'There is not data'}</span>
+    return <span className={styles.isEmpty}>{'There is not data'}</span>;
   }
 };
 
