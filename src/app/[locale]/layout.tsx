@@ -9,7 +9,6 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
 import { getMessages, getTranslations } from 'next-intl/server';
-import { PropsMeta } from '@/assets/types';
 import { Viewport } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import GoUp from '@/components/goUp';
@@ -29,8 +28,12 @@ export const viewport: Viewport = {
   themeColor: '#000000',
 };
 
-export const generateMetadata = async ({ params }: PropsMeta) => {
-  const { locale } = await params;
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { locale: string };
+}) => {
+  const { locale } = params;
   const t = await getTranslations({ locale, namespace: 'Seo' });
 
   return {
@@ -70,12 +73,11 @@ export const generateMetadata = async ({ params }: PropsMeta) => {
 
 type Props = {
   children: React.ReactNode;
-  // Next.js `LayoutProps` uses a Promise for `params` in the latest typings.
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 };
 
-const RootLayout = async ({ children, params }: Readonly<Props>) => {
-  const lang = (await params).locale;
+const RootLayout = async ({ children, params }: Props) => {
+  const lang = params.locale;
   if (!hasLocale(routing.locales, lang)) {
     notFound();
   }

@@ -59,10 +59,7 @@ export type SaveMovie = {
 
 export type GenresType = { id: number; name: string };
 
-export type PropsMeta = {
-  // Next.js provides `params` as a Promise in the latest app router typings for dynamic segments.
-  params: Promise<{ locale: string }>;
-};
+// NOTE: `PropsMeta` is no longer used for layout/metadata typing; rely on Next.js' inferred types instead.
 
 export type BooleanHook = {
   state: boolean;
