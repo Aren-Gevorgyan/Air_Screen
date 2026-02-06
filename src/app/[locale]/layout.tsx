@@ -31,9 +31,10 @@ export const viewport: Viewport = {
 export const generateMetadata = async ({
   params,
 }: {
-  params: { locale: string };
+  // Next.js passes `params` to metadata as a Promise in the latest app router typings.
+  params: Promise<{ locale: string }>;
 }) => {
-  const { locale } = params;
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Seo' });
 
   return {
@@ -73,11 +74,12 @@ export const generateMetadata = async ({
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: string };
+  // Layout receives `params` as a Promise; aligning with Next.js' inferred `LayoutProps` shape.
+  params: Promise<{ locale: string }>;
 };
 
 const RootLayout = async ({ children, params }: Props) => {
-  const lang = params.locale;
+  const { locale: lang } = await params;
   if (!hasLocale(routing.locales, lang)) {
     notFound();
   }
