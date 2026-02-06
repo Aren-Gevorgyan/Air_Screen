@@ -25,9 +25,11 @@ const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
   const params = useParams();
   const t = useTranslations('Words');
   const { data, isLoading } = useQuery({
+    // Cache genre results to avoid unnecessary refetches when navigating back to the home page.
     queryKey: [MOVIES_BY_GENRE, genreId],
     queryFn: () => fetchMoviesByGenre(genreId),
     enabled: !!genreId,
+    staleTime: 5 * 60 * 1000,
   });
 
   const genresData: Array<MovieData> = data ? data : genresByIdData;
