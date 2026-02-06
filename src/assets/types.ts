@@ -60,8 +60,8 @@ export type SaveMovie = {
 export type GenresType = { id: number; name: string };
 
 export type PropsMeta = {
-  // Next.js passes `params` as a plain object, not a Promise; using Promise here breaks the inferred layout/metadata types.
-  params: { locale: string };
+  // Next.js provides `params` as a Promise in the latest app router typings for dynamic segments.
+  params: Promise<{ locale: string }>;
 };
 
 export type BooleanHook = {

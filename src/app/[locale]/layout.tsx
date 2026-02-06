@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 };
 
 export const generateMetadata = async ({ params }: PropsMeta) => {
-  const { locale } = params;
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Seo' });
 
   return {
@@ -70,12 +70,12 @@ export const generateMetadata = async ({ params }: PropsMeta) => {
 
 type Props = {
   children: React.ReactNode;
-  // Next.js provides `params` as a plain object with `locale: string`; narrowing it here caused a type mismatch with `LayoutProps`.
-  params: { locale: string };
+  // Next.js `LayoutProps` uses a Promise for `params` in the latest typings.
+  params: Promise<{ locale: string }>;
 };
 
 const RootLayout = async ({ children, params }: Readonly<Props>) => {
-  const lang = params.locale;
+  const lang = (await params).locale;
   if (!hasLocale(routing.locales, lang)) {
     notFound();
   }
