@@ -35,6 +35,8 @@
     "save_movie_error": "We couldn't save your order",
     "hour": "Hour",
     "error_empty": "You didn't complete necessary data",
+    "error_time_range": "Time must be between 8:30 PM and 11:00 PM",
+    "hour_range_hint": "8:30 PM – 11:00 PM",
     "error_order_delete": "We were unable to delete your order.",
     "success_order_delete": "The order was successfully deleted.",
     "get_movie_title": "Get movie title",
