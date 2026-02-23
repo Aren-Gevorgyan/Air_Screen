@@ -60,6 +60,16 @@ const Order = () => {
 
   const TIME_MIN = '20:30';
   const TIME_MAX = '23:00';
+  const today = new Date().toISOString().slice(0, 10);
+
+  const isDateValid = (value: string) => {
+    if (!value) return false;
+    const selected = new Date(value);
+    const min = new Date(today);
+    selected.setHours(0, 0, 0, 0);
+    min.setHours(0, 0, 0, 0);
+    return selected >= min;
+  };
 
   const isTimeInRange = (time: string) => {
     if (!time || !time.includes(':')) return false;
@@ -75,6 +85,9 @@ const Order = () => {
     const errorName =
       type === t('movie') ? !filmName : !(firstOponent && secondOponent);
     if (errorName || !date || !hour) return setError(t('error_empty'));
+    if (!isDateValid(date)) {
+      return setError(t('error_time_range'));
+    }
     if (!isTimeInRange(hour)) {
       return setError(t('error_time_range'));
     }
@@ -210,6 +223,7 @@ const Order = () => {
               type="date"
               name="date"
               required
+              min={today}
               value={date}
               onChange={onChange(setDate)}
             />
