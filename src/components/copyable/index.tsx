@@ -5,7 +5,6 @@ import Button from '../button';
 import { FaCopy } from 'react-icons/fa';
 import { FaCheck } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
-import SignInWrapper from '@/hoc/signInWrapper';
 
 type Props = {
   textToCopy: string;
@@ -41,4 +40,4 @@ const Copyable: FC<Props> = ({
   );
 };
 
-export default SignInWrapper(Copyable);
+export default Copyable;

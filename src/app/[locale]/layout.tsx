@@ -10,7 +10,6 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { routing } from '@/i18n/routing';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { Viewport } from 'next';
-import { ClerkProvider } from '@clerk/nextjs';
 import GoUp from '@/components/goUp';
 import { Toast } from '@/components/toast';
 
@@ -85,8 +84,7 @@ const RootLayout = async ({ children, params }: Props) => {
   }
   const messages = await getMessages();
   return (
-    <ClerkProvider>
-      <html lang={lang}>
+    <html lang={lang} suppressHydrationWarning>
         <head>
           <link rel="icon" href="/icon.png" sizes="any" />
           <link
@@ -108,6 +106,7 @@ const RootLayout = async ({ children, params }: Props) => {
         </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          suppressHydrationWarning
         >
           <QueryProvider>
             <NextIntlClientProvider messages={messages}>
@@ -124,7 +123,6 @@ const RootLayout = async ({ children, params }: Props) => {
           </QueryProvider>
         </body>
       </html>
-    </ClerkProvider>
   );
 };
 

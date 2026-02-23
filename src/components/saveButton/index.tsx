@@ -5,11 +5,11 @@ import { FaRegBookmark, FaBookmark } from 'react-icons/fa';
 import Button from '../button';
 import useBoolean from '@/hooks/useBoolean';
 import { fetchSavedMovies, saveMovie, unsave } from '@/requests/firebase';
-import { useAuth } from '@clerk/clerk-react';
 import { showToast } from '../toast';
 import { useTranslations } from 'next-intl';
 import { SaveMovie } from '@/assets/types';
-import SignInWrapper from '@/hoc/signInWrapper';
+
+const GUEST_USER_ID = 'guest';
 
 type Props = {
   movieId: number;
@@ -17,38 +17,36 @@ type Props = {
 };
 
 const SaveButton: FC<Props> = ({ movieId, className }) => {
-  const auth = useAuth();
   const t = useTranslations('MyOrders');
   const [data, setData] = useState<SaveMovie>();
   const { state: isSaved, setFalse, setTrue } = useBoolean(false);
 
   useEffect(() => {
-    fetchSavedMovies(auth.userId).then((res) => {
-      const isSaved = res?.moviesId?.some((val: number) => val === movieId);
-      if (isSaved) setTrue();
+    fetchSavedMovies(GUEST_USER_ID).then((res) => {
+      const saved = res?.moviesId?.some((val: number) => val === movieId);
+      if (saved) setTrue();
       setData(res);
     });
-  }, [auth.userId, movieId, isSaved]);
+  }, [movieId, isSaved]);
 
   const onClick = useCallback(async () => {
     try {
       if (isSaved && data?.userId) {
-        await unsave(data.moviesId, movieId, auth.userId);
+        await unsave(data.moviesId, movieId, GUEST_USER_ID);
         setFalse();
       } else {
         if (data?.moviesId && data.moviesId.length) {
-          await saveMovie([...data.moviesId, movieId], auth.userId);
+          await saveMovie([...data.moviesId, movieId], GUEST_USER_ID);
         } else {
-          await saveMovie([movieId], auth.userId);
+          await saveMovie([movieId], GUEST_USER_ID);
         }
         setTrue();
       }
-    } catch (error) {
-      console.log('🚀 ~ onClick ~ error:', error);
+    } catch {
       setFalse();
       showToast(t('saved_error'), 'error');
     }
-  }, [movieId, auth.userId, data]);
+  }, [movieId, data, isSaved]);
 
   return (
     <Button className={className} onClick={onClick}>
@@ -61,4 +59,4 @@ const SaveButton: FC<Props> = ({ movieId, className }) => {
   );
 };
 
-export default SignInWrapper(SaveButton);
+export default SaveButton;

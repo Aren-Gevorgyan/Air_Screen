@@ -1,19 +1,17 @@
 import React from 'react';
-import WithAuth from '@/hoc/withAuth';
 import styles from './styles.module.scss';
 import Items from '@/pagesComponents/myOrders/items';
-import { auth } from '@clerk/nextjs/server';
 import Moon from '@/components/moon';
 
-const MyOrders = async () => {
-  const { userId } = await auth();
+const GUEST_USER_ID: string | null = null;
 
+const MyOrders = async () => {
   return (
     <div className={styles.container}>
       <Moon />
-      <Items userId={userId} />
+      <Items userId={GUEST_USER_ID} />
     </div>
   );
 };
 
-export default WithAuth(MyOrders);
+export default MyOrders;

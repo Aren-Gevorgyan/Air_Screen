@@ -49,10 +49,9 @@
     "football": "Football",
     "oponents": "Oponents",
     "saved_movies": "Saved movies",
-    "login_worning": "Please log in to the project to see this page",
     "order_info": "You can place orders for movies, football events, and UFC matches",
     "price": "Would you like to attend the film screening organized by us? The participation fee for one person is 3,000 AMD.",
-    "priceTwo": "Would you prefer to rent the entire cinema for a private event or a closed screening? The rental fee is 25,000 AMD for up to 4 people and 30,000 AMD for groups of 5 or more."
+    "priceTwo": "Would you prefer to rent the entire cinema for a private event or a closed screening? The rental fee is 25,000 AMD for up to 2 people and 30,000 AMD for groups of 3 or more."
   },
   "MyOrders": {
     "saved": "Saved",

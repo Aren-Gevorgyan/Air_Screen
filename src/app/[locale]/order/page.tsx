@@ -15,10 +15,10 @@ import styles from './styles.module.scss';
 import { Link, useRouter } from '@/i18n/navigation';
 import useQueryParam from '@/hooks/useQueryParam';
 import { showToast } from '@/components/toast';
-import { useAuth } from '@clerk/clerk-react';
+
+const GUEST_USER_ID = 'guest';
 
 const Order = () => {
-  const auth = useAuth();
   const t = useTranslations('Words');
   const { push } = useRouter();
   const movieId = useQueryParam('id');
@@ -79,8 +79,7 @@ const Order = () => {
         push('/my_orders');
       } else {
         await addMovie({
-          // filmId,
-          userId: auth.userId,
+          userId: GUEST_USER_ID,
           name: filmName,
           date,
           hour,
@@ -93,8 +92,7 @@ const Order = () => {
       }
 
       setLoading(false);
-    } catch (error) {
-      console.log('🚀 ~ onSubmit ~ error:', error);
+    } catch {
       setError(t('save_movie_error'));
       if (movieId) showToast(t('edit_error'), 'error');
     }

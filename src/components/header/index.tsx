@@ -9,7 +9,6 @@ import Button from '../button';
 import useBoolean from '@/hooks/useBoolean';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '../languageSwitcher';
-import SignInCom from '@/components/signInCom';
 import useWindowSize from '@/hooks/useWindowSize';
 import { Link } from '@/i18n/navigation';
 import { usePathname } from 'next/navigation';
@@ -52,7 +51,6 @@ const Header = () => {
           <MenuIcon color={state ? '#0ae30d' : 'white'} />
         </Button>
         <ul className={state ? styles.isOpen : ''}>
-          {isMd && <SignInCom />}
           {isMd && <Search />}
           {tab.map((val: Tab) => {
             return (
@@ -74,7 +72,6 @@ const Header = () => {
           </div>
         )}
         <LanguageSwitcher />
-        {!isMd && <SignInCom />}
       </div>
     </header>
   );

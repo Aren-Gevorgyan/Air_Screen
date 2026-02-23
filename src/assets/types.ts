@@ -37,7 +37,6 @@ export type Tab = {
 export type Movies = {
   id?: string;
   userId?: string | null;
-  // filmId: string;
   date: string;
   name?: string;
   hour: string;
@@ -58,8 +57,6 @@ export type SaveMovie = {
 };
 
 export type GenresType = { id: number; name: string };
-
-// NOTE: `PropsMeta` is no longer used for layout/metadata typing; rely on Next.js' inferred types instead.
 
 export type BooleanHook = {
   state: boolean;
