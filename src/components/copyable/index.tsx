@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import Button from '../button';
 import { FaCopy } from 'react-icons/fa';
 import { FaCheck } from 'react-icons/fa';

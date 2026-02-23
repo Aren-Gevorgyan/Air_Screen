@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styles from './styles.module.scss';
 import { MovieData } from '@/assets/types';
 import { useQuery } from '@tanstack/react-query';

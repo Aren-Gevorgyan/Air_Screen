@@ -1,4 +1,3 @@
-import React from 'react';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '../../styles/main.scss';
 import QueryProvider from '@/components/queryProvider';

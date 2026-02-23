@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, lazy } from 'react';
+import { FC, lazy } from 'react';
 import {
   useQuery,
   useQueryClient,

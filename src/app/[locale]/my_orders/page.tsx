@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 import Items from '@/pagesComponents/myOrders/items';
 import Moon from '@/components/moon';

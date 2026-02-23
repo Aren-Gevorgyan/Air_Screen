@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 import styles from './styles.module.scss';
 import Actors from '../actors';
 import SaveButton from '@/components/saveButton';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import StarRating from '@/components/starRating';
 import Loading from '@/components/loading';
 import { Link } from '@/i18n/navigation';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styles from './styles.module.scss';
 import { IMAGE_URL } from '@/assets/constants';
 import Image from 'next/image';

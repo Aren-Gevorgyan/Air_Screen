@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 import { useTranslations } from 'next-intl';
 import Moon from '@/components/moon';

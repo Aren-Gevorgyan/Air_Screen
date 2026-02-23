@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styles from './styles.module.scss';
 import { ProductionCompaniesType } from '@/assets/types';
 import { useTranslations } from 'next-intl';

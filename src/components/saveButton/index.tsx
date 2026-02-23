@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { FaRegBookmark, FaBookmark } from 'react-icons/fa';
 import Button from '../button';
 import useBoolean from '@/hooks/useBoolean';

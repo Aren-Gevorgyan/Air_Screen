@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styles from './styles.module.scss';
 import Moon from '@/components/moon';
 import { getMainPageData } from '@/requests/ssr';

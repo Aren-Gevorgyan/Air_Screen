@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 import Button from '../button';
 import styles from './styles.module.scss';
 import ArrowRight from '../../../public/svgs/arrowRight';

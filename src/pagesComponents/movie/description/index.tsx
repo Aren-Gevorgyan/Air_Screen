@@ -1,4 +1,4 @@
-import React, { FC, lazy } from 'react';
+import { FC, lazy } from 'react';
 import styles from './styles.module.scss';
 import { MovieData } from '@/assets/types';
 import Loadable from '@/hoc/loadable';

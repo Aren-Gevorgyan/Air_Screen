@@ -1,6 +1,6 @@
 'use client';
 
-import React, { MouseEvent, useCallback, useEffect, useState } from 'react';
+import { MouseEvent, useCallback, useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import styles from './styles.module.scss';
 import { InputParamter } from '@/assets/types';

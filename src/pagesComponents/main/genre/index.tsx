@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import styles from './styles.module.scss';
 import { GenresType, MovieData } from '@/assets/types';
 import Button from '@/components/button';

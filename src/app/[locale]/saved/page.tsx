@@ -1,4 +1,3 @@
-import React from 'react';
 import { fetchSavedMovies } from '@/requests/firebase';
 import { getMovie } from '@/requests/ssr';
 

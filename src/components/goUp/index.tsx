@@ -1,6 +1,6 @@
 'use client';
 
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 import styles from './styles.module.scss';
 import Button from '../button';

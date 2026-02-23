@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import Image, { ImageProps } from 'next/image';
 import styles from './styles.module.scss';
 import clsx from 'clsx';

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { memo } from 'react';
+import { memo } from 'react';
 import Button from '@/components/button';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import styles from './styles.module.scss';

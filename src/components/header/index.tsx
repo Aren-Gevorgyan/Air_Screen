@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import styles from './styles.module.scss';
 import MenuIcon from '../../../public/svgs/menuIcon';
 import { Tab } from '@/assets/types';

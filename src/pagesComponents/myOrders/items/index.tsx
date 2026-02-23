@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, memo, useEffect, useState } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 import { Movies } from '@/assets/types';
 import { fetchMoviesByUserId } from '@/requests/firebase';
 import styles from './styles.module.scss';

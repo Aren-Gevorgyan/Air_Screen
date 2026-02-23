@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC, lazy, useCallback, useState } from 'react';
+import { FC, lazy, useCallback, useState } from 'react';
 import styles from './styles.module.scss';
 import { ActorsType } from '@/assets/types';
 import Image from 'next/image';

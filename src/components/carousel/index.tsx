@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { IMAGE_URL, responsive } from '@/assets/constants';
 import { MovieData } from '@/assets/types';
 import Image from 'next/image';

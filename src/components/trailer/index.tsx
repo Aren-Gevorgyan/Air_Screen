@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Loading from '../loading';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchMovieTrailer } from '@/requests/csr';
