@@ -15,12 +15,12 @@ import styles from './styles.module.scss';
 import { Link, useRouter } from '@/i18n/navigation';
 import useQueryParam from '@/hooks/useQueryParam';
 import { showToast } from '@/components/toast';
-
-const GUEST_USER_ID = 'guest';
+import { useGuestUserId } from '@/hooks/useGuestUserId';
 
 const Order = () => {
   const t = useTranslations('Words');
   const { push } = useRouter();
+  const userId = useGuestUserId();
   const movieId = useQueryParam('id');
   // const [filmId, setFilmId] = useState<string>('');
   const [filmName, setFilmName] = useState<string>('');
@@ -94,7 +94,7 @@ const Order = () => {
         push('/my_orders');
       } else {
         await addMovie({
-          userId: GUEST_USER_ID,
+          userId: userId || undefined,
           name: filmName,
           date,
           hour,

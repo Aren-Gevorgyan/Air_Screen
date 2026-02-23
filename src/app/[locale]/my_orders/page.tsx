@@ -1,16 +1,20 @@
+'use client';
+
 import styles from './styles.module.scss';
 import Items from '@/pagesComponents/myOrders/items';
 import Moon from '@/components/moon';
+import { useGuestUserId } from '@/hooks/useGuestUserId';
 
-const GUEST_USER_ID: string | null = null;
+const MyOrders = () => {
+  const userId = useGuestUserId();
 
-const MyOrders = async () => {
   return (
     <div className={styles.container}>
       <Moon />
-      <Items userId={GUEST_USER_ID} />
+      <Items userId={userId} />
     </div>
   );
 };
 
 export default MyOrders;
+

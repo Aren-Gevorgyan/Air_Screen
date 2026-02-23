@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { fetchSavedMovies } from '@/requests/firebase';
 import { getMovie } from '@/requests/ssr';
 
@@ -5,27 +8,55 @@ import Moon from '@/components/moon';
 import Movies from '@/pagesComponents/saved/movies';
 
 import styles from './styles.module.scss';
+import { MovieData } from '@/assets/types';
+import { useGuestUserId } from '@/hooks/useGuestUserId';
 
-const GUEST_USER_ID: string | null = null;
+const Saved = () => {
+  const userId = useGuestUserId();
+  const [isLoading, setLoading] = useState<boolean>(true);
+  const [movies, setMovies] = useState<MovieData[]>([]);
 
-const Saved = async () => {
-  let isLoading = true;
-  const savedMovies = await fetchSavedMovies(GUEST_USER_ID);
-  const requests =
-    savedMovies?.moviesId?.map((val: number) => getMovie(String(val))) ?? [];
-  try {
-    const data = await Promise.all(requests);
-    isLoading = false;
-    return (
-      <div className={styles.container}>
-        <Moon />
-        <Movies data={data} isLoading={isLoading} />
-      </div>
-    );
-  } catch (error) {
-     console.log("🚀 ~ Saved ~ error:", error)
-     return <span className={styles.isEmpty}>There is not data</span>
-  }
+  useEffect(() => {
+    if (!userId) return;
+
+    let cancelled = false;
+
+    const load = async () => {
+      try {
+        const savedMovies = await fetchSavedMovies(userId);
+        const requests =
+          savedMovies?.moviesId?.map((val: number) =>
+            getMovie(String(val))
+          ) ?? [];
+        const data = await Promise.all(requests);
+
+        if (!cancelled) {
+          setMovies(data);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.log('Saved page error:', error);
+        if (!cancelled) {
+          setMovies([]);
+          setLoading(false);
+        }
+      }
+    };
+
+    load();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
+  return (
+    <div className={styles.container}>
+      <Moon />
+      <Movies data={movies} isLoading={isLoading} />
+    </div>
+  );
 };
 
 export default Saved;
+

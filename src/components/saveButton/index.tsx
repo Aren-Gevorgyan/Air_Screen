@@ -8,8 +8,7 @@ import { fetchSavedMovies, saveMovie, unsave } from '@/requests/firebase';
 import { showToast } from '../toast';
 import { useTranslations } from 'next-intl';
 import { SaveMovie } from '@/assets/types';
-
-const GUEST_USER_ID = 'guest';
+import { useGuestUserId } from '@/hooks/useGuestUserId';
 
 type Props = {
   movieId: number;
@@ -18,27 +17,32 @@ type Props = {
 
 const SaveButton: FC<Props> = ({ movieId, className }) => {
   const t = useTranslations('MyOrders');
+  const userId = useGuestUserId();
   const [data, setData] = useState<SaveMovie>();
   const { state: isSaved, setFalse, setTrue } = useBoolean(false);
 
   useEffect(() => {
-    fetchSavedMovies(GUEST_USER_ID).then((res) => {
+    if (!userId) return;
+
+    fetchSavedMovies(userId).then((res) => {
       const saved = res?.moviesId?.some((val: number) => val === movieId);
       if (saved) setTrue();
       setData(res);
     });
-  }, [movieId, isSaved]);
+  }, [movieId, isSaved, userId, setTrue]);
 
   const onClick = useCallback(async () => {
+    if (!userId) return;
+
     try {
       if (isSaved && data?.userId) {
-        await unsave(data.moviesId, movieId, GUEST_USER_ID);
+        await unsave(data.moviesId, movieId, userId);
         setFalse();
       } else {
         if (data?.moviesId && data.moviesId.length) {
-          await saveMovie([...data.moviesId, movieId], GUEST_USER_ID);
+          await saveMovie([...data.moviesId, movieId], userId);
         } else {
-          await saveMovie([movieId], GUEST_USER_ID);
+          await saveMovie([movieId], userId);
         }
         setTrue();
       }
@@ -46,7 +50,7 @@ const SaveButton: FC<Props> = ({ movieId, className }) => {
       setFalse();
       showToast(t('saved_error'), 'error');
     }
-  }, [movieId, data, isSaved]);
+  }, [movieId, data, isSaved, t, setFalse, setTrue, userId]);
 
   return (
     <Button className={className} onClick={onClick}>
@@ -60,3 +64,4 @@ const SaveButton: FC<Props> = ({ movieId, className }) => {
 };
 
 export default SaveButton;
+
