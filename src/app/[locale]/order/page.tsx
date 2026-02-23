@@ -32,6 +32,9 @@ const Order = () => {
   const [firstOponent, setFirstOponent] = useState<string>('');
   const [secondOponent, setSecondOponent] = useState<string>('');
   const [isLoading, setLoading] = useState<boolean>(false);
+  const [popcornCount, setPopcornCount] = useState<string>('0');
+  const [hasKalian, setHasKalian] = useState<boolean>(false);
+  const [hasRomanticDinner, sethasRomanticDinner] = useState<boolean>(false);
 
   useEffect(() => {
     if (movieId) {
@@ -46,6 +49,15 @@ const Order = () => {
           if (res.name) setFilmName(res.name);
           if (res.firstOponent) setFirstOponent(res.firstOponent);
           if (res.secondOponent) setSecondOponent(res.secondOponent);
+          if (typeof res.popcornCount === 'number') {
+            setPopcornCount(String(res.popcornCount));
+          }
+          if (typeof res.kalian === 'boolean') {
+            setHasKalian(res.kalian);
+          }
+          if (typeof res.romanticDinner === 'boolean') {
+            sethasRomanticDinner(res.romanticDinner);
+          }
         })
         .catch(() => showToast(t('edit_error'), 'error'));
     }
@@ -93,6 +105,7 @@ const Order = () => {
     }
     try {
       setLoading(true);
+      const popcornCountNumber = Number(popcornCount) || 0;
       if (movieId) {
         await editItem(movieId, {
           // filmId,
@@ -103,6 +116,9 @@ const Order = () => {
           type,
           firstOponent,
           secondOponent,
+          popcornCount: popcornCountNumber,
+          kalian: hasKalian,
+          romanticDinner: hasRomanticDinner,
         });
         push('/my_orders');
       } else {
@@ -115,6 +131,9 @@ const Order = () => {
           phone,
           firstOponent,
           secondOponent,
+          popcornCount: popcornCountNumber,
+          kalian: hasKalian,
+          romanticDinner: hasRomanticDinner,
         });
         push('my_orders');
       }
@@ -137,6 +156,9 @@ const Order = () => {
       setType(t('movie'));
       setFirstOponent('');
       setSecondOponent('');
+      setPopcornCount('0');
+      setHasKalian(false);
+      sethasRomanticDinner(false);
     };
   }, []);
 
@@ -238,6 +260,37 @@ const Order = () => {
               value={phone}
               onChange={onChange(setPhone)}
             />
+          </label>
+          <p className={styles.addonsTitle}>{t('addons')}</p>
+          <label>
+            {t('popcorn')} {t('popcorn_price')}
+            <input
+              type="number"
+              name="popcorn"
+              min={0}
+              value={popcornCount}
+              onChange={(e) => setPopcornCount(e.target.value)}
+            />
+          </label>
+          <label className={styles.checkboxContainer}>
+            <input
+              type="checkbox"
+              name="kalian"
+              checked={hasKalian}
+              onChange={(e) => setHasKalian(e.target.checked)}
+              className={styles.checkbox}
+            />
+            {t('kalian')} {t('kalian_price')}
+          </label>
+          <label className={styles.checkboxContainer}>
+            <input
+              type="checkbox"
+              name="romanticDinner"
+              checked={hasRomanticDinner}
+              onChange={(e) => sethasRomanticDinner(e.target.checked)}
+              className={styles.checkbox}
+            />
+            {t('romantic_dinner')} {t('romantic_dinner_price')}
           </label>
           {errorMessage && <span className={styles.error}>{errorMessage}</span>}
         </div>

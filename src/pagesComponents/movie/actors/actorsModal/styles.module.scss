@@ -9,7 +9,7 @@
   gap: 20px;
   padding: 20px;
   background-color: $dark;
-  border-radius: 6px;
+  border-radius: 4px;
 
   @media screen and (max-width: $mid_size) {
     max-width: 100%;
@@ -37,7 +37,7 @@
     }
 
     img {
-      object-fit: contain;
+      object-fit: cover;
     }
   }
 

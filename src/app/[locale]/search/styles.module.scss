@@ -35,7 +35,7 @@
       text-emphasis: none;
       overflow: hidden;
       position: relative;
-      border-radius: 6px;
+      border-radius: 4px;
       background: gray;
       background-image: url('/gif/cloud_loading.gif');
       background-position: center;
@@ -52,6 +52,10 @@
         flex: 1;
         position: relative;
         overflow: hidden;
+
+        img {
+          object-fit: cover;
+        }
       }
 
       .description {

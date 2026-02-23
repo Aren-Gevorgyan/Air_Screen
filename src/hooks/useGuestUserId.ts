@@ -35,7 +35,7 @@ export const useGuestUserId = () => {
         setUserId(createGuestId());
       }
     }
-  }, [userId]);
+  }, []);
 
   return userId;
 };

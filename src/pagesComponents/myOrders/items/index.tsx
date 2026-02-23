@@ -21,6 +21,12 @@ const Items: FC<Props> = ({ userId }) => {
   const [isLoading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    if (!userId) {
+      setMovies([]);
+      setLoading(false);
+      return;
+    }
+
     fetchMoviesByUserId(userId)
       .then((res: Array<Movies | undefined> | undefined) => {
         if (res) setMovies(res);
@@ -72,6 +78,9 @@ const Items: FC<Props> = ({ userId }) => {
                   )}
                   <Item val={`${val?.date} ${val?.hour}`} name="date_watch" />
                   <Item val={val?.phone} name="phone" />
+                  <Item val={val?.popcornCount} name="popcorn" />
+                  <Item val={val?.kalian} name="kalian" />
+                  <Item val={val?.romanticDinner} name="romantic_dinner" />
                 </div>
                 <Actions
                   id={val?.id}

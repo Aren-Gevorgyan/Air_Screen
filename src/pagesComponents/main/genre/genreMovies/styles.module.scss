@@ -13,7 +13,11 @@
     text-emphasis: none;
     overflow: hidden;
     position: relative;
-    border-radius: 6px;
+    border-radius: 4px;
+
+    @media screen and (max-width: $mobile_size) {
+      border: none;
+    }
     .item {
       width: 100%;
       height: 100%;
@@ -21,6 +25,10 @@
       position: relative;
       overflow: hidden;
       background-image: url('/gif/cloud_loading.gif');
+
+      img {
+        object-fit: cover;
+      }
       background-position: center;
       background-repeat: no-repeat;
       background-size: 100px;

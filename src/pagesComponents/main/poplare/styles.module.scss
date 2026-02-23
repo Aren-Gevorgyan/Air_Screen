@@ -53,12 +53,18 @@
       align-items: center;
       position: relative;
       margin-top: 20px;
+      max-width: 480px;
+      max-height: 360px;
+
       @media screen and (max-width: $mobile_size) {
         display: none;
       }
+
       img {
         width: auto !important;
-        object-fit: contain;
+        max-width: 100%;
+        max-height: 360px;
+        object-fit: cover;
         &:hover {
           transform: scale(1.1);
         }

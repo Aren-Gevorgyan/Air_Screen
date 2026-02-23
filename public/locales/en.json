@@ -53,7 +53,14 @@
     "saved_movies": "Saved movies",
     "order_info": "You can place orders for movies, football events, and UFC matches",
     "price": "Would you like to attend the film screening organized by us? The participation fee for one person is 3,000 AMD.",
-    "priceTwo": "Would you prefer to rent the entire cinema for a private event or a closed screening? The rental fee is 25,000 AMD for up to 2 people and 30,000 AMD for groups of 3 or more."
+      "priceTwo": "Would you prefer to rent the entire cinema for a private event or a closed screening? The rental fee is 25,000 AMD for up to 2 people and 30,000 AMD for groups of 3 or more.",
+      "addons": "Additional options",
+      "popcorn": "Popcorn",
+      "popcorn_price": "(500 AMD)",
+      "kalian": "Kalian",
+      "kalian_price": "(5,000 AMD)",
+      "romantic_dinner": "Romantic dinner",
+      "romantic_dinner_price": "(15,000 AMD)"
   },
   "MyOrders": {
     "saved": "Saved",

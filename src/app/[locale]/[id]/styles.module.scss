@@ -42,8 +42,9 @@
           flex: none;
           position: relative;
           width: 400px;
+          max-width: 100%;
           height: 500px;
-          border-radius: 6px;
+          border-radius: 4px;
           overflow: hidden;
           background: $dark;
           background-image: url('/gif/cloud_loading.gif');
@@ -51,14 +52,18 @@
           background-repeat: no-repeat;
           background-size: 100px;
 
+          img {
+            object-fit: cover;
+          }
+
           @media screen and (max-width: $mobile_size) {
             width: 100%;
-            height: 600px;
+            height: 480px;
           }
 
           @media screen and (max-width: $sm) {
             width: 100%;
-            height: 480px;
+            height: 420px;
           }
         }
 

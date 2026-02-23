@@ -3,11 +3,30 @@
 
 .item {
   height: 100%;
-  background: gray;
+  position: relative;
+  background: $dark;
   background-image: url('/gif/cloud_loading.gif');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100px;
+
+  a {
+    display: block;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    & > span:first-child {
+      position: absolute !important;
+      inset: 0;
+    }
+  }
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+
   &:hover {
     .opacity {
       bottom: 0;
@@ -21,7 +40,11 @@
     -webkit-backdrop-filter: blur(2.4rem);
     backdrop-filter: blur(2.4rem);
     background: #0f0f0fab;
-    border-radius: 8px;
+    border-radius: 4px;
+
+    @media screen and (max-width: $mobile_size) {
+      border-radius: 4px;
+    }
     -webkit-box-shadow: 0 0 2rem #000;
     box-shadow: 0 0 2rem #000;
     bottom: 100%;

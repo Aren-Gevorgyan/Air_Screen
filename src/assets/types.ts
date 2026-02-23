@@ -44,6 +44,9 @@ export type Movies = {
   type: string;
   firstOponent?: string;
   secondOponent?: string;
+  popcornCount?: number;
+  kalian?: boolean;
+  romanticDinner?: boolean;
 };
 
 export type Languages = {
