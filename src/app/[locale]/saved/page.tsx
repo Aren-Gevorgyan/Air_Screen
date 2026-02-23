@@ -22,8 +22,9 @@ const Saved = async () => {
         <Movies data={data} isLoading={isLoading} />
       </div>
     );
-  } catch {
-    return <span className={styles.isEmpty}>{'There is not data'}</span>;
+  } catch (error) {
+     console.log("🚀 ~ Saved ~ error:", error)
+     return <span className={styles.isEmpty}>There is not data</span>
   }
 };
 
