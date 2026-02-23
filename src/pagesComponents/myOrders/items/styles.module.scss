@@ -64,6 +64,7 @@
       border-radius: 4px;
       overflow: hidden;
       background-color: $dark;
+      border: 1px solid $green2;
 
       @media screen and (max-width: $mobile_size) {
         max-width: 100%;
