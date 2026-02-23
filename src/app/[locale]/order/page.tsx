@@ -58,11 +58,26 @@ const Order = () => {
     []
   );
 
+  const TIME_MIN = '20:30';
+  const TIME_MAX = '23:00';
+
+  const isTimeInRange = (time: string) => {
+    if (!time || !time.includes(':')) return false;
+    const [h, m] = time.split(':').map(Number);
+    const minutes = h * 60 + m;
+    const minMinutes = 20 * 60 + 30;
+    const maxMinutes = 23 * 60 + 0;
+    return minutes >= minMinutes && minutes <= maxMinutes;
+  };
+
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const errorName =
       type === t('movie') ? !filmName : !(firstOponent && secondOponent);
     if (errorName || !date || !hour) return setError(t('error_empty'));
+    if (!isTimeInRange(hour)) {
+      return setError(t('error_time_range'));
+    }
     try {
       setLoading(true);
       if (movieId) {
@@ -178,14 +193,15 @@ const Order = () => {
             </label>
           )}
           <label>
-            {t('hour')} *
+            {t('hour')} * ({t('hour_range_hint')})
             <input
-              type="string"
+              type="time"
               name="hour"
               required
+              min={TIME_MIN}
+              max={TIME_MAX}
               value={hour}
               onChange={onChange(setHour)}
-              placeholder={'hh:mm'}
             />
           </label>
           <label>
