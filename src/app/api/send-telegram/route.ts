@@ -21,6 +21,7 @@ const formatOrderMessage = (body: unknown): string => {
     romanticDinner?: boolean;
     guestCount?: number;
     watchType?: string;
+    totalPrice?: number;
     [key: string]: unknown;
   };
 
@@ -50,6 +51,9 @@ const formatOrderMessage = (body: unknown): string => {
     }
     if (typeof data.romanticDinner === 'boolean') {
       parts.push(`Romantic dinner: ${data.romanticDinner ? 'Yes' : 'No'}`);
+    }
+    if (typeof data.totalPrice === 'number') {
+      parts.push(`Total price: ${data.totalPrice.toLocaleString('en-US')} AMD`);
     }
 
     return parts.join('\n');

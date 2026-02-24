@@ -182,6 +182,10 @@ const Order = () => {
         guestCount: guestCountNumber,
         watchType,
       };
+      const telegramPayload = {
+        ...orderDetails,
+        totalPrice,
+      };
       if (movieId) {
         await editItem(movieId, {
           // filmId,
@@ -203,7 +207,7 @@ const Order = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(orderDetails),
+          body: JSON.stringify(telegramPayload),
         });
         push('/my_orders');
       } else {
@@ -213,7 +217,7 @@ const Order = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(orderDetails),
+          body: JSON.stringify(telegramPayload),
         });
         push('my_orders');
       }
