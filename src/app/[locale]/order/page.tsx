@@ -252,6 +252,15 @@ const Order = () => {
     setType(e.target.value);
   };
 
+  const onWatchTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    setWatchType(value);
+    if (value === 'general') {
+      setHasKalian(false);
+      sethasRomanticDinner(false);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <p className={styles.info}>{t('order_info')}</p>
@@ -359,10 +368,7 @@ const Order = () => {
           </label>
           <label>
             {t('watch_type')}
-            <select
-              value={watchType}
-              onChange={(e) => setWatchType(e.target.value)}
-            >
+            <select value={watchType} onChange={onWatchTypeChange}>
               <option value="general">
                 {isMobile
                   ? t('watch_type_general_mobile')
@@ -393,6 +399,7 @@ const Order = () => {
               checked={hasKalian}
               onChange={(e) => setHasKalian(e.target.checked)}
               className={styles.checkbox}
+              disabled={watchType === 'general'}
             />
             {t('kalian')} {t('kalian_price')}
           </label>
@@ -403,6 +410,7 @@ const Order = () => {
               checked={hasRomanticDinner}
               onChange={(e) => sethasRomanticDinner(e.target.checked)}
               className={styles.checkbox}
+              disabled={watchType === 'general'}
             />
             {t('romantic_dinner')} {t('romantic_dinner_price')}
           </label>
