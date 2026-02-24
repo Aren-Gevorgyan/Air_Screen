@@ -16,6 +16,19 @@ import { Link, useRouter } from '@/i18n/navigation';
 import useQueryParam from '@/hooks/useQueryParam';
 import { showToast } from '@/components/toast';
 import { useGuestUserId } from '@/hooks/useGuestUserId';
+import {
+  GENERAL_GUEST_PRICE,
+  INDIVIDUAL_PRICE_THREE_OR_MORE,
+  INDIVIDUAL_PRICE_UP_TO_TWO,
+  KALIAN_PRICE,
+  MOBILE_BREAKPOINT,
+  ORDER_MINUTES_MAX,
+  ORDER_MINUTES_MIN,
+  ORDER_TIME_MAX,
+  ORDER_TIME_MIN,
+  POPCORN_PRICE,
+  ROMANTIC_DINNER_PRICE,
+} from '@/assets/constants';
 
 const Order = () => {
   const t = useTranslations('Words');
@@ -75,7 +88,7 @@ const Order = () => {
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== 'undefined') {
-        setIsMobile(window.innerWidth <= 768);
+        setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
       }
     };
 
@@ -94,31 +107,26 @@ const Order = () => {
     []
   );
 
-  const TIME_MIN = '20:30';
-  const TIME_MAX = '23:00';
   const today = new Date().toISOString().slice(0, 10);
 
   const guestCountNumber = Math.max(1, Number(guestCount) || 1);
   const popcornCountNumber = Math.max(0, Number(popcornCount) || 0);
 
-  const GENERAL_GUEST_PRICE = 3000;
-  const INDIVIDUAL_PRICE_UP_TO_TWO = 25000;
-  const INDIVIDUAL_PRICE_THREE_OR_MORE = 30000;
-  const POPCORN_PRICE = 500;
-  const KALIAN_PRICE = 5000;
-  const ROMANTIC_DINNER_PRICE = 15000;
-
   const basePrice =
     watchType === 'general'
       ? guestCountNumber * GENERAL_GUEST_PRICE
       : guestCountNumber <= 2
-      ? INDIVIDUAL_PRICE_UP_TO_TWO
-      : INDIVIDUAL_PRICE_THREE_OR_MORE;
+        ? INDIVIDUAL_PRICE_UP_TO_TWO
+        : INDIVIDUAL_PRICE_THREE_OR_MORE;
 
-  const chargeablePopcornCount =
-    watchType === 'individual' && popcornCountNumber <= 2
-      ? 0
-      : popcornCountNumber;
+  let chargeablePopcornCount = popcornCountNumber;
+  if (watchType === 'individual') {
+    if (popcornCountNumber <= 2) {
+      chargeablePopcornCount = 0;
+    } else {
+      chargeablePopcornCount = popcornCountNumber - 2;
+    }
+  }
 
   const addonsPrice =
     chargeablePopcornCount * POPCORN_PRICE +
@@ -140,8 +148,8 @@ const Order = () => {
     if (!time || !time.includes(':')) return false;
     const [h, m] = time.split(':').map(Number);
     const minutes = h * 60 + m;
-    const minMinutes = 20 * 60 + 30;
-    const maxMinutes = 23 * 60 + 0;
+    const minMinutes = ORDER_MINUTES_MIN;
+    const maxMinutes = ORDER_MINUTES_MAX;
     return minutes >= minMinutes && minutes <= maxMinutes;
   };
 
@@ -307,8 +315,8 @@ const Order = () => {
               type="time"
               name="hour"
               required
-              min={TIME_MIN}
-              max={TIME_MAX}
+              min={ORDER_TIME_MIN}
+              max={ORDER_TIME_MAX}
               value={hour}
               onChange={onChange(setHour)}
             />
@@ -352,7 +360,9 @@ const Order = () => {
               onChange={(e) => setWatchType(e.target.value)}
             >
               <option value="general">
-                {isMobile ? t('watch_type_general_mobile') : t('watch_type_general')}
+                {isMobile
+                  ? t('watch_type_general_mobile')
+                  : t('watch_type_general')}
               </option>
               <option value="individual">
                 {isMobile

@@ -40,3 +40,18 @@ export const languages: Array<Languages> = [
     flag: 'am',
   },
 ];
+
+// Order / booking related constants
+export const ORDER_TIME_MIN = '20:30';
+export const ORDER_TIME_MAX = '23:00';
+export const ORDER_MINUTES_MIN = 20 * 60 + 30;
+export const ORDER_MINUTES_MAX = 23 * 60 + 0;
+
+export const GENERAL_GUEST_PRICE = 3000;
+export const INDIVIDUAL_PRICE_UP_TO_TWO = 25000;
+export const INDIVIDUAL_PRICE_THREE_OR_MORE = 30000;
+export const POPCORN_PRICE = 500;
+export const KALIAN_PRICE = 5000;
+export const ROMANTIC_DINNER_PRICE = 15000;
+
+export const MOBILE_BREAKPOINT = 768;
