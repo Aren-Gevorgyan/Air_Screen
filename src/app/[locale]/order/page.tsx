@@ -106,6 +106,19 @@ const Order = () => {
     try {
       setLoading(true);
       const popcornCountNumber = Number(popcornCount) || 0;
+      const orderDetails = {
+        userId: userId || undefined,
+        name: filmName,
+        date,
+        hour,
+        type,
+        phone,
+        firstOponent,
+        secondOponent,
+        popcornCount: popcornCountNumber,
+        kalian: hasKalian,
+        romanticDinner: hasRomanticDinner,
+      };
       if (movieId) {
         await editItem(movieId, {
           // filmId,
@@ -120,20 +133,22 @@ const Order = () => {
           kalian: hasKalian,
           romanticDinner: hasRomanticDinner,
         });
+        void fetch('/api/send-telegram', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(orderDetails),
+        });
         push('/my_orders');
       } else {
-        await addMovie({
-          userId: userId || undefined,
-          name: filmName,
-          date,
-          hour,
-          type,
-          phone,
-          firstOponent,
-          secondOponent,
-          popcornCount: popcornCountNumber,
-          kalian: hasKalian,
-          romanticDinner: hasRomanticDinner,
+        await addMovie(orderDetails);
+        void fetch('/api/send-telegram', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(orderDetails),
         });
         push('my_orders');
       }
