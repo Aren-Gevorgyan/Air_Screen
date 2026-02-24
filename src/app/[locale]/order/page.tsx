@@ -115,8 +115,13 @@ const Order = () => {
       ? INDIVIDUAL_PRICE_UP_TO_TWO
       : INDIVIDUAL_PRICE_THREE_OR_MORE;
 
+  const chargeablePopcornCount =
+    watchType === 'individual' && popcornCountNumber <= 2
+      ? 0
+      : popcornCountNumber;
+
   const addonsPrice =
-    popcornCountNumber * POPCORN_PRICE +
+    chargeablePopcornCount * POPCORN_PRICE +
     (hasKalian ? KALIAN_PRICE : 0) +
     (hasRomanticDinner ? ROMANTIC_DINNER_PRICE : 0);
 
