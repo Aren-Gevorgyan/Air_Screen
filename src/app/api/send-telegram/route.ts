@@ -19,6 +19,8 @@ const formatOrderMessage = (body: unknown): string => {
     popcornCount?: number | string;
     kalian?: boolean;
     romanticDinner?: boolean;
+    guestCount?: number;
+    watchType?: string;
     [key: string]: unknown;
   };
 
@@ -27,6 +29,10 @@ const formatOrderMessage = (body: unknown): string => {
 
     parts.push('New Order');
     if (data.type) parts.push(`Type: ${data.type}`);
+    if (data.watchType)
+      parts.push(`Watch type: ${data.watchType === 'general' ? 'General' : 'Individual'}`);
+    if (typeof data.guestCount === 'number')
+      parts.push(`Guests: ${data.guestCount}`);
     if (data.name) parts.push(`Name: ${data.name}`);
     if (data.firstOponent || data.secondOponent) {
       parts.push(
@@ -40,7 +46,7 @@ const formatOrderMessage = (body: unknown): string => {
       parts.push(`Popcorn count: ${data.popcornCount}`);
     }
     if (typeof data.kalian === 'boolean') {
-      parts.push(`Kalian: ${data.kalian ? 'Yes' : 'No'}`);
+      parts.push(`Hookah: ${data.kalian ? 'Yes' : 'No'}`);
     }
     if (typeof data.romanticDinner === 'boolean') {
       parts.push(`Romantic dinner: ${data.romanticDinner ? 'Yes' : 'No'}`);
@@ -64,14 +70,14 @@ const formatOrderMessage = (body: unknown): string => {
 };
 
 export const POST = async (request: NextRequest): Promise<NextResponse> => {
-  const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (!botToken || !chatId) {
     return NextResponse.json(
       {
         success: false,
-        error: 'Missing NEXT_PUBLIC_TELEGRAM_BOT_TOKEN or NEXT_PUBLIC_TELEGRAM_CHAT_ID environment variables.',
+        error: 'Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID environment variables.',
       },
       { status: 500 }
     );

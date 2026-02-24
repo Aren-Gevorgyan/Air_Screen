@@ -208,4 +208,20 @@
       }
     }
   }
+  .total {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .total p {
+    font-size: 16px;
+    color: white;
+    margin: 0;
+    color: $gray3;
+  }
+  .total p strong {
+    font-size: 16px;
+    color: $green2;
+  }
 }

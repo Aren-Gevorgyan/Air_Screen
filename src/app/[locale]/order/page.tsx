@@ -35,6 +35,9 @@ const Order = () => {
   const [popcornCount, setPopcornCount] = useState<string>('0');
   const [hasKalian, setHasKalian] = useState<boolean>(false);
   const [hasRomanticDinner, sethasRomanticDinner] = useState<boolean>(false);
+  const [guestCount, setGuestCount] = useState<string>('1');
+  const [watchType, setWatchType] = useState<string>('general');
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
     if (movieId) {
@@ -58,10 +61,31 @@ const Order = () => {
           if (typeof res.romanticDinner === 'boolean') {
             sethasRomanticDinner(res.romanticDinner);
           }
+          if (typeof res.guestCount === 'number') {
+            setGuestCount(String(res.guestCount));
+          }
+          if (typeof res.watchType === 'string') {
+            setWatchType(res.watchType);
+          }
         })
         .catch(() => showToast(t('edit_error'), 'error'));
     }
   }, [movieId]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth <= 768);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const onChange = useCallback(
     (callback: (val: string) => void) => (event: InputParamter) => {
@@ -73,6 +97,30 @@ const Order = () => {
   const TIME_MIN = '20:30';
   const TIME_MAX = '23:00';
   const today = new Date().toISOString().slice(0, 10);
+
+  const guestCountNumber = Math.max(1, Number(guestCount) || 1);
+  const popcornCountNumber = Math.max(0, Number(popcornCount) || 0);
+
+  const GENERAL_GUEST_PRICE = 3000;
+  const INDIVIDUAL_PRICE_UP_TO_TWO = 25000;
+  const INDIVIDUAL_PRICE_THREE_OR_MORE = 30000;
+  const POPCORN_PRICE = 500;
+  const KALIAN_PRICE = 5000;
+  const ROMANTIC_DINNER_PRICE = 15000;
+
+  const basePrice =
+    watchType === 'general'
+      ? guestCountNumber * GENERAL_GUEST_PRICE
+      : guestCountNumber <= 2
+      ? INDIVIDUAL_PRICE_UP_TO_TWO
+      : INDIVIDUAL_PRICE_THREE_OR_MORE;
+
+  const addonsPrice =
+    popcornCountNumber * POPCORN_PRICE +
+    (hasKalian ? KALIAN_PRICE : 0) +
+    (hasRomanticDinner ? ROMANTIC_DINNER_PRICE : 0);
+
+  const totalPrice = basePrice + addonsPrice;
 
   const isDateValid = (value: string) => {
     if (!value) return false;
@@ -105,7 +153,7 @@ const Order = () => {
     }
     try {
       setLoading(true);
-      const popcornCountNumber = Number(popcornCount) || 0;
+      const popcornCountValue = Number(popcornCount) || 0;
       const orderDetails = {
         userId: userId || undefined,
         name: filmName,
@@ -115,9 +163,11 @@ const Order = () => {
         phone,
         firstOponent,
         secondOponent,
-        popcornCount: popcornCountNumber,
+        popcornCount: popcornCountValue,
         kalian: hasKalian,
         romanticDinner: hasRomanticDinner,
+        guestCount: guestCountNumber,
+        watchType,
       };
       if (movieId) {
         await editItem(movieId, {
@@ -129,9 +179,11 @@ const Order = () => {
           type,
           firstOponent,
           secondOponent,
-          popcornCount: popcornCountNumber,
+          popcornCount: popcornCountValue,
           kalian: hasKalian,
           romanticDinner: hasRomanticDinner,
+          guestCount: guestCountNumber,
+          watchType,
         });
         void fetch('/api/send-telegram', {
           method: 'POST',
@@ -174,6 +226,8 @@ const Order = () => {
       setPopcornCount('0');
       setHasKalian(false);
       sethasRomanticDinner(false);
+      setGuestCount('1');
+      setWatchType('general');
     };
   }, []);
 
@@ -255,7 +309,7 @@ const Order = () => {
             />
           </label>
           <label>
-            {t('date')} *
+            {t('date_watch')} *
             <input
               type="date"
               name="date"
@@ -275,6 +329,32 @@ const Order = () => {
               value={phone}
               onChange={onChange(setPhone)}
             />
+          </label>
+          <label>
+            {t('guests')}
+            <input
+              type="number"
+              name="guests"
+              min={1}
+              value={guestCount}
+              onChange={(e) => setGuestCount(e.target.value)}
+            />
+          </label>
+          <label>
+            {t('watch_type')}
+            <select
+              value={watchType}
+              onChange={(e) => setWatchType(e.target.value)}
+            >
+              <option value="general">
+                {isMobile ? t('watch_type_general_mobile') : t('watch_type_general')}
+              </option>
+              <option value="individual">
+                {isMobile
+                  ? t('watch_type_individual_mobile')
+                  : t('watch_type_individual')}
+              </option>
+            </select>
           </label>
           <p className={styles.addonsTitle}>{t('addons')}</p>
           <label>
@@ -308,6 +388,12 @@ const Order = () => {
             {t('romantic_dinner')} {t('romantic_dinner_price')}
           </label>
           {errorMessage && <span className={styles.error}>{errorMessage}</span>}
+        </div>
+        <div className={styles.total}>
+          <p>
+            {t('total_cost')}:&nbsp;
+            <strong>{totalPrice.toLocaleString('en-US')} AMD</strong>
+          </p>
         </div>
         <div className={styles.buttons}>
           <Link href="/my_orders">{t('cancel')}</Link>

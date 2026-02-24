@@ -47,6 +47,8 @@ export type Movies = {
   popcornCount?: number;
   kalian?: boolean;
   romanticDinner?: boolean;
+  guestCount?: number;
+  watchType?: string;
 };
 
 export type Languages = {
