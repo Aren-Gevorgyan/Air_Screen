@@ -1,0 +1,188 @@
+@use '../../../styles/global' as *;
+
+.container {
+  margin-top: 40px;
+  display: grid;
+  gap: 16px;
+
+  h2 {
+    color: white;
+    margin: 0;
+    font-size: 28px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  border: 1px solid #1f3022;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #090909;
+
+  img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.cardContent {
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+
+  h3 {
+    margin: 0;
+    color: white;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 0;
+    color: #b7b7b7;
+  }
+
+  button {
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    background: $green2;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.modalContent {
+  width: 100%;
+  max-width: 520px;
+  background: #0b0b0b;
+  border: 1px solid #1f3022;
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  display: grid;
+  gap: 14px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 24px;
+    line-height: 130%;
+  }
+
+  form {
+    display: grid;
+    gap: 12px;
+  }
+
+  label {
+    display: grid;
+    gap: 6px;
+    font-size: 14px;
+    color: #d7d7d7;
+  }
+
+  input,
+  select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid $green2;
+    border-radius: 4px;
+    background: #111;
+    color: white;
+    padding: 0 10px;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+
+    &:focus {
+      border-color: $green;
+    }
+  }
+
+  @media screen and (max-width: $mobile_size) {
+    padding: 14px;
+    border-radius: 10px;
+
+    h3 {
+      font-size: 20px;
+    }
+  }
+}
+
+.ticketMeta {
+  color: #b6b6b6;
+  font-size: 14px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.checkboxRow {
+  display: flex !important;
+  align-items: center;
+  gap: 8px !important;
+  color: #e4e4e4 !important;
+  background: #101010;
+  border: 1px solid #1f3022;
+  border-radius: 6px;
+  padding: 10px;
+
+  input {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+  }
+}
+
+.total {
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  padding: 10px;
+  span {
+    color: $green2;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+
+  button {
+    flex: 1;
+    min-height: 40px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    background: $green2;
+    font-weight: 600;
+
+    &:first-child {
+      background: #2a2a2a;
+    }
+
+    &:last-child {
+      background: $green2;
+    }
+  }
+
+  @media screen and (max-width: $mobile_size) {
+    flex-direction: column;
+  }
+}

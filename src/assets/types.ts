@@ -51,6 +51,15 @@ export type Movies = {
   watchType?: string;
 };
 
+export type Ticket = {
+  id?: string;
+  title: string;
+  date: string;
+  time: string;
+  image: string;
+  createdAt: number;
+};
+
 export type Languages = {
   country: string;
   flag: string;

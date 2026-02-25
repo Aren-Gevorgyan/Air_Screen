@@ -12,6 +12,7 @@ import useWindowSize from '@/hooks/useWindowSize';
 import { Link } from '@/i18n/navigation';
 import { usePathname } from 'next/navigation';
 import Logo from '../../../public/svgs/logo';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
   const pathname = usePathname();
@@ -19,6 +20,22 @@ const Header = () => {
   const t = useTranslations('Words');
   const { isMd } = useWindowSize();
   const { state, setFalse, setToggle } = useBoolean();
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const syncRole = () => {
+      setIsAdmin(window.localStorage.getItem('air_screen_role') === 'admin');
+    };
+
+    syncRole();
+    window.addEventListener('storage', syncRole);
+
+    return () => {
+      window.removeEventListener('storage', syncRole);
+    };
+  }, []);
 
   const onMouseLeave = () => {
     if (state) setFalse();
@@ -39,6 +56,14 @@ const Header = () => {
     { title: t('saved'), url: `/saved`, active: lastSegment === 'saved' },
     { title: t('about'), url: `/about`, active: lastSegment === 'about' },
   ];
+
+  if (isAdmin) {
+    tab.splice(1, 0, {
+      title: t('admin_tickets_nav'),
+      url: '/admin_tickets',
+      active: lastSegment === 'admin_tickets',
+    });
+  }
 
   return (
     <header className={styles.container}>

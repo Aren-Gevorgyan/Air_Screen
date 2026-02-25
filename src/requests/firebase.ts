@@ -1,5 +1,5 @@
 import { db } from '@/assets/firebaseConfig';
-import { Movies } from '@/assets/types';
+import { Movies, Ticket } from '@/assets/types';
 import {
   ref,
   push,
@@ -15,6 +15,11 @@ import {
 export const addMovie = async (data: Movies) => {
   const userRef = ref(db, 'movies');
   return await push(userRef, data);
+};
+
+export const addTicket = async (data: Omit<Ticket, 'id'>) => {
+  const ticketRef = ref(db, 'tickets');
+  return await push(ticketRef, data);
 };
 
 export const saveMovie = async (moviesId: number[], userId?: string | null) => {
@@ -50,8 +55,41 @@ export const fetchMovies = async () => {
   }
 };
 
+export const fetchTickets = async (): Promise<Ticket[]> => {
+  try {
+    const snapshot = await get(ref(db, 'tickets'));
+
+    if (!snapshot.exists()) {
+      return [];
+    }
+
+    const data = snapshot.val();
+
+    return Object.entries(data)
+      .map(([id, value]) => {
+        if (typeof value === 'object' && value !== null) {
+          return {
+            id,
+            ...value,
+          } as Ticket;
+        }
+
+        return undefined;
+      })
+      .filter((ticket): ticket is Ticket => Boolean(ticket))
+      .sort((a, b) => a.createdAt - b.createdAt);
+  } catch (error) {
+    console.error('Error getting tickets:', error);
+    return [];
+  }
+};
+
 export const deleteItem = (movieId: string) => {
   return remove(ref(db, `/movies/${movieId}`));
+};
+
+export const deleteTicket = (ticketId: string) => {
+  return remove(ref(db, `/tickets/${ticketId}`));
 };
 
 export const unsave = async (

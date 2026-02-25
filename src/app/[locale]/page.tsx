@@ -4,6 +4,7 @@ import Moon from '@/components/moon';
 import { getMainPageData } from '@/requests/ssr';
 import Genre from '@/pagesComponents/main/genre';
 import Popular from '@/pagesComponents/main/poplare';
+import FutureTickets from '@/pagesComponents/main/futureTickets';
 
 type Props = {
   searchParams: Promise<{ genre: string }>;
@@ -20,6 +21,7 @@ const Home: FC<Props> = async ({ searchParams }) => {
         <main>
           <Popular popular={data.popular} />
           <Genre genres={data.genres} genresByIdData={data.genresByIdData} />
+          <FutureTickets />
         </main>
       </div>
     </div>

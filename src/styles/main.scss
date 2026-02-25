@@ -115,6 +115,18 @@ main {
   transform: scale(1.2); // Slightly enlarge the active dot
 }
 
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.ReactModal__Body--open {
+  .react-multiple-carousel__arrow {
+    display: none !important;
+  }
+}
+
 .yellow {
   color: orange;
   font-size: 24px;
