@@ -41,6 +41,17 @@
     outline: none;
   }
 
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    input {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
   button {
     width: 220px;
     height: 44px;
@@ -96,6 +107,16 @@
     color: #b7b7b7;
     font-size: 14px;
   }
+}
+
+.status {
+  font-size: 13px;
+  color: #d2d2d2;
+}
+
+.cardActions {
+  display: grid;
+  gap: 8px;
 
   button {
     width: 100%;
@@ -103,8 +124,20 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background: #7b1414;
+    background: #1f3022;
     color: white;
+
+    &:hover {
+      background: #2a4a31;
+    }
+  }
+}
+
+.deleteButton {
+  background: #7b1414 !important;
+
+  &:hover {
+    background: #9e1a1a !important;
   }
 }
 

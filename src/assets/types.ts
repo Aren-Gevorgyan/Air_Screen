@@ -57,6 +57,7 @@ export type Ticket = {
   date: string;
   time: string;
   image: string;
+  isOrderEnabled?: boolean;
   createdAt: number;
 };
 

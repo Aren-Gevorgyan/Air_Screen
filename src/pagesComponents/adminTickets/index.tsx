@@ -5,7 +5,12 @@ import styles from './styles.module.scss';
 import Button from '@/components/button';
 import Loading from '@/components/loading';
 import { showToast } from '@/components/toast';
-import { addTicket, deleteTicket, fetchTickets } from '@/requests/firebase';
+import {
+  addTicket,
+  deleteTicket,
+  editTicket,
+  fetchTickets,
+} from '@/requests/firebase';
 import { Ticket } from '@/assets/types';
 import { useTranslations } from 'next-intl';
 
@@ -16,10 +21,12 @@ const AdminTickets = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [editingTicketId, setEditingTicketId] = useState<string | null>(null);
   const [title, setTitle] = useState<string>('');
   const [date, setDate] = useState<string>('');
   const [time, setTime] = useState<string>('');
   const [image, setImage] = useState<string>('');
+  const [isOrderEnabled, setIsOrderEnabled] = useState<boolean>(true);
 
   const today = new Date().toISOString().slice(0, 10);
 
@@ -57,6 +64,40 @@ const AdminTickets = () => {
     setDate('');
     setTime('');
     setImage('');
+    setIsOrderEnabled(true);
+    setEditingTicketId(null);
+  };
+
+  const onStartEdit = (ticket: Ticket) => {
+    setEditingTicketId(ticket.id || null);
+    setTitle(ticket.title);
+    setDate(ticket.date);
+    setTime(ticket.time);
+    setImage(ticket.image);
+    setIsOrderEnabled(ticket.isOrderEnabled ?? true);
+  };
+
+  const onCancelEdit = () => {
+    clearForm();
+  };
+
+  const onToggleTicketOrders = async (ticket: Ticket) => {
+    if (!ticket.id) return;
+
+    const nextValue = !(ticket.isOrderEnabled ?? true);
+
+    try {
+      await editTicket(ticket.id, { isOrderEnabled: nextValue });
+      showToast(
+        nextValue
+          ? t('admin_tickets_orders_enabled_success')
+          : t('admin_tickets_orders_disabled_success'),
+        'success'
+      );
+      await loadTickets();
+    } catch {
+      showToast(t('admin_tickets_update_error'), 'error');
+    }
   };
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -69,18 +110,36 @@ const AdminTickets = () => {
     setIsSubmitting(true);
 
     try {
-      await addTicket({
-        title,
-        date,
-        time,
-        image,
-        createdAt: Date.now(),
-      });
-      showToast(t('admin_tickets_create_success'), 'success');
+      if (editingTicketId) {
+        await editTicket(editingTicketId, {
+          title,
+          date,
+          time,
+          image,
+          isOrderEnabled,
+        });
+        showToast(t('admin_tickets_update_success'), 'success');
+      } else {
+        await addTicket({
+          title,
+          date,
+          time,
+          image,
+          isOrderEnabled,
+          createdAt: Date.now(),
+        });
+        showToast(t('admin_tickets_create_success'), 'success');
+      }
+
       clearForm();
       await loadTickets();
     } catch {
-      showToast(t('admin_tickets_create_error'), 'error');
+      showToast(
+        editingTicketId
+          ? t('admin_tickets_update_error')
+          : t('admin_tickets_create_error'),
+        'error'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -164,11 +223,30 @@ const AdminTickets = () => {
             aria-label={t('admin_tickets_picture_url')}
           />
         </label>
+        <label htmlFor="ticket-order-enabled" className={styles.checkboxLabel}>
+          <input
+            id="ticket-order-enabled"
+            type="checkbox"
+            checked={isOrderEnabled}
+            onChange={(event) => setIsOrderEnabled(event.target.checked)}
+            aria-label={t('admin_tickets_order_enabled')}
+          />
+          {t('admin_tickets_order_enabled')}
+        </label>
         <Button type="submit" disabled={isSubmitting}>
           {isSubmitting
-            ? t('admin_tickets_creating')
-            : t('admin_tickets_create')}
+            ? editingTicketId
+              ? t('admin_tickets_updating')
+              : t('admin_tickets_creating')
+            : editingTicketId
+              ? t('admin_tickets_update')
+              : t('admin_tickets_create')}
         </Button>
+        {editingTicketId && (
+          <Button type="button" onClick={onCancelEdit}>
+            {t('cancel')}
+          </Button>
+        )}
       </form>
 
       {isLoading ? (
@@ -184,9 +262,31 @@ const AdminTickets = () => {
                   <span>
                     {ticket.date} {ticket.time}
                   </span>
-                  <Button onClick={() => void onDelete(ticket.id)}>
-                    {t('admin_tickets_delete')}
-                  </Button>
+                  <span className={styles.status}>
+                    {ticket.isOrderEnabled ?? true
+                      ? t('admin_tickets_orders_enabled')
+                      : t('admin_tickets_orders_disabled')}
+                  </span>
+                  <div className={styles.cardActions}>
+                    <Button type="button" onClick={() => onStartEdit(ticket)}>
+                      {t('edit')}
+                    </Button>
+                    <Button
+                      type="button"
+                      onClick={() => void onToggleTicketOrders(ticket)}
+                    >
+                      {(ticket.isOrderEnabled ?? true)
+                        ? t('admin_tickets_disable_orders')
+                        : t('admin_tickets_enable_orders')}
+                    </Button>
+                    <Button
+                      type="button"
+                      onClick={() => void onDelete(ticket.id)}
+                      className={styles.deleteButton}
+                    >
+                      {t('admin_tickets_delete')}
+                    </Button>
+                  </div>
                 </div>
               </li>
             ))

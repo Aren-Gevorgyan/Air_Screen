@@ -22,6 +22,14 @@ export const addTicket = async (data: Omit<Ticket, 'id'>) => {
   return await push(ticketRef, data);
 };
 
+export const editTicket = async (
+  ticketId: string,
+  updatedData: Partial<Omit<Ticket, 'id'>>
+) => {
+  const ticketRef = ref(db, `/tickets/${ticketId}`);
+  await update(ticketRef, updatedData);
+};
+
 export const saveMovie = async (moviesId: number[], userId?: string | null) => {
   const data = {
     userId,
@@ -68,9 +76,12 @@ export const fetchTickets = async (): Promise<Ticket[]> => {
     return Object.entries(data)
       .map(([id, value]) => {
         if (typeof value === 'object' && value !== null) {
+          const ticketValue = value as Omit<Ticket, 'id'>;
+
           return {
             id,
-            ...value,
+            ...ticketValue,
+            isOrderEnabled: ticketValue.isOrderEnabled ?? true,
           } as Ticket;
         }
 

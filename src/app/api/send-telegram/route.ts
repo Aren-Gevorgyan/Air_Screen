@@ -8,6 +8,7 @@ const formatOrderMessage = (body: unknown): string => {
   }
 
   const data = body as {
+    orderId?: string;
     userId?: string;
     name?: string;
     date?: string;
@@ -22,13 +23,23 @@ const formatOrderMessage = (body: unknown): string => {
     guestCount?: number;
     watchType?: string;
     totalPrice?: number;
+    isEdited?: boolean;
+    isDeleted?: boolean;
     [key: string]: unknown;
   };
 
-  if (data.name || data.date || data.hour || data.phone || data.type) {
+  if (data.isDeleted || data.name || data.date || data.hour || data.phone || data.type) {
     const parts: string[] = [];
 
-    parts.push('New Order');
+    if (data.isDeleted) {
+      parts.push('Order has been deleted');
+    } else if (data.isEdited) {
+      parts.push('Order has been edited');
+    } else {
+      parts.push('New Order');
+    }
+    if (data.orderId) parts.push(`Order ID: ${data.orderId}`);
+    if (data.userId) parts.push(`User ID: ${data.userId}`);
     if (data.type) parts.push(`Type: ${data.type}`);
     if (data.watchType)
       parts.push(`Watch type: ${data.watchType === 'general' ? 'General' : 'Individual'}`);

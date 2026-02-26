@@ -47,6 +47,7 @@ const FutureTickets = () => {
   }, []);
 
   const onOpenModal = (ticket: Ticket) => {
+    if (!(ticket.isOrderEnabled ?? true)) return;
     setSelectedTicket(ticket);
   };
 
@@ -117,6 +118,13 @@ const FutureTickets = () => {
     }
   };
 
+  const isTicketExpired = (date: string, time: string) => {
+    if (!date || !time) return false;
+    const ticketDateTime = new Date(`${date}T${time}`);
+    if (Number.isNaN(ticketDateTime.getTime())) return false;
+    return ticketDateTime.getTime() < Date.now();
+  };
+
   if (isLoading) {
     return (
       <section className={styles.container}>
@@ -131,23 +139,36 @@ const FutureTickets = () => {
     <section className={styles.container}>
       <h2>{t('future_tickets_title')}</h2>
       <div className={styles.grid}>
-        {tickets.map((ticket) => (
-          <article key={ticket.id} className={styles.card}>
-            <img src={ticket.image} alt={ticket.title} loading="lazy" />
-            <div className={styles.cardContent}>
-              <h3>{ticket.title}</h3>
-              <p>
-                {ticket.date} {ticket.time}
-              </p>
-              <Button
-                onClick={() => onOpenModal(ticket)}
-                aria-label={`${t('future_tickets_order_aria')} ${ticket.title}`}
-              >
-                {t('future_tickets_order_button')}
-              </Button>
-            </div>
-          </article>
-        ))}
+        {tickets.map((ticket) => {
+          const isExpired = isTicketExpired(ticket.date, ticket.time);
+          const isOrderDisabled = !(ticket.isOrderEnabled ?? true);
+          const isTicketDisabled = isExpired || isOrderDisabled;
+
+          return (
+            <article
+              key={ticket.id}
+              className={`${styles.card} ${isTicketDisabled ? styles.cardDisabled : ''}`}
+              aria-disabled={isTicketDisabled}
+            >
+              <img src={ticket.image} alt={ticket.title} loading="lazy" />
+              <div className={styles.cardContent}>
+                <h3>{ticket.title}</h3>
+                <p>
+                  {ticket.date} {ticket.time}
+                </p>
+                <Button
+                  onClick={() => onOpenModal(ticket)}
+                  aria-label={`${t('future_tickets_order_aria')} ${ticket.title}`}
+                  disabled={isTicketDisabled}
+                >
+                  {isOrderDisabled
+                    ? t('future_tickets_orders_disabled')
+                    : t('future_tickets_order_button')}
+                </Button>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
       <Modal isOpen={Boolean(selectedTicket)} onClose={onCloseModal}>

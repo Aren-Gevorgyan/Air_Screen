@@ -185,6 +185,7 @@ const Order = () => {
       const telegramPayload = {
         ...orderDetails,
         totalPrice,
+        isEdited: Boolean(movieId),
       };
       if (movieId) {
         await editItem(movieId, {
