@@ -4,7 +4,7 @@ import { memo } from 'react';
 import Button from '@/components/button';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import styles from './styles.module.scss';
-import { deleteItem, fetchMovies } from '@/requests/firebase';
+import { deleteItem, fetchMoviesByUserId } from '@/requests/firebase';
 import { Movies } from '@/assets/types';
 import 'react-toastify/dist/ReactToastify.css';
 import { showToast } from '@/components/toast';
@@ -13,19 +13,20 @@ import { Link } from '@/i18n/navigation';
 
 type Props = {
   id?: string;
+  userId?: string | null;
   setLoading: (val: boolean) => void;
-  setMovies: (val: Array<Movies | undefined>) => void;
+  setMovies: (val: Movies[]) => void;
 };
 
-const Actions = ({ id, setMovies, setLoading }: Props) => {
+const Actions = ({ id, userId, setMovies, setLoading }: Props) => {
   const t = useTranslations('Words');
 
   const handleDelete = async () => {
     try {
       if (id) await deleteItem(id);
       showToast(t('success_order_delete'), 'success');
-      const res: Array<Movies | undefined> | undefined = await fetchMovies();
-      if (res) setMovies(res);
+      const res = await fetchMoviesByUserId(userId);
+      setMovies((res || []) as Movies[]);
     } catch (err) {
       showToast(t('error_order_delete'), 'error');
       console.error('Delete failed:', err);

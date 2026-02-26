@@ -1,8 +1,8 @@
 'use client';
 
-import { FC, memo, useEffect, useState } from 'react';
-import { Movies } from '@/assets/types';
-import { fetchMoviesByUserId } from '@/requests/firebase';
+import { FC, memo, useEffect, useMemo, useState } from 'react';
+import { Movies, Ticket } from '@/assets/types';
+import { fetchMoviesByUserId, fetchTickets } from '@/requests/firebase';
 import styles from './styles.module.scss';
 import Loading from '@/components/loading';
 import { useTranslations } from 'next-intl';
@@ -17,19 +17,31 @@ type Props = {
 
 const Items: FC<Props> = ({ userId }) => {
   const t = useTranslations('Words');
-  const [movies, setMovies] = useState<Array<Movies | undefined>>();
+  const [movies, setMovies] = useState<Movies[]>([]);
+  const [tickets, setTickets] = useState<Ticket[]>([]);
   const [isLoading, setLoading] = useState<boolean>(true);
+
+  const ticketsByTitle = useMemo(() => {
+    return tickets.reduce<Record<string, Ticket>>((acc, ticket) => {
+      const normalizedTitle = ticket.title?.trim().toLowerCase();
+      if (!normalizedTitle) return acc;
+      acc[normalizedTitle] = ticket;
+      return acc;
+    }, {});
+  }, [tickets]);
 
   useEffect(() => {
     if (!userId) {
       setMovies([]);
+      setTickets([]);
       setLoading(false);
       return;
     }
 
-    fetchMoviesByUserId(userId)
-      .then((res: Array<Movies | undefined> | undefined) => {
-        if (res) setMovies(res);
+    Promise.all([fetchMoviesByUserId(userId), fetchTickets()])
+      .then(([moviesResponse, ticketsResponse]) => {
+        setMovies((moviesResponse || []) as Movies[]);
+        setTickets(ticketsResponse);
       })
       .catch(() => {
         showToast(t('get_movie_error'), 'error');
@@ -37,7 +49,7 @@ const Items: FC<Props> = ({ userId }) => {
       .finally(() => {
         setLoading(false);
       });
-  }, [userId]);
+  }, [t, userId]);
 
   return (
     <div className={styles.container}>
@@ -51,17 +63,20 @@ const Items: FC<Props> = ({ userId }) => {
       <div className={styles.content}>
         {isLoading ? (
           <Loading />
-        ) : movies?.length ? (
-          movies?.map((val: Movies | undefined) => {
+        ) : movies.length ? (
+          movies.map((val: Movies) => {
             let bacImage = 'movie.jpg';
             if (val?.type === t('football')) bacImage = 'football.jpg';
             if (val?.type === 'UFC') bacImage = 'ufc.jpg';
+            const ticketImage =
+              val?.name && ticketsByTitle[val.name.trim().toLowerCase()]?.image;
+            const backgroundImage = ticketImage || `/images/${bacImage}`;
 
             return (
               <div key={val?.id} className={styles.itemContainer}>
                 <div
                   className={styles.backgorund}
-                  style={{ backgroundImage: `url('/images/${bacImage}')` }}
+                  style={{ backgroundImage: `url('${backgroundImage}')` }}
                 />
                 <div className={styles.items}>
                   <Item val={val?.type} name="type" />
@@ -84,6 +99,7 @@ const Items: FC<Props> = ({ userId }) => {
                 </div>
                 <Actions
                   id={val?.id}
+                  userId={userId}
                   setMovies={setMovies}
                   setLoading={setLoading}
                 />
