@@ -135,11 +135,13 @@ const FutureTickets = () => {
 
   if (!tickets.length) return null;
 
+  const visibleTickets = tickets.slice(-6);
+
   return (
     <section className={styles.container}>
       <h2>{t('future_tickets_title')}</h2>
       <div className={styles.grid}>
-        {tickets.map((ticket) => {
+        {visibleTickets.map((ticket) => {
           const isExpired = isTicketExpired(ticket.date, ticket.time);
           const isOrderDisabled = !(ticket.isOrderEnabled ?? true);
           const isTicketDisabled = isExpired || isOrderDisabled;
