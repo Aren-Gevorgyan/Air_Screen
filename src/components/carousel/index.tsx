@@ -10,6 +10,7 @@ import styles from './styles.module.scss';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import useIsIosInAppBrowser from '@/hooks/useIsIosInAppBrowser';
 
 type CarouselProps = {
   popular: Array<MovieData>;
@@ -17,12 +18,13 @@ type CarouselProps = {
 
 const MyCarousel: FC<CarouselProps> = ({ popular }) => {
   const t = useTranslations('Words');
+  const isIosInAppBrowser = useIsIosInAppBrowser();
 
   return (
     <Carousel
       responsive={responsive}
-      infinite
-      autoPlay
+      infinite={!isIosInAppBrowser}
+      autoPlay={!isIosInAppBrowser}
       autoPlaySpeed={4000}
       keyBoardControl
       showDots
@@ -37,7 +39,7 @@ const MyCarousel: FC<CarouselProps> = ({ popular }) => {
             key={val.id}
             className={clsx(styles.item, val.poster_path ? '' : styles.noImage)}
           >
-            <Link href={`/${val.id}`}>
+            <Link href={`/${val.id}`} prefetch={false}>
               {!!val.poster_path && (
                 <Image src={img} alt={`AirScreen ${val.title} image`} fill />
               )}

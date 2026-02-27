@@ -15,6 +15,7 @@ import Loading from '@/components/loading';
 import clsx from 'clsx';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
+import useIsIosInAppBrowser from '@/hooks/useIsIosInAppBrowser';
 
 type Props = {
   genreId: string | undefined;
@@ -24,6 +25,7 @@ type Props = {
 const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
   const params = useParams();
   const t = useTranslations('Words');
+  const isIosInAppBrowser = useIsIosInAppBrowser();
   const { data, isLoading } = useQuery({
     // Cache genre results to avoid unnecessary refetches when navigating back to the home page.
     queryKey: [MOVIES_BY_GENRE, genreId],
@@ -41,8 +43,8 @@ const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
       ) : genresData.length ? (
         <Carousel
           responsive={responsive}
-          infinite
-          autoPlay
+          infinite={!isIosInAppBrowser}
+          autoPlay={!isIosInAppBrowser}
           autoPlaySpeed={4000}
           keyBoardControl
           showDots
@@ -53,6 +55,7 @@ const GenreMovies: FC<Props> = ({ genreId, genresByIdData }) => {
               title={t('seeMore')}
               href={`/${params.locale}/${val.id}`}
               className={styles.content}
+              prefetch={false}
               key={val.id}
             >
               <div
