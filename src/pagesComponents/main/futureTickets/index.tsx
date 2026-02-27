@@ -120,8 +120,22 @@ const FutureTickets = () => {
 
   const isTicketExpired = (date: string, time: string) => {
     if (!date || !time) return false;
-    const ticketDateTime = new Date(`${date}T${time}`);
-    if (Number.isNaN(ticketDateTime.getTime())) return false;
+
+    const dateParts = date.split('-').map(Number);
+    const timeParts = time.split(':').map(Number);
+
+    if (dateParts.length !== 3 || timeParts.length < 2) return false;
+
+    const [year, month, day] = dateParts;
+    const [hours, minutes] = timeParts;
+
+    if (
+      [year, month, day, hours, minutes].some((value) => Number.isNaN(value))
+    ) {
+      return false;
+    }
+
+    const ticketDateTime = new Date(year, month - 1, day, hours, minutes, 0, 0);
     return ticketDateTime.getTime() < Date.now();
   };
 
@@ -135,7 +149,11 @@ const FutureTickets = () => {
 
   if (!tickets.length) return null;
 
-  const visibleTickets = tickets.slice(-6);
+  const visibleTickets = tickets
+    .filter((ticket) => {
+      return Boolean(ticket.title && ticket.date && ticket.time && ticket.image);
+    })
+    .slice(-6);
 
   return (
     <section className={styles.container}>
@@ -148,7 +166,7 @@ const FutureTickets = () => {
 
           return (
             <article
-              key={ticket.id}
+              key={ticket.id || `${ticket.title}-${ticket.date}-${ticket.time}`}
               className={`${styles.card} ${isTicketDisabled ? styles.cardDisabled : ''}`}
               aria-disabled={isTicketDisabled}
             >
